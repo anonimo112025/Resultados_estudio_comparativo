@@ -1,0 +1,26 @@
+@startuml
+class Administrator {
+  + accessSystem()
+  + viewUserList()
+  + selectUser()
+  + confirmDeletion()
+}
+
+class User {
+  - username: String
+  - isActive: Boolean
+  + getUsername(): String
+  + isActive(): Boolean
+}
+
+class AccountManager {
+  + getUserList(): List<User>
+  + deleteUserAccount(user: User)
+  + requestConfirmation(): Boolean
+}
+
+Administrator --> AccountManager : manages accounts through
+AccountManager --> User : manages
+Administrator --> User : selects for deletion
+
+@enduml

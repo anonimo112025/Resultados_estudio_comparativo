@@ -1,0 +1,31 @@
+@startuml
+
+  Actor "User" {
+      -- Accede al sistema para gestionar inscripciones de estudiantes.
+      "-- Selecciona un estudiante y un curso para realizar la inscripción.
+      "-- Confirma la inscripción.
+  }
+
+  Class "Student" {
+      -- Nombre (string)
+      -- Matrícula (string)
+      -- Lista de CursosInscripto (set de Cursos)
+  }
+
+  Class "Course" {
+      -- Nombre (string)
+      -- ID (integer)
+      -- Lista de EstudiantesInscripto (set de Students)
+  }
+
+  Class "Enrollment" {
+      -- Fecha de Inscripción (date)
+      -- Student (relación con Student)
+      -- Course (relación con Course)
+  }
+
+  Student "1" --*" Enrollment
+  Course "*" --*" Enrollment
+  User --> Actor "User"
+
+  @enduml

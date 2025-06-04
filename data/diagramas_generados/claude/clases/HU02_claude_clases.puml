@@ -1,0 +1,32 @@
+@startuml
+class Book {
+  - title: String
+  - publicationYear: int
+  + getTitle(): String
+  + setTitle(title: String): void
+  + getPublicationYear(): int
+  + setPublicationYear(year: int): void
+}
+
+class Author {
+  - name: String
+  + getName(): String
+  + setName(name: String): void
+}
+
+class User {
+  + registerBook(book: Book): void
+  + accessBookRegistration(): void
+}
+
+class BookRegistry {
+  + validateBookData(book: Book): boolean
+  + saveBook(book: Book): void
+  + associateAuthors(book: Book, authors: Author[]): void
+}
+
+User --> BookRegistry
+BookRegistry --> Book
+Book --> "*" Author
+
+@enduml

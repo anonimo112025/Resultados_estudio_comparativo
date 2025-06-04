@@ -1,0 +1,28 @@
+@startuml
+
+class User {
+  + generatePDF(topics: Topic[], questions: Question[]): PDFFile
+}
+
+class PDFFile {
+  - fileName: String
+  + PDFFile(fileName: String, questions: Question[], topics: Topic[])
+  + view()
+  + download()
+}
+
+class Question {
+  - text: String
+}
+
+class Topic {
+  - name: String
+  + getRelatedQuestions(): Question[]
+}
+
+User "1" --> "0..*" PDFFile : generates >
+PDFFile "1" *-- "1..*" Question : includes >
+PDFFile "1" --> "1..*" Topic : based on >
+Topic "1" --> "0..*" Question : groups >
+
+@enduml

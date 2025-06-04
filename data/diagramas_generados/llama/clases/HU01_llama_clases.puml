@@ -1,0 +1,22 @@
+@startuml
+class User {
+    - String name
+    - String email
+    - String password
+    + RegisterUser()
+}
+
+class Profile {
+    - User user
+    + displayProfile(User user)
+}
+
+class System {
+    o-- UserProfile profile
+    + manageUser(User user)
+}
+
+User -->* Profile
+Profile --+> System
+
+@enduml

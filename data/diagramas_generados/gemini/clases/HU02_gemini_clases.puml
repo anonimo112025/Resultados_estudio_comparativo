@@ -1,0 +1,19 @@
+@startuml
+
+class User {
+  + registerBook(title: String, publicationYear: int, authorNames: List<String>): Book
+}
+
+class Book {
+  - title: String
+  - publicationYear: int
+}
+
+class Author {
+  - name: String
+}
+
+User "1" --> "*" Book : registers
+Book "*" -- "*" Author : has
+
+@enduml

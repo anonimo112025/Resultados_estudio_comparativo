@@ -1,0 +1,21 @@
+@startuml
+
+LoginForm {
+  String username
+  String password
+}
+
+UserCredentials {
+  String username
+  String password
+}
+
+AuthenticationSystem {
+    UserCredentials userCredential
+    boolean authenticate(UserCredentials credentials)
+    void grantAccess()
+}
+
+LoginForm --> AuthenticationSystem: validate_credentials
+
+@enduml

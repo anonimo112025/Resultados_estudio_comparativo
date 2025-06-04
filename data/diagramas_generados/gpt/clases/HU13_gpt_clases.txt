@@ -1,0 +1,23 @@
+@startuml
+class LoginForm {
+    -username: String
+    -password: String
+    +submitForm(): Boolean
+}
+
+class User {
+    -credentials: String
+    -privileges: String
+    +enterCredentials(): String
+    +accessSystem(): void
+}
+
+class Authentication {
+    +validateCredentials(User): Boolean
+    +grantAccess(User): void
+}
+
+LoginForm --> User : submits form
+User --> Authentication : checks credentials
+Authentication --> User : grants access
+@enduml

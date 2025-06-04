@@ -1,0 +1,30 @@
+@startuml
+class User {
+  +accessSystem() : void
+  +confirmEnrollment(enrollment : Enrollment) : void
+}
+
+class Course {
+  -studentsList : List<Student> 
+  +addStudent(student : Student) : void
+  +removeStudent(student : Student) : void
+}
+
+class Student {
+  -coursesList : List<Course>
+  +registerCourse(course : Course) : void
+  +unregisterCourse(course : Course) : void
+}
+
+class Enrollment {
+  -student : Student
+  -course : Course
+  +Enrollment(student : Student, course : Course)
+}
+
+User --> Enrollment : confirmEnrollment
+Enrollment *-- Student
+Enrollment *-- Course
+Student "1" --> "*" Course : coursesList
+Course "1" --> "*" Student : studentsList
+@enduml

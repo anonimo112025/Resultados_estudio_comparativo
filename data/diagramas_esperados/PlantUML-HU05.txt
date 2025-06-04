@@ -1,0 +1,20 @@
+﻿@startuml
+
+
+class DiceGame {
+  +startGame()
+  +rollDice()
+  +determineAction()
+}
+
+
+class Die {
+  +roll()
+  +getFaceValue()
+}
+
+
+DiceGame --> "2" Die
+
+
+@enduml

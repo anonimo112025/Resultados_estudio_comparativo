@@ -1,0 +1,65 @@
+@startuml
+class Player {
+  +name: string
+}
+
+class Game {
+  +gameState: GameStates
+  -currentTurn: int
+  +rollDiceResult: DiceResult
+
+  rollDice() : DiceResult {
+    # private
+  }
+
+  updateGameState(DiceResult result) : void {
+    # private
+  }
+}
+
+class GameStates {
+  + states: Set<String>
+}
+
+enum GameEvents {
+  START_GAME
+  ROLL_DICE
+  UPDATE_GAME_STATE
+}
+
+class Dice {
+  +result: int
+
+  roll() : int {
+    # public
+  }
+}
+
+class DiceResult {
+  +rollValue1: int
+  +rollValue2: int
+
+  calculateDiceResult() : int {
+    # private
+  }
+
+  getDiceResultString(): string {
+    # public
+  }
+}
+
+class GameEventDispatcher {
+  +events: Set<GameEvents>
+  -eventListeners: Map<GameEvents, List<EventListener>>
+}
+
+class EventListener {
+  +handleGameEvent(GameEvent event) : void {
+    # private
+  }
+}
+
+Game --> GameEventDispatcher
+Dice --> DiceResult
+
+@enduml

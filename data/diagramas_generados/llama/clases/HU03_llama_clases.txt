@@ -1,0 +1,29 @@
+@startuml
+class Administrator {
+    + public String username
+    + private Permission permission
+}
+
+class User {
+    + public String username
+}
+
+class Resource {
+    + public String name
+}
+
+class Permission {
+    - private boolean value
+}
+
+class AccessRequest {
+    + public Resource resource
+    + public User user
+}
+
+Administrator -->* "1..*" Permission
+User -->* "1..*" AccessRequest
+Permission --> "1" --> Resource
+AccessRequest -->* "1..*" Administrator
+
+@enduml

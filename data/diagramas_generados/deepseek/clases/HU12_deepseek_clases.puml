@@ -1,0 +1,41 @@
+@startuml
+class User {
+    +public Email email
+    
+    @return public function accessProjectsList() -> [ProjectsList]
+    @return public function addProject(Project p) -> void
+    @return public function removeProject(Project p) -> void
+    @return public function viewProject(Project p) -> void
+}
+
+class ProjectsList {
+    +private var projectsCollection = new List[Project]()
+    +public int totalPages
+    
+    @return public function getCurrentPage() -> Integer
+    @return public function getTotalPages() -> Integer
+    
+    @return public function iterateProjects(Callback<Project> cb) -> void
+}
+
+class Project {
+    +public string name
+    +public string description
+    +public string type
+    +public string status
+    +public string assignedTo
+    +public string comments
+    +public DateTime createdDate
+    +public DateTime updatedDate
+    
+    @return public function displayDetails() -> void
+}
+
+User --> ProjectsList
+
+ProjectsList *-- Project
+
+ProjectsList -o Project via iterator
+
+User -o Project via viewProject
+@enduml

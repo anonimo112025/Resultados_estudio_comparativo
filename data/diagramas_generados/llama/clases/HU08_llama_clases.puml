@@ -1,0 +1,28 @@
+@startuml
+class Student {
+    - string id
+    + string name
+}
+
+class Course {
+    - string id
+    + string name
+}
+
+class Enrollment {
+    + EnrollmentId
+    - Student student
+    - Course course
+}
+
+class User {
+    + string id
+    + string username
+    + string password
+}
+
+User -->| many ->> Enrollment
+Enrollment -->| one -->>| Course
+Enrollment -->| one -->>| Student
+
+@enduml

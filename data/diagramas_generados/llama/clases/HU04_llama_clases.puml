@@ -1,0 +1,28 @@
+@startuml
+class Client {
+    name String
+    balance Decimal
+}
+
+class Transaction {
+    id Integer
+    type Enum("deposit", "withdrawal")
+    amount Decimal
+}
+
+class Account {
+    id Integer
+    client Client
+    transactions List(Transaction)
+}
+
+class User {
+    id Integer
+    accounts List(Account)
+}
+
+User -->|many*| Account
+Account -->|one-to-one| Client
+Transaction -->|one-to-many| Account
+
+@enduml

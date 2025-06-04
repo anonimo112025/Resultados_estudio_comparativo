@@ -1,0 +1,23 @@
+﻿@startuml
+class Student {
+  +enroll() : void
+  +drop() : void
+}
+
+
+class Course {
+  +addStudent() : void
+  +removeStudent() : void
+}
+
+
+class Enrollment {
+  +enroll() : void
+  +cancel() : void
+}
+
+
+Student "0..*" -- "1..*" Course : "manages"
+Course "1..*" -- "0..*" Enrollment : "has"
+Student "0..*" -- "1..*" Enrollment : "manages"
+@enduml

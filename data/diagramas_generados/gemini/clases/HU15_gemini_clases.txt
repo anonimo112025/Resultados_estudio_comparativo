@@ -1,0 +1,23 @@
+@startuml
+
+class User {
+  + requestDownload(attachment: Attachment): void
+  + viewContent(attachment: Attachment): void
+}
+
+class Project {
+  - projectName: String
+  - attachments: List<Attachment>
+  + getAttachments(): List<Attachment>
+}
+
+class Attachment {
+  - fileName: String
+  - fileData: byte[]
+}
+
+User --> Project
+Project "1" *-- "0..*" Attachment
+User --> Attachment
+
+@enduml

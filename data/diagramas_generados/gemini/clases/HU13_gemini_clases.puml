@@ -1,0 +1,21 @@
+@startuml
+
+class User {
+  -username: String
+  -privileges: String[]
+  +accessSystem(): void
+}
+
+class LoginForm {
+  +displayFields(): void
+  +submit(username: String, password: String): User
+}
+
+class AuthenticationService {
+  +validateAndAuthenticate(username: String, password: String): User
+}
+
+LoginForm ..> AuthenticationService : uses
+AuthenticationService ..> User : creates/returns
+
+@enduml

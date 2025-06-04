@@ -1,0 +1,16 @@
+@startuml
+User
+- name: String (#)
+- email: String (#)
+- password: String (#)
+
+SystemFunctionality
+- manageUserInformation(user: User): void (#)
+- viewProfile(user: User): void (#)
+
+RegistrationSystem
+- userRegistry: List<User> (#)
+
+User --> RegistrationSystem: Has
+User "1" --> "*" SystemFunctionality: Can_access
+@enduml

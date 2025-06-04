@@ -1,0 +1,20 @@
+@startuml
+
+class Student {
+}
+
+class Course {
+  + getEnrollments(): Enrollment[]
+}
+
+class Enrollment {
+  + modify(): void
+  + cancel(): void
+}
+
+Student "1" --> "0..*" Enrollment
+Course "1" --> "0..*" Enrollment
+Enrollment --> "1" Student
+Enrollment --> "1" Course
+
+@enduml

@@ -1,0 +1,23 @@
+@startuml
+User
+- name: String (public)
+- email: String (public)
+- password: String (private)
+
+FormularioDeRegistro
+- user: User (1..1)
+- nombre: String (public)
+- correoElectronico: String (public)
+- etc: String (public)
+
+Autenticacion
+- validate(user: User, password: String): boolean (private)
+
+Sistema
+- autenticacion: Autenticacion (1..1)
+- users: List<User> (0..*)
+
+FormularioDeRegistro --> User
+Autenticacion --> Sistema
+Sistema "1" --* Users
+@enduml

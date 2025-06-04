@@ -1,0 +1,27 @@
+@startuml
+abstract class User {
+  -name: String
+  -userType: String
+  +getName(): String
+  +getUserType(): String
+  +setName(name: String): void
+}
+
+class Student {
+}
+
+class Teacher {
+}
+
+class UserInformationManager {
+  +addUser(name: String, userType: String): void
+  +updateUserName(currentName: String, newName: String): void
+  +findUserByName(name: String): User
+  +listAllUsers(): List<User>
+  +listUsersByType(userType: String): List<User>
+}
+
+Student --|> User
+Teacher --|> User
+UserInformationManager "1" *-- "0..*" User
+@enduml

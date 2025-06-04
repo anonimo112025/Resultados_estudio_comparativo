@@ -1,0 +1,23 @@
+﻿@startuml
+
+
+class Person {
+  - name : String
+}
+
+
+class Student {
+  +enroll() : void
+}
+
+
+class Professor {
+  +assignGrades() : void
+}
+
+
+Student --|> Person
+Professor --|> Person
+
+
+@enduml

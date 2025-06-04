@@ -1,0 +1,35 @@
+@startuml
+FormCreator: 
+    public String title;
+    public String description;
+
+ElementsManager: 
+    public List<Element> getAvailableElements();
+    public void addElement(Element element);
+    public void organizeElements(List<Element> elements);
+
+Form: public
+    @Multiplicity(0, 1)
+    Elements: ElementsManager
+
+    @Multiplicity(0, *)
+    Attributes: Map<String, Object>
+
+    title: String private;
+    description: String private;
+
+addForm: 
+    -> FormCreator;
+
+createNewForm: 
+    -> Form;
+
+organizeElements: 
+    (->) ElementsManager;
+
+adjustForm: 
+    (->) Form;
+
+saveForm: 
+    (->) Form;
+@enduml

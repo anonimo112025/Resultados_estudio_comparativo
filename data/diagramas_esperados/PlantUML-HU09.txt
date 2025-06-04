@@ -1,0 +1,27 @@
+﻿@startuml
+
+
+class Book {
+  +getDetails() : void
+  +addAuthor(author: Author) : void
+  +setPublisher(publisher: Publisher) : void
+}
+
+
+class Publisher {
+  +publishBook(book: Book) : void
+  +getPublishedBooks() : List<Book>
+}
+
+
+class Author {
+  +writeBook(book: Book) : void
+  +getBooks() : List<Book>
+}
+
+
+Publisher "0..1" -- "*" Book
+Author "*" -- "*" Book
+
+
+@enduml

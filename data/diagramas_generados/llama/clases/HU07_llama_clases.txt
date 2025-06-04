@@ -1,0 +1,23 @@
+@startuml
+class User {
+    + name: string
+    - userType: String
+}
+
+class Student extends User {
+    - studentId: integer
+}
+
+class Teacher extends User {
+    - teacherId: integer
+}
+
+class System {
+    + users: User
+}
+
+User -->+ System
+Student "1" -->+ Student
+Teacher "1" -->+ Teacher
+
+@enduml

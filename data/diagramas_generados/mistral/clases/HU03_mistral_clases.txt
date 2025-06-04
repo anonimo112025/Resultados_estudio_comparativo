@@ -1,0 +1,34 @@
+@startuml
+
+User
+- name: string
+- permissions: List of Permission
+
+Permission
+- resource: Resource
+- permissionLevel: PermissionLevel
+
+Resource
+- resourceId: int
+- resourceName: string
+
+Administrator
+- username: string
+- users: Set of User
+- resources: Set of Resource
+
+Application
+- administrators: Set of Administrator
+- users: Set of User
+- resources: Set of Resource
+
+AdminManager(Administrator)
++ addUser(user: User)
++ removeUser(user: User)
++ assignPermissionToUser(user: User, permission: Permission)
++ revokePermissionFromUser(user: User, permission: Permission)
+
+ResourceValidator(Application)
++ checkAccessForUserAndResource(user: User, resource: Resource): boolean
+
+@enduml

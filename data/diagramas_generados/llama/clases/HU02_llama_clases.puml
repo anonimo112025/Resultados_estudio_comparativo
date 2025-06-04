@@ -1,0 +1,14 @@
+@startuml
+class Book {
+  - title : String
+  - author : Author
+}
+
+class Author {
+  - name : String
+}
+
+Book --> Author
+Book *--> Authors (1..*)
+
+@enduml

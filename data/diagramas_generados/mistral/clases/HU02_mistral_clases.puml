@@ -1,0 +1,24 @@
+@startuml
+
+    class User {
+        - name: string
+        - password: string
+        - books: List<Book>
+
+        + register()
+        + getBooks()
+    }
+
+    class Book {
+        - title: string
+        - author: string
+        - year: int
+        - id: uuid
+
+        + setTitle(title: string)
+        + setAuthor(author: string)
+        + setYear(year: int)
+    }
+
+    User "1" --* Book
+    @enduml

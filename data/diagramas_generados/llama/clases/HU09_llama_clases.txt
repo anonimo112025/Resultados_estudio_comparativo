@@ -1,0 +1,26 @@
+@startuml
+class Book {
+    + id
+    + title
+    + authors : list
+    + publisher : Publisher
+}
+
+class Author {
+    + id
+    + name
+    + books : list Book
+}
+
+class Publisher {
+    + id
+    + name
+    + books : list Book
+}
+
+Book --> "1" -- Author
+Book <--* "1" -- Publisher
+Author -->* "many" Book
+Publisher -->* "many" Book
+
+@enduml

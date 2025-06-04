@@ -1,0 +1,45 @@
+@startuml
+hide empty members
+
+class User {
+}
+
+class DynamicForm {
+  - name: String
+  - elements: List<FormElement>
+  + addElement(element: FormElement): void
+  + removeElement(element: FormElement): void
+  + moveElement(element: FormElement, newPosition: int): void
+  + getElement(elementId: String): FormElement
+  + display(): void
+  + save(): void
+}
+
+abstract class FormElement {
+  # elementId: String
+  # label: String
+  + getLabel(): String
+  + setLabel(label: String): void
+  + {abstract} display(): void
+  + {abstract} getValue(): any
+  + {abstract} setValue(value: any): void
+}
+
+class TextField extends FormElement {
+  - textValue: String
+  + display(): void
+  + getValue(): String
+  + setValue(value: String): void
+}
+
+class DataInput extends FormElement {
+  - dataValue: any
+  + display(): void
+  + getValue(): any
+  + setValue(value: any): void
+}
+
+User "1" --> "*" DynamicForm : manages
+DynamicForm "1" *-- "*" FormElement : contains
+
+@enduml

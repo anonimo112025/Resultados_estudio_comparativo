@@ -1,0 +1,27 @@
+@startuml
+Player {
+  - id: int
+  - currentAction: Action
+  - dice1: Dice
+  - dice2: Dice
+
+  rollDice() : void
+  getCurrentAction() : Action
+}
+
+Dice {
+  - value: int
+
+  roll() : void
+}
+
+Action {
+  - actionType: string
+
+  execute() : void
+}
+
+Player "1" --|> Dice: has
+Player "2" --|> Dice: has
+Dice o-- Action: involves
+@enduml

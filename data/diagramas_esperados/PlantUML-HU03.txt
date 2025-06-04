@@ -1,0 +1,32 @@
+﻿@startuml
+
+
+class Admin {
+  +assignPermission()
+  +revokePermission()
+  +viewUserPermissions()
+}
+
+
+class User {
+  +requestAccess()
+}
+
+
+class Permission {
+  +validatePermission()
+}
+
+
+class Resource {
+  +grantAccess()
+  +restrictAccess()
+}
+
+
+Admin -- User
+User --> Permission
+Permission -- Resource
+
+
+@enduml

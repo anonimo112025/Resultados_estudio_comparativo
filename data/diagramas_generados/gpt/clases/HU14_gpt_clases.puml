@@ -1,0 +1,22 @@
+@startuml
+class User {
+ - userId: integer
+ + getUserId(): integer
+}
+
+class Administrator {
+ - adminId: integer
+ + getAdminId(): integer
+ + viewUsers(): List<User>
+ + selectUser(userId: integer): User
+ + confirmDeleteUser(userId: integer): bool
+}
+
+class System {
+ - userList : List<User>
+ + deleteUser(userId: integer) : bool
+}
+
+User "1" <|-- "*" Administrator
+Administrator --> System
+@enduml

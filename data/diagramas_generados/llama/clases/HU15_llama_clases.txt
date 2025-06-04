@@ -1,0 +1,19 @@
+@startuml
+class Project {
+    + id 
+    - name 
+    - attachments : Attachment[]
+}
+
+class Attachment {
+    + id 
+    - fileName 
+    - fileContent 
+}
+
+Project -->|*| User
+User o-- Project
+Project -->|*| Attachment
+Attachment --|> File
+
+@enduml

@@ -1,0 +1,40 @@
+@startuml
+class User 
+    name : String
+    email : String
+
+    register()
+        process registration data with Account.createAccount()
+        
+interface Authentication {
+    isValidPassword(string)
+    validateEmail(string)
+}
+
+class Account 
+    id : Integer
+    balance : Decimal
+
+    createAccount(User u, string password, string email) public
+        validateEmail and isValidPassword are called on Authentication interface
+        if valid:
+            assign created account to user u
+            return user u
+end class
+
+User u
+    register()
+        data = processForm(u)
+        auth = new Authentication()
+        result = auth.isValidPassword(data.password)
+        unless result == true:
+            throw error
+        auth = new Authentication()
+        result = auth.validateEmail(data.email)
+        unless result == true:
+            throw error
+        account = Account.createAccount(u, data.name, data.email)
+        u.account = account
+end User
+
+@enduml

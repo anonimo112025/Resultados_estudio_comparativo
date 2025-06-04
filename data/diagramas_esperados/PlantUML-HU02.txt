@@ -1,0 +1,19 @@
+﻿@startuml
+
+
+class Book {
+  +registerBook()
+  +getBookInfo()
+  +addAuthor()
+}
+
+
+class Author {
+  +viewAuthoredBooks()
+}
+
+
+Book o-- Author
+
+
+@enduml

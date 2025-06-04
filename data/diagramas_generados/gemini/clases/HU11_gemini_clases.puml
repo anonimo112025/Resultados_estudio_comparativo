@@ -1,0 +1,26 @@
+@startuml
+
+class User {
+}
+
+class AccountCreationForm {
+  +name: String
+  +email: String
+  +submit(): void
+}
+
+class AuthenticationComponent {
+  +validate(name: String, email: String): boolean
+}
+
+class UserAccount {
+  +name: String
+  +email: String
+}
+
+User --> AccountCreationForm : interacts with
+AccountCreationForm ..> AuthenticationComponent : uses for validation
+AccountCreationForm ..> UserAccount : creates if valid
+User "1" -- "1" UserAccount : has
+
+@enduml

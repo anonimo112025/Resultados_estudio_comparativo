@@ -1,0 +1,31 @@
+@startuml
+class Player {
+  +rollDice()
+}
+
+class Dice {
+  -value: int
+  +roll(): int
+  +getValue(): int
+}
+
+class Game {
+  -state: GameState
+  +determineAction(diceResult: int)
+  +updateState(action: Action)
+}
+
+class GameState {
+  +getCurrentState(): State
+  +updateState(newState: State)
+}
+
+class Action {
+  +execute()
+}
+
+Player --> Game : plays
+Game --> Dice : "2" uses
+Game --> GameState : manages
+Game --> Action : determines
+@enduml

@@ -1,0 +1,34 @@
+﻿@startuml
+
+
+class Client {
+  +updateInformation()
+  +viewAccount()
+}
+
+
+class Account {
+  +deposit()
+  +withdraw()
+  +getBalance()
+}
+
+
+class Transaction {
+  +createTransaction()
+  +viewTransactionDetails()
+}
+
+
+class Report {
+  +generateReport()
+  +viewReport()
+}
+
+
+Client -- Account
+Account o-- "0..*" Transaction
+Account --> Report
+
+
+@enduml

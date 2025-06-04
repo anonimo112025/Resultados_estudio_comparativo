@@ -1,0 +1,45 @@
+@startuml
+
+class User {
+  + selectTopics()
+  + selectQuestions()
+  + initiateGeneration()
+  + viewDocument()
+  + downloadDocument()
+}
+
+class Topic {
+  - name: String
+  - description: String
+  + getRelatedQuestions()
+}
+
+class Question {
+  - content: String
+  - topic: String
+  + getContent()
+}
+
+class PDFDocument {
+  - fileName: String
+  - content: String
+  - creationDate: Date
+  + generate()
+  + save()
+  + display()
+}
+
+class PDFGenerator {
+  + structureContent()
+  + generatePDF()
+}
+
+User --> Topic : selects
+User --> Question : selects
+User --> PDFDocument : generates
+Topic "1" --> "*" Question : contains
+PDFGenerator --> PDFDocument : creates
+PDFGenerator --> Question : uses
+PDFGenerator --> Topic : uses
+
+@enduml

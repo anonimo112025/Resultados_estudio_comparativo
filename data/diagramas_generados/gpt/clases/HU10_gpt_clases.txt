@@ -1,0 +1,23 @@
+@startuml
+
+class User {
+   +addNewElement() : void
+   +organizeElements() : void
+   +viewForm() : void
+   +modifyElements() : void
+   +saveForm() : void
+}
+
+class Form {
+   -elements : Element[]
+   +renderForm() : void
+}
+
+class Element {
+   -type : String
+}
+
+User --> Form: "" <>--> "*"
+Form o--> Element: "" <>--> "*"
+
+@enduml

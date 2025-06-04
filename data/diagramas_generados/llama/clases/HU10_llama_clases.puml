@@ -1,0 +1,47 @@
+@startuml
+class Form {
+  + string title
+  - string description
+}
+
+class Element {
+  + boolean enabled
+}
+
+class TextField {
+  + string label
+  + string placeholder
+}
+
+class DataEntryField {
+  + string label
+  + boolean required
+}
+
+class FormDesigner {
+  + list Element> elements
+}
+
+class FormRenderer {
+  + string title
+  + string description
+  - Form renderForm()
+}
+
+class User {
+  + list Form> createdForms
+}
+
+User -->| ManyToOne | FormDesigner designer
+FormDesigner --|*-- Form form
+
+FormDesigner o--| Aggregation | Element element
+Element -->| ManyToMany | TextField textField
+Element -->| ManyToMany | DataEntryField dataEntryField
+
+FormRenderer -->| Association | User user
+User -->| Association | Form createdForm
+Form -->| Association | Element element
+Element -->| Association | Form form
+
+@enduml

@@ -1,0 +1,31 @@
+@startuml
+
+class User {
+    +manageClientInformation()
+    +performOperationsOnBalance()
+    +consultTransactions()
+}
+
+class Client {
+    -name : String
+    -accountBalance : Double
+}
+
+class Transaction {
+    -type : String
+    -value : Double
+    -transactionTime : DateTime
+    +createTransaction()
+}
+
+class Report {
+    +generateTransactionReport()
+    +generateBalanceReport()
+}
+
+User --> Client 
+User --> Transaction 
+User --> Report 
+Client "1" -- "*" Transaction : has >
+
+@enduml

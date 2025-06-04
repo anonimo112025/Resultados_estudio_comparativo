@@ -1,0 +1,38 @@
+RULES FOR CLASS DIAGRAM GENERATION (PlantUML)
+
+1. Represent each class with:
+   - A class name at the top.
+   - Attributes with their type and visibility.
+   - Methods (functions) with return type and visibility.
+   - If attributes or methods are not clearly implied by the user story, omit them. Do not invent implementation details.
+
+2. Use the following visibility symbols:
+   + public  
+   - private  
+   # protected  
+
+3. Use standard PlantUML syntax for class relationships:
+   - Association: ClassA --> ClassB
+   - Inheritance (generalization): ChildClass --|> ParentClass
+   - Composition: ClassA *-- ClassB
+   - Aggregation: ClassA o-- ClassB
+   - Dependency: ClassA ..> ClassB
+
+4. Represent interactions between classes using associations (-->), unless a stronger relationship is clearly implied.
+
+5. Do not invent relationships, attributes, or classes that are not present or implied in the context or user story.
+
+6. Use proper naming conventions:
+   - Use CamelCase for class names (e.g., OrderItem).
+   - Use lowerCamelCase for attributes and method names (e.g., totalPrice, calculateDiscount()).
+   - Avoid vague or technical names like System, Handler, Controller, DAO, etc.
+   - All names must be in English, consistent with the user story.
+
+7. Avoid technical or infrastructure-related classes such as controllers, APIs, databases, or repositories. Focus on business domain concepts only.
+
+8. Avoid creating empty classes (i.e., classes with no attributes or methods), unless necessary for conceptual hierarchy.
+
+9. If multiplicity is clearly implied by the user story, indicate it on associations using standard notation:
+   - Example: ClassA "1" --> "*" ClassB
+
+10. Do NOT include any explanatory text, notes, comments, or tags (e.g., <note>, <explanation>, <think>) outside the UML code block. Only output valid PlantUML code between "@startuml" and "@enduml".

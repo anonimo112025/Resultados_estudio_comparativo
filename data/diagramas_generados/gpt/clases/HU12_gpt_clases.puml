@@ -1,0 +1,20 @@
+@startuml
+
+class ProjectList {
+  - projectList : Project[]
+
+  + getProjectList() : Project[]
+  + addProject(Project) : void
+  + removeProject(Project) : void
+  + getProjectDetails(Project) : Project
+}
+
+class Project {
+  - projectDetails : String
+
+  + getProjectDetails() : String
+}
+
+ProjectList o-- Project
+
+@enduml

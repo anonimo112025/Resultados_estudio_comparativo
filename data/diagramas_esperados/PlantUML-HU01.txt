@@ -1,0 +1,14 @@
+﻿@startuml
+class User {
+  +register()
+  +createProfile()
+}
+
+
+class SpecificUser {
+  +viewProfile()
+}
+
+
+User <|-- SpecificUser
+@enduml

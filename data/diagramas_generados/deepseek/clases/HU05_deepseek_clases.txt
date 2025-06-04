@@ -1,0 +1,61 @@
+@startuml
+class Game {
+    public double score = 0;
+
+    private void processTurn() {
+        // Logic to handle current turn's action based on dice results
+        diceResults = DiceSystem.rollDice();
+        Action decideAction(diceResults);
+        Player player actionable = Player::actionPerformed;
+        player player actionable.diceResult(diceResults);
+    }
+}
+
+class Player extends Object {
+    public void playGame() {
+        Turn newTurn = Turn::startNewTurn;
+        while (true) {
+            try {
+                diceResults = DiceSystem.rollDice();
+                Action decideAction(diceResults);
+                Player player actionable = Player::actionPerformed;
+                player player actionable.diceResult(diceResults);
+            } catch (Exception e) {
+                // Handle invalid result
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void handleTurnEnd() {
+        // Logic to end turn or game based on results
+        if (diceResults == null || diceResults.length != 2) {
+            Game::score = -1;
+        } else {
+            Game::score += diceResults[0] + diceResults[1];
+        }
+    }
+}
+
+class Turn extends Game {
+    public void startNewTurn() {
+        // Initiate new game state and call processTurn
+    }
+
+    public void endTurn() {
+        // Logic to end current turn and return control to player
+    }
+}
+
+class DiceSystem {
+    private static final DiceSystem instance = new DiceSystem();
+
+    public static int[] rollDice() {
+        return new int[]{Math.randomInt(1, 6), Math.randomInt(1, 6)};
+    }
+
+    // Getters for results if needed
+}
+
+// class Action is abstract and not detailed here
+@enduml

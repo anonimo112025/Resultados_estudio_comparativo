@@ -1,0 +1,42 @@
+@startuml
+
+  ProjectList {
+      - projects : List<Project>
+      + showAllProjects()
+      + addProject(project: Project)
+      + removeProject(index: int)
+  }
+
+  User {
+      - currentProjectIndex: int
+  }
+
+  Project {
+      - name: String
+      - details: Details
+      + getDetails()
+  }
+
+  Details {
+      - tasks: List<Task>
+      - budget: float
+      - timeline: Timeline
+      // ... other details as needed
+  }
+
+  Task {
+      - name: String
+      - description: String
+      // ... other task properties as needed
+  }
+
+  Timeline {
+      - startDate: DateTime
+      - endDate: DateTime
+      // ... other timeline properties as needed
+  }
+
+  ProjectList "1" --* User : has_a
+  ProjectList --> Project : contains_a
+  User "1" --o Project : has_a_current
+  @enduml

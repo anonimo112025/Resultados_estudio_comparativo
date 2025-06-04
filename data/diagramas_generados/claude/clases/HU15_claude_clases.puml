@@ -1,0 +1,30 @@
+@startuml
+class User {
+  + selectProject()
+  + selectAttachment()
+  + confirmDownload()
+}
+
+class Project {
+  - name: String
+  + getAttachments(): List<Attachment>
+}
+
+class Attachment {
+  - fileName: String
+  - fileSize: Long
+  - fileType: String
+  + download()
+}
+
+class FileManager {
+  + manageDownload(attachment: Attachment)
+  + downloadToDevice(attachment: Attachment)
+}
+
+User --> Project : selects
+Project "1" --> "*" Attachment : contains
+User --> Attachment : selects
+User --> FileManager : uses
+FileManager --> Attachment : downloads
+@enduml

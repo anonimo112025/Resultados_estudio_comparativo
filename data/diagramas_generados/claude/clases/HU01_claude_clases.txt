@@ -1,0 +1,29 @@
+@startuml
+class User {
+  - name: String
+  - email: String
+  - password: String
+  + register(): boolean
+  + login(): boolean
+  + updateInformation(): boolean
+}
+
+class Profile {
+  - userId: String
+  - basicInformation: String
+  + viewProfile(): Profile
+  + displayInformation(): String
+}
+
+class RegistrationForm {
+  - nameField: String
+  - emailField: String
+  - passwordField: String
+  + validateData(): boolean
+  + submitForm(): boolean
+}
+
+User "1" --> "1" Profile : has
+User --> RegistrationForm : uses
+RegistrationForm ..> Profile : creates
+@enduml

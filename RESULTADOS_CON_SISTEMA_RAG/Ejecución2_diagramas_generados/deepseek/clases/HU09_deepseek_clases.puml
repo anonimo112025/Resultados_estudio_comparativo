@@ -1,0 +1,36 @@
+@startuml
+class Book {
+    + id: string primary
+    - title: string
+    - authors: string[]
+    - publisher: Reference-Publisher
+    - publicationDate: date
+}
+
+class Author {
+    + name: string
+    - books: Reference-Book[]
+}
+
+class Publisher {
+    + name: string
+    - publishDate: date
+}
+
+class User {
+    - username: string primary
+    - email: string
+    # registerBook( Book )
+    # updateAuthor( Author )
+    # consultPublisher( Publisher )
+}
+
+Reference-Publisher publisherOfBook : Publisher
+Reference-Book bookOfAuthor : Book
+
+Book --> Publisher via publisherOfBook
+Author --> Book via bookOfAuthor
+User --> Book via registerBook
+User --> Author via updateAuthor
+User --> Publisher via consultPublisher
+@enduml

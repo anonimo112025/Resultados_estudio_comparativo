@@ -1,0 +1,23 @@
+@startuml
+class User
+- username: String
+- password: String
++ login(): boolean
+
+class Student 
+# id: Integer
+- name: String
++ addStudentInfo(User)
+
+class Teacher 
+# id: Integer
+- name: String
++ addTeacherInfo(User)
+
+class Document 
++ content: String
++ managementInfo(Student, Teacher)
+class ManagementSystem 
+- users: User 
+- manageUsers()
+@enduml

@@ -1,0 +1,35 @@
+@startuml
+class Document {
+    - metadata: Map<String, String>
+    - page_content: String
+}
+ 
+class PageContent {
+    - content: String
+}
+
+class FormElement {
+    + add(ElementType type)
+    + remove(type)
+    - ElementType (enum) {
+        | TEXT_FIELD |
+        | DATA_ENTRY |
+    }
+}
+
+class ElementType {
+    + type: String
+}
+
+class User {
+    - username: String
+    - password: String
+}
+ 
+class SystemUser {
+    + login(): boolean
+    + viewDocument(): Document
+    - Document metadata: Map<String, String>
+}
+
+@enduml

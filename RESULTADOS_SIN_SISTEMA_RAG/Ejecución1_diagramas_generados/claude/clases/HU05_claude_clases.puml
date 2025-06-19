@@ -1,0 +1,33 @@
+@startuml
+class Player {
+    - name: String
+    + rollDice(): DiceResult
+    + makeDecision(): void
+}
+
+class Dice {
+    - value: int
+    + roll(): int
+}
+
+class DiceResult {
+    - firstDiceValue: int
+    - secondDiceValue: int
+    - totalValue: int
+    + getTotalValue(): int
+    + getFirstDiceValue(): int
+    + getSecondDiceValue(): int
+}
+
+class Game {
+    - currentTurn: int
+    - gameProgress: String
+    + processAction(result: DiceResult): void
+    + advanceTurn(): void
+}
+
+Player --> Game
+Player --> DiceResult
+DiceResult --> "2" Dice
+Game --> DiceResult
+@enduml

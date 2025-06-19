@@ -1,0 +1,39 @@
+@startuml
+
+class SystemAdministrator {
+  + assignPermissionToUser(user: User, permission: Permission, resource: Resource): AccessRight
+  + revokePermission(accessRight: AccessRight): void
+  + viewUserPermissions(user: User): List<AccessRight>
+}
+
+class User {
+  - username: String
+  - accessRights: List<AccessRight>
+  + hasPermission(permission: Permission, resource: Resource): boolean
+  + getAccessRights(): List<AccessRight>
+}
+
+class Permission {
+  - name: String
+  + getName(): String
+}
+
+class Resource {
+  - name: String
+  + getName(): String
+}
+
+class AccessRight {
+  + getPermission(): Permission
+  + getResource(): Resource
+  + getUser(): User
+}
+
+SystemAdministrator --|> User
+
+User "1" o-- "*" AccessRight
+AccessRight "*" -- "1" User
+AccessRight "*" -- "1" Permission
+AccessRight "*" -- "1" Resource
+
+@enduml

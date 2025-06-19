@@ -1,0 +1,20 @@
+@startuml
+class Player {
+    - currentPlayer: String
+    + rollDice(): Integer[]
+}
+
+class Dice {
+    - sides: Integer
+    + roll(): Integer
+}
+
+class Game {
+    - state: String
+    - actions: String[]
+    + determineAction(diceResult: Integer[]): String
+}
+
+Player --> Dice
+Player --> Game
+@enduml

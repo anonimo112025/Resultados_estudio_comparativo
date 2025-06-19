@@ -1,0 +1,19 @@
+@startuml
+   class Form {
+       - elements: List<Element>
+       - isCustomized: boolean
+   }
+
+   class Element {
+       - type: String
+       - value: String
+   }
+
+   class TextField extends Element {
+       // empty
+   }
+
+   class DataEntry extends Element {
+       // empty
+   }
+   @enduml

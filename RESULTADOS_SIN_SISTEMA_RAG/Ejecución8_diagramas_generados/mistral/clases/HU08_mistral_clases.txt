@@ -1,0 +1,25 @@
+@startuml
+   class Student {
+       - id: Integer
+       - name: String
+       - enrollments: Set[CourseEnrollment]
+
+       + addEnrollment(courseEnrollment: CourseEnrollment): void
+   }
+
+   class Course {
+       - id: Integer
+       - name: String
+       - students: Set[Student]
+
+       + addStudent(student: Student): void
+   }
+
+   class CourseEnrollment {
+       - student: Student
+       - course: Course
+       - enrollmentDate: Date
+
+       + cancelEnrollment(): void
+   }
+   @enduml

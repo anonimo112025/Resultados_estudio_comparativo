@@ -1,0 +1,16 @@
+@startuml
+class User (
+    - username: String @unique
+    - email: String @nonnull
+)
+
++ constructor(): void
+
+class RegistrationFlow 
+
+    + createAccount(): void
+
+    - relates to: User
+        ^ multiplicity: one
+    * multiplicity: one
+@enduml

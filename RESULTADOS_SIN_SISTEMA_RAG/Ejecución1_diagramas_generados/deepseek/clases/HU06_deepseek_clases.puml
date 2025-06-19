@@ -1,0 +1,20 @@
+@startuml
+class Document 
+    - producer: String
+    - creator: String
+    - creationDate: String
+    - source: String
+    - file_path: String
+    - total_pages: Integer
+    - format: String
+    - title: String
+    - author: String
+    - subject: String
+    - keywords: String
+    - moddate: String
+    - trapped: Boolean
+    
+    + generatePDF(): void
+    - getMetadata(): DocumentMetadata
+    
+    @enduml

@@ -1,0 +1,39 @@
+@startuml
+class SystemUser {
+    + manageEnrollments(): void
+}
+
+class Student {
+    - name: String
+    - enrolledCourses: Course[]
+
+    + enroll(course: Course): void
+    + unenroll(course: Course): void
+    + getEnrolledCourses(): Course[]
+}
+
+class Course {
+    - name: String
+    - enrolledStudents: Student[]
+
+    + addStudent(student: Student): void
+    + removeStudent(student: Student): void
+    + getEnrolledStudents(): Student[]
+}
+
+class Enrollment {
+    - student: Student
+    - course: Course
+    - status: String
+
+    + enrollStudent(): void
+    + modifyEnrollment(): void
+    + cancelEnrollment(): void
+    + getEnrollmentStatus(): String
+}
+
+SystemUser --> Student: manages > 
+SystemUser --> Course: manages > 
+Student --> Enrollment: has >
+Course --> Enrollment: has >
+@enduml

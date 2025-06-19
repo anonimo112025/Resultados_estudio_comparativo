@@ -1,0 +1,29 @@
+@startuml
+class Document {
+    - metadata: Map<String, String>
+    + getPageContent(): String
+}
+
+class StudentEnrollment {
+    - studentId: Integer
+    - courseId: Integer
+    + getStudentName(): String
+    + getCoursesEnrolled(): List<Integer>
+}
+
+class CourseEnrollment {
+    - courseid: Integer
+    - studentid: Integer
+    + getCourseName(): String
+    + getStudentName(): String
+}
+
+class EnrollmentTracker {
+    - enrollments: List<StudentEnrollment>
+    - courses: List<CourseEnrollment>
+    + addEnrollment(StudentEnrollment)
+    + removeEnrollment(Integer)
+    + updateCourse(Integer, CourseEnrollment)
+}
+
+@enduml

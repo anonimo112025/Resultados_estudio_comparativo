@@ -1,0 +1,35 @@
+@startuml
+class User {
+  + createForm(name: String): Form
+  + addElementToForm(form: Form, element: FormElement): void
+  + viewForm(form: Form): void
+}
+
+class Form {
+  - name: String
+  /-elementCount: int
+  + addElement(element: FormElement): void
+  + display(): void
+}
+
+class FormElement {
+  - label: String
+  - type: String
+  + display(): void
+}
+
+class TextField {
+  - value: String
+  + display(): void
+}
+
+class DataEntry {
+  - value: Object
+  + display(): void
+}
+
+User "1" --> "*" Form
+Form *-- "0..*" FormElement
+TextField --|> FormElement
+DataEntry --|> FormElement
+@enduml

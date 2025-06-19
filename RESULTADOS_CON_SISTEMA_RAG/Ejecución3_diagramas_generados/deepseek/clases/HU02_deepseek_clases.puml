@@ -1,0 +1,17 @@
+@startuml
+class User {
+    - username: String
+    - password: String
+    - email: String
+}
+
+class Book {
+    + name: String
+    - author: String
+    - yearOfPublication: Integer
+    - description: String
+    * id: String  // ISBN or similar identifier
+}
+
+User *-- Book
+@enduml

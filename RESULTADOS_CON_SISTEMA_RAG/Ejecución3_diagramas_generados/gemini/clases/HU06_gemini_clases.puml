@@ -1,0 +1,31 @@
+@startuml
+class User {
+  + generatePersonalizedDocument(selectedQuestions: Question[], selectedTopics: Topic[]): PersonalizedDocument
+  + viewDocument(document: PersonalizedDocument): void
+  + downloadDocument(document: PersonalizedDocument): void
+}
+
+class PersonalizedDocument {
+  - documentId: String
+  - title: String
+  - structuredContent: String
+  - creationTimestamp: Date
+}
+
+class Question {
+  - questionId: String
+  - text: String
+}
+
+class Topic {
+  - topicId: String
+  - name: String
+}
+
+User "1" --> "0..*" PersonalizedDocument : generates >
+
+PersonalizedDocument "1" o-- "1..*" Question
+PersonalizedDocument "1" o-- "1..*" Topic
+
+Topic "*" -- "*" Question : related to >
+@enduml

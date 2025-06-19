@@ -1,0 +1,36 @@
+@startuml
+class User {
+    + registerData()
+    + updateData()
+    + consultData()
+}
+
+class Book {
+    - title: String
+    + getTitle(): String
+    + setTitle(String): void
+}
+
+class Author {
+    - name: String
+    + getName(): String
+    + setName(String): void
+}
+
+class Publisher {
+    - name: String
+    + getName(): String
+    + setName(String): void
+}
+
+User --> Book : "registers, updates and consults \n information of "
+User --> Author : "registers, updates and consults \n information of "
+User --> Publisher : "registers, updates and consults \n information of "
+
+Book --> "1..*" Author : " is associated with "
+Book --> "1" Publisher : " is published by "
+
+Author -- "1..*" Book : "has publications"
+Publisher -- "1..*" Book : "publishes"
+
+@enduml

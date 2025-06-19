@@ -1,0 +1,39 @@
+@startuml
+class Document 
+    + producer: String
+    - creator: String
+    - creationdate: String
+    - source: String
+    - file_path: String
+    - total_pages: Integer
+    + format: String
+    + title: String
+    # author, subject, keywords, moddate, trapped, modDate
+
+    + page_content: String
+
+    association with User via Has-Role
+
+    class FormElement 
+        @ Visa: generic
+    association with Document via Aggregation (Multiplicity: 1..n)
+    
+    - id: String
+    + name: String
+    # type: String
+    
+    @ Visa: String
+    
+    # methods
+    + canAddElements(): boolean
+    + canViewElements(): boolean
+
+    class User 
+        # Attributes and methods related to user operations
+        
+        association with FormElement via Has-Role (Multiplicity: 1..n)
+        
+        method login()
+            returns boolean
+        # More attributes and methods would go here if needed
+    @enduml

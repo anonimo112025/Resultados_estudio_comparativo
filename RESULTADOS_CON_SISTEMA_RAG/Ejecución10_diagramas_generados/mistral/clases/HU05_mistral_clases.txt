@@ -1,0 +1,19 @@
+@startuml
+    class Player {
+        - name: String
+        - dice1: Die
+        - dice2: Die
+        - roll(): RollResult
+    }
+
+    class Die {
+        - sides: Integer
+        - value: Integer
+        + roll(): Integer
+    }
+
+    class RollResult {
+        - result1: Integer
+        - result2: Integer
+    }
+    @enduml

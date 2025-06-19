@@ -1,0 +1,39 @@
+@startuml
+class User 
+    - username: String
+    - password: String
+    
+    # Abstract interactions with Book system
+    @bookSystem
+        + createUser(): void
+    -
+endUser
+
+class Book 
+    - title: String
+    - author: String
+    - yearOfPublication: Integer
+    - pages: Integer
+    
+    # Has a collection of documents (representing book content)
+    @documents "1"
+    
+    # Methods for managing the book (e.g., creation, updates)
+    @bookSystem
+        + createBook(): void
+        + updateBook/title(String): void
+    -
+endBook
+
+class BookSystem 
+    - user: User
+    
+    # Method to interact with Users in the system
+    @user
+        + createUserIntoBook(String, String): void
+        
+    # Relationship between users and documents (abstract)
+    - user <aggregation> bookSystem
+-
+endBookSystem
+@enduml

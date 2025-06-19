@@ -1,0 +1,17 @@
+@startuml
+class Player {
+    - username: String
+    - score: Integer
+}
+class DiceGame {
+    - currentRoll: Integer
+    - nextTurn: Player
+}
+class PlayerInteraction {
+    + rollDice(): Integer
+    + determineAction(): String
+}
+
+Player -->+> DiceGame #nextTurn
+DiceGame -->|> PlayerInteraction #currentRoll
+@enduml

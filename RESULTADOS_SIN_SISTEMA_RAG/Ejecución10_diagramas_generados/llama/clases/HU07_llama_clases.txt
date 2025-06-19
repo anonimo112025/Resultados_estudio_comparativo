@@ -1,0 +1,35 @@
+@startuml
+class User {
+    - username: String
+    - password: String
+    + login(): boolean
+}
+
+class Student {
+    - name: String
+    - studentType: String
+    + manageStudentInfo()
+}
+
+class Teacher {
+    - name: String
+    - teacherType: String
+    + manageTeacherInfo()
+}
+
+class Document {
+    - title: String
+    - author: String
+    - page_content: String
+    + getDocumentMetadata(): Map<String, Object>
+}
+
+class UserManagementSystem {
+    + addStudent(Student)
+    + addTeacher(Teacher)
+    + retrieveUser(User)
+}
+
+UserManagementSystem o-- Document
+
+@enduml

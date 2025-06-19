@@ -1,0 +1,27 @@
+@startuml
+class Book {
+    - title: String
+    - isbn: String
+    + captureDetails(title: String, isbn: String): void
+    + provideDetails(): String
+    + assignAuthor(author: Author): void
+    + setPublisher(publisher: Publisher): void
+}
+
+class Author {
+    - name: String
+    + captureDetails(name: String): void
+    + provideDetails(): String
+    + addAuthoredBook(book: Book): void
+}
+
+class Publisher {
+    - name: String
+    + captureDetails(name: String): void
+    + provideDetails(): String
+    + addPublishedBook(book: Book): void
+}
+
+Author "0..*" -- "1..*" Book
+Publisher "1" -- "0..*" Book
+@enduml

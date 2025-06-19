@@ -1,0 +1,14 @@
+@startuml
+class Person {
+  - name: String
+  - email: String
+  - password: String
+}
+
+class Profile {
+  - personalInfo: Person
+  - created_at: DateTime
+}
+
+Profile "1" --|> Person
+@enduml

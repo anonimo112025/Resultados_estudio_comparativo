@@ -1,0 +1,34 @@
+@startuml
+class Student {
+    - name: String
+    # user_type: String  // private since it's part of internal data
+    + addStudent(): void
+}
+
+class Teacher {
+    - name: String
+    # user_type: String  // private since it's part of internal data
+    + addTeacher(): void
+}
+
+class Subject {
+    - name: String
+    + addSubject(): void
+    *- users: [Student, Teacher]  // one-to-many relationship
+    + updateSubject(): void
+}
+
+class User {
+    - username: String
+    # userType: String  // private since it's part of internal data
+
+    - id: String  // unique identifier for the user
+    
+    + addUser(): void
+}
+
+// Association between Users and Subjects
+Student --> *- Subject
+
+// Inheritance relationships not applicable here as each class is specific
+@enduml

@@ -1,0 +1,27 @@
+@startuml
+class User Ellipsis {
+  - userId: String
+  - username: String
+  + addPermission(permission: Permission): void
+  + removePermission(permission: Permission): void
+  + getPermissions(): List<Permission>
+  + hasPermission(permissionToCheck: Permission): boolean
+}
+
+class Permission Ellipsis {
+  - permissionId: String
+  - name: String
+  - description: String
+}
+
+class Resource Ellipsis {
+  - resourceId: String
+  - name: String
+  + addRequiredPermission(permission: Permission): void
+  + removeRequiredPermission(permission: Permission): void
+  + getRequiredPermissions(): List<Permission>
+}
+
+User "0..*" -- "0..*" Permission : has
+Resource "0..*" -- "0..*" Permission : requires
+@enduml

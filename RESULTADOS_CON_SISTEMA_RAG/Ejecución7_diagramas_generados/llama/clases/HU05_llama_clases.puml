@@ -1,0 +1,23 @@
+@startuml
+class Player
+    - username: String
+    - password: String
++ login(): boolean
++ rollDice(): Integer
+
+class DiceGame
+    - name: String
++ getRule(): String
+
+class Game
+    + start()
+    + end()
+
+class Turn
+    + nextTurn(Player)
+    + result(DiceGame)
+
+class System 
++ processGame(Game) 
+
+@enduml

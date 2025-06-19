@@ -1,0 +1,17 @@
+@startuml
+class Document {
+    - metadata: Map<String, String>
+    + register(): void
+}
+
+class Book {
+    # id: Integer
+    - title: String
+    - author: String
+    + setInfo(String info): void
+}
+
+Document --|> Book
+Book o---> BookMetadata
+
+@enduml

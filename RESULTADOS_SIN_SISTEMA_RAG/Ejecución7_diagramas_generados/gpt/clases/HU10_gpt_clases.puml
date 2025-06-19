@@ -1,0 +1,20 @@
+@startuml
+class User {
+    + addElementToForm(): void
+    + viewFormElements(): List<Element>
+}
+
+class Form {
+    - elements: List<Element>
+    + addElement(element: Element): void
+    + getElements(): List<Element>
+}
+
+class Element {
+    - type: String
+    - data: String
+}
+
+User --> Form
+Form *-- Element
+@enduml

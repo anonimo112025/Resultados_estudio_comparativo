@@ -1,0 +1,53 @@
+@startuml
+class Document {
+    # public visibility for document attributes
+    - id: String
+    - producer: String
+    - creator: String
+    - title: String
+    - subject: String
+    - keywords: String[]
+    - category: String
+    
+    + getMetadata(metadata): void
+}
+
+class Question {
+    # Represents a question in the document
+    - id: String
+    - content: String
+    - category: String
+    
+    + isRelated(qId: String) -> boolean
+}
+
+class Topic {
+    # Represents a topic related to the document
+    - id: String
+    - name: String
+    - description: String
+    
+    + addTopic(topicName: String)
+}
+
+class PDF {
+    # Attributes for the generated PDF content
+    - width: Integer
+    - height: Integer
+    - numberOfPages: Integer
+    
+    + generatePDF(selectedQuestions: List<String>, selectedTopics: List<String>) -> void
+}
+
+class ViewDocument {
+    # Represents viewing or displaying a document
+    - open: Boolean
+    - canPrint: Boolean
+    - canExport: Boolean
+    
+    + view(open: Boolean) -> void
+    + print() -> void
+    + download() -> void
+}
+
+@enduml

@@ -1,0 +1,51 @@
+@startuml
+class Document private {
+    - producer: String
+    - creator: String
+    - creationDate: String
+    - source: String
+    - format: String
+    - title: String
+    - author: String
+    - subject: String
+    - keywords: String
+    - modDate: String
+    - modCreate: String
+
+    + getProducer(): String
+}
+
+class Form public {
+    *-- Elements
+    -- Collection of elements added to the form
+
+    ; Name: Name public {
+        + setName(name: String)
+        - getName()
+    }
+
+    ; Text: String public {
+        + setText(text: String)
+        - getText()
+    }
+}
+
+class Element public {
+    # type: String public {
+        + setType(type: String)
+    }
+
+    # value: Any public {
+        + getValue()
+    }
+
+    # label: String public {
+        + setLabel(label: String)
+    }
+}
+
+class Metadata private {
+    *-- Document
+}
+
+@enduml

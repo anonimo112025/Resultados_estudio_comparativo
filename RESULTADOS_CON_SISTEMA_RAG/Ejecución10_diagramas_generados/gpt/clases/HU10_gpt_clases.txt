@@ -1,0 +1,19 @@
+@startuml
+class User {
+    + addElement(): void
+    + viewElement(): void
+}
+
+class Form {
+    + createForm(): void
+    + modifyForm(): void
+}
+
+class Element{
+    + addElementToForm(): void
+}
+
+User --> Element 
+Element --> Form
+User --> Form
+@enduml

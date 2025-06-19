@@ -1,0 +1,44 @@
+@startuml
+class User {
+    - id: Integer
+    
+    class Book {
+        + id: Integer
+        - title: String
+        - authorId: Integer
+        - publisherId: Integer
+        - pages: Integer
+        
+        class Author {
+            # authors are associated with one book (each author has multiple books)
+            - authorName: String
+            
+            class Publisher {
+                + name: String
+                * publisherName: String
+            }
+            
+            + bookId: Integer
+        } 
+    }
+    
+    class Author {
+        + id: Integer
+        - name: String
+        
+        class Book {
+            + bookId: Integer
+        }
+    }
+
+    class Publisher {
+        + id: Integer
+        - name: String
+        * publisherName: String
+        
+        class Book {
+            + bookId: Integer
+        }
+    }
+}
+@enduml

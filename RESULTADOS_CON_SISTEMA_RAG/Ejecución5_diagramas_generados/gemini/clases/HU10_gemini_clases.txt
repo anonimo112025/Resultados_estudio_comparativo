@@ -1,0 +1,38 @@
+@startuml
+
+class User Ellipsis {
+    + createForm(name: String): Form
+    + addElementToForm(form: Form, element: FormElement): void
+    + removeElementFromForm(form: Form, element: FormElement): void
+    + viewFormContent(form: Form): String
+}
+
+class Form Ellipsis {
+    - name: String
+    - elements: List<FormElement>
+    /elementCount: int
+    + addElement(element: FormElement): void
+    + removeElement(element: FormElement): void
+    + presentContent(): String
+}
+
+class FormElement Ellipsis {
+    # label: String
+    # value: String
+    + display(): String
+}
+
+class TextFieldElement Ellipsis {
+    + display(): String
+}
+
+class DataEntryElement Ellipsis {
+    + display(): String
+}
+
+User --> "0..*" Form : manages
+Form "1" *-- "0..*" FormElement : contains
+FormElement <|-- TextFieldElement
+FormElement <|-- DataEntryElement
+
+@enduml

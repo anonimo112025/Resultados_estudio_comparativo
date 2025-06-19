@@ -1,0 +1,9 @@
+@startuml
+class User 
+    - username: String
+    - password: String
+    
+    + registerUser(): void
+    + displayUserData(): void
+- private boolean isAuthenticated
+@enduml

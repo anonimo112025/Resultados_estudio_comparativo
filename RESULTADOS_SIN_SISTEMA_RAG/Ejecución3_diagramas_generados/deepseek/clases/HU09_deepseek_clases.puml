@@ -1,0 +1,28 @@
+@startuml
+class Book 
+    + title: String
+    - authors: Array of Author
+    + pages: Integer
+    + format: String
+    - publisher: Publisher
+endclass
+
+class Author 
+    + name: String
+    - date_of_birth: String
+    + nationality: String
+endclass
+
+class Publisher 
+    + name: String
+    + address: String
+    + type: String
+endclass
+
+Book -> authors
+Book --> publisher
+Author *-- Book
+Author --> publisher
+Publisher --|> Book
+Publisher o-> Author
+@enduml

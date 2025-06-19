@@ -1,0 +1,19 @@
+@startuml
+class Player {
+    - name: String
+    + rollDice(): int
+}
+
+class Game {
+    + performAction(result: int)
+    + updateGameProgress()
+    + updatePlayerDecision()
+}
+
+class Dice {
+    + generateRandomNumber(): int
+}
+
+Player --> Dice : rolls >
+Player --> Game : performs action >
+@enduml

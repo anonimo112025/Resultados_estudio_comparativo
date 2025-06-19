@@ -1,0 +1,26 @@
+@startuml
+class Student {
+    - id: int
+    - name: String
+    - email: String
+    + enroll(Course course, Boolean enrolled)
+}
+
+class Course {
+    - id: int
+    - name: String
+    - enrolled: Boolean
+}
+
+class Enrollment {
+    - student: Student
+    - course: Course
+    - reference: String
+    + getEnrollmentByRef(Reference ref): Enrollment?
+    + removeEnrollment(Reference ref)
+    // Enrollments can be added or removed via these methods
+}
+
+Student --> Enrollment
+Course --> Enrollment
+@enduml

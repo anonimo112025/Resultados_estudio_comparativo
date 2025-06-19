@@ -1,0 +1,23 @@
+@startuml
+class User {
+    - selectedQuestions: String[]
+    - selectedTopics: String[]
+    + selectQuestion(question: String): void
+    + selectTopic(topic: String): void
+}
+
+class PDFGenerator {
+    + generatePDF(questions: String[], topics: String[]): PDFDocument
+}
+
+class PDFDocument {
+    - content: String
+    + getContent(): String
+    + store(): void
+    + download(): void
+}
+
+User --> PDFGenerator : asks to generate PDF
+
+PDFGenerator --> PDFDocument : generates
+@enduml

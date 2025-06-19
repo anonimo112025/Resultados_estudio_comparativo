@@ -1,0 +1,34 @@
+@startuml
+
+class SystemUser {
+    + createForm(title: String): Form
+}
+
+class Form {
+    - title: String
+    - elements: List<FormElement>
+    + addElement(elementType: String, label: String, initialValue: String): FormElement
+    + removeElement(elementId: String): void
+    + reorderElement(elementId: String, newIndex: int): void
+    + display(): void
+    + getElement(elementId: String): FormElement
+    + getAllElements(): List<FormElement>
+}
+
+class FormElement {
+    - elementId: String
+    - elementType: String
+    - label: String
+    - value: String
+    + display(): void
+    + updateValue(newValue: String): void
+    + getElementId(): String
+    + getLabel(): String
+    + getValue(): String
+    + getElementType(): String
+}
+
+SystemUser "1" --> "*" Form
+Form "1" *-- "*" FormElement
+
+@enduml

@@ -1,0 +1,28 @@
+@startuml
+class User {
+- username: String
+- password: String
++ login(): boolean
+}
+
+class Book {
+- title: String
+- author: User # 1 ..*
++ register(): void
++ getPublicationInfo(): String
+}
+
+class Author {
+- name: String
+- publications: Book *-->
++ createPublication(Book): void
++ linkToBook(Book): void
+}
+
+class Publisher {
+- name: String
+- books: Book *-->
++ publish(Book): void
++ removeBook(Book): void
+}
+@enduml

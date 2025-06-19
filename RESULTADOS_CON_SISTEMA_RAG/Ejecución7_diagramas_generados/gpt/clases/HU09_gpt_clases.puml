@@ -1,0 +1,29 @@
+@startuml
+class User {
+    + manageBookInfo()
+    + manageAuthorInfo()
+    + managePublisherInfo()
+    + registerData()
+    + consultData()
+}
+
+class Book {
+    + linkWithAuthor()
+    + linkWithPublisher()
+}
+
+class Author {
+    + linkWithPublication()
+}
+
+class Publisher {
+}
+
+User --> Book
+User --> Author
+User --> Publisher
+
+Book --> Publisher
+Book --> Author
+Author --> Book
+@enduml

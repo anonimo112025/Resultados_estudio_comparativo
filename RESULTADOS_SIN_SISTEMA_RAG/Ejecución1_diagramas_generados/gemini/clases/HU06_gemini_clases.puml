@@ -1,0 +1,29 @@
+@startuml
+class SystemUser {
+  + generateDocument(selectedQuestions: Question[], selectedTopics: Topic[]): PersonalizedDocument
+  + viewDocument(document: PersonalizedDocument): void
+  + downloadDocument(document: PersonalizedDocument): void
+}
+
+class Question {
+  - id: String
+  - text: String
+}
+
+class Topic {
+  - id: String
+  - name: String
+}
+
+class PersonalizedDocument {
+  - fileName: String
+  + getAccessLocation(): String
+}
+
+SystemUser "1" --> "0..*" PersonalizedDocument
+
+PersonalizedDocument "1" o-- "1..*" Question : includes
+PersonalizedDocument "1" o-- "0..*" Topic : "structured by"
+
+Topic "1" o-- "0..*" Question : groups
+@enduml

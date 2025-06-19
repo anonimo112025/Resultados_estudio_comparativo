@@ -1,0 +1,16 @@
+@startuml
+class User {
+    - name: String
+    - email: String
+    + register(): boolean
+    + manageInfo(): void
+    + viewProfile(): Profile
+}
+
+class Profile {
+    - basicInfo: String
+    + display(): void
+}
+
+User --> Profile
+@enduml

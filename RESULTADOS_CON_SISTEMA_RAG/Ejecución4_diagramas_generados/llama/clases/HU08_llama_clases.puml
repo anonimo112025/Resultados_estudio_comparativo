@@ -1,0 +1,21 @@
+@startuml
+class User {
+  - username: String
+  - password: String
+}
+class Course {
+  - courseCode: String
+  - courseName: String
+  - enrolledStudents: Set<User>
+}
+class Enrollment {
+  - userId: String
+  - courseId: String
+  - enrollmentStatus: String
+}
+
+User --> "1"-->* Course
+Course -->|> Enrollment
+Enrollment -->|> User
+
+@enduml

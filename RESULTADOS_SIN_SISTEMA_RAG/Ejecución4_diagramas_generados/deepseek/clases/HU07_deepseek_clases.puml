@@ -1,0 +1,47 @@
+@startuml
+class Document {
+    + metadata: DocumentMetadata
+    + pageContent: String
+}
+
+interface DocumentMetadata {
+    - producer: String
+    - creator: String?
+    - creationDate: String?
+    - source: String?
+    - file_path: String?
+    - total_pages: Integer?
+    - format: String?
+    - title: String?
+    - author: String?
+    - subject: String?
+    - keywords: String?
+    - moddate: String?
+    - trapped: Boolean?
+    - modDate: String?
+    - creationDate: String?
+    - page: Integer?
+}
+
+class UserSystem {
+    + createUser(): User
+    - hasDocument(Document): Document
+}
+
+class Student extends User {
+    + name: String
+}
+
+class Teacher extends User {
+    + name: String
+}
+
+class User {
+    - belongsTo(UserSystem)
+}
+
+# Association between Users and their Documents
+User -< Document
+
+# Inheritance from UserSystem to Students and Teachers is implicit
+@enduml

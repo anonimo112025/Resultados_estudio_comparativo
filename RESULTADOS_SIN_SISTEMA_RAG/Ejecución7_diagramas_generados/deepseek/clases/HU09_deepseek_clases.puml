@@ -1,0 +1,37 @@
+@startuml
+class Book {
+    id: int
+    title: String
+    author: Collection<Author>
+    publisher: Publisher
+
+    createBook(): void
+    retrieveBookById(int id): void
+}
+
+class Author {
+    name: String
+    birthdate: Date
+
+    listBooks(): Collection<Book>
+}
+
+class Publisher {
+    name: String
+    imprint: String?
+    books: Collection<Book>
+
+    // publishBook() is managed via system registration.
+}
+
+class System {
+    registerBook(Book book): void
+    registerAuthor(Author author): void
+    updateData(): void
+}
+
+// Relationships:
+Book->Author
+Book->Publisher
+
+@enduml

@@ -1,0 +1,25 @@
+@startuml
+class Document 
+    - producer: String
+    - title: String
+    - creator: String
+    - source: String
+    - format: String
+    - total_pages: Integer
+    - metadata: map
+    - page_content: String
+
+ association 
+    class Document --> (Questions, Topics)
+endclass
+
+class DocumentController 
+    + createDocument(): void
+    + storeDocument(Reference to Document): void
+endclass
+
+class DocumentBrowser 
+    + viewDocument(Reference to Document): void
+    + downloadDocument(String path): void
+endclass
+@enduml

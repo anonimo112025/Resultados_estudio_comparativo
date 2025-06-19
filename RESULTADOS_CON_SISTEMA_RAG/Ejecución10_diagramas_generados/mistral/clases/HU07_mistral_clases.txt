@@ -1,0 +1,13 @@
+@startuml
+   class Student {
+       - name: String
+       - userType: String
+       # uniqueId: String
+   }
+
+   class Teacher {
+       - name: String
+       - userType: String
+       # uniqueId: String
+   }
+   @enduml

@@ -1,0 +1,14 @@
+@startuml
+class Document(title: String, source: String, content: String) public
+
+class Question(topics: Set, content: String) public
+
+class User operationGeneratePDF(): void public
+    - selects questions: Set
+    + generates document: Document
+end operationGeneratePDF
+
+Document <-> Question
+User <-> Document
+User <-> Question
+@enduml

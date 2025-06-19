@@ -1,0 +1,19 @@
+@startuml
+class User {
+    - name: String
+    - userType: String
+    + getName(): String
+    + getUserType(): String
+}
+
+class Student {
+    + getStudentInfo(): String
+}
+
+class Teacher {
+    + getTeacherInfo(): String
+}
+
+Student --|> User
+Teacher --|> User
+@enduml

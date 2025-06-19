@@ -1,0 +1,16 @@
+@startuml
+class User {
+    - username: String
+    - password: String
+    + login(): boolean
+}
+
+class Book {
+    + title: String
+    + author: String
+    + year_of_publication: Integer
+    + displayBook(): void
+    *-- User
+}
+
+@enduml

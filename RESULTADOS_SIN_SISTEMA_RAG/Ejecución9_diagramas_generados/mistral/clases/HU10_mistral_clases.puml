@@ -1,0 +1,19 @@
+@startuml
+   class Form {
+       - elements: List<Element>
+       + addElement(element: Element)
+       + viewElements()
+   }
+
+   abstract class Element {
+       - value: String
+       + setValue(value: String)
+       + getValue(): String
+   }
+
+   class TextField extends Element {
+   }
+
+   class DataEntry extends Element {
+   }
+   @enduml

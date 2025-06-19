@@ -1,0 +1,37 @@
+@startuml
+class User {
+    - username: String
+    - password: String
+    
+    + login(): boolean
+    + register(): void
+    + getPermissions() -> ArrayPermissionSet
+    + assignPermission(String, Boolean) -> void
+    + removePermission(String) -> void
+}
+
+class Permissions {
+    # permissionSet: ArrayPermissionSet
+    
+    - addPermission(String, Boolean)
+    - removePermission(String) -> void
+    - hasPermission(String): boolean
+}
+
+class Document {
+    - user: User!
+    
+    + getPermissionReport() -> String
+    *- contains user metadata and permissions for a document
+}
+
+association(
+    "Document", "-",
+    "Permissions"
+)
+
+association(
+    "User", "+",
+    "Permissions"
+)
+@enduml

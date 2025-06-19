@@ -1,0 +1,40 @@
+@startuml
+class User {
+    - userId: String
+    - name: String
+    + selectQuestions(): List<Question>
+    + selectTopics(): List<Topic>
+    + generatePDF(): PDFDocument
+    + downloadDocument(): PDFDocument
+}
+
+class Question {
+    - questionId: String
+    - content: String
+    - category: String
+    + getContent(): String
+}
+
+class Topic {
+    - topicId: String
+    - title: String
+    - description: String
+    + getTitle(): String
+}
+
+class PDFDocument {
+    - documentId: String
+    - fileName: String
+    - creationDate: Date
+    - content: String
+    + store(): boolean
+    + view(): String
+    + download(): File
+}
+
+User "1" --> "*" Question
+User "1" --> "*" Topic
+User "1" --> "*" PDFDocument
+PDFDocument "*" --> "*" Question
+PDFDocument "*" --> "*" Topic
+@enduml

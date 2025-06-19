@@ -1,0 +1,18 @@
+@startuml
+class UserAccount {
+    - userId: String
+    - username: String
+    - password: String
+    - email: String
+    
+    + createUser(userId: String, username: String, password: String) -> void
+    + loginUser(username: String, password: String) -> boolean
+    + changePassword(newPassword: String) -> void
+    + assignPermission(userId: String, permission: String) -> void
+}
+
+class System {
+    + listUserAccounts() -> [UserAccount]
+    + assignPermissions(userId: String, permissions: String[]) -> void
+}
+@enduml

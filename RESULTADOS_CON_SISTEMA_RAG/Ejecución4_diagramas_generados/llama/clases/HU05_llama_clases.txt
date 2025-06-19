@@ -1,0 +1,22 @@
+@startuml
+class Player {
+    - username: String
+    - password: String
+    + login(): boolean
+    + rollDice(): int
+}
+
+class DiceGame {
+    - rules: Dictionary<string, int>
+    + applyRules(playerRoll): bool
+}
+
+class GameProgress {
+    - playerTurn: int
+    + nextTurn()
+}
+
+class System {
+    + updateGameState(gameProgress)
+}
+@enduml

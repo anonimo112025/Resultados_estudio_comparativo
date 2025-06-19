@@ -1,0 +1,39 @@
+@startuml
+class Document {
+    - metadata: Map
+    + getMetadata(): Map
+    + setMetadata(metadata: Map)
+}
+
+class Transaction {
+    - amount: Float
+    - type: String
+    + process(): void
+}
+
+class ClientInfo {
+    - name: String
+    - address: String
+    + updateInfo(name: String, address: String)
+}
+
+class Balance {
+    - currentBalance: Float
+    - totalBalance: Float
+    + deposit(amount: Float): void
+    + withdraw(amount: Float): void
+}
+
+class User {
+    - username: String
+    - password: String
+    + login(): boolean
+}
+
+Document -->|* Transaction
+ClientInfo -->|* Balance
+
+User o-- Document
+Transaction o-->|* ClientInfo
+Balance o--|* ClientInfo
+@enduml

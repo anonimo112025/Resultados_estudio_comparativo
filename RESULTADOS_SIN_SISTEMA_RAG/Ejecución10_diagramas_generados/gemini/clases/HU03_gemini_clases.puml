@@ -1,0 +1,30 @@
+@startuml
+class SystemAdministrator Ellipsis {
+    + assignPermission(user: User, resource: Resource, accessType: String, description: String): Permission
+    + revokePermission(permission: Permission): void
+    + getPermissionsForUser(user: User): List<Permission>
+    + getPermissionsOnResource(resource: Resource): List<Permission>
+}
+
+class User Ellipsis {
+    - userId: String
+    - userName: String
+}
+
+class Permission Ellipsis {
+    - accessType: String
+    - description: String
+}
+
+class Resource Ellipsis {
+    - resourceId: String
+    - resourceName: String
+}
+
+SystemAdministrator ..> User
+SystemAdministrator ..> Resource
+SystemAdministrator ..> Permission
+
+Permission "0..*" -- "1" User
+Permission "0..*" -- "1" Resource
+@enduml

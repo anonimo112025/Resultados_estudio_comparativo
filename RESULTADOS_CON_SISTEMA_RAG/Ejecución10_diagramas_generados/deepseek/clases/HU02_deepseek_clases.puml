@@ -1,0 +1,19 @@
+@startuml
+class User {
+    - name: String
+    - surname: String
+    - email: String
+    + registration(): String
+}
+
+class Book {
+    - title: String
+    - author: String
+    - publicationYear: Integer
+    - id: String
+}
+
+User
+    -->* Book
+}
+@enduml

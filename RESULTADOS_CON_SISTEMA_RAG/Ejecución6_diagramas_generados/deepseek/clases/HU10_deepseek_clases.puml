@@ -1,0 +1,17 @@
+@startuml
+class Form
+    - id: String
+    - title: String
+    - description: String
+    + createForm(): void
+    *-- Elements
+end class
+
+class Element
+    - type: String
+    - name: String
+    - value: String
+    - size: Integer
+    - position: Point
+end class
+@enduml

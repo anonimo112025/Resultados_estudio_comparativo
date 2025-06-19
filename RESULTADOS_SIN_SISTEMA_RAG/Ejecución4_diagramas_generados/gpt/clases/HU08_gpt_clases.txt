@@ -1,0 +1,19 @@
+@startuml
+class SystemUser {
+    + manageEnrollment(): void
+}
+
+class Student {
+    + enrollCourse(): void
+    + modifyEnrollment(): void
+    + cancelEnrollment(): void
+}
+
+class Course {
+    - enrolledStudents: int
+    + addToEnrolledStudents(): void
+}
+
+SystemUser "1" --> "*" Student : manage
+Student "1" --> "*" Course : enrolls in
+@enduml

@@ -1,0 +1,25 @@
+@startuml
+class Client {
+- id: Integer
++ save(): void
+}
+
+class Transaction {
+- id: Integer
++ save(): void
+}
+class Report {
+- id: Integer
++ save(): void
+}
+
+class Balance {
+- id: Integer
++ update(): void
+}
+
+Client *-- "1" * Transaction
+Transaction o--* Report
+Report o--* Balance
+
+@enduml

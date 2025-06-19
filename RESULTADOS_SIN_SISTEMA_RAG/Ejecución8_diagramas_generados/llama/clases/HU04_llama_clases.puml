@@ -1,0 +1,43 @@
+@startuml
+class Document {
+    - metadata: Map<String, String>
+    - page_content: String
+}
+
+class ClientInformation {
+    # id: Integer
+    + getId(): Integer
+    + setId(Integer)
+    - name: String
+    - email: String
+}
+
+class BankingOperations {
+    # id: Integer
+    + getId(): Integer
+    + setId(Integer)
+    - balance: Decimal
+    - transactions: List<Transaction>
+}
+
+class Transaction {
+    # id: Integer
+    + getId(): Integer
+    + setId(Integer)
+    - type: Enum
+    - amount: Decimal
+}
+
+class AccountBalances {
+    # id: Integer
+    + getId(): Integer
+    + setId(Integer)
+    - totalBalance: Decimal
+}
+
+Document --> ClientInformation
+ClientInformation --> BankingOperations
+BankingOperations --> Transaction
+Transaction --> AccountBalances
+
+@enduml

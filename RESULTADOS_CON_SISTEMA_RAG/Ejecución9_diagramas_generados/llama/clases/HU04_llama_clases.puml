@@ -1,0 +1,29 @@
+@startuml
+class Client {
+    - clientId: Integer
+    - name: String
+    - email: String
+}
+class Transaction {
+    - transactionId: Integer
+    - amount: Decimal
+    - type: Enum("deposit", "withdrawal")
+}
+class Account {
+    - accountId: Integer
+    - balance: Decimal
+}
+class User {
+    - username: String
+    - password: String
+    + login(): boolean
+    - client: Client
+    + manageClient(Client):
+        - updateBalance(Decimal)
+        - updateAccount(Account)
+}
+class System {
+    + createTransaction(Transaction):
+        - saveTransaction(Transaction)
+    }
+@enduml

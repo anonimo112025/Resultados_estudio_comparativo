@@ -1,0 +1,23 @@
+@startuml
+class Client {
+    - id: Integer
+    - name: String
+    - balance: Float
+}
+
+class Transaction {
+    - id: Integer
+    - amount: Float
+    - type: String
+    - date: Date
+}
+
+class User {
+    - username: String
+    - password: String
+    + login(): boolean
+    - client: Client
+    - transactions: Collection(Transaction)
+}
+
+@enduml

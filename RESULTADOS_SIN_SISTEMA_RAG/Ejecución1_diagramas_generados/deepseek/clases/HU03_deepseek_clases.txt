@@ -1,0 +1,22 @@
+@startuml
+class User
+    - username: String
+    - password: String
+    + login(): boolean
+endclass
+
+class Document
+    *-- Roles
+        .roleName: String
+        .description: String
+    .roles: [Role]
+    
+    + addRoles(): void
+endclass
+
+class Role
+    --> Permissions
+        + name: String
+endclass
+
+@enduml

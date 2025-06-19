@@ -1,0 +1,40 @@
+@startuml
+class User {
+    - username: String
+    - email: String
+    - password: String
+    + createDocument(): void
+}
+
+class Document {
+    - id: String! (primary key)
+    - title: String!
+    - description: String?
+    - source: String!
+    - keywords: String array?
+    - modifiedAt: DateTime? (stored when document is created or modified)
+
+    + createDoc(QuestionSet): void
+    + modifyDoc(QuestionSet): void
+}
+
+class Questions {
+    - id: String! (primary key)
+    - topic: String!
+    - subject: String!
+    - question: String!
+
+    + getQuestions(): List<Question>
+}
+
+class QuestionSet {
+    - questions: Collection<Question>!
+    - topics: Collection<String>
+
+    + selectQuestions(List<int>): void
+}
+
+class DocumentCreator extends User {
+    + createDocumentTemplate(QuestionSet): void (used when document is created from template)
+}
+@enduml

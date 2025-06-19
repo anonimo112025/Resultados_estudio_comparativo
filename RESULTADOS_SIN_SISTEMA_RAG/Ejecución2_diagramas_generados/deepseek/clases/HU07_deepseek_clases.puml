@@ -1,0 +1,25 @@
+@startuml
+class User {
+    - username: String
+    - password: String
+    + login(): boolean
+}
+
+class Student {
+    - name: String
+    - role: "student"
+}
+
+class Professor {
+    - name: String
+    - role: "teacher"
+}
+
+class OrganizedData {
+    *-- User
+    *-- Professor
+}
+
+User -> OrganizedData
+Professor -> OrganizedData
+@enduml

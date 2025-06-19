@@ -1,0 +1,14 @@
+@startuml
+class User Ellipsis {
+  - name: String
+  - userType: String
+  + viewInformation(): void
+  + updateInformation(): void
+}
+
+class Student Ellipsis --|> User {
+}
+
+class Teacher Ellipsis --|> User {
+}
+@enduml

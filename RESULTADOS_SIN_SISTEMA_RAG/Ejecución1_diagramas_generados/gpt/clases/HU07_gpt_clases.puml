@@ -1,0 +1,18 @@
+@startuml
+class User {
+    - name: String
+    - userType: String
+    # setName(name: String)
+    # setUserType(userType: String)
+}
+
+class Student --|> User {
+    + getData(): String
+    + updateData(): boolean
+}
+
+class Professor --|> User {
+    + getData(): String
+    + updateData(): boolean
+}
+@enduml

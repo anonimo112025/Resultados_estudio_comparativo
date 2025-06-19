@@ -1,0 +1,37 @@
+@startuml
+class User {
+    + registerBook(Book): void
+    + updateBook(Book): void
+    + retrieveBook(): Book[]
+    + linkAuthorToBook(Author, Book): void
+}
+
+class Book {
+    - title: String
+    - publisher: Publisher
+    - authors: Author[]
+    + getTitle(): String
+    + getPublisher(): Publisher
+    + getAuthors(): Author[]
+}
+
+class Author {
+    - name: String
+    - books: Book[]
+    + getName(): String
+    + getBooks(): Book[]
+}
+
+class Publisher {
+    - name: String
+    - books: Book[]
+    + getName(): String
+    + getBooks(): Book[]
+}
+
+User --> Book: manages
+User --> Author: manages
+User --> Publisher: manages
+Publisher "1" --> "*" Book: publishes
+Author "1" --> "*" Book: writes
+@enduml

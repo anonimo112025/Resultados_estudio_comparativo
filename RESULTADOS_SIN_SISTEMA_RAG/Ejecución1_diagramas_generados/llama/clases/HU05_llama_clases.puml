@@ -1,0 +1,26 @@
+@startuml
+class Document {
+- metadata: Map<String, String>
+- page_content: String
+}
+
+class Player {
++ rollDice(): Integer
+}
+
+class DiceGame {
++ interact(Player): boolean
+}
+
+class ContextHU5 {
+- additionalInfo: Map<String, String>
+- gameProgress: Object
+}
+
+Document "1" -->+ ContextHU5
+ContextHU5 o-- Document
+
+Player "1" -->+ DiceGame
+DiceGame +--> Player
+
+@enduml

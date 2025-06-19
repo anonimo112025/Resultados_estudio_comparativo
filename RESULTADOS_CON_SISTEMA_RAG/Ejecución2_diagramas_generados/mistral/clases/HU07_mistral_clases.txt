@@ -1,0 +1,16 @@
+@startuml
+class Student {
+    - name: String
+    - userType: String
+}
+class Teacher {
+    - name: String
+    - userType: String
+}
+Student "1" --> "*" University  # aggregation
+Teacher "1" --> "*" University  # aggregation
+University {
+    - students: Set<Student>
+    - teachers: Set<Teacher>
+}
+@enduml

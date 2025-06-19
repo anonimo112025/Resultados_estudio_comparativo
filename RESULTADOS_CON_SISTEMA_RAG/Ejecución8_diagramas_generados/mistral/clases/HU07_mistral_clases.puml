@@ -1,0 +1,13 @@
+@startuml
+class Student {
+  - name: String
+  - userType: String
+}
+
+class Teacher {
+  - name: String
+  - userType: String
+}
+
+Student "1" --> "0..*" Teacher // One student can be associated with multiple teachers, but a teacher can have zero or one student.
+@enduml

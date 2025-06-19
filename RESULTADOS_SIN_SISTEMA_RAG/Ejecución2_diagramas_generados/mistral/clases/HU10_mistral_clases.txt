@@ -1,0 +1,22 @@
+@startuml
+   class Form {
+       - id: int
+       - elements: List<Element>
+       - title: String
+       - isCustomized: boolean
+       + createForm()
+       + addElement(element: Element)
+       + viewForm()
+   }
+
+   abstract class Element {
+       - name: String
+       + displayName(): String
+   }
+
+   class TextField extends Element {
+   }
+
+   class DataEntry extends Element {
+   }
+   @enduml

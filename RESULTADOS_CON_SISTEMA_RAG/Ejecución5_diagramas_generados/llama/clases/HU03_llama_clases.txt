@@ -1,0 +1,16 @@
+@startuml
+
+class Sistema {
+    - title: String
+    + manageUserPermissions(): void
+}
+
+class User {
+    - username: String
+    - password: String
+    + login(): boolean
+}
+
+Sistema "1" --> User
+
+@enduml

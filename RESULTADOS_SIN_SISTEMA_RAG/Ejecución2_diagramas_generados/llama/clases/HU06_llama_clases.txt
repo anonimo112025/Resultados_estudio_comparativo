@@ -1,0 +1,27 @@
+@startuml
+class Document {
+    - metadata: DocumentMetadata
+    + generatePDF(): void
+}
+
+class DocumentMetadata {
+    - producer: String
+    - creationDate: Date
+    - format: String
+}
+
+class User {
+    - username: String
+    - password: String
+}
+
+User --|> Document
+
+Document --> DocumentPage
+
+class DocumentPage {
+    - pageNumber: Integer
+    + getContent(): string
+}
+
+@enduml

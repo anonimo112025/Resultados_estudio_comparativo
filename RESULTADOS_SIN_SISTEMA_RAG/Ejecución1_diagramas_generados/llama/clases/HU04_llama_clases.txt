@@ -1,0 +1,37 @@
+@startuml
+class Client {
+    - id: Integer
+    - name: String
+    - balance: Decimal
+    - transactions: List<Transaction>
+}
+
+class Transaction {
+    - id: Integer
+    - type: TransactionType (Deposit, Withdrawal)
+    - amount: Decimal
+}
+
+class User {
+    - id: Integer
+    - username: String
+    - password: String
+    - client: Client # 
+}
+
+class Document {
+    - metadata: Map<String, Object>
+    - page_content: String
+}
+
+class ClientManager {
+    + createClient(): Client
+    - getClient(id: Integer): Client
+}
+
+class TransactionService {
+    + performTransaction(transaction: Transaction): void
+    - getTransactions(): List<Transaction>
+}
+
+@enduml

@@ -1,0 +1,20 @@
+@startuml
+class Document {
+    - creator: User
+    - producer: String
+    + getDocumentMetadata(): Map<String, Object>
+    + getPageContent(): String
+}
+
+class User {
+    - name: String
+    - username: String
+    - email: String
+    - password: String
+    - role: String
+
+    + createUser(): void
+}
+
+Document --> User
+@enduml

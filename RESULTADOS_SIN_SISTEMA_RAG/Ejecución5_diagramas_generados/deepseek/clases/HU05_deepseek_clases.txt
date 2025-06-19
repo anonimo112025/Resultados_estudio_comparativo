@@ -1,0 +1,23 @@
+@startuml
+    class Player {
+        - id: String
+        + action(): void
+            - rollsDice(): Result
+    }
+    
+    class DiceRoller {
+        + rollDice(): Result
+            -> possibleOutcomes: Set<Result>
+                // Possible outcomes: "success", "critical hit", "miss", etc.
+    }
+    
+    class GameContext {
+        - parent: Player
+        - pageContent: String
+        + getResults(): Set<Result>
+    }
+    
+    class Game {
+        - context: GameContext
+    }
+@enduml

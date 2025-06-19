@@ -1,0 +1,20 @@
+@startuml
+class Student {
+    + id: String
+    + name: String
+}
+
+class Course {
+    + code: String
+    + title: String
+}
+
+class Enrollment {
+    + enrollmentDate: Date
+    + cancel(): void
+    + modify(): void
+}
+
+Student "1" --> "*" Enrollment
+Course "1" --> "*" Enrollment
+@enduml

@@ -1,0 +1,14 @@
+@startuml
+   class Book {
+       - title: String
+       - author: String
+       - yearOfPublication: int
+       - register()
+   }
+   class User {
+       - userID: int
+       - books: List<Book>
+       - registerBook(book: Book)
+   }
+   User "1" --> "*" Book
+   @enduml

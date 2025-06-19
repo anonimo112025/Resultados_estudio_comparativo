@@ -1,0 +1,20 @@
+@startuml
+class Student {
+    - studentID: integer
+    + name: string
+}
+
+class Course {
+    - courseID: integer
+    + name: string
+    + semester: string
+    # credits: integer
+    + prerequisites: Set<String>
+}
+
+class Enrollments {
+    - id: integer
+    + student: Student
+    + course: Course
+}
+@enduml

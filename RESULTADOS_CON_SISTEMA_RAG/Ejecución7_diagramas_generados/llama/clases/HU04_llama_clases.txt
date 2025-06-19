@@ -1,0 +1,27 @@
+@startuml
+class User {
+- username: String
+- password: String
++ login(): boolean
+}
+
+class ClientInformation {
+- clientId: String
+- balance: Number
++ getBalance(): float
++ deposit(amount: Number): void
++ withdraw(amount: Number): void
+}
+
+class Transaction {
+- transactionId: Number
+- amount: Number
+- date: Date
+- type: String
++ createTransaction(amount: Number, type: String)
++ getTransactions(): Array(Transaction)
+}
+
+class System (1) --> ClientInformation "1" o-- Transaction
+
+@enduml

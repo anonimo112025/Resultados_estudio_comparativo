@@ -1,0 +1,43 @@
+@startuml
+class User {
+- username: String
+- password: String
++ login(): boolean
+}
+
+class Student {
+- id: Integer
+- name: String
+- user_type: String
+- document_number: String
++ updateStudentInfo()
+}
+
+class Teacher {
+- id: Integer
+- name: String
+- subject: String
+- user_type: String
++ updateTeacherInfo()
+}
+
+class Document {
+- id: Integer
+- title: String
+- page_content: String
++ manageDocumentContent()
+}
+
+class HistorialUser {
+- id: Integer
+- username: String
+- user_type: String
+- document_path: String
++ loadHistoricalData()
+}
+
+Student "1" --> Document
+Teacher "1" --> Document
+User "1" --> HistorialUser
+
+@enduml

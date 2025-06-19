@@ -1,0 +1,36 @@
+@startuml
+class Player Ellipsis {
+  + executeRollStep(game: Game): DiceRoll
+  + determineGameActionStep(game: Game, roll: DiceRoll): GameAction
+  + completeTurn(game: Game, action: GameAction): void
+}
+
+class Game Ellipsis {
+  + performDiceRoll(): DiceRoll
+  + getActionForRoll(roll: DiceRoll): GameAction
+  + applyGameAction(action: GameAction): void
+}
+
+class Dice Ellipsis {
+  - faceValue: int
+  + roll(): void
+  + getFaceValue(): int
+}
+
+class DiceRoll Ellipsis {
+  - firstDieValue: int
+  - secondDieValue: int
+  / totalValue: int
+}
+
+class GameAction Ellipsis {
+  - description: String
+}
+
+Player "1" --> "1" Game : interacts with
+Game "1" *-- "2" Dice : has
+Game ..> DiceRoll : creates
+Game ..> GameAction : creates
+Player ..> DiceRoll : receives result
+Player ..> GameAction : receives result
+@enduml

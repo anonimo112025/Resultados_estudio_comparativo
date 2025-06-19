@@ -1,0 +1,18 @@
+@startuml
+
+   class Client {
+       - id: int
+       - name: String
+       - balance: float
+   }
+
+   class Transaction {
+       - id: int
+       - client: Client
+       - amount: float
+       - type: String
+   }
+
+   Client "1" --> "*" Transaction
+
+   @enduml

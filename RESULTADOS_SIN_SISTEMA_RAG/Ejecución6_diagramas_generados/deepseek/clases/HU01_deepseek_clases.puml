@@ -1,0 +1,28 @@
+@startuml
+class User {
+    - username: String
+    + login(): boolean
+}
+
+class Account {
+    # accountNumber: String
+    - status: String ["active" | "inactive"]
+    - balance: Double
+    
+    method createAccount() requires User
+    method checkBalance() returns Double 
+    method deposit(DepositAmount amount) requires Account
+    method withdraw-WithdrawAmount(amount: WithdrawableAmount) requires Account
+    method transferFundsDestination(Account destination) requires User, Account
+    method activate() requires User
+    method deactivate() requires User
+    
+class Profile {
+    - name: String
+    + viewProfile(): void
+}
+
+User has private access to Account and Profile
+Account has cardinality 1: User
+Profile has cardinality 0: User
+@enduml

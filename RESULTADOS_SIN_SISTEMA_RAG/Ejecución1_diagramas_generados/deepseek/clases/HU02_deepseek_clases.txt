@@ -1,0 +1,26 @@
+@startuml
+class User 
+    - username: String
+    - password: String
+    + login(): boolean
+    + registerBook(REF Book book) : void
+    + manageBook(REF Book book) : void
+endclass
+
+class Book 
+    - title: String
+    - author: String
+    - year_of_publication: Integer
+    - total_pages: Integer
+    - format: String
+    - subject: String
+    - keywords: Set<String>
+    + updateMetadata(REF Document metadata) : void
+endclass
+
+class System 
+    *-- User
+    -- Book
+    "Books registration system"
+endclass
+@enduml

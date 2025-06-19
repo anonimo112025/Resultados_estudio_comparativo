@@ -1,0 +1,47 @@
+@startuml
+class Client Ellipsis {
+  - clientId: String
+  - name: String
+  - contactInformation: String
+  + updateContactInformation(newContactInfo: String): void
+  + getName(): String
+  + getContactInformation(): String
+  + getAccounts(): List<Account>
+  + generateOverallBalanceReport(): Report
+}
+
+class Account Ellipsis {
+  - accountId: String
+  - balance: double
+  + deposit(amount: double): void
+  + withdraw(amount: double): void
+  + getBalance(): double
+  + getTransactions(): List<Transaction>
+  + generateTransactionHistoryReport(): Report
+}
+
+class Transaction Ellipsis {
+  - transactionId: String
+  - type: String
+  - amount: double
+  - date: Date
+  - description: String
+  + getTransactionType(): String
+  + getAmount(): double
+  + getDate(): Date
+  + getDescription(): String
+}
+
+class Report Ellipsis {
+  - reportId: String
+  - title: String
+  - generatedAt: Date
+  - content: String
+  + viewReport(): String
+}
+
+Client "1" *-- "0..*" Account
+Account "1" *-- "0..*" Transaction
+Client ..> Report
+Account ..> Report
+@enduml

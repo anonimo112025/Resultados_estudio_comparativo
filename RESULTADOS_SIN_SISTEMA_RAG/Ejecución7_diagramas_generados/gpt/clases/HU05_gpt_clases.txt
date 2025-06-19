@@ -1,0 +1,19 @@
+@startuml
+class Player {
+    + rollDice(): Integer
+}
+
+class DiceGame {
+    + determineAction(result: Integer)
+    + progressGame(action: Action)
+}
+
+class Dice {
+    - value: Integer
+    + roll(): Integer
+}
+
+Player --> Dice : uses
+Player --> DiceGame : interacts with
+DiceGame ..> Action : determines
+@enduml

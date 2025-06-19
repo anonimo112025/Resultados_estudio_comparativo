@@ -1,0 +1,27 @@
+@startuml
+class User {
+    + selectQuestions(): Question[]
+    + selectTopics(): Topic[]
+}
+
+class PDFDocument {
+    - questions: Question[]
+    - topics: Topic[]
+    + generate(): File
+    + store(): void
+    + view(): void
+    + download(): void
+}
+
+class Question {
+    - content: String
+}
+
+class Topic {
+    - content: String
+}
+
+User --> PDFDocument : generates
+PDFDocument *-- Question : contains
+PDFDocument *-- Topic : contains
+@enduml

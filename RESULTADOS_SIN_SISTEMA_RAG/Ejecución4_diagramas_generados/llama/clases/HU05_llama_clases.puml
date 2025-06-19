@@ -1,0 +1,43 @@
+@startuml
+class Player {
+    - username: String
+    - password: String
+}
+
+class Game {
+    - title: String
+    - pages: Integer
+    - currentPage: Integer
+}
+
+class DiceGame {
+    + rollDice(): Integer
+    + determineAction(Integer): String
+}
+
+class User {
+    - user_id: Integer
+    - profile: Player
+}
+
+class PageContent {
+    - page_content: String
+    - page_number: Integer
+}
+
+class GamePage {
+    - game: Game
+    - content: PageContent
+}
+
+class DiceGamePage {
+    + getDiceValue(): Integer
+    - game: Game
+    - diceRolls: List<Integer>
+}
+
+player --> user
+game --> gamePage
+diceGame --> diceGamePage
+
+@enduml

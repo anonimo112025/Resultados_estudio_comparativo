@@ -1,0 +1,28 @@
+@startuml
+class User {
+    - username: String
+    - password: String
+    
+    + login(): boolean
+}
+
+class Account {
+    - email: String
+    - firstName: String
+    - lastName: String
+    - birthdate: Date
+    
+    + registerForm(username: String, password: String): void
+}
+
+User ~Account (email, username, password)
+User -> Account (submitForm)
+
+class ProfileAccess {
+    public methods() {
+        + showProfile(): void
+    }
+}
+
+Account *-- ProfileAccess (accessProfile)
+@enduml

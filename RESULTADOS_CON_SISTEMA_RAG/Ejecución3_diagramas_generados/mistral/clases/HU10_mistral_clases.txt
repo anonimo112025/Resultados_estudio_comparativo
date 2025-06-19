@@ -1,0 +1,23 @@
+@startuml
+    class Form {
+        - elements: List<Element>
+        - customizations: Customization
+    }
+
+    abstract class Element {
+        - name: String
+    }
+
+    class TextField extends Element {}
+    class DataEntry extends Element {}
+
+    class Customization {
+        - presentationStyle: PresentationStyle
+    }
+
+    enum PresentationStyle {
+        ACCESSIBLE,
+        MODIFIABLE,
+        CLEAR_PRESENTATION
+    }
+    @enduml

@@ -1,0 +1,47 @@
+@startuml
+class Book {
+    + title: String
+    - author: Author!
+    - publisher: Publisher!
+
+    # Methods for book details
+    public boolean hasAuthors() {
+        return authors.size() > 0;
+    }
+}
+
+class Author {
+    + name: String
+
+    # Relationships with books
+    List<Author> getBooks() {
+        return new ArrayList<>();
+    }
+
+    void addBook(int bookId) {
+        // Implementation for adding a book to an author's list
+    }
+
+    void removeBook(int bookId) {
+        // Implementation for removing a book from an author's list
+    }
+}
+
+class Publisher {
+    + name: String
+
+    # Relationship with books
+    List<Publisher> getBooks() {
+        return new ArrayList<>();
+    }
+
+    void addBook(int bookId) {
+        // Implementation for adding a publisher to a book
+    }
+
+    void removePublisher(int bookId) {
+        // Implementation for removing a publisher from a book
+    }
+}
+
+@enduml

@@ -1,0 +1,16 @@
+@startuml
+
+class CaseOfUse "1" -->* User
+class User {
+    - username: String
+    - password: String
+}
+
+class Administrator "1" -->* CaseOfUse
+class Administrator {
+    + managePermissions(): void
+    + revokePermission(username: String): void
+    + viewCurrentPermissions(username: String): void
+}
+
+@enduml

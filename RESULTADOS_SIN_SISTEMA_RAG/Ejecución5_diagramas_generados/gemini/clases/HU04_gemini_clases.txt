@@ -1,0 +1,71 @@
+@startuml
+
+class SystemUser Ellipsis {
+  - userId: String
+  - userName: String
+  + addClient(name: String, contactDetails: String): Client
+  + updateClientName(client: Client, newName: String): void
+  + updateClientContactDetails(client: Client, newDetails: String): void
+  + findClientById(clientId: String): Client
+  + openAccountForClient(client: Client, initialBalance: double): Account
+  + performDepositToAccount(account: Account, amount: double, description: String): void
+  + performWithdrawalFromAccount(account: Account, amount: double, description: String): void
+  + getAccountBalance(account: Account): double
+  + getTransactionsForAccount(account: Account): List<Transaction>
+  + getTransactionsForClient(client: Client): List<Transaction>
+  + generateAccountTransactionsReport(account: Account, startDate: Date, endDate: Date): Report
+  + generateClientBalanceSummaryReport(client: Client): Report
+  + viewReportContent(report: Report): String
+}
+
+class Client Ellipsis {
+  - clientId: String
+  - name: String
+  - contactDetails: String
+  - accounts: List<Account>
+  + updateName(newName: String): void
+  + updateContactDetails(newDetails: String): void
+  + addAccount(account: Account): void
+  + getAccounts(): List<Account>
+  + getClientId(): String
+  + getName(): String
+  + getContactDetails(): String
+}
+
+class Account Ellipsis {
+  - accountId: String
+  - balance: double
+  - transactions: List<Transaction>
+  + deposit(amount: double, description: String): Transaction
+  + withdraw(amount: double, description: String): Transaction
+  + getBalance(): double
+  + getTransactions(): List<Transaction>
+  + getAccountId(): String
+}
+
+class Transaction Ellipsis {
+  - transactionId: String
+  - type: String
+  - amount: double
+  - transactionDate: Date
+  - description: String
+  + getTransactionDetails(): String
+}
+
+class Report Ellipsis {
+  - reportId: String
+  - reportType: String
+  - generatedDate: Date
+  - content: String
+  + getReportContent(): String
+}
+
+SystemUser ..> Client
+SystemUser ..> Account
+SystemUser ..> Transaction
+SystemUser ..> Report
+
+Client "1" *-- "0..*" Account
+Account "1" *-- "0..*" Transaction
+
+@enduml

@@ -1,0 +1,22 @@
+@startuml
+class Document {
+    - metadata: Dictionary
+    + page_content: String
+}
+
+class PageContent {
+    - text: String
+}
+
+class DiceGame {
+    + roll(): PageContent
+}
+
+class Game {
+    + get_action(): String
+}
+
+Document -->|> Game
+DiceGame <--|> Game
+
+@enduml

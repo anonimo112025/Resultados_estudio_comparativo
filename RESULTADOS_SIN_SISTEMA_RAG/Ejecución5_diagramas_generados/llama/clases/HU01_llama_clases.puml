@@ -1,0 +1,32 @@
+@startuml
+
+class Document {
+    + metadata: Map<String, String>
+    + page_content: String
+}
+
+class User {
+    - username: String
+    - password: String
+    + login(): boolean
+    + register(): Document
+}
+
+class Profile {
+    + user_id: Integer
+    + name: String
+    + email: String
+}
+
+class RegistrationRequest {
+    + document: Document
+    + profile: Profile
+}
+
+Document --> User
+
+User *--|> Profile
+
+Profile o---> RegistrationRequest
+
+@enduml

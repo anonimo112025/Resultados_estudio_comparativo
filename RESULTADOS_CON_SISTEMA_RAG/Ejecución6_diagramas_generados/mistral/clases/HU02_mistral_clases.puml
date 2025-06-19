@@ -1,0 +1,17 @@
+@startuml
+    class Book {
+      - title: String
+      - author: String
+      - yearOfPublication: int
+      - isbn: String
+      - pages: int
+    }
+
+    class User {
+      - username: String
+      - password: String
+      - books: set[Book]
+      - checkoutBook(book: Book): boolean
+      - returnBook(book: Book): boolean
+    }
+    @enduml

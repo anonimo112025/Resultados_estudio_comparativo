@@ -1,0 +1,40 @@
+@startuml
+class Document(id: Id, version: String) {
+    - metadata(producer: String)
+    + title(String)
+    + author(String)
+    + subject(String)
+    + keywords(String [])
+    + content(associates to ContextDocument)
+    + creationDate(String)
+    + modDate(String)
+}
+
+class Questions {
+    id: Id
+    text: String
+    topic: String
+}
+
+class Topics {
+    id: Id
+    name: String
+}
+
+class GeneratePDF {
+    questions: collection of Questions
+    topics: collection of Topics
+    + generatePDF(associates to Questions q, associates to Topics t) -> Document
+}
+
+// Association between Document and ContextDocument
+document(associates to ContextDocument c)
+// Association between Document content and ContextDocument
+content(associates to ContextDocument c)
+
+// Example association showing multiplicity (1:1 for GeneratePDF with its inputs)
+GeneratePDF "1" <-> Questions q
+GeneratePDF "1" <-> Topics t
+
+// Additional associations as needed
+@enduml

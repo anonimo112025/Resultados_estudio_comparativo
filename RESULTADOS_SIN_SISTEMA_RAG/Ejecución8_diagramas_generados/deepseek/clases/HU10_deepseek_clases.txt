@@ -1,0 +1,67 @@
+@startuml
+class Document 
+    + metadata: map
+    + page_content: string
+    
+    - id: ID
+    - name: String
+    - content: String
+    - creator: String
+    - moddate: String
+    
+    - forms: collection of Form
+    
+    + createDocument()
+endclass
+
+class Form 
+    + id: ID
+    + name: String
+    - elements: collection of Element
+    
+    + creator: User
+    + modDate: String
+    + creationDate: String
+    
+    - title: String
+    - description: String
+    
+    + viewForm(Form)
+endclass
+
+class Element 
+    + id: ID
+    + x: Integer
+    + y: Integer
+    + content: String
+    + type: String
+    
+    - addElement()
+endclass
+
+class User 
+    + id: ID
+    + username: String
+    + email: String
+    - roles: collection of Role
+    
+    + viewForm(Form)
+    
+    interface Role {
+        - creator: Boolean
+        - moddate: Boolean
+    }
+endclass
+
+class Relation 
+    + from: ClassA
+    + to: ClassB
+    
+    // Example association between Document and Form
+    + document: Document
+    - form: Form
+    
+    // Example association between Form and Element
+    *-- element: Element
+endclass
+@enduml

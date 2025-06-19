@@ -1,0 +1,37 @@
+@startuml
+class User {
+  + manageClientInformation(): boolean
+  + performOperations(): boolean
+  + consultTransactions(): Transaction[]
+}
+
+class Client {
+  - name: String
+  - account: Account
+}
+
+class Account {
+  - balance: double
+  + deposit(amount: double): boolean
+  + withdraw(amount: double): boolean
+}
+
+class Transaction {
+  - date: Date
+  - amount: double
+  - type: String
+}
+
+class Report {
+  - accountBalance: double
+  - transactions: Transaction[]
+  + generateReport(): boolean
+  + consultReport(): boolean
+}
+
+User --> Client
+Client --> Account
+User --> Transaction
+Account --> Transaction
+User --> Report
+@enduml

@@ -1,0 +1,23 @@
+@startuml
+
+class Sistema
+# protected
++ gestionarPermisos(): boolean
+
+class User
+- username: String
+- password: String
++ login(): boolean
++ asignarPermiso(): void
++ obtenerPermiso(): boolean
+
+class Permisos
+- permiso: String
+- asignado: boolean
++ asignar(): void
++ obtener(): boolean
+
+Sistema o--> User
+User *---> Permisos
+
+@enduml

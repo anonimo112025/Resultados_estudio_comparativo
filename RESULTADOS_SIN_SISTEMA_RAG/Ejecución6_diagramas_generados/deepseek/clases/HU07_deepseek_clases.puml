@@ -1,0 +1,56 @@
+@startuml
+class User {
+    + username: String
+    - user_type: String
+    
+    + loginUser(): void
+    - addUser(): void
+}
+
+class System {
+    # General system management capabilities
+    + addStudents()
+    + addTeachers()
+    + manageClass()
+    
+    * students
+    * teachers
+}
+ 
+class PageContent {
+    + page_content: String
+    - metadata: Map<String, String>
+    # Methods to interact with the PDF content
+    ..> getContent(): String
+    ..> saveChanges(): void
+}
+
+class Student extends User {
+    + student_name: String
+    + grade: Integer
+    
+    methods inherited from User:
+        loginUser()
+        addUser()
+}
+
+class Teacher extends User {
+    + teacher_name: String
+    - teaching_subject: String
+    
+    methods inherited from User:
+        loginUser()
+        addUser()
+}
+
+class Class <Parent: Student, Parent: Teacher> {
+    * students
+    * teachers
+    + class_name: String
+    + description: String
+    
+    methods:
+        ..> enrolledIn(): void
+        ..> taughtSubject(): void
+}
+@enduml

@@ -1,0 +1,51 @@
+@startuml
+class Document 
+    - producer: String
+    - creator: String
+    - source: String
+    - file_path: String
+    - total_pages: Int
+    - format: String
+    - title: String
+    - author: String
+    - subject: String
+    - keywords: String[]
+    - moddate: String
+    - trapped: Boolean
+    - modDate: String
+    - creationDate: String
+
+    + getMetadata(): Collection_manual  # Returns a collection of metadata parts like Producer, Content, etc.
+endclass
+
+class PDF_Document 
+    - title: String
+    - author: String
+    - subject: String
+    - keywords: String[]
+    - moddate: String
+    - trapped: Boolean
+    - modDate: String
+    - creationDate: String
+
+    + getContent(): String  # Returns the text content of the document
+    + getProperties(): Properties  # Returns specific properties of this PDF document
+endclass
+
+class User 
+    - username: String
+    - password: String
+    
+    + login(): Boolean  # Logs in a user with given credentials
+    + register(): Boolean  # Registers a new user with given credentials
+    + generatePDF(): Collection_manual  # Generates personalized PDF files based on selected questions and topics
+    + getMyDocuments(): Collection_manual  # Retrieves the stored documents of this user
+    - deleteDocument(document: String)  # Deletes an existing document
+
+    + collection: Document[]  # Collection of documents owned by the user
+endclass
+
+User -> Document  # User has a one-to-many relationship with Document, containing all their documents
+
+Document *-- PDF_Document  # Document can contain multiple PDF_Documents (composite attribute)
+@enduml

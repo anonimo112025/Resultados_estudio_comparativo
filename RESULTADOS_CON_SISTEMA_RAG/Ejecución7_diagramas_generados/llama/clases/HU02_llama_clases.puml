@@ -1,0 +1,23 @@
+@startuml
+class Book 
+    - id: Integer
+    - title: String
+    - author: String
+    - yearOfPublication: Integer
+    - registrationDate: Date
+    + register(): void
+    + getInformation(): Map<String, Object>
+    - user: User "1" --> *
+
+class User 
+    - id: Integer
+    - username: String
+    - password: String
+    - registeredBooks: Book *-- Book
+    + login(): boolean
+    + registerBook(Book): void
+
+class RegisterBook 
+    + processRegistration(): void
+
+@enduml

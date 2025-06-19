@@ -1,0 +1,27 @@
+@startuml
+class Form {
+    + id: String
+    - page: PageElement
+    
+    method createForm() {
+        // Implementation details omitted
+    }
+    
+    method viewForm() {
+        // Implementation details omitted
+    }
+}
+
+class FormsManager {
+    + forms: collection of Form
+    - id: String
+    
+    method addForm(Form form) {
+        // Implementation details omitted
+    }
+    
+    method viewForm(String formId) {
+        // Retrieve and display specified form
+    }
+}
+@enduml

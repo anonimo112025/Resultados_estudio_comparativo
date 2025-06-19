@@ -1,0 +1,38 @@
+@startuml
+class User {
+    + manageBookInformation(): void
+    + manageAuthorInformation(): void
+    + managePublisherInformation(): void
+}
+
+class Book {
+    - title: String
+    - publicationDate: Date
+    - publisherID: integer
+    + registerBook(): boolean
+    + updateBookInformation(): boolean
+    + getBookInformation(): void
+}
+
+class Author {
+    - name: String
+    - birthDate: Date
+    + registerAuthor(): boolean
+    + updateAuthorInformation(): boolean
+    + getAuthorInformation(): void
+}
+
+class Publisher {
+    - name: String
+    - address: String
+    + registerPublisher(): boolean
+    + updatePublisherInformation(): boolean
+    + getPublisherInformation(): void
+}
+
+User --> Book
+User --> Author
+User --> Publisher
+Book "1" --> "*" Author
+Book --> Publisher
+@enduml

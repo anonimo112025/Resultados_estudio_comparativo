@@ -1,0 +1,21 @@
+@startuml
+class User {
+    - username: String
+    - password: String
+    
+    + login(): boolean
+}
+
+class Permission {
+    # name: String
+    - name: String
+    
+    # level: enum (Private, Moderate, High)
+    - level: String
+    
+    # visibleTo: String (user or system)
+    public: visibility: String
+}
+
+class User *-- Permission
+@enduml

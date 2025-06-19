@@ -1,0 +1,24 @@
+@startuml
+class Person {
+    + name: String
+    + user_type: String
+    - username: String
+    # email: String
+    # phone_number: String
+    + birthdate: Date
+    + student_status: Boolean
+    + user_role: String
+}
+
+class Group {
+    + members: collection of Person
+    - name: String
+    + description: String
+}
+
+class System {
+    method searchPerson(PersonCriteria criteria) returns collection of Person
+    - PersonCriteria
+}
+
+@enduml

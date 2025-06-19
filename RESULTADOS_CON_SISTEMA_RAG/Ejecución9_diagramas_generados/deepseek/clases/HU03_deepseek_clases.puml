@@ -1,0 +1,29 @@
+@startuml
+class User {
+    - username: String
+    - email: String
+    + login(): boolean
+    - getEmail(): String
+}
+
+class Admin extends User {
+    # permissions: Boolean  // Whether the admin has access to certain resources
+    - assignPermissions(String, Boolean): void
+}
+
+class Document {
+    + view(): void
+    * getInteractivePDF(): String  // Method to retrieve the PDF content
+
+    - title: String
+    - creator: String
+    - source: String
+    - totalPages: Integer
+    - format: String
+}
+
+// Relationships:
+Admin --> User
+
+User <--> Document
+@enduml

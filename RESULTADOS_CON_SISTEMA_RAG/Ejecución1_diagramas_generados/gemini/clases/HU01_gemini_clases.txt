@@ -1,0 +1,17 @@
+@startuml
+class User Ellipsis {
+  + register(username: String, passwordData: String, email: String): UserProfile
+  + manageProfile(profileChanges: Map)
+  + viewProfile(): Map
+}
+
+class UserProfile Ellipsis {
+  - username: String
+  - storedPassword: String
+  - emailAddress: String
+  + applyChanges(changes: Map)
+  + retrieveDetails(): Map
+}
+
+User "1" *-- "1" UserProfile
+@enduml

@@ -1,0 +1,15 @@
+@startuml
+class Document {
+- metadata: Map<String, String>
++ loadMetadata(): void
+- page_content: String
++ generatePdf(): void
+}
+class User {
+- username: String
+- password: String
++ login(): boolean
+}
+Document --> User "1" <-- Page
+User --> Document +-- Page
+@enduml

@@ -1,0 +1,36 @@
+@startuml
+class User {
+    + manageEnrollments() : void
+}
+
+class Enrollment {
+    + addStudent() : void
+    + deleteStudent() : void
+}
+
+class Student {
+    - studentId: Integer
+}
+
+class Course {
+    - courseId: Integer
+    + addStudent() : void
+    + removeStudent() : void
+}
+
+class CourseEnrollment {
+    - enrollmentId: Integer
+    - student: Student
+    - course: Course
+    + enrollStudent() : void
+    + modifyEnrollment() : void
+    + cancelEnrollment() : void
+}
+
+User --> Enrollment
+Enrollment o-- Student: "0..*"
+Enrollment o-- Course: "0..*"
+Enrollment *-- CourseEnrollment: "0..*"
+Course "0..*" -- CourseEnrollment: "1"
+Student "0..*" -- CourseEnrollment: "1"
+@enduml

@@ -1,0 +1,23 @@
+@startuml
+class Document {
+    - metadata: Map<String, Object>
+    - page_content: String
+}
+class PageContent {
+    - text: String
+    - title: String
+}
+
+Document --> PageContent
+PageContent "1" --* Document
+Document "1" --> User
+
+class User {
+    - username: String
+    - password: String
+}
+
+User --> Document
+Document +-- PageContent
+
+@enduml

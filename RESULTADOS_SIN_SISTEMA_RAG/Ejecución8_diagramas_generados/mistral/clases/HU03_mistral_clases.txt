@@ -1,0 +1,32 @@
+@startuml
+
+   class Administrator {
+       - username: String
+       - permissions: Set[Permission]
+
+       + assignPermission(permission: Permission): void
+       + revokePermission(permission: Permission): void
+       + viewCurrentPermissions(): void
+   }
+
+   class Resource {
+       - name: String
+
+   }
+
+   class Permission {
+       - resource: Resource
+       - accessLevel: AccessLevel
+
+       + validate(): boolean
+   }
+
+   enum AccessLevel {
+       READ,
+       WRITE,
+       ADMIN
+   }
+
+   Administrator "1" --> "*" Permission
+   Permission o-- Resource
+   @enduml

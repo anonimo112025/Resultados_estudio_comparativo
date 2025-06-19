@@ -1,0 +1,18 @@
+@startuml
+class User {
+  + manageEnrollments()
+}
+
+class Course {
+  + updateEnrollment()
+}
+
+class Enrollment {
+  - date: Date
+  + modifyEnrollment()
+  + cancelEnrollment()
+}
+
+User "1" --> "*" Enrollment
+Enrollment --> "1" Course
+@enduml

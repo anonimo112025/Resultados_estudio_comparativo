@@ -1,0 +1,37 @@
+@startuml
+class SystemUser Ellipsis
+SystemUser : + createEnrollment(student: Student, course: Course, enrollmentDate: Date): Enrollment
+SystemUser : + updateEnrollment(enrollment: Enrollment, newDate: Date, newStatus: String): void
+SystemUser : + cancelSpecificEnrollment(enrollment: Enrollment): void
+SystemUser : + findEnrollmentById(enrollmentId: String): Enrollment
+SystemUser : + listStudentEnrollments(student: Student): List<Enrollment>
+SystemUser : + listCourseEnrollments(course: Course): List<Enrollment>
+
+class Student Ellipsis
+Student : - studentId: String
+Student : - name: String
+
+class Course Ellipsis
+Course : - courseId: String
+Course : - title: String
+
+class Enrollment Ellipsis
+Enrollment : - enrollmentId: String
+Enrollment : - enrollmentDate: Date
+Enrollment : - status: String
+Enrollment : + getEnrollmentId(): String
+Enrollment : + getEnrollmentDate(): Date
+Enrollment : + getStatus(): String
+Enrollment : + setEnrollmentDate(date: Date): void
+Enrollment : + setStatus(status: String): void
+
+SystemUser ..> Student
+SystemUser ..> Course
+SystemUser ..> Enrollment
+
+Student "1" -- "0..*" Enrollment
+Course "1" -- "0..*" Enrollment
+
+Enrollment --> "1" Student
+Enrollment --> "1" Course
+@enduml

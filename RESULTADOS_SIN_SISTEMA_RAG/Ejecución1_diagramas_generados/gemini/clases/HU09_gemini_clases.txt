@@ -1,0 +1,16 @@
+@startuml
+class SystemUser Ellipsis
+class Book Ellipsis
+class Author Ellipsis
+class Publisher Ellipsis
+
+SystemUser "1" --> "*" Book
+SystemUser "1" --> "*" Author
+SystemUser "1" --> "*" Publisher
+
+Book "1" --> "1..*" Author
+Author "1" --> "*" Book
+
+Book "1" --> "1" Publisher
+Publisher "1" --> "*" Book
+@enduml

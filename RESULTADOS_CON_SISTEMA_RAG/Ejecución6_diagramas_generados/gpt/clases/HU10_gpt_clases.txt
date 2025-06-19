@@ -1,0 +1,21 @@
+@startuml
+class User {
+    + addElement()
+    + viewElement()
+}
+
+class Form {
+    - elementsList: List<Element>
+    + createCustomForm()
+    + modifyForm()
+    + accessForm()
+}
+
+class Element {
+    - textFields: String
+    - dataEntries: String
+}
+
+User --> Form : manage
+Form *-- Element : contains
+@enduml

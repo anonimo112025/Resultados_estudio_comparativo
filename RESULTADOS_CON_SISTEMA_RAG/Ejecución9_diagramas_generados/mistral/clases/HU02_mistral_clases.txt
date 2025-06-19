@@ -1,0 +1,16 @@
+@startuml
+class Book {
+  - title: String
+  - author: String
+  - yearOfPublication: int
+  - isbn: String
+}
+
+class Person {
+  - name: String
+  - id: int
+  - books_owned: set[Book]
+}
+
+Person "1" --> "*" Book
+@enduml

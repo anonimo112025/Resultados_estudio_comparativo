@@ -1,0 +1,37 @@
+@startuml
+class SystemUser Ellipsis {
+    + createEnrollment(student: Student, course: Course, enrollmentDate: Date): Enrollment
+    + modifyEnrollmentDetails(enrollment: Enrollment, newStatus: String): void
+    + cancelEnrollment(enrollment: Enrollment): void
+    + findEnrollment(enrollmentId: String): Enrollment
+    + getEnrollmentsForStudent(student: Student): Enrollment[]
+    + getEnrollmentsForCourse(course: Course): Enrollment[]
+}
+
+class Student Ellipsis {
+    - studentId: String
+    - name: String
+}
+
+class Course Ellipsis {
+    - courseId: String
+    - title: String
+}
+
+class Enrollment Ellipsis {
+    - enrollmentId: String
+    - enrollmentDate: Date
+    - status: String
+    + updateStatus(newStatus: String): void
+    + cancel(): void
+}
+
+SystemUser ..> Student
+SystemUser ..> Course
+SystemUser ..> Enrollment
+
+Student "1" --> "*" Enrollment
+Course "1" --> "*" Enrollment
+Enrollment --> "1" Student
+Enrollment --> "1" Course
+@enduml

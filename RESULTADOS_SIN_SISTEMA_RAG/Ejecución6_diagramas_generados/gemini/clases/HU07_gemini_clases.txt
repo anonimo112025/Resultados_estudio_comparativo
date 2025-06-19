@@ -1,0 +1,21 @@
+@startuml
+
+class AcademicUser {
+  - name: String
+  - userType: String
+  + getName(): String
+  + setName(name: String): void
+  + getUserType(): String
+  + setUserType(userType: String): void
+}
+
+class Student {
+}
+
+class Professor {
+}
+
+Student --|> AcademicUser
+Professor --|> AcademicUser
+
+@enduml

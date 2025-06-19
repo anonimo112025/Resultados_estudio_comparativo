@@ -1,0 +1,40 @@
+@startuml
+class User {
+    - username: String
+    - password: String
+    - email: String
+    - dateOfBirth: Date
+    
+    + createUser(): void
+}
+
+class Profile {
+    - id: Integer
+    - name: String
+    - surname: String
+    - phone: String
+    - address: String[] // Street, City, Country, ZIPCode
+
+    + addProfile(): void
+    + removeProfile(int index): void
+}
+
+class ProfileManager {
+    *-- User // Each user can have multiple profiles
+    - profileNames: String[]
+    
+    + addProfile(Profile p): void
+    + removeProfile(int index): void
+}
+
+class Authorization {
+    + canAccess(User u, int index): boolean
+    
+    - role: RoleType
+}   
+
+class Persons {
+    *-- User
+    - sharedPhoto: String
+}
+@enduml

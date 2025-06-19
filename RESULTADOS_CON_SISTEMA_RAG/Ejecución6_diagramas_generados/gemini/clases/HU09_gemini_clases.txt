@@ -1,0 +1,22 @@
+@startuml
+class Book {
+    + registerInformation()
+    + consultInformation()
+    + updateInformation()
+}
+
+class Author {
+    + registerInformation()
+    + consultInformation()
+    + updateInformation()
+}
+
+class Publisher {
+    + registerInformation()
+    + consultInformation()
+    + updateInformation()
+}
+
+Book "*" -- "1..*" Author
+Book "*" -- "1" Publisher
+@enduml

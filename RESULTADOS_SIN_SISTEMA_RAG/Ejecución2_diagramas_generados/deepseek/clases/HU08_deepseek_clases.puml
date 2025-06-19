@@ -1,0 +1,27 @@
+@startuml
+class User {
+    public String email;
+}
+
+class Student {
+    public String id;
+    public String name;
+}
+
+class Course {
+    public String id;
+    public String title;
+}
+
+class Enrollment {
+    public String studentId;
+    public String courseId;
+    public Date enrolledDate;
+    public Boolean status;
+    public String version;
+}
+
+User -->|Enrollment|: manages student enrollments
+Student <-> Enrollment : enrolls courses
+Course <-> Enrollment : has enrolled students
+@enduml

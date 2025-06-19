@@ -1,0 +1,16 @@
+@startuml
+   class FormElement {
+       - type: String
+   }
+
+   class TextField extends FormElement {
+   }
+
+   class DataEntry extends FormElement {
+   }
+
+   class CustomizedForm {
+       *-- TextField
+       *-- DataEntry
+   }
+   @enduml

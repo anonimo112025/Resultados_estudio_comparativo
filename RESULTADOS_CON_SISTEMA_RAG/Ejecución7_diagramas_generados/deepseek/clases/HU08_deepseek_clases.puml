@@ -1,0 +1,31 @@
+@startuml
+class Student {
+    - name: String
+    + id: String primary
+
+    - enrolledIn: List<Course>
+}
+
+class Course {
+    + courseName: String
+    - courseId: String primary
+    
+    + enrolledStudents: List<Student>
+}
+
+class Enrollment {
+    # Enrollments tracks student-course relationships with possible enrollment status changes.
+    public Enrollments: Integer  # Number of enrollments in this record.
+
+    - studentID: String     # Student's unique identifier.
+    - courseID: String      # Course's unique identifier.
+    - enrolledDate: Date   # Date when the student enrolled in the course.
+    - status: String       # Status is "enrolled" or "canceled".
+}
+
+Enrollment --> Student
+Enrollment --> Course
+
+Student *-- Enrollment
+Course o-- Enrollment
+@enduml

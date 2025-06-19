@@ -1,0 +1,12 @@
+@startuml
+   class Student {
+       - name: String
+       - userType: String
+   }
+
+   class Teacher {
+       - name: String
+       - userType: String
+   }
+   Student "1" --> "1" Teacher # management of both types of users sharing common characteristics
+   @enduml

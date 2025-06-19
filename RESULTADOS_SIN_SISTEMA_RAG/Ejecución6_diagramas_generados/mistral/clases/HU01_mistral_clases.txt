@@ -1,0 +1,22 @@
+@startuml
+
+   class RegistrationService {
+       - user: User
+       - register(user: User): void
+   }
+
+   class ProfileService {
+       - user: User
+       - viewProfile(): void
+   }
+
+   class User {
+       - username: String
+
+       + setUsername(username: String): void
+       + getUsername(): String
+   }
+
+   RegistrationService --> User
+   ProfileService --> User
+   @enduml

@@ -1,0 +1,17 @@
+@startuml
+class Document {
+  - title: String
+  - content: String
+  - questions: List<Question>
+  - topics: List<Topic>
+}
+
+class Question {
+  - questionText: String
+  - topic: Topic
+}
+
+class Topic {
+  - topicName: String
+}
+@enduml

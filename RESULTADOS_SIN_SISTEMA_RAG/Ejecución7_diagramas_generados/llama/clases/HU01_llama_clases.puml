@@ -1,0 +1,26 @@
+@startuml
+class User {
+- username: String
+- password: String
++ login(): boolean
+}
+
+class Profile {
+- user: User
++ getUserInfo(): profile_info
+- updateUserInfo(profile_info): void
+}
+
+class Registration {
+- user: User
++ registerUser(): boolean
+- sendVerificationEmail(): void
+}
+
+class SystemUser {
+- document: Document
++ viewDocument(): void
+- createAccount(): void
+}
+
+@enduml

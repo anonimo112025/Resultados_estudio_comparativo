@@ -1,0 +1,20 @@
+@startuml
+
+   class Administrator {
+       - administratorId: String
+       - username: String
+       - password: String
+
+       + grantPermissions(resource: Resource)
+       + revokePermissions(resource: Resource)
+       + viewCurrentPermissions()
+   }
+
+   class Resource {
+       - resourceId: String
+       - name: String
+
+   }
+
+   Administrator "1" --> "*" Resource
+   @enduml

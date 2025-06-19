@@ -1,0 +1,14 @@
+@startuml
+class SystemUser {
+  + register(): boolean
+  + viewProfile()
+  + manageProfileInformation()
+  + accessSystemFunctionalities()
+}
+
+class Profile {
+  - basicInformation: String
+}
+
+SystemUser "1" *-- "1" Profile
+@enduml

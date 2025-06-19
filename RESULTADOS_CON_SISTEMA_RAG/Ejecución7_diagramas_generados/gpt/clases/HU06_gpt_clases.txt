@@ -1,0 +1,30 @@
+@startuml
+class User {
+    + selectQuestions(): void
+    + selectTopics(): void
+}
+
+class Question {
+    + getTitle(): String
+}
+
+class Topic {
+    + getName(): String
+}
+
+class Document {
+    - content: String
+    + generatePDF(): PDFFile
+    + saveDocument(): void
+    + viewDocument(): void
+    + downloadDocument(): void
+}
+
+class PDFFile {
+}
+
+User --> Question
+User --> Topic
+User --> Document
+Document o-- PDFFile
+@enduml

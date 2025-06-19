@@ -1,0 +1,11 @@
+@startuml
+class Course {
+    - courseName: String
+    - enrolledStudents: Student *
+}
+class Student {
+    - studentId: Integer
+    - courses+: Course
+}
+
+@enduml

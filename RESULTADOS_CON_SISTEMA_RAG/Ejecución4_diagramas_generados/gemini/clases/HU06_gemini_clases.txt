@@ -1,0 +1,27 @@
+@startuml
+class SystemUser Ellipsis {
+    + generatePersonalizedPDF(selectedQuestions: Question[], selectedTopics: Topic[]): PersonalizedPDFFile
+    + viewPDF(file: PersonalizedPDFFile): void
+    + downloadPDF(file: PersonalizedPDFFile): void
+}
+
+class PersonalizedPDFFile Ellipsis {
+    - fileName: String
+    - content: String
+}
+
+class Question Ellipsis {
+    - questionId: String
+    - content: String
+}
+
+class Topic Ellipsis {
+    - topicId: String
+    - title: String
+}
+
+SystemUser "1" -- "0..*" PersonalizedPDFFile
+PersonalizedPDFFile "1" o-- "1..*" Question
+PersonalizedPDFFile "1" o-- "1..*" Topic
+Question "*" -- "*" Topic
+@enduml

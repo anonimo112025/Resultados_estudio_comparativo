@@ -1,0 +1,33 @@
+@startuml
+class User {
+    - username: String
+    - password: String
+    + login(): boolean
+}
+
+class Document {
+    - metadata: Map
+    - page_content: String
+    + getMetadata(): Map
+    + getPageContent(): String
+}
+
+class Permission {
+    - userId: Integer
+    - resourceId: Integer
+    + assignPermission(userId: Integer, resourceId: Integer): void
+    + revokePermission(userId: Integer, resourceId: Integer): void
+}
+
+class Resource {
+    - id: Integer
+    - name: String
+    + getResourceDetails(): Map
+}
+
+User --> Permission
+Permission --> Document
+Document --> Permission
+Resource --> Permission
+
+@enduml

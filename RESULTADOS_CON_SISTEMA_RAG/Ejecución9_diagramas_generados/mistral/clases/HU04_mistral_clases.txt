@@ -1,0 +1,24 @@
+@startuml
+class Client {
+  - id: int
+  - name: String
+  - balance: float
+  - transactions: List[Transaction]
+}
+
+class Transaction {
+  - transactionId: int
+  - client: Client
+  - date: Date
+  - type: TransactionType
+  - amount: float
+}
+
+enum TransactionType {
+  deposit, withdrawal
+}
+
+Client --|> Company
+Company "1" --* Client
+Transaction "1" --* Client
+@enduml

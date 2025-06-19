@@ -1,0 +1,66 @@
+@startuml
+class User {
+    - username: String
+    - password: String
+    + register(): void
+    + login(): void
+}
+
+class Document {
+    - id: String
+    - producer: String
+    - creator: String
+    - creationDate: String
+    - source: String
+    - pagePath: String
+    - totalPages: Integer
+    - format: String
+    - title: String
+    - author: String
+    - subject: String?
+    - keywords: String?
+    - modDate: String
+    - creatorDate: String
+    - content: String
+    - pageContent: String
+}
+
+class Book {
+    - id: String
+    - title: String
+    - pages: Integer
+    - year: String
+    - isbn: String
+    - publishedStatus: String?
+    - price: Double
+    - authors: List of Author
+    - publishers: Set of Publisher
+
+    + getAuthors(): List of Author
+    + getPublishers(): Set of Publisher
+}
+
+class Author {
+    - id: String
+    - name: String
+    - affiliation: String?
+
+    +associateBook/title: String
+    +associateBook/publisher: Publisher
+}
+
+class Publisher {
+    - id: String
+    - name: String
+    - description: String
+
+    +publishBook/title: String
+    +publishBook/author: Author
+}
+
+class InformationEntity {
+    - userId: String
+    - documentId: String
+    - dateModified: String
+}
+@enduml

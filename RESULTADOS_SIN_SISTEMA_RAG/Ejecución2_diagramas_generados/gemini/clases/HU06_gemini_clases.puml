@@ -1,0 +1,32 @@
+@startuml
+
+class SystemUser {
+  - userId: String
+  + generatePersonalizedDocument(selectedQuestions: Question[], selectedTopics: Topic[]): PDFDocument
+  + viewDocument(document: PDFDocument): void
+  + downloadDocument(document: PDFDocument): void
+}
+
+class PDFDocument {
+  - documentId: String
+  - title: String
+  - generatedDate: Date
+}
+
+class Question {
+  - questionId: String
+  - text: String
+}
+
+class Topic {
+  - topicId: String
+  - name: String
+  - description: String
+}
+
+SystemUser "1" --> "0..*" PDFDocument : generates
+PDFDocument "1" o-- "1..*" Question : contains
+PDFDocument "1" o-- "1..*" Topic : organizedBy
+Question "*" -- "*" Topic : relatedTo
+
+@enduml

@@ -1,0 +1,91 @@
+@startuml
+class User {
+    - username: String
+    - password: String
+    + login(): boolean
+}
+
+class Account {
+    - id: Integer
+    - name: String
+    - balance: Object
+    - owner: User
+    + deposit(amount: Number)
+    + withdraw(amount: Number)
+    + viewTransactions()
+}
+
+class Transaction {
+    - id: Integer
+    - date: String
+    - type: String
+    - amount: Number
+    - status: String  # pending/completed
+    - account: Account
+    - user: User
+    - createdOn: String
+
+    - constructor(id, date, type, amount, status, account, user) {
+        this.id = id;
+        this.date = date;
+        this.type = type;
+        this.amount = amount;
+        this.status = status;
+        this.account = account;
+        this.user = user;
+    }
+
+    + validateTransaction(amount: Number)
+}
+
+class Document {
+    - id: Integer
+    - content: String
+    - clientInfo: Object
+    - userId: Integer
+
+    - constructor(id, content, clientInfo, userId) {
+        this.id = id;
+        this.content = content;
+        this.clientInfo = clientInfo;
+        this.userId = userId;
+    }
+
+    + viewDocument(id: Integer)
+}
+
+class Report {
+    - id: Integer
+    - balanceSummary: Object
+    - transactionSummary: Object
+    - dateRange: String
+
+    - constructor(id, balanceSummary, transactionSummary, dateRange) {
+        this.id = id;
+        this.balanceSummary = balanceSummary;
+        this.transactionSummary = transactionSummary;
+        this.dateRange = dateRange;
+    }
+
+    + generateReport()
+}
+
+// Association between User and Account
+User -||> Account
+
+// Association between Account and Transaction
+Account *-> Transaction
+
+// Association between User and Transaction
+User *-> Transaction
+
+// Association between Document and User
+Document --||> User
+
+// Association between Transaction and Document
+Transaction ..-> Document
+
+Report --||> User
+Report ..-> Document
+Report -||> Transaction
+@enduml

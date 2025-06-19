@@ -1,0 +1,31 @@
+@startuml
+class Student {
+- id: Integer
+- name: String
+- enrollmentDate: Date
++ enrollInCourse(Course): void
+}
+
+class Course {
+- id: Integer
+- name: String
+- enrolledStudents: Set<Student>
++ addEnrolledStudent(Student): void
+}
+
+class Enrollment {
+- student: Student
+- course: Course
++ validate(): boolean
+}
+
+class User {
+- username: String
+- password: String
+- enrollments: Set<Enrollment>
+- courses: Set<Course>
++ login(): boolean
++ viewEnrollments(): List<Enrollment>
++ joinCourse(Course): void
+}
+@enduml

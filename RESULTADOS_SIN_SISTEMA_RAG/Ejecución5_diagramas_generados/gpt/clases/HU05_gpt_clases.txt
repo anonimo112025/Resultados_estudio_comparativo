@@ -1,0 +1,19 @@
+@startuml
+class Player {
+    + rollDice(): int
+}
+
+class DiceGame {
+    # result: int
+    # rollTwoDice(): int
+    # determineAction(): void
+    # updateProgress(): void
+}
+
+class Dice {
+    - value: int
+    + roll(): int
+}
+Player --> DiceGame
+DiceGame *-- Dice
+@enduml

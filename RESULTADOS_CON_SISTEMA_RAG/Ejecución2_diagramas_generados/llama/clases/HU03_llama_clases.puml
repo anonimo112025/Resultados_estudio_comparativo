@@ -1,0 +1,21 @@
+@startuml
+class User {
+- username: String
+- password: String
++ login(): boolean
+}
+
+class Administrator {
+- permissions: Map<Integer, Set<String>>
+- managePermissions():
++ assignPermissions()
++ revokePermissions()
++ viewPermissions()
+}
+
+class System {
+- validatePermissions():
+  + checkPermissions(Integer permission)
+}
+
+@enduml

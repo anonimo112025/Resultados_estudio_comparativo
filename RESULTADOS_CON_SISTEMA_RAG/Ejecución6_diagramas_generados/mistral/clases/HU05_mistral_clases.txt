@@ -1,0 +1,17 @@
+@startuml
+class Player {
+  - name: String
+  - currentDice1: Die
+  - currentDice2: Die
+  - rollHistory: List[Integer]
+
+  + rollDice(): Void
+  + getRollResult(): Integer
+}
+
+class Die {
+  - faces: List[Integer]
+
+  + roll(): Integer
+}
+@enduml

@@ -1,0 +1,29 @@
+@startuml
+class Person {
+  + name: String
+  + userType: String
+}
+
+class Student {
+}
+
+class Teacher {
+}
+
+class SystemUser {
+  + createStudent(name: String): Student
+  + findStudent(criteria: String): Student
+  + updateStudentName(student: Student, newName: String): void
+  + deleteStudent(student: Student): void
+  + createTeacher(name: String): Teacher
+  + findTeacher(criteria: String): Teacher
+  + updateTeacherName(teacher: Teacher, newName: String): void
+  + deleteTeacher(teacher: Teacher): void
+}
+
+Student --|> Person
+Teacher --|> Person
+
+SystemUser ..> Student
+SystemUser ..> Teacher
+@enduml

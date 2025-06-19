@@ -1,0 +1,29 @@
+@startuml
+class User {
+  - username: String
+  + generateDocument(questions: Question[], topics: Topic[]): PDFDocument
+  + viewDocument(document: PDFDocument): void
+  + downloadDocument(document: PDFDocument): void
+}
+
+class PDFDocument {
+  - documentId: String
+  - title: String
+  / structuredContent: String
+}
+
+class Question {
+  - questionId: String
+  - content: String
+}
+
+class Topic {
+  - topicId: String
+  - name: String
+}
+
+User "1" --> "0..*" PDFDocument : generates
+PDFDocument "1" o-- "1..*" Question : uses content from
+PDFDocument "1" o-- "1..*" Topic : uses content from
+Topic "*" -- "*" Question : categorizes
+@enduml

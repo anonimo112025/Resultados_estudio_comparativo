@@ -1,0 +1,19 @@
+@startuml
+   class Student {
+       - id: int
+       - name: String
+       - enrollments: Set<Course>
+
+       # Course enroll(Course course)
+       # Course unenroll(Course course)
+   }
+
+   class Course {
+       - id: int
+       - name: String
+       - students: Set<Student>
+
+       # Student addStudent(Student student)
+       # Student removeStudent(Student student)
+   }
+   @enduml

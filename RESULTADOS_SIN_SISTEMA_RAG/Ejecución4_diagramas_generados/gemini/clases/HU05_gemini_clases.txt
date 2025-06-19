@@ -1,0 +1,24 @@
+@startuml
+class Player Ellipsis {
+  + rollTwoDice(): int
+}
+
+class Dice Ellipsis {
+  - faceValue: int
+  + roll(): int
+  + getFaceValue(): int
+}
+
+class Game Ellipsis {
+  + determineActionFromRoll(rollResult: int): GameAction
+}
+
+class GameAction Ellipsis {
+  # type: String
+}
+
+Player "1" --> "1" Game
+Player "1" --> "2" Dice
+Player ..> Game
+Game ..> GameAction
+@enduml

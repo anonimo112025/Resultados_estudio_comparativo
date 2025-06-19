@@ -1,0 +1,11 @@
+@startuml
+class User {
+    - username: String
+    - password: String
+    
+    + addElement(String name) : Boolean
+    + viewElements() : void
+    + modifyElement(String id, String newvalue) : void
+    + createForm(String formType)
+}
+@enduml

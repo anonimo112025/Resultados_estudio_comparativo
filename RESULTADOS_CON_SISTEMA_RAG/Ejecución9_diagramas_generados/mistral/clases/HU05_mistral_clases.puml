@@ -1,0 +1,15 @@
+@startuml
+class Player {
+  - name: string
+  - dice1: Die
+  - dice2: Die
+
+  + rollDice(): int[]
+}
+
+class Die {
+  - value: int
+
+  + roll(): int
+}
+@enduml

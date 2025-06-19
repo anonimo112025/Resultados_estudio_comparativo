@@ -1,0 +1,21 @@
+@startuml
+class Player {
+    - name: String
+    + rollDice(): int
+}
+
+class Dice {
+    - value: int
+    + roll(): int
+}
+
+class Game {
+    - currentTurn: int
+    + processAction(result: int): void
+    + determineAction(diceResult: int): String
+}
+
+Player --> Game
+Player --> Dice : "rolls 2"
+Game --> Dice : "uses"
+@enduml

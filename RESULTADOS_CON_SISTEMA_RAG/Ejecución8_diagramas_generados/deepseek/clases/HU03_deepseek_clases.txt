@@ -1,0 +1,33 @@
+@startuml
+class User {
+    - id: String
+    + managePermissions()
+    - permissions: [Permission]
+}
+
+class Permission {
+    - id: String
+    + name: String
+    + applicableResource: String
+    - assignedToUser: User
+    - request: Request
+}
+
+class Resource {
+    - id: String
+    + title: String
+    - description: String
+    + versions: [Version]
+}
+
+class Request {
+    - id: String
+    - user: User
+    + startTimestamp: Date
+    + endTimestamp: DateOrVersion
+    + reasonForRequest: String
+
+    - permissions: Set<Permission>
+}
+
+@enduml

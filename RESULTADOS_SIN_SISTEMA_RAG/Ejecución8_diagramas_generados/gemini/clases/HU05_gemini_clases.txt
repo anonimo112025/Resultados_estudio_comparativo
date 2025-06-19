@@ -1,0 +1,21 @@
+@startuml
+class Player ... {
+    + rollTwoDice(game: Game): int
+}
+
+class Game ... {
+    - die1: Die
+    - die2: Die
+    + getRollFromDice(): int
+    + determineGameAction(rollResult: int): void
+}
+
+class Die ... {
+    - faceValue: int
+    + roll(): void
+    + getFaceValue(): int
+}
+
+Player "1" --> "1" Game
+Game "1" *-- "2" Die
+@enduml

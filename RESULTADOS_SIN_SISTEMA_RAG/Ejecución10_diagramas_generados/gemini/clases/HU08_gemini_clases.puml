@@ -1,0 +1,38 @@
+@startuml
+
+class Student Ellipsis {
+  - studentId: String
+  - name: String
+}
+
+class Course Ellipsis {
+  - courseId: String
+  - title: String
+}
+
+class Enrollment Ellipsis {
+  - enrollmentId: String
+  - enrollmentDate: Date
+  - status: String
+  - student: Student
+  - course: Course
+  + updateDetails(newDate: Date, newStatus: String): void
+  + markAsCancelled(): void
+}
+
+class SystemUser Ellipsis {
+  - userId: String
+  + createEnrollment(student: Student, course: Course, enrollmentDate: Date): Enrollment
+  + modifyEnrollmentDetails(enrollment: Enrollment, newDate: Date, newStatus: String): void
+  + cancelEnrollment(enrollment: Enrollment): void
+  + getEnrollmentById(enrollmentId: String): Enrollment
+  + getEnrollmentsByStudent(student: Student): List<Enrollment>
+  + getEnrollmentsByCourse(course: Course): List<Enrollment>
+}
+
+Student "1" -- "0..*" Enrollment
+Course "1" -- "0..*" Enrollment
+
+SystemUser ..> Enrollment
+
+@enduml

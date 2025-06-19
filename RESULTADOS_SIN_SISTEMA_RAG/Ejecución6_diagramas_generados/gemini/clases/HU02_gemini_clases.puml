@@ -1,0 +1,16 @@
+@startuml
+class SystemUser Ellipsis {
+  + registerBook(title: String, author: String, yearOfPublication: int): Book
+}
+
+class Book Ellipsis {
+  - title: String
+  - author: String
+  - yearOfPublication: int
+  + getTitle(): String
+  + getAuthor(): String
+  + getYearOfPublication(): int
+}
+
+SystemUser "1" --> "*" Book : registers
+@enduml

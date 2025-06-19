@@ -1,0 +1,40 @@
+@startuml
+class User {
+    + manageInformation()
+}
+
+class Book {
+    - title: String
+    - author: Author[]
+    - publisher: Publisher
+    + registerBookDetails()
+    + updateBookDetails()
+    + getBookDetails()
+}
+
+class Author {
+    - name: String
+    - publications: Book[]
+    + registerAuthorDetails()
+    + updateAuthorDetails()
+    + getAuthorDetails()
+}
+
+class Publisher {
+    - name: String
+    - books: Book[]
+    + registerPublisherDetails()
+    + updatePublisherDetails()
+    + getPublisherDetails()
+}
+
+User --> Book : manages
+User --> Author : manages
+User --> Publisher : manages
+
+Book --> Author : has 
+Book --> Publisher : has
+
+Author --> Book : has 
+Publisher --> Book : publishes
+@enduml

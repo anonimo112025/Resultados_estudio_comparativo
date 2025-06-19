@@ -1,0 +1,14 @@
+@startuml
+class Student {
+    - name: String
+    + studId: String
+}
+
+class Course {
+    - name: String
+    # credits: Integer
+    - code: String
+}
+
+Student -->* Course
+@enduml

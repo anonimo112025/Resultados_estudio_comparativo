@@ -1,0 +1,28 @@
+@startuml
+class User {
+    name: String
+    email: String
+}
+
+class Book {
+    id: Integer
+    title: String
+    authors: Collection<Author>
+    publisher: Publisher
+    pageCount: Integer
+}
+
+class Author {
+    name: String
+    description: String
+}
+
+class Publisher {
+    name: String
+    website: String
+}
+
+Book -->|> Author
+
+Book --> Publisher
+@enduml

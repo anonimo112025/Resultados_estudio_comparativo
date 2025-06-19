@@ -1,0 +1,16 @@
+@startuml
+class User {
+    - username: String
+    - password: String
+    + register(username: String, password: String): boolean
+    + accessSystem(): void
+}
+
+class UserProfile {
+    - basicInformation: String
+    + createProfile(user: User): boolean
+    + viewProfile(): String
+}
+
+User --> UserProfile
+@enduml

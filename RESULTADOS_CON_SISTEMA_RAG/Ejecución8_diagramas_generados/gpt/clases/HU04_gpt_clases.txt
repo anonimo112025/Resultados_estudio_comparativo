@@ -1,0 +1,36 @@
+@startuml
+class User {
+    + manageClientInformation()
+    + performOperations()
+    + consultTransactions()
+}
+
+class Client {
+    - clientInformation: String
+    + getClientInformation(): String
+    + setClientInformation(clientInformation: String)
+}
+
+class Account {
+    - balance: Number
+    + deposit(amount: Number)
+    + withdraw(amount: Number)
+}
+
+class Transaction {
+    - transactionInfo: String
+    + consultTransaction(): String
+    + generateReport(): String
+}
+
+class Report {
+    + consultBalance(): String
+    + consultTransactions(): String
+}
+
+User --> Client
+User --> Account
+User --> Transaction
+Transaction --> Report
+Account --> Transaction
+@enduml

@@ -1,0 +1,42 @@
+@startuml
+class GameSystem {
+    + trackDice(availableDice: Integer)
+    - hasConstraints(Integer) // Number of dice needed to roll
+    + determinesAction()
+}
+
+class PlayerProfile {
+    + hasPlayer-ID(String)
+    - hasHP(Integer)
+    # hasLevel(Integer)
+    + hasItems(List<String>)
+}
+
+class GameAccess {
+    + canViewGameInfo() -> boolean
+    + canRollDice() -> boolean
+
+    method RollDice() {
+        if (canRollDice()) {
+            // Roll two dice and update game state
+            return determineRandomValue()
+        }
+        throw new Exception("Permission denied")
+    }
+
+    method ViewGameInfo() {
+        if (canViewGameInfo()) {
+            // Return relevant information about the game
+            return getGameInformation()
+        }
+        throw new Exception("Permission denied")
+    }
+}
+
+class Dice {
+    + hasSides(Integer) // Number of faces on each dice
+    - isActive(Boolean)
+    + setCurrentValue(Integer)
+}
+
+@enduml

@@ -1,0 +1,23 @@
+@startuml
+
+class SystemUser {
+  - username: String
+  - email: String
+  - passwordHash: String
+  + registerAndSetupProfile(username: String, email: String, passwordAttempt: String, initialName: String, initialContactInformation: String, initialBio: String): boolean
+  + login(username: String, passwordAttempt: String): boolean
+  + updateProfileDetails(newName: String, newContactInformation: String, newBio: String): void
+  + viewProfileDetails(): Map<String, String>
+}
+
+class UserProfile {
+  - name: String
+  - contactInformation: String
+  - bio: String
+  + setAllDetails(name: String, contactInformation: String, bio: String): void
+  + getAllDetails(): Map<String, String>
+}
+
+SystemUser "1" *-- "1" UserProfile
+
+@enduml

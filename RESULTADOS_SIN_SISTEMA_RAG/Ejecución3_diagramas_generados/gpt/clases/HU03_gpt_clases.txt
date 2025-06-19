@@ -1,0 +1,15 @@
+@startuml
+class SystemAdministrator {
+    + manageUserPermissions(): void
+    + assignPermissions(): void
+    + revokePermissions(): void
+    + viewCurrentPermissions(): void
+}
+
+class UserPermissions {
+    - permissionList: List
+    + validatePermission(): boolean
+}
+
+SystemAdministrator --> UserPermissions
+@enduml

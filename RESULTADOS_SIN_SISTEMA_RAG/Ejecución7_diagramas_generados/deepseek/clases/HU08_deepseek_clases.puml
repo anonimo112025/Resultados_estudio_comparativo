@@ -1,0 +1,67 @@
+@startuml
+    class Student {
+        - id: String
+        + name: String
+        + studentId: String
+        - major: String
+    }
+    
+    class Course {
+        - courseCode: String
+        - title: String
+        - description: String
+        - department: String
+        - credits: Integer
+        - enrolledStudents: List(Student)
+    }
+    
+    class Enrollment {
+        + student: Student
+        + course: Course
+        - enrolledDate: Date
+        - updatedDate: Date
+    }
+    
+    class Document {
+        - title: String
+        - creator: String
+        - source: String
+        - totalPages: Integer
+        - format: String
+        - keywords: List(String)
+        - modDate: String
+        + pageContent: String
+    }
+    
+    class Transaction {
+        - userId: String
+        - transactionId: String
+        - enrllvedAt: Date
+        - updatedAt: Date
+    }
+    
+    class Form {
+        + studentId: String
+        + courseId: String
+        - formDate: String
+    }
+    
+    class Page {
+        - content: String
+        # pageContent: String
+    }
+    
+    class FormView {
+        + student: Student
+        + enrolledCourse: Course
+        + form: Form
+        - formFieldValues: Map(String, String)
+    }
+    
+    // Relationships:
+    Student *-- Enrollment
+    Course *-- Enrollment
+    Enrollments --> Student
+    Enrollments --> Course
+    
+    @enduml

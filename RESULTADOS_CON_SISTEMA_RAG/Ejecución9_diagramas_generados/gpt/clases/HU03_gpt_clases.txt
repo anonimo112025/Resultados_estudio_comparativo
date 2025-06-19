@@ -1,0 +1,25 @@
+@startuml
+class Administrator {
+    - userId: String
+    + managePermissions(User, Permission): void
+    + assignPermission(User, Permission): void
+    + revokePermission(User, Permission): void
+    + viewUserPermissions(User): List<Permission>
+}
+
+class User {
+    - userId: String
+    - permissions: List<Permission>
+    + getUserId(): String
+}
+
+class Permission {
+    - resourceId: String
+    - accessType: String
+    + getResourceId(): String
+    + getAccessType(): String
+}
+
+Administrator --> User: "manages >"
+User --> Permission: "has >"
+@enduml

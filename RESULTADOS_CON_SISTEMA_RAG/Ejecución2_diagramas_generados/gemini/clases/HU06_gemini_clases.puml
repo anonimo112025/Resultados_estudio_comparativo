@@ -1,0 +1,30 @@
+@startuml
+class User {
+  + generatePersonalizedPDF(selectedQuestions: Question[], selectedTopics: Topic[]): PDFFile
+  + viewPDF(file: PDFFile): void
+  + downloadPDF(file: PDFFile): void
+}
+
+class PDFFile {
+  - name: String
+  /- structuredContent: String
+}
+
+class Question {
+  - text: String
+}
+
+class Topic {
+  - name: String
+}
+
+User "1" --> "0..*" PDFFile : generates
+
+PDFFile "1" o-- "0..*" Question : isStructuredFrom
+PDFFile "1" o-- "0..*" Topic : isStructuredFrom
+
+Topic "1" o-- "0..*" Question : groups
+
+User ..> Question : selects
+User ..> Topic : selects
+@enduml

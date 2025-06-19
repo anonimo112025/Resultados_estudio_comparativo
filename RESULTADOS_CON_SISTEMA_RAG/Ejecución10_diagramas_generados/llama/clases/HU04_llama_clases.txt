@@ -1,0 +1,34 @@
+@startuml
+class User {
+- username: String
+- password: String
++ login(): boolean
+}
+
+class ClientInformation {
+- name: String
+- address: String
+- balance: Float
++ updateBalance(): void
++ getBalance(): Float
+}
+ 
+class TransactionRecord {
+- date: Date
+- type: String
+- amount: Float
++ createTransaction(): void
++ getTransactions(): Array
+}
+
+class OperationManager {
++ performOperation(): void
++ getOperationResult(): Object
+}
+
+class BankingSystem {
++ manageClientInfo(): void
++ processTransactions(): void
+}
+ 
+@enduml

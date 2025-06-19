@@ -1,0 +1,41 @@
+@startuml
+
+class User {
+  - userId: String
+  + generateDocument(criteria: SelectionCriteria): PersonalizedPdfDocument
+  + viewDocument(document: PersonalizedPdfDocument)
+  + downloadDocument(document: PersonalizedPdfDocument)
+}
+
+class SelectionCriteria {
+}
+
+class Question {
+  - questionId: String
+  - text: String
+}
+
+class Topic {
+  - topicId: String
+  - name: String
+}
+
+class PersonalizedPdfDocument {
+  - documentId: String
+  - fileName: String
+  - creationTimestamp: DateTime
+  + getStructuredContent(): String
+}
+
+User "1" --> "*" PersonalizedPdfDocument : generates / accesses
+User ..> SelectionCriteria : uses
+
+SelectionCriteria "1" o-- "*" Question : selects
+SelectionCriteria "1" o-- "*" Topic : selects
+
+PersonalizedPdfDocument "1" o-- "*" Question : incorporates data from
+PersonalizedPdfDocument "1" o-- "*" Topic : incorporates data from
+
+Topic "*" -- "*" Question : related to
+
+@enduml

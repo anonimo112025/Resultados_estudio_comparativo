@@ -1,0 +1,53 @@
+@startuml
+class User {
+    - username: String
+    - password: String
+    + login(): boolean
+    + logout()
+    + createUserPermission(permission: Permission)
+    + getUserPermissions()
+    - preferences: List<Resource>  // Preferences for resources
+}
+
+class Resource {
+    - resourceId: String
+    - name: String
+    - type: String
+    - location?: String
+    - status: Boolean  // active or inactive
+    - createdAt: Date
+
+    + getResource ID(id: String)
+    + getName()
+    + getType()
+    + setLocation(location)
+    + getStatus()
+    + getCreatedAt()
+
+    - dependsOn: List<Permission>  // Resources depend on permissions for access control
+}
+
+class Permission {
+    - permissionID: String
+    - name: String
+    - type: String  // e.g., read, write
+    - resourceId: Integer
+    - active?: Boolean
+
+    + setPermission(permissionID: String, name: String, type: String)
+    - isActive(resourceID: Integer)
+
+    * hasResourcePermission(allowedUsers: List<User>)  // Permissions are held by users
+}
+
+User -> Resource: // User can interact with multiple Resources
+User -->> Permission: // User can assign Permissions to Resources
+Resource *-- Permission: // Each Resource depends on multiple Permissions
+Resource dependsOn(Permission permission) {
+    - type: String
+}
+Permission hasResourcePermission(User user) { 
+    allowedUsers: List<User> 
+}
+
+@enduml

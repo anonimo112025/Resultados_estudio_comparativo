@@ -1,0 +1,29 @@
+@startuml
+class User {
+    - username: String
+    - password: String
+    + login(): boolean
+}
+
+class Course {
+    - title: String
+    - courseCode: String
+    - creditHours: Integer
+    - department: String
+    - prerequisites: String[] 
+    + addStudent(SID: String)
+    + deleteEnrollment(SID: String)
+}
+
+class Enrollment {
+    - enrolledDate: Date
+    - totalPages: Integer
+    
+    + getEnrollments(): StudentID[]
+    
+    // Relationships:
+    -[...] Course
+    --[...] User (via enrollment methods)
+}
+
+@enduml

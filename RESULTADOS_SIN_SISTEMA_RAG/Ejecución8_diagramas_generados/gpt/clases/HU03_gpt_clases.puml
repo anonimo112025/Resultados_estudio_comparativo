@@ -1,0 +1,22 @@
+@startuml
+class SystemAdministrator {
+    + manageUserPermissions(): void
+    + viewUserPermissions(): List<Permission>
+}
+
+class User {
+    - permissions: List<Permission>
+}
+
+class Permission {
+    - resourceName: String
+    - accessLevel: String
+    + grantAccess(): void
+    + revokeAccess(): void
+    + validate(): boolean
+}
+
+SystemAdministrator --> User : manages
+User --> Permission : has
+SystemAdministrator --> Permission : assigns / revokes
+@enduml

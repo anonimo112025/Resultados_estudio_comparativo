@@ -1,0 +1,39 @@
+@startuml
+class User {
+  - userId: String
+}
+
+class Book {
+  - title: String
+  - isbn: String
+  + registerDetails(title: String, isbn: String): void
+  + updateDetails(newTitle: String, newIsbn: String): void
+  + getDetails(): String
+  + linkAuthor(author: Author): void
+  + assignPublisher(publisher: Publisher): void
+}
+
+class Author {
+  - authorId: String
+  - name: String
+  + registerDetails(authorId: String, name: String): void
+  + updateDetails(newName: String): void
+  + getDetails(): String
+  + linkBook(book: Book): void
+}
+
+class Publisher {
+  - publisherId: String
+  - name: String
+  + registerDetails(publisherId: String, name: String): void
+  + updateDetails(newName: String): void
+  + getDetails(): String
+  + addBookToCatalog(book: Book): void
+}
+
+Book "1" --> "1..*" Author
+Author "1" --> "0..*" Book
+
+Book "1" --> "1" Publisher
+Publisher "1" --> "0..*" Book
+@enduml

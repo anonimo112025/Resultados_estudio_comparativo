@@ -1,0 +1,32 @@
+@startuml
+class User {
+    - name: String
+    + assignTask(String task) : void
+}
+
+class Company {
+    - name: String
+    - employees: collection of User
+}
+
+class Department {
+    - name: String
+    *-- Company
+    # manager: User
+    - periods: collection of Period
+}
+
+class Employee {
+    - user: User
+    + performTask(String task) : void
+}
+
+class Period {
+    - name: String
+}
+
+class Task {
+    - description: String
+    - priority: Integer
+}
+@enduml

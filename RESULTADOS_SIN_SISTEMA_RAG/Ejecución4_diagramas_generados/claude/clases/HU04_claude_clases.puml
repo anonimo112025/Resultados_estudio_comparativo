@@ -1,0 +1,59 @@
+@startuml
+class User {
+    - userId: String
+    - username: String
+    - password: String
+    + manageClientInformation(): void
+    + consultTransactions(): List<Transaction>
+    + generateReport(): Report
+}
+
+class Client {
+    - clientId: String
+    - name: String
+    - email: String
+    - phoneNumber: String
+    - address: String
+    + updateInformation(): void
+    + getClientDetails(): String
+}
+
+class Account {
+    - accountId: String
+    - accountNumber: String
+    - balance: Double
+    - accountType: String
+    + deposit(amount: Double): void
+    + withdraw(amount: Double): boolean
+    + getBalance(): Double
+    + updateBalance(amount: Double): void
+}
+
+class Transaction {
+    - transactionId: String
+    - transactionDate: Date
+    - transactionType: String
+    - amount: Double
+    - description: String
+    + getTransactionDetails(): String
+    + processTransaction(): boolean
+}
+
+class Report {
+    - reportId: String
+    - reportDate: Date
+    - reportType: String
+    - content: String
+    + generateTransactionReport(): void
+    + generateBalanceReport(): void
+    + exportReport(): String
+}
+
+User --> Client : manages
+Client "1" --> "*" Account : owns
+Account "1" --> "*" Transaction : generates
+User --> Transaction : consults
+User --> Report : generates
+Report --> Transaction : includes
+Report --> Account : analyzes
+@enduml

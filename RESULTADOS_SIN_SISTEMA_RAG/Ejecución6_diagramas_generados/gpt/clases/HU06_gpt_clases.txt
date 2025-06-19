@@ -1,0 +1,28 @@
+@startuml
+class User {
+    - selectedQuestions: List<Question>
+    - selectedTopics: List<Topic>
+    + selectQuestion(Question): void
+    + selectTopic(Topic): void
+}
+
+class Question {
+    # questionText: String
+}
+
+class Topic {
+    # topicName: String
+}
+
+class Document {
+    - filepath: String
+    + generatePdf(User): void
+    + storePdf(): void
+    + viewPdf(): void
+    + downloadPdf(): void
+}
+
+User --> Question
+User --> Topic
+User --> Document
+@enduml

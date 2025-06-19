@@ -1,0 +1,36 @@
+@startuml
+
+class Player Ellipsis {
+  + takeTurn(game: DiceGame): GameAction
+}
+
+class Die Ellipsis {
+  - faceValue: int
+  + roll(): void
+  + getFaceValue(): int
+}
+
+class DiceGame Ellipsis {
+  - die1: Die
+  - die2: Die
+  + playTurn(): GameAction
+  # obtainRollResult(): RollResult
+  # determineGameAction(result: RollResult): GameAction
+}
+
+class RollResult Ellipsis {
+  - totalValue: int
+  + getTotalValue(): int
+}
+
+class GameAction Ellipsis {
+  + description: String
+  + applyEffect(): void
+}
+
+Player "1" --> "1" DiceGame
+DiceGame "1" *-- "2" Die
+DiceGame ..> RollResult
+DiceGame ..> GameAction
+
+@enduml

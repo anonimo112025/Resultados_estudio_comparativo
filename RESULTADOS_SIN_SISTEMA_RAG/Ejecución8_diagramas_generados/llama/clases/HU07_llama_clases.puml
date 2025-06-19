@@ -1,0 +1,34 @@
+@startuml
+
+class Document {
+  - metadata: Map<String, Object>
+}
+
+class User {
+  - username: String
+  - password: String
+  + login(): boolean
+}
+
+class Student {
+  - id: Integer
+  - name: String
+  + manage(): void
+}
+
+class Teacher {
+  - id: Integer
+  - name: String
+  + manage(): void
+}
+
+class DocumentManager {
+  - documents: List<Document>
+  + addDocument(Document): void
+}
+
+Document --|> DocumentManager
+User --|> Student
+User --|> Teacher
+
+@enduml

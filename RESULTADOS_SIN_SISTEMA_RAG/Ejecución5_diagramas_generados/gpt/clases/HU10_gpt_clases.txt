@@ -1,0 +1,31 @@
+@startuml
+class SystemUser {
+    + addElement(): void
+    + viewElement(): void
+}
+
+class DynamicForm {
+    + addComponent(component: FormComponent)
+    + viewComponent(): FormComponent[]
+}
+
+class FormComponent {
+    # componentName: String
+    + configureComponent(): void
+}
+
+class TextField extends FormComponent {
+    # textData: String
+    + inputText(): String
+}
+
+class DataEntry extends FormComponent {
+    # dataEntry: String
+    + inputData(): String
+}
+
+SystemUser --> DynamicForm: uses
+DynamicForm *-- FormComponent: contains
+TextField --|> FormComponent
+DataEntry --|> FormComponent
+@enduml

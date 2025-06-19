@@ -1,0 +1,18 @@
+@startuml
+   class User {
+       - selectedQuestions: List<String>
+       - selectedTopics: List<String>
+       - generatedPDFs: List<PDF>
+       + selectQuestions(questions: List<String>): void
+       + selectTopics(topics: List<String>): void
+       + generatePDF(): PDF
+   }
+
+   class PDF {
+       - content: String
+       - title: String
+       - creator: String
+       + saveContent(content: String): void
+       + setTitle(title: String): void
+   }
+   @enduml

@@ -1,0 +1,23 @@
+@startuml
+class Document {
+    - metadata: Map<String, String>
+    - page_content: String
+}
+
+class Book {
+    - title: String
+    - author: String
+    - publicationYear: Integer
+    - pageContent: Document
+}
+
+class User {
+    - username: String
+    - password: String
+    + registerBook(Book): void
+}
+
+Document -->+ Book
+User --> Book
+
+@enduml

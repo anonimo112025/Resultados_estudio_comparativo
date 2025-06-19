@@ -1,0 +1,38 @@
+@startuml
+
+class SystemUser {
+  + createStudentEnrollment(student: Student, course: Course, enrollmentDate: Date): Enrollment
+  + modifyStudentEnrollment(enrollment: Enrollment, newDate: Date, newStatus: String): void
+  + cancelStudentEnrollment(enrollment: Enrollment): void
+  + getEnrollmentsByStudent(student: Student): List<Enrollment>
+  + getEnrollmentsByCourse(course: Course): List<Enrollment>
+}
+
+class Student {
+  - studentId: String
+  - name: String
+}
+
+class Course {
+  - courseId: String
+  - title: String
+}
+
+class Enrollment {
+  - enrollmentId: String
+  - enrollmentDate: Date
+  - status: String
+  + update(newDate: Date, newStatus: String): void
+  + cancel(): void
+}
+
+SystemUser ..> Student
+SystemUser ..> Course
+SystemUser ..> Enrollment
+
+Student "1" -- "0..*" Enrollment
+Course "1" -- "0..*" Enrollment
+Enrollment -- "1" Student
+Enrollment -- "1" Course
+
+@enduml

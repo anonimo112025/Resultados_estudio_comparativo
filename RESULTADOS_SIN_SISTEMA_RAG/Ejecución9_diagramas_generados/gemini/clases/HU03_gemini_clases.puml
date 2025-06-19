@@ -1,0 +1,37 @@
+@startuml
+
+class SystemAdministrator {
+  + assignPermissionToUser(user: User, permission: Permission, resource: ApplicationResource): void
+  + revokePermissionFromUser(user: User, permission: Permission, resource: ApplicationResource): void
+  + viewUserPermissions(user: User): List<GrantedPermission>
+}
+
+class User {
+  - userId: String
+  - username: String
+}
+
+class Permission {
+  - permissionId: String
+  - name: String
+  - description: String
+}
+
+class ApplicationResource {
+  - resourceId: String
+  - name: String
+}
+
+class GrantedPermission {
+}
+
+SystemAdministrator ..> User
+SystemAdministrator ..> Permission
+SystemAdministrator ..> ApplicationResource
+SystemAdministrator ..> GrantedPermission
+
+User "1" o-- "*" GrantedPermission
+GrantedPermission "*" --> "1" Permission
+GrantedPermission "*" --> "1" ApplicationResource
+
+@enduml

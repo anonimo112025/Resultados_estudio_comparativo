@@ -1,0 +1,32 @@
+@startuml
+class User {
+  -userId: String
+  -username: String
+}
+
+class SystemAdministrator {
+  +grantPermission(user: User, permission: Permission, resource: ApplicationResource): void
+  +revokePermission(user: User, permission: Permission, resource: ApplicationResource): void
+  +listUserPermissions(user: User): List<AccessGrant>
+}
+
+class Permission {
+  -permissionId: String
+  -name: String
+  -description: String
+}
+
+class ApplicationResource {
+  -resourceId: String
+  -name: String
+}
+
+class AccessGrant {
+}
+
+SystemAdministrator --|> User
+
+AccessGrant "*" --> "1" User
+AccessGrant "*" --> "1" Permission
+AccessGrant "*" --> "1" ApplicationResource
+@enduml

@@ -1,0 +1,23 @@
+@startuml
+class User {
+    + userType: String
+    + name: String
+}
+
+class Student --|> User {
+    + manageStudent(): void
+}
+
+class Professor --|> User {
+    + manageProfessor(): void
+}
+
+class InformationManager {
+    + organizeData()
+    + consultData()
+    + updateData()
+}
+
+InformationManager --> Student
+InformationManager --> Professor
+@enduml

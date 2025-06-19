@@ -1,0 +1,27 @@
+@startuml
+class Player {
+    + RollDicePermission: boolean
+}
+
+class DiceGame {
+    - currentPlayer: Integer
+    + addPlayer(Integer diceRoll1, Integer diceRoll2)
+    + getResults(): List of Dictionary<String, String>
+    - checkIfPlayerCanBeRollDice(): boolean
+}
+
+class Game {
+    - players: List of Player
+}
+
+DiceGame <<*>> Game
+Player <<<<<<<(*:* Integer) >> addPlayer
+Integer <<<<<<* (>>>>>*) DiceGame.addPlayer
+Player <-> players
+List <<<<<<<(*:* Dictionary<String, String>> getResults
+Dictionary<String, String> >>>>> Games.getResults
+
+Player -| Game
+DiceGame -| checkIfPlayerCanBeRollDice
+Player -| RollDicePermission
+@enduml

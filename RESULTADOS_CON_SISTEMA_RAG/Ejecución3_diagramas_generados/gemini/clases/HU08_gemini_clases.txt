@@ -1,0 +1,21 @@
+@startuml
+class Student {
+  - studentId: String
+}
+
+class Course {
+  - courseId: String
+}
+
+class Enrollment {
+  - enrollmentDate: Date
+  - status: String
+  + getEnrollmentDate(): Date
+  + getStatus(): String
+  + modifyDetails(newDate: Date, newStatus: String): void
+  + cancel(): void
+}
+
+Student "0..*" -- "0..*" Course
+(Student, Course) .. Enrollment
+@enduml

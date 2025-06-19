@@ -1,0 +1,38 @@
+@startuml
+class Document {
+    - metadata: DocumentMetadata
+    + register(): void
+}
+
+class DocumentMetadata {
+    - producer: String
+    - creator: String
+    - creationdate: String
+    - source: String
+    - file_path: String
+    - total_pages: Integer
+    - format: String
+    - title: String
+    - author: String
+    - subject: String
+    - keywords: String
+    - moddate: String
+    - trapped: String
+    - modDate: String
+}
+
+class Book {
+    + register(): void
+    - title: String
+    - author: String
+    - year_of_publication: Integer
+}
+
+class SystemUser {
+    + login(): boolean
+}
+
+Document --> Book
+SystemUser --> Document
+
+@enduml

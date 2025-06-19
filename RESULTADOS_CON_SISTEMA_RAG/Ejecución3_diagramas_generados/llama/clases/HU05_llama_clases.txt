@@ -1,0 +1,27 @@
+@startuml
+class Player 
+    - username: String
+    - password: String
+    + login(): boolean
+    + rollDice(): Integer
+    + getAction(): String
+ 
+
+class Game 
+    - name: String
+    - description: String
+    + startGame(): void
+    + endGame(): void
+
+class DiceRoll {
+    + roll(): Integer
+}
+
+class Context {
+    - game: Game
+    + setGame(Game): void
+    + getAction(String): String
+}
+
+
+@enduml

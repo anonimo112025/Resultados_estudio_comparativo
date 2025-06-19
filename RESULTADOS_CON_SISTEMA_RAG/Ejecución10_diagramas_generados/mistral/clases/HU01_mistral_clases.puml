@@ -1,0 +1,24 @@
+@startuml
+   class User {
+       - name: String
+       - email: String
+       - password: String
+       - profile: Profile
+   }
+
+   class Profile {
+       - firstName: String
+       - lastName: String
+       - dateOfBirth: DateTime
+       - address: Address
+   }
+
+   class Address {
+       - street: String
+       - city: String
+       - state: String
+       - zipCode: Integer
+   }
+
+   User "1" --> "*" Profile
+   @enduml

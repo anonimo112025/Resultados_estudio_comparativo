@@ -1,0 +1,20 @@
+@startuml
+class User (
+    - id
+    + username: String
+    + password: String
+)
+class Book 
+    + title: String
+    + authors: List[Author]
+    + pages: Integer
+)
+class Author 
+    + name: String
+)
+class Publisher 
+    + publisherName: String
+)
+Book --> Publisher
+Book *-- Author
+@enduml

@@ -1,0 +1,35 @@
+@startuml
+class SystemUser Ellipsis {
+  + generatePersonalizedPdf(selectedQuestions: Question[], selectedTopics: Topic[]): PdfFile
+  + viewPdf(file: PdfFile): void
+  + downloadPdf(file: PdfFile): void
+}
+
+class PdfFile Ellipsis {
+  - fileName: String
+  - content: String
+  - generationDate: Date
+  + getFileName(): String
+  + getContent(): String
+  + getGenerationDate(): Date
+}
+
+class Question Ellipsis {
+  - id: String
+  - text: String
+  + getId(): String
+  + getText(): String
+}
+
+class Topic Ellipsis {
+  - id: String
+  - name: String
+  + getId(): String
+  + getName(): String
+}
+
+SystemUser "1" --> "0..*" PdfFile : generates
+PdfFile "1" o-- "1..*" Question : contains
+PdfFile "1" o-- "1..*" Topic : contains
+Question "*" -- "*" Topic : relatedTo
+@enduml

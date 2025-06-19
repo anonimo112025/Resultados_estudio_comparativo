@@ -1,0 +1,23 @@
+@startuml
+
+   class Administrator {
+       - username: String
+       - password: String
+       - permissions: Map<String, List<String>>
+
+       + login(): boolean
+       + assignPermission(resource: String, permission: String): void
+       + revokePermission(resource: String, permission: String): void
+       + viewPermissions(): void
+   }
+
+   class ApplicationResource {
+       - resourceId: String
+       - permissionsRequired: List<String>
+
+       + validatePermissions(permissions: List<String>): boolean
+   }
+
+   Administrator "1" --> "*" ApplicationResource
+
+   @enduml

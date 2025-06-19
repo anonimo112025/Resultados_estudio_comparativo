@@ -1,0 +1,18 @@
+@startuml
+class Player {
+    + rollDice(): int
+}
+
+class Game {
+    - progress: int
+    + determineAction(int): void
+}
+
+class Dice {
+    - value: int
+    + roll(): int
+}
+
+Player --> Dice : uses
+Player --> Game : "1" --> "1" interacts with
+@enduml

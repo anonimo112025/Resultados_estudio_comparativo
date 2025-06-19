@@ -1,0 +1,25 @@
+@startuml
+class User {
+    + addElementToForm(): void
+    + viewForm(): Form
+}
+
+class Form {
+    - textFields: TextField[]
+    - dataEntries: DataEntry[]
+    + modifyForm(): void
+    + presentInformation(): void
+}
+
+class TextField {
+    - text: String
+}
+
+class DataEntry {
+    - value: String
+}
+
+User --> Form
+Form *-- TextField
+Form *-- DataEntry
+@enduml

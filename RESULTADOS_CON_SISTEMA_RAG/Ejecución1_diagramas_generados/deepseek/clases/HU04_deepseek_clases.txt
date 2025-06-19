@@ -1,0 +1,38 @@
+@startuml
+class Client 
+    + hasName: String
+    + hasEmail: String
+    + hasClientId: String
+    
+    + createAccount(): void
+    - viewAccounts()
+    
+    - deposit_ACCOUNT(ACCOUNT): void
+    - withdraw_ACCOUNT(ACCOUNT): void
+endclass
+
+class Account 
+    + balance: Double
+    + iframes: HTMLContent
+    
+    + deposit(): void
+    + withdraw(): void
+endclass
+
+class Transaction 
+    + date: Date
+    + description: String
+    + amount: Double
+    - type: String ("deposit" | "withdrawal")
+    + status: String
+    
+    * client: Client
+    * account: Account
+endclass
+
+class Report 
+    + includesTransaction: Transaction
+    + includesClient: Client
+    + includesAccount: Account
+endclass
+@enduml

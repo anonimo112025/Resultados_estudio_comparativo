@@ -1,0 +1,27 @@
+@startuml
+
+class Client {
+    - id: Integer
+    - name: String
+    - balance: Double
+}
+
+class Transaction {
+    - id: Integer
+    - type: String
+    - amount: Double
+    - date: Date
+}
+
+class Document {
+    + getDocumentContent(): String
+    - pageNumber: Integer
+}
+
+class ClientTransaction {
+    - client: Client
+    - transaction: Transaction
+    + getTransactionDetails(): String
+}
+
+@enduml

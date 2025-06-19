@@ -1,0 +1,19 @@
+@startuml
+class User {
+    + manageEnrollments()
+}
+
+class Course {
+    - courseName: String
+}
+
+class Enrollment {
+    - enrollmentDate: Date
+    + trackEnrollment(): boolean
+    + modifyEnrollment(): boolean
+    + cancelEnrollment(): boolean
+}
+
+User "1" --> "*" Enrollment
+Enrollment --> "*" Course
+@enduml

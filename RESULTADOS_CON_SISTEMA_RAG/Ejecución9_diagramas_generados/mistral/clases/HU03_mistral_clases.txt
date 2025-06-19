@@ -1,0 +1,36 @@
+@startuml
+class Administrator {
+  - username: String
+  - password: String
+
+  + login(): boolean
+}
+
+class User {
+  - user_id: int
+  - name: String
+  - permissions: Set[Permission]
+
+  + getPermissions(): Set[Permission]
+  + assignPermission(permission: Permission): void
+  + revokePermission(permission: Permission): void
+}
+
+class Permission {
+  - permission_id: int
+  - resource: Resource
+
+  + getResource(): Resource
+}
+
+class Resource {
+  - resource_id: int
+  - name: String
+
+  + getName(): String
+}
+
+Administrator "1" --> "*" User
+User "--o" Permission
+Permission --o Resource
+@enduml

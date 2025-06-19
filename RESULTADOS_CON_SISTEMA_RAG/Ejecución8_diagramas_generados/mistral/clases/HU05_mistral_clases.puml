@@ -1,0 +1,15 @@
+@startuml
+class Player {
+    - name: String
+    - dice1: Die
+    - dice2: Die
+    - currentTurnResult: Int
+    + rollDice(): Void
+}
+
+class Die {
+    - value: Int
+    + getValue(): Int
+    + roll(): Void
+}
+@enduml

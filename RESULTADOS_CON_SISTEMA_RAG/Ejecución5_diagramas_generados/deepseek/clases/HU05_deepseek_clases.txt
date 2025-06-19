@@ -1,0 +1,24 @@
+@startuml
+class DiceGame {
+    + version: String
+    
+    class Player {
+        - username: String
+        + rollDice(): Int
+    }
+    
+    class Dice {
+        - sides: Int
+        - id: String
+    }
+    
+    class GameLogic {
+        
+    }
+    
+    // Associations
+    Dice o-- GameLogic
+    Player -->* GameLogic
+}
+
+@enduml

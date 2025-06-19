@@ -1,0 +1,34 @@
+@startuml
+class Player {
+    - name: String
+    
+    + rollDice(): Integer
+}
+
+class Dice {
+    + sides: Integer
+}
+
+class ActionRules {
+    
+    # Determine action based on dice result and game state
+    + getResult(Integer roll, GameState current) : String
+}
+
+class GameState {
+    
+    - currentHealth: Integer
+    - remainingResources: Integer
+    
+    + determineAction(Integer roll): Void
+}
+
+Player player --> ActionRules rules When player.rollsDice()
+Dice dice --> Player player
+
+GameState gameState <--> Player player Via action of determineAction(gameState, roll)
+Integer roll --> ActionRules rules
+ActionRules rules --> String result
+String result --> GameState gameState
+"""
+@enduml

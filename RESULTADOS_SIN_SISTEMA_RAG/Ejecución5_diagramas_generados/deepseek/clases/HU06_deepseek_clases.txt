@@ -1,0 +1,35 @@
+@startuml
+class User 
+    + generatePDF()
+    - selectQuestions(ListofQuestion) # Negative since selecting is more of an interaction than a method
+    + login() # If this were part of the story, but it's not mentioned in the user story provided.
+
+    association(
+        *-- Document
+        --* Questions
+    )
+    
+    interface DocumentStorage {
+        + getDocumentbyPath(String path)
+    }
+endclass
+
+class Question 
+    + getRelatedQuestions() # Method to retrieve associated questions for a document
+endclass
+
+class Document 
+    - creator: User
+    + title: String
+    + content: String
+    + totalPages: Integer
+    
+    association(
+        *-- DocumentStorage
+    )
+    
+    interface IHasSelectedQuestions : Question {
+        ListofQuestion selectedQuestions() -> ListofQuestion
+    }
+endclass
+@enduml

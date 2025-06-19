@@ -1,0 +1,34 @@
+@startuml
+class Player 
+    - username: String
+    - password: String
+    
+class DiceGame 
+    - name: String
+    - description: String
+    
+class GameTurn 
+    - turnNumber: Integer
+    - playerUsername: String
+    
+class RollResult 
+    - diceValue1: Integer
+    - diceValue2: Integer
+    
+class GameProgress 
+    - currentTurn: Integer
+    - playerDecision: String
+    
+class PlayerInteraction 
+    - interactionType: String
+    
+class InteractionResult 
+    - resultMessage: String
+
+Player --> GameTurn
+GameTurn --> RollResult
+RollResult --> GameProgress
+GameProgress --> PlayerInteraction
+PlayerInteraction --> InteractionResult
+
+@enduml

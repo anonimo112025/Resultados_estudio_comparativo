@@ -1,0 +1,30 @@
+@startuml
+class User {
+    - username: String
+    - password: String
+    
+    + createUserResource()
+    + grantPermission(String permissionId)
+}
+
+class Resource {
+    - name: String (e.g., "Application X")
+    - description: String (optional)
+
+    + userId: User
+    - permissions: Set of Permissions
+}
+
+class Permissions {
+    + id: Integer (primary key)
+    - permissionName: String
+
+    + isActivated: Boolean (default true)
+}
+
+User -> Resource
+Resource *-- Permissions
+User --> Permissions (user can assign or have multiple)
+User --> Resource (user assigned to resource)
+
+@enduml

@@ -1,0 +1,22 @@
+@startuml
+class Player {
+  - activeGame: Game
+  + requestToRollDice(): void
+}
+
+class Game {
+  - die1: Die
+  - die2: Die
+  + executeDiceRoll(): void
+  - getCombinedDiceValue(): int
+  - determineResultingAction(value: int): void
+}
+
+class Die {
+  - sideUp: int
+  + roll(): int
+}
+
+Player "1" --> "1" Game
+Game "1" *-- "2" Die
+@enduml

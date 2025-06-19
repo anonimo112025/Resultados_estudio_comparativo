@@ -1,0 +1,14 @@
+@startuml
+class Player {
+    - username: String
+    - email: String
+}
+
+class Game {
+    - name: String
+    - rules: String
+}
+
+@ associations
+Player --|> Game
+@enduml

@@ -1,0 +1,22 @@
+@startuml
+class User {
+    - selectedQuestions: String[]
+    - selectedTopics: String[]
+    + selectQuestions(): void
+    + selectTopics(): void
+}
+
+class PDFDocument {
+    - questions: String[]
+    - topics: String[]
+    + generateDocument(): void
+}
+
+class SystemStorage {
+    + storeDocument(document: PDFDocument): void
+    + retrieveDocument(): PDFDocument
+}
+
+User --> PDFDocument : generates
+PDFDocument o-- SystemStorage : is stored in
+@enduml

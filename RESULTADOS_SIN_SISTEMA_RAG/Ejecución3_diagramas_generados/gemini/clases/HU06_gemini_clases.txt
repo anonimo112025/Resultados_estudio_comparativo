@@ -1,0 +1,29 @@
+@startuml
+class User Ellipsis {
+  + generatePersonalizedDocument(selectedQuestions: Question[], selectedTopics: Topic[]): PersonalizedPdfFile
+}
+
+class PersonalizedPdfFile Ellipsis {
+  - fileName: String
+  - structuredContent: String
+  + view()
+  + download()
+}
+
+class Question Ellipsis {
+  - questionId: String
+  - text: String
+}
+
+class Topic Ellipsis {
+  - topicId: String
+  - name: String
+}
+
+User "1" --> "0..*" PersonalizedPdfFile : generates
+
+PersonalizedPdfFile "1" o-- "1..*" Question : usesContentFrom
+PersonalizedPdfFile "1" o-- "1..*" Topic : isOrganizedBy
+
+Topic "1" o-- "0..*" Question : groups
+@enduml

@@ -1,0 +1,32 @@
+@startuml
+class User {
+    - username: String
+    - password: String
+    + login(): boolean
+}
+
+class Book {
+    - title: String
+    - authors: List[Author]
+    - publisher: Publisher
+    - totalPages: Integer
+    - format: String
+    - creationDate: Date
+
+    # Relationships
+    *-- Author
+    o-- Publisher
+}
+
+class Author {
+    - name: String
+    - keywords?: List<String>
+    + register(): boolean
+}
+
+class Publisher {
+    - name: String
+    - books: List[Book]
+    + publish(): Book
+}
+@enduml

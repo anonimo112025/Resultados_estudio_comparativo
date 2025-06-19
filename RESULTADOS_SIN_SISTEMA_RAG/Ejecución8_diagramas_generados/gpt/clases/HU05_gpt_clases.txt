@@ -1,0 +1,12 @@
+@startuml
+class Player {
+    - dice: Dice[2]
+    + rollDice(): Integer
+}
+
+class Dice {
+    + roll(): Integer
+}
+
+Player *-- Dice
+@enduml

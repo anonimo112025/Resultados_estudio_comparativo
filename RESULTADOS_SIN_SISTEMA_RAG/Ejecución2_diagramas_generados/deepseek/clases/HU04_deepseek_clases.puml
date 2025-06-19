@@ -1,0 +1,47 @@
+@startuml
+class Document {
+    - name: String
+    + pageContent: String
+    - totalPages: Int
+    + creator: String
+}
+
+class Client {
+    - name: String
+    - email: String
+    + balance: Double
+    
+    - methods: {
+        + createNewAccount(): void
+    }
+}
+
+class BankSystem {
+    - branches: List<String>
+    - accountTypes: Set<String>
+    
+    - clientBalances: Map<Client, Double>
+    - transactions: List<Transaction>
+
+    + listTransactions(): void
+    + transferFunds(source: Client, amount: Double)
+}
+
+class Transaction {
+    - description: String
+    - date: String
+    - amounts: List<Double>
+
+    + addTransaction(): void
+    + getTransactionById(id: Int): Transaction
+    + updateTransaction(id: Int, description: String, amount: Double): void
+    + deleteTransaction(id: Int): void
+    + generateReport(): void
+}
+
+Document --> Client
+
+BankSystem *-- Transaction
+
+Client <--> Document
+@enduml

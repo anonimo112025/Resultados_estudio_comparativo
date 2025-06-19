@@ -1,0 +1,41 @@
+@startuml
+class User {
+    - username: String
+    - password: String
+    - userType: Enum("Student", "Teacher")
+}
+
+class Student {
+    - username: String
+    - password: String
+    + register(): boolean
+}
+
+class Teacher {
+    - username: String
+    - password: String
+    + teach(): boolean
+}
+
+class Classroom {
+    - classroomName: String
+    - subjects: Set<String>
+    - students: User "1" --> *
+    - teachers: User "1" --> *
+}
+
+class Subject {
+    - subjectName: String
+    - topics: Set<String>
+    - teachers: User "*" --> Teacher
+    - students: User "*" --> Student
+}
+
+class Course {
+    - courseName: String
+    - subjects: Set<Subject> "n"
+    - students: User "*" --> Student
+    - teachers: User "*" --> Teacher
+}
+
+@enduml

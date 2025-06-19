@@ -1,0 +1,41 @@
+@startuml
+class Client {
+    + initializeClient()
+    - getName(): String
+    - getEmail(): String
+    - setBalance(String)
+    + deposit(String amount)
+    + withdraw(String amount)
+    - getBalance()
+    # consultTransaction(String transactionID): Transaction
+}
+
+class BankingSystem {
+    - db: Database
+    + initializeClient(Client client)
+    - processTransaction(Transaction transaction)
+    - generateReport(Client client, Date startDate, Date endDate)
+}
+
+class Transaction {
+    - tid: String
+    + type: String (Deposit|Withdraw)
+    + amount: Double
+    + fromAccount: Account
+    + toAccount: Account
+}
+
+class Report {
+    - transactions: List<Transaction>
+    + summarizeClientReport(Client client): void
+}
+
+# Relationships:
+Client -> BankingSystem: initializeClient
+Client->: getBalance
+Client->: consultTransaction
+BankingSystem->ProcessTransaction: Transaction
+BankingSystem->generateReport: Report, Date, Date
+Transaction..> BankingSystem: db
+Report -.: BankingSystem: summarizeClientReport
+@enduml

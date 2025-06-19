@@ -1,0 +1,33 @@
+@startuml
+class User {
+    - username: String
+}
+
+class Client {
+    + name: String
+    + balance: Decimal
+    - active: Boolean
+    + transactionHistory: List<Transaction>
+}
+
+class Transaction {
+    + date: Date
+    + description: String
+    + amount: Decimal
+    - status: String  # 'pending' | 'completed'
+    + reference: String
+    
+    + createTransaction(client: Client, amount: Decimal) -> void
+    + updateTransaction(id: Integer, description: String) -> void
+    - deleteTransaction(id: Integer)
+}
+
+class Report {
+    + filteredBy: String
+    + criteria: String
+    + results: List<Transaction>  # Only show completed transactions
+    
+    + generateReport() -> void
+}
+
+@enduml

@@ -1,0 +1,24 @@
+@startuml
+class Document {
+    - metadata: Map<String, String>
+    - page_content: String
+}
+
+class Form {
+    + elements: List<Element>
+}
+
+class Element {
+    - type: String
+    + add() : void
+    + view()
+}
+
+class User {
+    - username: String
+    - password: String
+}
+Document --> User
+User --> Form
+
+@enduml

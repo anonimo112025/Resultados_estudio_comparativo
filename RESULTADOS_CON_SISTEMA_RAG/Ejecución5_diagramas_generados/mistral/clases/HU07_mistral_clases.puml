@@ -1,0 +1,16 @@
+@startuml
+class Student {
+  - name: String
+  - userType: String
+}
+
+class Teacher {
+  - name: String
+  - userType: String
+}
+
+Student "1" --|> Manuales : has_manuals
+Teacher "1" --|> Manuales : has_manuals
+Manuales --o Student : manages_student
+Manuales --o Teacher : manages_teacher
+@enduml

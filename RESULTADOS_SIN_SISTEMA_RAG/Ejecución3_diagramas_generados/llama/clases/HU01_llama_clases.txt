@@ -1,0 +1,31 @@
+@startuml
+class User {
+  - username: String
+  - password: String
+  + login(): boolean
+}
+
+class Profile {
+  - userId: Integer
+  - name: String
+  - email: String
+  + updateName()
+  + updateEmail()
+}
+
+class Documentation {
+  - documentId: Integer
+  - title: String
+  - content: String
+  + saveContent()
+}
+
+User --> Profile
+Profile --> Documentation
+
+Documentation ..> Profile
+
+User o---> Profile
+Profile "1" --> Documentation
+
+@enduml

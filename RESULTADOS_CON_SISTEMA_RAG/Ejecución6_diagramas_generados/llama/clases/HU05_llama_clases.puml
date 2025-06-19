@@ -1,0 +1,27 @@
+@startuml
+class Player 
+    - name: String
+    - score: Integer
+    + rollDice(dice1: Dice, dice2: Dice): Result
+class Game 
+    - name: String
+    - rules: Rule[]
+    + playTurn(player: Player, diceRoll: Result)
+class DiceGame 
+    + initialize(): void
+    - startGame(player: Player)
+class Rule 
+    - name: String
+    - description: String
+class Result 
+    - value: Integer
+
+class ResultInterpreter 
+    # interpret(diceValue: Integer): String
+    + interpret(diceValue: Integer): String
+
+Player --> Game
+DiceGame --* ResultInterpreter
+Game --* Rule
+Rule --> Result
+@enduml

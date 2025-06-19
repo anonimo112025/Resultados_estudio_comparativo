@@ -1,0 +1,34 @@
+@startuml
+
+   class User {
+       - id: Integer
+       - firstName: String
+       - lastName: String
+       - email: String
+       - password: String
+       + register(): void
+       + viewProfile(): void
+       + updateProfile(): void
+   }
+
+   class Profile {
+       - user: User
+       - firstName: String
+       - lastName: String
+       - email: String
+       - basicInfo: BasicInfo
+       + displayProfile(): void
+   }
+
+   class BasicInfo {
+       - user: User
+       - firstName: String
+       - lastName: String
+       - email: String
+       + getFullName(): String
+   }
+
+   User "1" --> "*" Profile
+   Profile o-- BasicInfo
+
+   @enduml

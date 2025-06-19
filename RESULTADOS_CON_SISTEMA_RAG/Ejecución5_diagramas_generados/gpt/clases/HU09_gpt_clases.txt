@@ -1,0 +1,26 @@
+@startuml
+class User {
+    + manageInformationAboutBooks(): void
+    + registerData(): void
+    + consultData(): void
+}
+
+class Book {
+    - title: String
+    + associateWithAuthor(author: Author): void
+}
+
+class Author {
+    - name: String
+    + linkWithPublication(book: Book): void
+}
+
+class Publisher {
+    - name: String
+    + publishBook(book: Book): void
+}
+
+User --> Book : manages
+Book "1" --> "*" Author : associated with
+Author --> Publisher : published by
+@enduml

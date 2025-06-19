@@ -1,0 +1,36 @@
+@startuml
+class Player {
+    + takeTurn(game: Game): void
+}
+
+class Die {
+    - faceValue: int
+    + roll(): void
+    + getFaceValue(): int
+}
+
+class Game {
+    - die1: Die
+    - die2: Die
+    + rollDice(): RollOutcome
+    + determineAction(outcome: RollOutcome): GameAction
+}
+
+class RollOutcome {
+    - die1Value: int
+    - die2Value: int
+    + /totalValue: int
+    + getDie1Value(): int
+    + getDie2Value(): int
+}
+
+class GameAction {
+    - description: String
+    + getDescription(): String
+}
+
+Player "1" --> "1" Game
+Game "1" *-- "2" Die
+Game ..> RollOutcome
+Game ..> GameAction
+@enduml

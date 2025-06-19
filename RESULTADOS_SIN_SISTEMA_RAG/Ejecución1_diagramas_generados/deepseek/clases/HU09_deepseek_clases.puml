@@ -1,0 +1,52 @@
+@startuml
+class User {
+    - username: String
+    - password: String
+    
+    + createUser()
+    + login()
+}
+
+class Book {
+    - title: String
+    - author: Author
+    - publisher: Publisher
+    - pages: Integer
+    - format: String
+    - metadata: Map<String, Object>
+
+    + getTitle(): String
+    + setDescription(String description)
+    - updateMetadata(Map<String, Object>)
+}
+
+class Author {
+    - name: String
+    - nationality: String
+    
+    + registerAuthor()
+    + viewAuthors()
+    - editDetails(String name, String nationality)
+}
+
+class Publisher {
+    - businessName: String
+    - address: String
+    - website: String
+    - isbn10: String
+    - isbn13: String
+    
+    + registerAuthor(Author author)
+    + manageBooks(Book book)
+    + displayAuthors()
+    + displayBooks()
+}
+
+// Relationships:
+User *-- Book
+Author o-- Book
+Author --|> Publisher
+Publisher o-- Author
+Publisher o-- Book
+
+@enduml

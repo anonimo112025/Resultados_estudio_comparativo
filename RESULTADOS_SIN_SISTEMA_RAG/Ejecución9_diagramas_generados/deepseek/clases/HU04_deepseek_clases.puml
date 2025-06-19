@@ -1,0 +1,35 @@
+@startuml
+class Client {
+    - balance: Number
+    
+    + getBalance(): Number
+    + listTransactions(): List<Transaction>
+    + addTransaction(Transaction)
+    + removeTransaction(Transaction)
+    
+    + deposit(Number amount): void
+    + withdraw(Number amount): void
+}
+
+class Transaction {
+    # transactions related to a client
+    
+    - id: String
+    - date: String
+    - description: String
+    - type: String["deposit", "withdraw"]
+    - amount: Number
+    - status: String["pending", "confirmed"]
+    
+    + execute(): void
+    + cancel(): void
+}
+
+class TransactionReport {
+    # aggregates transaction reports for a client
+    
+    - generateSummary(): String
+    
+    - getClientId(String clientId): TransactionRecord*
+}
+@enduml

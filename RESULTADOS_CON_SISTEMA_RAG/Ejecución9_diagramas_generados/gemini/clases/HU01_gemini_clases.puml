@@ -1,0 +1,26 @@
+@startuml
+
+class SystemUser {
+  - userId: String
+  - username: String
+  - hashedPassword: String
+  - profile: Profile
+  + register(username: String, password: String, email: String, displayName: String): void
+  + login(username: String, password: String): boolean
+  + viewProfile(): Profile
+  + updateProfile(newEmail: String, newDisplayName: String): void
+}
+
+class Profile {
+  - profileId: String
+  - email: String
+  - displayName: String
+  + getEmail(): String
+  + getDisplayName(): String
+  + updateEmail(email: String): void
+  + updateDisplayName(name: String): void
+}
+
+SystemUser "1" *-- "1" Profile
+
+@enduml

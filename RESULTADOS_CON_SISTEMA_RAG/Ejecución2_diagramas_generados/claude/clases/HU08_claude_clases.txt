@@ -1,0 +1,30 @@
+@startuml
+class Student {
+    - studentId: String
+    - name: String
+    - email: String
+    + enroll(): boolean
+    + withdraw(): boolean
+}
+
+class Course {
+    - courseId: String
+    - courseName: String
+    - capacity: int
+    + addStudent(): boolean
+    + removeStudent(): boolean
+}
+
+class Enrollment {
+    - enrollmentId: String
+    - enrollmentDate: Date
+    - status: String
+    + modify(): boolean
+    + cancel(): boolean
+}
+
+Student "1" --> "*" Enrollment
+Course "1" --> "*" Enrollment
+Enrollment --> Student
+Enrollment --> Course
+@enduml

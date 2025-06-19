@@ -1,0 +1,20 @@
+@startuml
+class User {
+    + manageEnrollments()
+}
+class Course {
+    + enrollStudent(student: User)
+    + unenrollStudent(student: User)
+}
+class Enrollment {
+    - courseId: String
+    - studentId: String
+    + recordEnrollment()
+    + modifyEnrollment()
+    + cancelEnrollment()
+}
+
+User "1" --> "*" Course : Enrolls in
+User "1" --> "*" Enrollment : Manages
+Course "1" --> "*" Enrollment : Has
+@enduml

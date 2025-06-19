@@ -1,0 +1,12 @@
+@startuml
+class User 
+    - registrationForm
+
+class Profile (
+    name: String -,
+    email: String -,
+    phoneNumber: String -,
+    password: String -
+)
+User --> Profile
+@enduml

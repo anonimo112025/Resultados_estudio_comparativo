@@ -1,0 +1,29 @@
+@startuml
+class Player Ellipsis
+
+class Game Ellipsis {
+  + playerRollsDice(): DiceRoll
+  + determineAction(outcome: DiceRoll): GameAction
+}
+
+class Dice Ellipsis {
+  + roll(): int
+}
+
+class DiceRoll Ellipsis {
+  - firstDieValue: int
+  - secondDieValue: int
+  + getTotalValue(): int
+  + getFirstDieValue(): int
+  + getSecondDieValue(): int
+}
+
+class GameAction Ellipsis {
+  - description: String
+}
+
+Player "1" -- "1" Game
+Game "1" *-- "2" Dice
+Game ..> DiceRoll
+Game ..> GameAction
+@enduml

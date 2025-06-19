@@ -1,0 +1,32 @@
+@startuml
+    class Administrator {
+        - username: String
+        - password: String
+        - users: List<User>
+        + assignPermissions(user: User, permissions: Permission[])
+        + revokePermissions(user: User, permissions: Permission[])
+        + viewCurrentPermissions()
+    }
+
+    class User {
+        - username: String
+        - password: String
+        + getPermissions(): Permission[]
+    }
+
+    class Permission {
+        - resource: Resource
+        - accessLevel: AccessLevel
+        + canAccess(resource: Resource): boolean
+    }
+
+    class Resource {
+        - name: String
+        + getName(): String
+    }
+
+    class AccessLevel {
+        - level: String
+        + getLevel(): String
+    }
+    @enduml

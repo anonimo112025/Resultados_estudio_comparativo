@@ -1,0 +1,22 @@
+@startuml
+class Form {
+  - elements: List<Element>
+  - customizations: Customization
+}
+
+abstract class Element {
+  - name: String
+  - value: String
+}
+
+class TextField extends Element {}
+class DataEntry extends Element {}
+
+class Customization {
+  - format: FormatType
+  - accessibility: AccessibilityLevel
+}
+
+enum FormatType { PLAIN, RICH_TEXT }
+enum AccessibilityLevel { BASIC, ADVANCED }
+@enduml

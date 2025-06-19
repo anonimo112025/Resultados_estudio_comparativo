@@ -1,0 +1,24 @@
+@startuml
+class RegisteredUser {
+  - username: String
+  - password: String
+  - personalProfile: PersonalProfile
+
+  + register(username: String, password: String): void
+}
+
+class PersonalProfile {
+  - userName: String
+  - basicInformation: BasicInfo
+
+  + view(): void
+  + edit(): void
+}
+
+class BasicInfo {
+  - name: String
+  - email: String
+
+  // constructors, methods, and relationships omitted for simplicity
+}
+@enduml

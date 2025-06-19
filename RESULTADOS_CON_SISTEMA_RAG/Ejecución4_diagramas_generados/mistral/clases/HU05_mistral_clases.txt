@@ -1,0 +1,14 @@
+@startuml
+    class Player {
+        - dice1: Dice
+        - dice2: Dice
+        - currentTurn: boolean
+    }
+
+    class Dice {
+        - value: int
+    }
+
+    Player "1" --> Dice "*" dice1
+    Player "1" --> Dice "*" dice2
+    @enduml

@@ -1,0 +1,37 @@
+@startuml
+
+User {
+  id: ID
+  username: String
+  password: String
+  email: String
+  firstName: String
+  lastName: String
+  birthDate: Date
+
+  login(): Boolean
+}
+
+Account (A) -> User (U):
+  assignTo(U)
+
+Transaction (T) -> Account (A):
+  date: DateTime
+  amount: Decimal
+  description: String
+  type: String
+
+Report {
+  id: ID (optional)
+  dateRange: DateRange (optional)
+  
+  transactionData: List<Transaction>
+}
+
+TransactionReport extends Report:
+  transactionList: List<Transaction>
+
+BalanceReport extends Report:
+  balanceSheet: List<Account>
+
+@enduml

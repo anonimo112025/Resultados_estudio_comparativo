@@ -1,0 +1,12 @@
+@startuml
+class User 
+    - registerBook(File1)
+    - registerBook(File2)
+end
+class File1
+    + registerBook()
+end
+class File2
+    + registerBook()
+end
+@enduml

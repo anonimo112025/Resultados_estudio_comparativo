@@ -1,0 +1,22 @@
+@startuml
+class User {
+    + selectQuestions(): void
+    + selectTopics(): void
+}
+
+class PDFGenerator {
+    - selectedQuestions: List
+    - selectedTopics: List
+    + generatePDF(): void
+    + savePDF(): void
+}
+
+class PDFFile {
+    - content: String
+    + download(): void
+    + view(): void
+}
+
+User --> PDFGenerator
+PDFGenerator --> PDFFile
+@enduml

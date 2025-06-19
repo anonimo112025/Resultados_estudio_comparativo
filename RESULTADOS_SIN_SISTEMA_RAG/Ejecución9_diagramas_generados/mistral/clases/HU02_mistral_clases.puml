@@ -1,0 +1,8 @@
+@startuml
+   class Book {
+       - title: String
+       - author: String
+       - yearPublished: int
+       - data: String
+   }
+   @enduml

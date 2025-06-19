@@ -1,0 +1,18 @@
+@startuml
+class SystemUser as "SystemUser Ellipsis" {
+    - username: String
+    - passwordHash: String
+    - email: String
+    + register(usernameIn: String, passwordIn: String, emailIn: String)
+    + updateMyBasicInformation(newInformation: Map<String, String>)
+    + viewMyBasicInformation(): Map<String, String>
+}
+
+class Profile as "Profile Ellipsis" {
+    - basicInformation: Map<String, String>
+    + updateBasicInformation(newInformation: Map<String, String>)
+    + getBasicInformation(): Map<String, String>
+}
+
+SystemUser "1" *-- "1" Profile
+@enduml

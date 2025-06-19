@@ -1,0 +1,20 @@
+@startuml
+class User Ellipsis {
+  -username: String
+  -password: String
+  -userProfile: Profile
+  +register(usernameData: String, passwordData: String, fullNameData: String, emailData: String): boolean
+  +manageBasicInformation(newFullName: String, newEmail: String): void
+  +viewProfile(): Profile
+}
+
+class Profile Ellipsis {
+  -fullName: String
+  -email: String
+  +updateInformation(fullNameData: String, emailData: String): void
+  +getFullName(): String
+  +getEmail(): String
+}
+
+User "1" *-- "1" Profile
+@enduml

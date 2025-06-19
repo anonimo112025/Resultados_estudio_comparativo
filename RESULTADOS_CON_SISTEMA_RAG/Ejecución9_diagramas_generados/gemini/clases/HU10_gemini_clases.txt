@@ -1,0 +1,47 @@
+@startuml
+
+class User {
+  + createForm(name: String): Form
+  + addElementToForm(targetForm: Form, newElement: FormElement): void
+  + viewForm(targetForm: Form): void
+  + modifyFormName(targetForm: Form, newName: String): void
+  + removeElementFromForm(targetForm: Form, elementToRemove: FormElement): void
+  + deleteForm(targetForm: Form): void
+}
+
+class Form {
+  - name: String
+  + addElement(element: FormElement): void
+  + removeElement(element: FormElement): void
+  + getElements(): List<FormElement>
+  + setName(name: String): void
+  + getName(): String
+}
+
+class FormElement {
+  # label: String
+  + getLabel(): String
+  + setLabel(label: String): void
+  + display(): String
+}
+
+class TextField {
+  - textValue: String
+  + display(): String
+  + setValue(text: String): void
+  + getValue(): String
+}
+
+class DataEntry {
+  - dataValue: String
+  + display(): String
+  + setData(entry: String): void
+  + getData(): String
+}
+
+User "1" -- "0..*" Form
+Form "1" *-- "0..*" FormElement
+TextField --|> FormElement
+DataEntry --|> FormElement
+
+@enduml

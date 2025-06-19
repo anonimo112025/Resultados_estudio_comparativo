@@ -1,0 +1,14 @@
+@startuml
+class User {
+    + register(): void
+    - profile: UserProfile
+}
+
+class UserProfile {
+    - basicInformation: String
+    + displayProfile(): String
+    + manageInformation(information: String): void
+}
+
+User -- UserProfile
+@enduml

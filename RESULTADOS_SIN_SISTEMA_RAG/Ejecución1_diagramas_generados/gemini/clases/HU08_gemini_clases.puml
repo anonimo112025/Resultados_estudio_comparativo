@@ -1,0 +1,32 @@
+@startuml
+
+class SystemUser {
+  + createEnrollment(student: Student, course: Course, enrollmentDate: Date): Enrollment
+  + modifyEnrollmentStatus(enrollment: Enrollment, newStatus: String)
+  + cancelEnrollment(enrollment: Enrollment)
+  + viewEnrollments(): List<Enrollment>
+}
+
+class Student Ellipsis
+
+class Course Ellipsis
+
+class Enrollment {
+  - enrollmentDate: Date
+  - status: String
+  + getEnrollmentDate(): Date
+  + getStatus(): String
+  + setStatus(newStatus: String)
+}
+
+SystemUser ..> Student
+SystemUser ..> Course
+SystemUser ..> Enrollment
+
+Enrollment --> "1" Student
+Enrollment --> "1" Course
+
+Student "1" --> "0..*" Enrollment
+Course "1" --> "0..*" Enrollment
+
+@enduml

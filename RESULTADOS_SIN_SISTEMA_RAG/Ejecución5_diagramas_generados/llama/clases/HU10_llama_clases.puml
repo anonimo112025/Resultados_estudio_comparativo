@@ -1,0 +1,30 @@
+@startuml
+class Document {
+    - metadata: Map<String, String>
+    + getPageContent(): String
+}
+
+class PageContent {
+    - text: String
+    - elements: List<Element>
+}
+
+class Element {
+    - type: String
+}
+
+class UserForm {
+    + addElement(): void
+    - elements: List<PageContent>
+}
+
+class DynamicForm {
+    - fields: Map<String, Field>
+}
+
+class Field {
+    - type: String
+    + getFieldValue(): String
+}
+
+@enduml

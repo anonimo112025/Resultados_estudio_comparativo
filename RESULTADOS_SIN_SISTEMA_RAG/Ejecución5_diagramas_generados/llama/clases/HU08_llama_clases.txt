@@ -1,0 +1,31 @@
+@startuml
+class Document {
+    - metadata: Map<String, Object>
+    + getPageContent(): String
+    + getTitle(): String
+}
+
+class StudentEnrollment {
+    - document: Document reference
+    # enrolledCourses: Set<Course> reference
+}
+
+class Course {
+    - name: String
+    - enrollments: StudentEnrollment collection
+    + addEnrollment(StudentEnrollment)
+    + removeEnrollment(StudentEnrollment)
+}
+
+class User {
+    - username: String
+    - password: String
+    + login(): boolean
+}
+
+Document --> StudentEnrollment
+StudentEnrollment --|> Course
+Course --> StudentEnrollment
+User o-- StudentEnrollment
+
+@enduml

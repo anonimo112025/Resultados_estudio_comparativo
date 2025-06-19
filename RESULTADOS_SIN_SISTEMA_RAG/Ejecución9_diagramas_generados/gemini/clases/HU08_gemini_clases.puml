@@ -1,0 +1,22 @@
+@startuml
+
+class Student {
+  + getEnrollments(): List<Enrollment>
+}
+
+class Course {
+  + getEnrollments(): List<Enrollment>
+}
+
+class Enrollment {
+  - enrollmentDate: Date
+  - status: String
+  + {static} createEnrollment(student: Student, course: Course, enrollmentDate: Date): Enrollment
+  + updateStatus(newStatus: String): void
+  + cancel(): void
+}
+
+Student "0..*" -- "0..*" Course
+(Student, Course) .. Enrollment
+
+@enduml

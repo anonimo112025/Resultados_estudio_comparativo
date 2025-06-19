@@ -1,0 +1,23 @@
+@startuml
+class Administrator {
+    + assignPermissions(User)
+    + revokePermissions(User)
+    + viewPermissions(User)
+}
+
+class Permission {
+    - resource: String
+}
+
+class User {
+    - permissions: Permission[]
+}
+
+class SystemValidator {
+    + validatePermissions(User)
+}
+
+Administrator --> User: "assigns/revoke"
+User --> Permission: "has"
+SystemValidator ..> User: "validates"
+@enduml

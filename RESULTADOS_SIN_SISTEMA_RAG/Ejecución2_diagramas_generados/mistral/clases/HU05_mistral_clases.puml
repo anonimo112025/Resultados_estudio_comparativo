@@ -1,0 +1,19 @@
+@startuml
+   class Player {
+       - dice1: Die
+       - dice2: Die
+
+       + rollDice(): RollResult
+   }
+
+   class Die {
+       - value: int
+
+       + getValue(): int
+   }
+
+   class RollResult {
+       - result1: int
+       - result2: int
+   }
+   @enduml

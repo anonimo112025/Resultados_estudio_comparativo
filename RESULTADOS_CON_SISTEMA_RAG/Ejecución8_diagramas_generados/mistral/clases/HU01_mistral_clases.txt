@@ -1,0 +1,15 @@
+@startuml
+class User {
+  - firstName: String
+  - lastName: String
+  - email: String
+  - password: String
+  + createAccount(firstName: String, lastName: String, email: String, password: String): void
+}
+
+class Profile {
+  - user: User
+  - registrationDate: Date
+  # getRegistrationDate(): Date
+}
+@enduml

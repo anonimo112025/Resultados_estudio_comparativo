@@ -1,0 +1,16 @@
+@startuml
+
+class User Ellipsis
+  User : + registerBook(title: String, author: String, publicationYear: Integer): Book
+
+class Book Ellipsis
+  Book : - title: String
+  Book : - author: String
+  Book : - publicationYear: Integer
+  Book : + getTitle(): String
+  Book : + getAuthor(): String
+  Book : + getPublicationYear(): Integer
+
+User "1" --> "0..*" Book : manages
+
+@enduml

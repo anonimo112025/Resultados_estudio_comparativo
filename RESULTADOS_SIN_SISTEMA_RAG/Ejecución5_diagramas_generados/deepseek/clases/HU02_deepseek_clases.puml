@@ -1,0 +1,30 @@
+@startuml
+class User 
+    +id: String
+    +username: String
+    +email: String
+    
+    - has-ManagedBooks()
+    
+    +registerBook(Book b)
+    +manageBooks()
+    -deleteBook(Id id)
+
+class Book 
+    +title: String
+    +author: String
+    +pages: Integer
+    +format: String
+    +createdDate: Date
+    
+    +register()
+    -manage()
+    -delete()
+
+# Association between User and Book
+User -->> Book
+
+# Inheritance example if needed (not applicable here)
+// Book <;> Document
+
+@enduml

@@ -1,0 +1,18 @@
+@startuml
+    class Student {
+      - name: String
+      - type: String
+      - id: Integer
+      + addGrade(grade: Float)
+      + updateInfo(info: Map<String, String>)
+    }
+
+    class Teacher {
+      - name: String
+      - type: String
+      - id: Integer
+      + createAssignment()
+      + gradeStudent(student: Student, grade: Float)
+    }
+    Student "1" --> "*" Teacher
+    @enduml

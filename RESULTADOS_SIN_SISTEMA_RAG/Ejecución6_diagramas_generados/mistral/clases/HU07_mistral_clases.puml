@@ -1,0 +1,15 @@
+@startuml
+   class Student {
+       - name: String
+       - userType: UserType
+   }
+
+   class Teacher {
+       - name: String
+       - userType: UserType
+   }
+
+   enum UserType {
+       STUDENT, TEACHER
+   }
+   @enduml

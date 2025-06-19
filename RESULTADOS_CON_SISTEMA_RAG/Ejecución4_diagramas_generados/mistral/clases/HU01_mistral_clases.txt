@@ -1,0 +1,27 @@
+@startuml
+class RegistrationSystem {
+  - users: Set<User>
+  - register(user: User): boolean
+}
+
+class User {
+  - username: String
+  - password: String
+  - profile: Profile
+
+  + createProfile(): Profile
+  + setProfile(profile: Profile)
+}
+
+class Profile {
+  - firstName: String
+  - lastName: String
+  - email: Email
+
+  + getFullName(): String
+}
+
+class Email {
+  - address: String
+}
+@enduml

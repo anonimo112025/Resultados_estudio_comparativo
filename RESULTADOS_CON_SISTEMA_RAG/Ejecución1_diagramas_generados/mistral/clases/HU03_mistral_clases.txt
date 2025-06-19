@@ -1,0 +1,37 @@
+@startuml
+class Administrator {
+  - username: String
+  - password: String
+  - userList: List<User>
+
+  # managePermissions(user: User): void
+  # revokePermissions(user: User): void
+  # viewCurrentPermissions(): void
+}
+
+class User {
+  - username: String
+  - permissions: List<Permission>
+
+  public function canAccessResource(resource: Resource): boolean
+}
+
+class Permission {
+  - resource: Resource
+  - level: Level
+
+  private function validate(): void
+}
+
+class Resource {
+  - name: String
+
+  + getName(): String
+}
+
+class Level {
+  - name: String
+
+  public function getName(): String
+}
+@enduml

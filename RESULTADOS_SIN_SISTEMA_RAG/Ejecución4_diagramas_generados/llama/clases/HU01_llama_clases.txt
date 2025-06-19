@@ -1,0 +1,25 @@
+@startuml
+
+class User {
+    - username: String
+    - password: String
+    + login(): boolean
+}
+
+class Profile {
+    + getProfileInfo(): Map<String, Object>
+}
+
+class RegisterUserRequest {
+    + getRegisterDetails(): Map<String, Object>
+}
+
+class Context {
+    + getContextInfo(): String
+}
+
+User --> Profile
+User --> RegisterUserRequest
+Profile --|> Context
+
+@enduml

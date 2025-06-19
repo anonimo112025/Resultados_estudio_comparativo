@@ -1,0 +1,28 @@
+@startuml
+class User {
+  - id: Integer
+  - username: String
+  - password: String
+  - email: String
+  - registrationDate: Date
+  - personalInfo: PersonalInfo
+  + register(): void
+  + editProfile(): void
+}
+
+class PersonalInfo {
+  - firstName: String
+  - lastName: String
+  - address: Address
+  - phoneNumber: String
+  + getFullName(): String
+}
+
+class Address {
+  - street: String
+  - city: String
+  - state: String
+  - country: String
+  + getFormattedAddress(): String
+}
+@enduml

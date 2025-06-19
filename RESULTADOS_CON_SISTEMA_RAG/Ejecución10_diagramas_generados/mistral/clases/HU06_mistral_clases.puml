@@ -1,0 +1,18 @@
+@startuml
+class Question {
+  - id: int
+  - text: String
+}
+
+class Topic {
+  - id: int
+  - name: String
+  - questions: Set<Question>
+}
+
+class PDFDocument {
+  - id: int
+  - topics: Set<Topic>
+  - isPersonalized: boolean
+}
+@enduml

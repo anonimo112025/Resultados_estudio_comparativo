@@ -1,0 +1,31 @@
+@startuml
+class User {
+- username: String
+- password: String
++ login(): boolean
+}
+
+class Administrator {
++ manageUserPermissions()
++ assignPermissions(): void
+- viewCurrentPermissions(): Map<String, Set<String>>
+}
+
+class Resource {
+- id: Integer
+- name: String
++ accessUsers(): List<User>
+}
+
+class Application {
++ allocateResources(): void
+- getAvailableResources(): Map<Integer, Resource>
+}
+
+Administrator -->* manageUserPermissions() ->* assignPermissions()
+Administrator -->* viewCurrentPermissions() ->* Administrator
+
+Resource -->* accessUsers() --* User
+Application -->* allocateResources() --* Resource
+
+@enduml

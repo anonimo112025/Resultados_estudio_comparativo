@@ -1,0 +1,23 @@
+@startuml
+class Player Ellipsis {
+  + performRollInGame(game: DiceGame): int
+}
+
+class Die Ellipsis {
+  - faceValue: int
+  + roll(): void
+  + getFaceValue(): int
+}
+
+class DiceGame Ellipsis {
+  + executeDiceRoll(): int
+  + handleRollOutcome(outcome: int): void
+}
+
+class GameAction Ellipsis {
+}
+
+Player "1" --> "1" DiceGame
+DiceGame "1" *-- "2" Die
+DiceGame ..> GameAction
+@enduml

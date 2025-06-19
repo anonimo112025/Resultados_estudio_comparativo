@@ -1,0 +1,14 @@
+@startuml
+   class User {
+       - username: String
+       - password: String
+   }
+
+   class RegistrationService {
+       - userRepository: Repository<User>
+
+       + register(user: User): void
+   }
+
+   User "1" --> "*" RegistrationService
+   @enduml

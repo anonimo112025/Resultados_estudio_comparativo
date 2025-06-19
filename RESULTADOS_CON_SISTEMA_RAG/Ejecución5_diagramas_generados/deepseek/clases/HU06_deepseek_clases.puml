@@ -1,0 +1,21 @@
+@startuml
+User {
+    - username: String
+    - email: String
+    - password: String
+    + createUser(): void
+    + login(): boolean
+}
+
+Document {
+    - name: String
+    - creator: String
+    - content: String
+    - attributes: Map<String, Object>
+    - methods: List<Method>
+    + save(): void
+    + generateContent()
+}
+
+User --> Document
+@enduml

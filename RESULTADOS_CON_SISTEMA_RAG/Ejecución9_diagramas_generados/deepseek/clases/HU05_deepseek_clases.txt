@@ -1,0 +1,33 @@
+@startuml
+class Player {
+    - id: String
+    - username: String
+    
+    # Methods related to player actions
+    + playTurn(): void
+    - rollDice(): Integer
+}
+
+class Game {
+    - currentRolls: Set<Integer>
+    - possibleOutcomes: List<String>
+    
+    methods:
+        + handleGameInit()
+        + rollDice(Integer sides): Integer
+        - determineOutcome(Integer result, Set<Integer> rolls): String
+        # Returns action based on game rules and current roll results
+}
+
+class Dice {
+    - sides: Integer
+    - faceValue: Integer
+    
+    associations:
+        Player -> (multiple) dice
+}
+
+Player --> Game
+
+Dice *-- Game
+@enduml

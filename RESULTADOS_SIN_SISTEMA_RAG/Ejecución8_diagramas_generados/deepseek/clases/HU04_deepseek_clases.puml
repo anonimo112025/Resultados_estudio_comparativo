@@ -1,0 +1,49 @@
+@startuml
+class ClientInformation {
+    - name: String
+    - balance: Integer
+    - accountNumber: String
+}
+
+class TransactionOperations {
+    - id: String
+    - type: String ("deposit" | "withdrawal")
+    - amount: Integer
+    - date: String
+    - status: String ("pending" | "completed")
+    
+    + performOperation(): void
+}
+
+class TransactionConsultation {
+    *- clientInformation: ClientInformation
+    - operationType: String ("deposit" | "withdrawal")
+    - amount: Integer
+    - description: String
+    
+    + viewTransactionHistory(): void
+}
+
+class TransactionDetails {
+    - id: String
+    - date: String
+    - type: String ("deposit" | "withdrawal")
+    - amount: Integer
+    - description: String
+    - status: String ("pending" | "completed")
+    
+    + getDetails(): object
+}
+
+class ClientTransactionManager {
+    # performs operations on transactions for a client
+    
+    *- clientInformation: ClientInformation
+    
+    + initiateTransaction(
+        transactionOperations: TransactionOperations,
+        transactionConsultation: TransactionConsultation,
+        transactionDetails: TransactionDetails
+    ): void
+}
+@enduml

@@ -1,0 +1,31 @@
+@startuml
+
+class SystemUser Ellipsis {
+  + generatePersonalizedPDF(selectedQuestions: Question[], selectedTopics: Topic[]): PersonalizedPDF
+}
+
+class PersonalizedPDF Ellipsis {
+  - fileName: String
+  - structuredContent: String
+  + view(): void
+  + download(): void
+}
+
+class Question Ellipsis {
+  - text: String
+}
+
+class Topic Ellipsis {
+  - name: String
+}
+
+SystemUser ..> PersonalizedPDF : creates
+SystemUser ..> Question : uses
+SystemUser ..> Topic : uses
+
+PersonalizedPDF "1" o-- "*" Question : contains
+PersonalizedPDF "1" o-- "*" Topic : contains
+
+Question "*" -- "*" Topic : related to
+
+@enduml

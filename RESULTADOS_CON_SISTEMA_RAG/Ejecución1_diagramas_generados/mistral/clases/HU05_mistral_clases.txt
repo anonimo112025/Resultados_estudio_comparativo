@@ -1,0 +1,33 @@
+@startuml
+class Player {
+  - name: String
+  - currentDiceResult: DiceRoll[]
+  - action: GameAction
+
+  + rollTwoDice(): DiceRoll[]
+}
+
+abstract class GameItem {
+  - id: Integer
+  - name: String
+}
+
+class DiceRoll extends GameItem {
+  - value: Integer
+}
+
+class GameAction {
+  - associatedGame: Game
+  - actionDescription: String
+
+  + execute(): void
+}
+
+class Game {
+  - players: Player[]
+  - currentPlayer: Player
+
+  + startGame(): void
+  + endTurn(): void
+}
+@enduml

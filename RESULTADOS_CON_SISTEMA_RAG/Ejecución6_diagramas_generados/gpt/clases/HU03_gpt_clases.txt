@@ -1,0 +1,14 @@
+@startuml
+class Administrator {
+    + managePermissions(): void
+}
+class User {
+    - permissions: String[]
+}
+class Resource {
+    - permissionsRequired: String[]
+}
+Administrator --> User : manages >
+Administrator ..> Resource
+User --> Resource : accesses >
+@enduml

@@ -1,0 +1,19 @@
+@startuml
+   class User {
+       - name: String
+       - userType: String
+       + getName(): String
+       + setName(name: String)
+       + getUserType(): String
+       + setUserType(userType: String)
+   }
+
+   class ManagementSystem {
+       - users: List<User>
+       + addUser(user: User)
+       + updateUser(user: User)
+       + deleteUser(user: User)
+       + getUsers(): List<User>
+       + getUserByName(name: String): User
+   }
+   @enduml

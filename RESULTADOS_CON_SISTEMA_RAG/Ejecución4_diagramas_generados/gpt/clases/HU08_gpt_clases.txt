@@ -1,0 +1,18 @@
+@startuml
+class User {
+    + manageEnrollments(): void
+}
+
+class Enrollment {
+    + recordEnrollment(): void
+    + modifyEnrollment(): void
+    + cancelEnrollment(): void
+}
+
+class Course {
+    + enrollStudent(): void
+}
+
+User "1" -> "*" Enrollment
+Enrollment "*" --> "*" Course
+@enduml

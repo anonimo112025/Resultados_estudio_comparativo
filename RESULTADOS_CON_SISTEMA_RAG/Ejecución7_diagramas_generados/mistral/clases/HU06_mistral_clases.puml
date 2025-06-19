@@ -1,0 +1,17 @@
+@startuml
+class PDFGenerator {
+  - selectedQuestions: List<Question>
+  - relatedTopics: Set<Topic>
+  - generatedPDF: File
+}
+
+class Question {
+  - questionText: String
+  - answer: String
+}
+
+class Topic {
+  - topicName: String
+  - relatedQuestions: List<Question>
+}
+@enduml

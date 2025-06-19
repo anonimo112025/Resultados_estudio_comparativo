@@ -1,0 +1,15 @@
+@startuml
+class Book {
+  - title: String
+  - author: String
+  - yearOfPublication: Integer
+  - isbn: String
+}
+
+class User {
+  - username: String
+  - password: String
+  - booksRegistered: set[Book]
+  + registerBook(book: Book)
+}
+@enduml

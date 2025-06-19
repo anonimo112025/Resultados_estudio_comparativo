@@ -1,0 +1,32 @@
+@startuml
+class User {
+    + registerData()
+    + updateData()
+    + consultData()
+    + linkAuthorsToPublications()
+    + linkBookToPublisher()
+}
+
+class Book {
+    - title: String
+    - publicationYear: int
+    + associateWithAuthors()
+    + associateWithPublisher()
+}
+
+class Publisher {
+    - name: String
+    + publishBook()
+}
+
+class Author {
+    - name: String
+    + writeBook()
+}
+
+User --> Book
+User --> Publisher
+User --> Author
+Book --> Publisher
+Book --> Author
+@enduml

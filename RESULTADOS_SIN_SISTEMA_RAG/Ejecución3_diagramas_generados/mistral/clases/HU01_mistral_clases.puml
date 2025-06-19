@@ -1,0 +1,30 @@
+@startuml
+
+   class UserProfile {
+       - username: String
+       - basicInfo: BasicUserInfo
+       - dedicatedInterface: DedicatedInterface
+   }
+
+   class BasicUserInfo {
+       - firstName: String
+       - lastName: String
+       - email: EmailAddress
+   }
+
+   class DedicatedInterface {
+       - displayProfile: displayProfile()
+   }
+
+   class DisplayProfile {
+       - showBasicInfo(): void
+   }
+
+   class EmailAddress {
+       - address: String
+   }
+
+   UserProfile "1" --> "*" BasicUserInfo
+   UserProfile "1" --> "*" DedicatedInterface
+   DedicatedInterface "1" --> "*" DisplayProfile
+   @enduml

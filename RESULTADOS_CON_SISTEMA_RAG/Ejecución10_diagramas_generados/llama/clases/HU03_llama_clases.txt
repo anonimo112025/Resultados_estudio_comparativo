@@ -1,0 +1,11 @@
+@startuml
+class User {
+    - username: String
+    - password: String
+}
+class System {
+    - manageUserPermissions(): void
+}
+
+User ->> System : requestManageUserPermissions
+@enduml

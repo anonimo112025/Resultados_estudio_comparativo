@@ -1,0 +1,36 @@
+@startuml
+class Player {
+    id: string
+    username: string
+
+    RollResult action()
+    - returns RollResult
+}
+
+class Dice {
+    
+    roll(): int
+}
+
+class RollResult {
+    die1: int
+    die2: int
+}
+
+class Game {
+    currentAction: string
+    actionHistory: string
+    possibleOutcomes: string
+    rules: string
+
+    determineOutcome(int, int): string
+}
+
+Player --> Dice
+
+// Player's action() method uses the privateDice to get roll results which affect Game
+Player --> RollResult via "player's dice rolls"
+RollResult --> Game via "game logic determines outcome based on player's rolls"
+
+Game.determineOutcome(d1, d2)
+@enduml

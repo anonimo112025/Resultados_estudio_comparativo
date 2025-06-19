@@ -1,0 +1,24 @@
+@startuml
+class User {
+    + addElement(): void
+    + viewElement(): Element
+}
+
+class Form {
+   - elements: List<Element>
+   + addElement(element: Element): void
+   + viewElements(): List<Element>
+}
+
+class Element {
+    - type: String
+    - data: Object
+    + setType(type: String): void
+    + setData(data: Object): void
+    + getType(): String
+    + getData(): Object
+}
+
+User --> Form: Uses
+Form o--> Element: Contains
+@enduml

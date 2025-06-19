@@ -1,0 +1,20 @@
+@startuml
+class Player {
+    - username: String
+    - password: String
+}
+class Document {
+    - metadata: Map<String, Any>
+    - page_content: String
+}
+class DiceGame {
+    + rollDice(): int
+}
+class Game {
+    + updateGameState()
+}
+Player o--> DiceGame
+Player o--> Game
+Game --|> Document
+Document --> DiceGame
+@enduml

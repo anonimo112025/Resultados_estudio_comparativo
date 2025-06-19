@@ -1,0 +1,27 @@
+@startuml
+class Book 
+    + Title: string
+    + Authors: collection of Author
+    + Pages: integer
+    + Format: string
+    + PublishedDate: date
+endclass
+
+class Author 
+    - Name: string
+    - DateOfBirth: date
+    - Nationality: string
+    - Signature: string
+endclass
+
+class Publisher 
+    - Name: string
+    - Address: string
+    - ISBN: string
+    - BooksPublished: collection of Book
+endclass
+
+Book -->+ Author
+
+Book *->+ Publisher
+@enduml

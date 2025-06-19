@@ -1,0 +1,35 @@
+@startuml
+class Document {
+    + getPDF(): String
+}
+
+class User {
+    - createUser(): void
+    - performTransaction(amount: Number, type: TransactionType): void
+    - checkBalance(): void
+    - generateReport(): void
+}
+
+class Transaction {
+    + type: TransactionType
+    - amount: Number
+    - date: Date
+    
+    *-- User
+}
+
+class BalanceSheet {
+    - accounts: Account[]
+
+    --+ Account
+}
+
+class Report {
+    *-- Transaction
+}
+
+class Account {
+    + balance: Number
+}
+
+@enduml

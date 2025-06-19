@@ -1,0 +1,29 @@
+@startuml
+class User {
+  + generatePersonalizedPDF(selectedQuestions: Question[], selectedTopics: Topic[]): PersonalizedPDF
+  + viewPDF(pdf: PersonalizedPDF): void
+  + downloadPDF(pdf: PersonalizedPDF): void
+}
+
+class PersonalizedPDF {
+  - pdfId: String
+  - fileName: String
+  - /structuredContent: String
+  - generationTimestamp: Date
+}
+
+class Question {
+  - questionId: String
+  - text: String
+}
+
+class Topic {
+  - topicId: String
+  - name: String
+}
+
+User "1" --> "0..*" PersonalizedPDF
+PersonalizedPDF "1" o-- "1..*" Question : containsContentFrom
+PersonalizedPDF "1" o-- "1..*" Topic : basedOnTopics
+Topic "1" -- "1..*" Question : includes
+@enduml

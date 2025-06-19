@@ -1,0 +1,35 @@
+@startuml
+
+class SchoolUser {
+    - name: String
+    - userType: String
+    + updateInformation(details: String): void
+    + getInformation(): String
+}
+
+class Student {
+}
+
+class Teacher {
+}
+
+class School {
+    + registerStudent(name: String): Student
+    + registerTeacher(name: String): Teacher
+    + findStudentById(studentId: String): Student
+    + findTeacherById(teacherId: String): Teacher
+    + updateStudentDetails(studentId: String, newDetails: String): void
+    + updateTeacherDetails(teacherId: String, newDetails: String): void
+    + removeStudent(studentId: String): void
+    + removeTeacher(teacherId: String): void
+    + getAllStudents(): List<Student>
+    + getAllTeachers(): List<Teacher>
+}
+
+Student --|> SchoolUser
+Teacher --|> SchoolUser
+
+School "1" o-- "*" Student
+School "1" o-- "*" Teacher
+
+@enduml

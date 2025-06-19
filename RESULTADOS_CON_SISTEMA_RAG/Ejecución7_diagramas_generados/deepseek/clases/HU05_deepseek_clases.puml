@@ -1,0 +1,31 @@
+@startuml
+class Player {
+    - id: Integer
+    - name: String
+    - health: Integer
+    
+    + rollDice(): Void
+    + getRoll(): Tuple<Integer, Integer>
+}
+
+class Dice {
+    - id: Integer
+    - sides: Integer
+    
+    + initialize(): Void
+    + getFace1(): Integer
+    + getFace2(): Integer
+}
+
+class Game {
+    - id: String
+    - currentTurn: Integer
+    
+    + processRoll()
+    + assignAction(Total, Integer)
+}
+
+Player --> Dice
+Dice -->* Game
+Player --> Game
+@enduml

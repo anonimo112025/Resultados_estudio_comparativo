@@ -1,0 +1,45 @@
+@startuml
+class System {
+    + String systemName
+    + String systemVersion
+
+    --> Role roles: [Role]* : roles currently active in the application
+}
+
+class Role {
+    - String roleType: ("Administrator" | "User")
+    + List<String> permissions
+
+    method assignPermissions(perm: String) {
+        this.permissions.add(perm)
+    }
+
+    method revokePermission(perm: String) {
+        this.permissions.remove(perm)
+    }
+
+    method getCurrentPermissions() : List<String>
+    {
+        return [String] this.permissions
+    }
+}
+
+class Permissions {
+    method isAssigned(perm: String) : boolean
+    method canAccess(perm: String) : boolean
+
+    + method assignPermission(perm: String, role: Role)
+    + method revokePermission(perm: String, role: Role)
+}
+
+// Relationships:
+class User extends Role {
+    - User username: String
+    + User(String username)
+}
+
+// Example usage outside the UML diagram:
+User user = User("john_doe")
+user.addPermission("view", "doc1.pdf");
+// ...
+@enduml

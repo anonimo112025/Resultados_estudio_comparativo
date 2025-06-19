@@ -1,0 +1,11 @@
+@startuml
+class Persona {
+    - nombre: String
+    - trabajo: Compania
+    - fechaIngreso: Date
+}
+class Compania {
+    - nombre: String
+    - empleados: Persona* "1"
+}
+@enduml

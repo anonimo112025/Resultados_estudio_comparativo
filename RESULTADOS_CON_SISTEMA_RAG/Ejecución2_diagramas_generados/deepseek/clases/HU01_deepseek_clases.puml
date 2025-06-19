@@ -1,0 +1,14 @@
+@startuml
+class Account {
+    - username: String
+    # password: String
+    + login(): boolean
+}
+
+class User {
+    - id: Integer
+    + createUser(): void
+}
+
+Account --> User
+@enduml

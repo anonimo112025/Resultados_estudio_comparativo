@@ -1,0 +1,50 @@
+@startuml
+class User {
+    - username: String
+    - password: String
+    - email: String
+    
+    + login(): boolean
+}
+
+class Document {
+    - id: String! 
+    - content: Text!
+    - contentType: ContentType!
+    - encoding: Encoding!
+    - language: Language!
+    - title: String
+    - author: String
+    - subject: String
+    - keywords: Set<String>
+    
+    + createDocument(questions: Question[], topics: Topic[]): PDF
+}
+
+class Question {
+    - questionText: Text!
+    - topicId: String
+    
+    + getQuestionText(): Text
+}
+
+class Topic {
+    - topicText: Text!
+    - description: Text! 
+    - category: String!
+    
+    + getTopicText(): Text
+}
+
+class System {
+    - createAccount(): void
+    - generatePDF(questions: Question[], topics: Topic[]): PDF
+    
+    + getUsers(): User[]
+}
+ associations:
+    Users --> System
+    Questions --> System
+    Topics --> Document
+    Users --> Document
+@enduml

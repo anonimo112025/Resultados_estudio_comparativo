@@ -1,0 +1,7 @@
+@startuml
+   class User
+   - selectedQuestions: List<Question>
+   - selectedTopics: List<Topic>
+   - generatedPDFs: List<PDF>
+   + generatePDF(questions: List<Question>, topics: List<Topic>): PDF
+   @enduml

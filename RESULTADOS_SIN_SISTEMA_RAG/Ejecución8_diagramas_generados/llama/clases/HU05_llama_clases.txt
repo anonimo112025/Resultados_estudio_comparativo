@@ -1,0 +1,33 @@
+@startuml
+class Player {
+    - username: String
+    - password: String
+    + login(): boolean
+}
+
+class DiceGame {
+    - name: String
+    + rollDice(): int
+}
+
+class Document {
+    - title: String
+    - page_content: String
+    # format: String
+}
+
+class PlayerInput {
+    - page_content: String
+}
+
+class GameProgress {
+    - action_taken: String
+    - player_progress: String
+}
+
+Player -->> DiceGame
+DiceGame -->> GameProgress
+
+Document "1" -->* PlayerInput
+
+@enduml

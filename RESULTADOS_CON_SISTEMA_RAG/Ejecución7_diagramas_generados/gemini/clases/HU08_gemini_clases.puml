@@ -1,0 +1,26 @@
+@startuml
+
+class Student Ellipsis {
+  - studentId: String
+  - name: String
+  + enrollInCourse(courseToEnroll: Course, enrollmentDate: Date): Enrollment
+  + getMyEnrollments(): List<Enrollment>
+}
+
+class Course Ellipsis {
+  - courseId: String
+  - title: String
+  + getCourseEnrollments(): List<Enrollment>
+}
+
+class Enrollment Ellipsis {
+  - enrollmentDate: Date
+  - status: String
+  + updateDetails(newDate: Date, newStatus: String): void
+  + cancelEnrollment(): void
+}
+
+Student "*" -- "*" Course
+(Student, Course) .. Enrollment
+
+@enduml

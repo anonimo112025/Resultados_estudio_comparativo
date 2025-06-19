@@ -1,0 +1,28 @@
+@startuml
+class Student {
+    - studentID: String
+    + name: String
+    + email: String
+}
+
+class Course {
+    - courseID: String
+    + title: String
+    + description: String
+}
+
+class Enrollment {
+    - enrollmentID: String
+    - studentID: String
+    - courseID: String
+    - dateEnrolled: DateTime
+    - reason: String
+    - status: String
+}
+
+Student --> Enrollment
+Course --> Enrollment
+
+Enrollment *-- Student
+Enrollment *-- Course
+@enduml

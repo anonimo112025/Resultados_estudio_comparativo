@@ -1,0 +1,17 @@
+@startuml
+class SystemUser {
+    - username: String
+    - hashedPassword: String
+    + accessFunctionalities(): void
+    + updateOwnProfile(newInfo: Map<String, String>): void
+    + viewOwnProfile(): Map<String, String>
+}
+
+class UserProfile {
+    - basicInformation: Map<String, String>
+    + updateBasicInformation(newInfo: Map<String, String>): void
+    + getBasicInformation(): Map<String, String>
+}
+
+SystemUser "1" *-- "1" UserProfile
+@enduml

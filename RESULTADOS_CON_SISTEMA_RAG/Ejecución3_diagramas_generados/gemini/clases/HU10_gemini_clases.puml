@@ -1,0 +1,36 @@
+@startuml
+
+class SystemUser {
+  + createCustomForm(title: String): Form
+  + addElementToForm(form: Form, elementType: String, label: String, value: String): Element
+  + viewFormStructure(form: Form): void
+}
+
+class Form {
+  - title: String
+  - elements: Element[]
+  + addElement(element: Element): void
+  + getElements(): Element[]
+  + displayStructuredInformation(): void
+}
+
+class Element {
+  # label: String
+  # value: String
+  + display(): void
+}
+
+class TextField {
+  + display(): void
+}
+
+class DataEntry {
+  + display(): void
+}
+
+SystemUser --> Form
+Form "1" *-- "0..*" Element
+TextField --|> Element
+DataEntry --|> Element
+
+@enduml

@@ -1,0 +1,29 @@
+@startuml
+class User {
+    - username: String
+    - email: String
+    - password: String
+    - firstName: String
+    - lastName: String
+    + register(): boolean
+    + createProfile(): Profile
+    + accessFunctionalities(): boolean
+}
+
+class Profile {
+    - profileId: String
+    - creationDate: Date
+    - isActive: boolean
+    + manageBasicInformation(): boolean
+    + viewProfile(): Profile
+}
+
+class RegistrationInterface {
+    + displayRegistrationForm(): void
+    + validateUserInput(): boolean
+    + submitRegistration(): boolean
+}
+
+User --> Profile : creates
+RegistrationInterface --> User : registers
+@enduml

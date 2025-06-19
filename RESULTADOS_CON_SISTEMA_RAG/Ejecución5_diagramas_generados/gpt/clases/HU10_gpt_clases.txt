@@ -1,0 +1,18 @@
+@startuml
+class User {
+    + addElement()
+    + viewElement()
+}
+
+class Form {
+    + createForm()
+    + modifyForm()
+}
+
+class Element {
+    + addField()
+}
+
+User --> Form : manages
+Form *-- Element : contains
+@enduml

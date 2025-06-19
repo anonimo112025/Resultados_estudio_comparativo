@@ -1,0 +1,34 @@
+@startuml
+
+class AcademicUser {
+  - userId: String
+  - name: String
+  - userType: String
+  + getUserId(): String
+  + getName(): String
+  + setName(name: String): void
+  + getUserType(): String
+  + setUserType(userType: String): void
+}
+
+class Student {
+}
+
+class Professor {
+}
+
+class SchoolDirectory {
+  + registerStudent(userId: String, name: String): Student
+  + registerProfessor(userId: String, name: String): Professor
+  + findUser(userId: String): AcademicUser
+  + updateUserProfile(userId: String, newName: String, newUserType: String): boolean
+  + unregisterUser(userId: String): boolean
+  + getAllStudents(): List<Student>
+  + getAllProfessors(): List<Professor>
+}
+
+Student --|> AcademicUser
+Professor --|> AcademicUser
+SchoolDirectory "1" o-- "*" AcademicUser
+
+@enduml

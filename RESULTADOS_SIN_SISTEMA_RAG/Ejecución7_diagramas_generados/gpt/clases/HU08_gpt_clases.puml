@@ -1,0 +1,19 @@
+@startuml
+class User {
+    + manageEnrollment(): void
+}
+class Course {
+    + addStudent(): void
+    + removeStudent(): void
+}
+class Enrollment {
+    - studentID: int
+    - courseID: int
+    + updateEnrollment(): void
+    + trackEnrollment(): Enrollment
+}
+User --> Course : manages
+User --> Enrollment : records
+Course "1" --> "*" Enrollment : has  
+Enrollment --> Course : enrolled in
+@enduml

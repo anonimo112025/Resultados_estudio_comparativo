@@ -1,0 +1,48 @@
+@startuml
+class User {
+    - username: String
+    - password: String
+    + login(): boolean
+}
+
+class Client {
+    - clientName: String
+    - accountType: String ["Savings", "Checking"]
+    - accountHolder: String
+    + createClient(): void
+    + getClientDetails(clientName: String): object
+}
+
+class BankAccount {
+    - accountNumber: String
+    - balance: Integer
+    - transactions: List<Transaction>
+    - accountHolder: String
+    - type: String ["Savings", "Checking"]
+    + openAccount(accountNumber: String, initialBalance: Integer)
+    - deposit(amount: Integer) : void
+    - withdraw(amount: Integer) : void
+}
+
+class Transaction {
+    - transactionDate: DateTime
+    - amount: Integer
+    - description: String
+    - initiatorUser: User
+    - recipientUser: User
+    + createTransaction(user: User, account: BankAccount, amount: Integer, description: String)
+    - settleTransaction()
+}
+
+class Balance {
+    - balanceAmount: Integer
+    - transactionHistory: List<Transaction>
+    + updateBalance(amount: Integer) : void
+    - viewBalance(): void
+}
+
+User managesClient(client: Client) -> manages multiple Clients by interacting with their Bank Accounts and performing Transactions on them.
+BankAccount managesTransactions(transactions: Transaction) -> handles deposits, withdrawals, and balances for Users.
+Transaction managesBalances(balance: Balance) -> affects Balances of both Initiator and Recipient accounts during settlement.
+"
+@enduml

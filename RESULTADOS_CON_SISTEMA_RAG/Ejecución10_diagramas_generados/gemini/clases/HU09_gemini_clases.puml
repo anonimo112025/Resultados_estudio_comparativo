@@ -1,0 +1,26 @@
+@startuml
+class Book {
+  - title: String
+  - isbn: String
+  + registerDetails()
+  + consultDetails()
+  + updateDetails()
+}
+
+class Author {
+  - name: String
+  + registerDetails()
+  + consultDetails()
+  + updateDetails()
+}
+
+class Publisher {
+  - name: String
+  + registerDetails()
+  + consultDetails()
+  + updateDetails()
+}
+
+Book "0..*" -- "1..*" Author
+Book "0..*" -- "1" Publisher
+@enduml

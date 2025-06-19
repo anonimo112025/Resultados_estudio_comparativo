@@ -1,0 +1,16 @@
+@startuml
+class User Ellipsis {
+    + registerBook(title: String, author: String, yearOfPublication: String): Book
+    + manageBook(book: Book): void
+    + accessBookData(book: Book): String
+}
+
+class Book Ellipsis {
+    - title: String
+    - author: String
+    - yearOfPublication: String
+    + getInformation(): String
+}
+
+User "*" -- "*" Book
+@enduml

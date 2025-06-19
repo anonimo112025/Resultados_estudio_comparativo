@@ -1,0 +1,18 @@
+@startuml
+   class User
+   - selectedQuestions: List<Question>
+   - selectedTopics: List<Topic>
+   - generatedPDF: PDFDocument
+
+   class Question
+   - questionText: String
+   - answer: String
+
+   class Topic
+   - topicName: String
+   - relatedQuestions: Set<Question>
+
+   User "1" --> "*" Question
+   User "1" --> "*" Topic
+
+   @enduml

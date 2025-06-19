@@ -1,0 +1,9 @@
+@startuml
+   class Book {
+       - title: String
+       - author: String
+       - yearOfPublication: int
+       - data: Object
+   }
+   Book "1" -- "*" User
+   @enduml

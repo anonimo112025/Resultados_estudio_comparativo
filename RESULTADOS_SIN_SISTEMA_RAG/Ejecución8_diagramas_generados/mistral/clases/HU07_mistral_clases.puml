@@ -1,0 +1,12 @@
+@startuml
+   class Person {
+       - name: String
+   }
+
+   class User {
+       - userType: String
+       - person: Person
+   }
+
+   User "1" --> "*" Person
+   @enduml

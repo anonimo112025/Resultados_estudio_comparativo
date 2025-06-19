@@ -1,0 +1,13 @@
+@startuml
+class Document {
+    Forms = collection of Forms
+}
+
+class Form {
+    Elements = collection of Elements
+}
+
+class Element {
+    type: String public
+}
+@enduml

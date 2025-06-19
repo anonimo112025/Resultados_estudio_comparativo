@@ -1,0 +1,17 @@
+@startuml
+class Player {
+    + rollDice(): Integer
+}
+
+class Game {
+    + determineAction(diceResult: Integer): String
+}
+
+class Dice {
+    - value: Integer
+    + roll(): Integer
+}
+
+Player --> Dice
+Game --> Player
+@enduml

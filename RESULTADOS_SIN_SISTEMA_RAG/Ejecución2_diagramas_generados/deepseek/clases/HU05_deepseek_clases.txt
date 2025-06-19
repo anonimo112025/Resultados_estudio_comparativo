@@ -1,0 +1,43 @@
+@startuml
+class Player {
+    - username: String
+    - playerID: String
+    - password: String
+    
+    + login(): boolean
+    + playGame(): void
+}
+
+class Game {
+    - name: String
+    - numPlayers: Integer
+    - totalRounds: Integer
+    
+    + getGameTitle(): String
+    *-- Player
+    
+    + rollingDice()
+    + determineAction(): String
+}
+
+class Dice {
+    - sides: Integer
+    - faces: Set<Number>
+    
+    + roll(): Number
+    + getFaces(): Set<Number>
+}
+
+Player --> Game
+Dice *-- Game
+Dice --> Game
+Game --> Player
+
+Player.rollingDice = ref(Dice.rollingDice)
+Game.rollingDice = ref(Dice.rollingDice)
+
+Player --> Game.determineAction
+Player --> Game.getGameTitle
+Player --> Game
+}
+@enduml

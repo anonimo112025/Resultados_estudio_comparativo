@@ -1,0 +1,16 @@
+@startuml
+   class FormElement {
+       - type: String
+       - value: String
+   }
+
+   class CustomForm {
+       - elements: List<FormElement>
+       - isVisible: boolean
+
+       + addElement(element: FormElement)
+       + removeElement(index: int)
+       + getElements(): List<FormElement>
+       + setVisibility(visibility: boolean)
+   }
+   @enduml

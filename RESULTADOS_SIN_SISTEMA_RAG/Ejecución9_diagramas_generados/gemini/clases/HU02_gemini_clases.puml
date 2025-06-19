@@ -1,0 +1,15 @@
+@startuml
+class SystemUser Ellipsis
+SystemUser : + registerBook(title: String, author: String, publicationYear: int): Book
+
+class Book Ellipsis
+Book : - title: String
+Book : - author: String
+Book : - publicationYear: int
+Book : + getTitle(): String
+Book : + getAuthor(): String
+Book : + getPublicationYear(): int
+Book : + updateBasicInformation(newTitle: String, newAuthor: String, newPublicationYear: int): void
+
+SystemUser ..> Book : registers
+@enduml

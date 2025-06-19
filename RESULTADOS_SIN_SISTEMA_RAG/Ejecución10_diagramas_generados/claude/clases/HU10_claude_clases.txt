@@ -1,0 +1,45 @@
+@startuml
+class User {
+    - username: String
+    - email: String
+    + addElementToForm(form: Form, element: FormElement): void
+    + viewForm(form: Form): void
+}
+
+class Form {
+    - title: String
+    - description: String
+    - creationDate: Date
+    + addElement(element: FormElement): void
+    + removeElement(element: FormElement): void
+    + getElements(): List<FormElement>
+    + displayForm(): void
+}
+
+class FormElement {
+    - id: String
+    - label: String
+    - required: boolean
+    + render(): void
+    + validate(): boolean
+}
+
+class TextField {
+    - maxLength: int
+    - placeholder: String
+    + setText(text: String): void
+    + getText(): String
+}
+
+class DataEntry {
+    - dataType: String
+    - defaultValue: String
+    + setValue(value: String): void
+    + getValue(): String
+}
+
+User --> Form : manages
+Form "1" --> "*" FormElement : contains
+FormElement <|-- TextField
+FormElement <|-- DataEntry
+@enduml

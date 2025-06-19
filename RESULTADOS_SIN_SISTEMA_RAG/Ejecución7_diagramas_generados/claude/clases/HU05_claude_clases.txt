@@ -1,0 +1,31 @@
+@startuml
+class Player {
+    - name: String
+    + rollDice(): int
+    + makeDecision(): void
+}
+
+class Dice {
+    - sides: int
+    + roll(): int
+}
+
+class Game {
+    - currentTurn: int
+    - gameProgress: String
+    + processResult(result: int): void
+    + updateProgress(): void
+}
+
+class DiceRoll {
+    - result: int
+    - timestamp: Date
+    + getResult(): int
+}
+
+Player --> Game
+Player --> Dice : "rolls"
+Dice --> DiceRoll : "generates"
+DiceRoll --> Game : "determines action"
+Player "1" --> "2" Dice
+@enduml

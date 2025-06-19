@@ -1,0 +1,13 @@
+@startuml
+class SystemUser Ellipsis
+SystemUser : - name: String
+SystemUser : - userType: String
+SystemUser : + getInformation(): String
+SystemUser : + updateInformation(newName: String, newUserType: String): void
+
+class Student Ellipsis
+class Teacher Ellipsis
+
+Student --|> SystemUser
+Teacher --|> SystemUser
+@enduml

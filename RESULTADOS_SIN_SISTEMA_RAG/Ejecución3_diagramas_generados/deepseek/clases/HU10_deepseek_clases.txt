@@ -1,0 +1,80 @@
+@startuml
+    class Document 
+        name: String
+        content: String
+        creator: String
+        creationDate: String
+        source: String
+        format: String
+        title: String
+        author: String
+        subject: String
+        keywords: String[]
+        moddate: String
+        trapped: Boolean
+    endclass
+
+    class Form 
+        name: String
+        elements: [Element]
+        selectedFormIndex: Integer? = -1
+        pageContent: String
+        metadata: Metadata
+        
+        association(add): -> AddForm
+        association(remove): -> RemoveForm
+        association(show): -> ShowForm
+    endclass
+
+    class Element 
+        type: String
+        value: String? 
+        index: Integer?
+        
+        method(getVisibility()): returns Boolean
+        method(isText()): returns Boolean
+        method(isNumber(): returns Boolean
+        method(isSelected(): returns Boolean)
+    endclass
+
+    class Action 
+        name: String
+        
+        method(addForm(): void
+        method(viewForm(): void
+    endclass
+
+    class User 
+        username: String
+        
+        method(viewForm(Form, Integer)): void
+        method(editForm(Form, Integer)): void
+        method(createNewForm(Form)) -> void
+    endclass
+
+    @Multiplicity
+    association(Document) : (n) - Forms : 1:(n)
+    
+    @Multiplicity
+    association(Form) : (-) - Elements : 1:(-) 
+    association(Form) : (n) - addElement: + Element
+    association(Form) : (n) - removeElement: * Element
+
+    @Multiplicity
+    association(Form) : (n) - showForm: -> Integer? : -1
+    
+    class Metadata 
+        creator: String
+        content: String
+        source: String
+        format: String
+        title: String
+        author: String
+        subject: String
+        keywords: String[]
+
+        method(isText(): returns Boolean)
+        method(isNumber(): returns Boolean)
+        method(isSelected(): returns Boolean)
+    endclass
+@enduml

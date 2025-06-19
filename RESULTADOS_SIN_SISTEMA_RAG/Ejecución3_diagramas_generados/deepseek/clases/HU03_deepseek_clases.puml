@@ -1,0 +1,29 @@
+@startuml
+class UserAccount {
+    - username: String
+    - email: String
+    - password: String
+    + createUser(): void
+    + isValidatin(): boolean
+}
+
+class Permission {
+    - type: String
+    - role: String
+    - assigningUser: UserAccount
+    + addPermission(): void
+    + removePermission(): void
+}
+
+class PermissionValidation {
+    - permissions: Map<ResourceType, Set<Permission>>
+    
+    class ResourceType {
+        + resourceType: String
+    }
+    
+    method validatePermissions(ResourceType type, UserAccount user): boolean {
+        return thispermissions.get(type).contains(user)
+    }
+}
+@enduml

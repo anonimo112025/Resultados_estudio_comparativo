@@ -1,0 +1,44 @@
+@startuml
+class Document {
+    - metadata: Dictionary
+    - page_content: String
+}
+
+class Client {
+    # id: Integer (hidden from users)
+    + getUsername(): String
+    + getBalance(): Float
+    + getTransactions(): List
+}
+
+class User {
+    - username: String
+    - password: String
+    + login(): boolean
+}
+
+class Account {
+    - clientId: Integer (foreign key to Client's id)
+    - balance: Float
+    + deposit(amount: Float): void
+    + withdraw(amount: Float): void
+}
+
+class Transaction {
+    # accountId: Integer (hidden from users)
+    + getAmount(): Float
+    + getDateTime(): String
+}
+
+class System {
+    + manageClientInfo(clientId: Integer): Client
+    + updateBalance(accountId: Integer, amount: Float): void
+    + generateReport(transactionIds: List): Document
+}
+
+Document -->+ "manages" Transaction
+Account -->+ "has" Transaction
+System -->+ "manages" Client
+User -->+ "owns" Account
+
+@enduml

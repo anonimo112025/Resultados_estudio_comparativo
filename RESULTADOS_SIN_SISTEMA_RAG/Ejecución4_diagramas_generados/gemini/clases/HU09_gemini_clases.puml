@@ -1,0 +1,8 @@
+@startuml
+class Book Ellipsis
+class Author Ellipsis
+class Publisher Ellipsis
+
+Book "0..*" --> "1..*" Author
+Book "0..*" --> "1" Publisher
+@enduml

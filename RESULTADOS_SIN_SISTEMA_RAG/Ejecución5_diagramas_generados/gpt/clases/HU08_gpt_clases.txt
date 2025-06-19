@@ -1,0 +1,16 @@
+@startuml
+class User {
+    + enrollInCourse(Course): bool
+    + cancelCourseEnrollment(Course): bool
+    + modifyCourseEnrollment(Course): bool
+}
+
+class Course {
+    - courseName: String
+    + addStudent(User): bool
+    + removeStudent(User): bool
+    + modifyStudentEnrollment(User): bool
+}
+
+User "1" --> "*" Course
+@enduml

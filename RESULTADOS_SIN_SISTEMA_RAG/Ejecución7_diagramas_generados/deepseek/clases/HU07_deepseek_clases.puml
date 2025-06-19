@@ -1,0 +1,24 @@
+@startuml
+class User {
+    + username: String
+    - public methods like login(), logout(), etc. (not specified)
+}
+
+class Student extends User {
+    + name: String
+    
+    # protected students can enroll in classes
+    *-- List<User> classList
+    + enroll(teacher: User) : void
+    - graduate() : void
+}
+
+class Teacher extends User {
+    + name: String
+    
+    # protected teachers assign and grade students
+    *-- List<User> classList
+    + assignStudent(student: User) : void
+    + giveGrade() : void
+}
+@enduml

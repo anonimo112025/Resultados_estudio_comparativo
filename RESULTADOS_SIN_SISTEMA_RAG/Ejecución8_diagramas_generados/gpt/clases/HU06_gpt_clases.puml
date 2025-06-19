@@ -1,0 +1,17 @@
+@startuml
+class User {
+    + selectQuestions(): void
+    + selectTopics(): void
+}
+
+class PDFFile {
+    - questions: List<String>
+    - topics: List<String>
+    + generate(): void
+    + store(): void
+    + view(): void
+    + download(): void
+}
+
+User --> PDFFile
+@enduml

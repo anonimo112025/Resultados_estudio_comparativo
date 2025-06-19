@@ -1,0 +1,34 @@
+@startuml
+class SystemUser {
+  + createForm(title: String): Form
+}
+
+class Form {
+  - title: String
+  - elements: FormElement[]
+  + addElement(element: FormElement): void
+  + viewElements(): void
+  + presentInformation(): String
+}
+
+class FormElement {
+  - label: String
+  + {abstract} getRepresentation(): String
+}
+
+class TextField {
+  - placeholderText: String
+  + getRepresentation(): String
+}
+
+class DataEntry {
+  - dataType: String
+  + getRepresentation(): String
+}
+
+SystemUser "1" -- "0..*" Form
+Form "1" *-- "0..*" FormElement
+
+FormElement <|-- TextField
+FormElement <|-- DataEntry
+@enduml

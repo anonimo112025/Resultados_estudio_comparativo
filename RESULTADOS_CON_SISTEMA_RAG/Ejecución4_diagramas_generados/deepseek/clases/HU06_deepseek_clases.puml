@@ -1,0 +1,17 @@
+@startuml
+class Document(
+    public QuestionsList,
+    public TopicsList,
+    + producer: String,
+    - creator: String,
+    # productionDate: Date,
+    + title: String,
+    - subject: String
+)
+
+// Example association between User and Document attributes for selection:
+User *-- Document
+
+// Example association between User and Document methods for document operations:
+User --> Document
+@enduml

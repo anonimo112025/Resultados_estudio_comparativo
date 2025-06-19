@@ -1,0 +1,27 @@
+@startuml
+class User {
+    + selectQuestions(): List<Question>
+    + selectTopics(): List<Topic>
+}
+
+class Question {
+    - content: String
+}
+
+class Topic {
+    - title: String
+}
+
+class PdfDocument {
+    - content: String
+    # structureDocument(questions: List<Question>, topics: List<Topic>): void
+    + generatePDF(): File
+    + storePDF(): void
+    + viewDocument(): String
+    + downloadPDF(): File
+}
+
+User --> Question
+User --> Topic
+User --> PdfDocument
+@enduml

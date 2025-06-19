@@ -1,0 +1,32 @@
+@startuml
+class Book {
+    + title: String
+    - author: Author
+    # pages: Integer
+    # format: String
+    - publicationDate: Date
+}
+
+class Author {
+    + name: String
+    - expertise: String
+}
+
+class Publisher {
+    + name: String
+    - location: String
+    # numberOfBooks: Integer
+}
+
+class Book<Document> {
+    - id: String
+}
+
+Author<Book> {
+    - books: List<Book>
+}
+
+Publisher<Book> {
+    - books: List<Book>
+}
+@enduml

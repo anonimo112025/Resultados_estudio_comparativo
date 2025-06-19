@@ -1,0 +1,19 @@
+@startuml
+
+class Book 
+    - title: String
+    - author: String
+    - yearPublication: Integer
+    - pagesCount: Integer 
+
+class User 
+    - username: String
+    - password: String
+ + login(): boolean
+ + registerBook(book: Book): void
+
+class BookRegistration
+    o-- Book
+    --> User
+
+@enduml

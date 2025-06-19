@@ -1,0 +1,17 @@
+@startuml
+class Player {
+  - id: int
+  - name: string
+  - currentTurn: boolean
+  - dice1: Dice
+  - dice2: Dice
+
+  + rollDices(): void
+}
+
+class Dice {
+  - value: int
+
+  + setValue(value: int): void
+}
+@enduml

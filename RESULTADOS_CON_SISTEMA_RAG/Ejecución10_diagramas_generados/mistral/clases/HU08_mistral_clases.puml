@@ -1,0 +1,20 @@
+@startuml
+class Student {
+  - id: Integer
+  - name: String
+  - courses: List<Course>
+}
+
+class Course {
+  - id: Integer
+  - name: String
+  - students: List<Student>
+  - enrollments: List<Enrollment>
+}
+
+class Enrollment {
+  - student: Student
+  - course: Course
+  - dateEnrolled: Date
+}
+@enduml

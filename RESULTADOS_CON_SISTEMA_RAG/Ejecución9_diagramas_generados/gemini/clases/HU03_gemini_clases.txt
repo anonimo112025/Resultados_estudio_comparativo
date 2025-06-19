@@ -1,0 +1,16 @@
+@startuml
+class User ... {
+  - username: String
+}
+
+class Resource ... {
+  - resourceName: String
+}
+
+class Permission ... {
+  - accessType: String
+}
+
+Permission "0..*" --> "1" User
+Permission "0..*" --> "1" Resource
+@enduml

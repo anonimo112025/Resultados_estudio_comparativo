@@ -1,0 +1,28 @@
+@startuml
+class Administrator {
+  - username: String
+  - password: String
+
+  + login(): boolean
+}
+
+class ApplicationResource {
+  - resourceId: UUID
+  - permissions: Permission[]
+
+  # checkPermissions(user: Administrator): boolean
+}
+
+class Permission {
+  - permissionId: UUID
+  - resourceId: UUID
+  - user: Administrator
+  - accessLevel: AccessLevel
+
+  + assign(): void
+  + revoke(): void
+}
+
+ApplicationResource "1" -- "*" Permission
+Administrator "1" --> ApplicationResource
+@enduml

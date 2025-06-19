@@ -1,0 +1,39 @@
+@startuml
+class User {
+  - userId: String
+}
+
+class Form {
+  - title: String
+  + addElement(element: FormElement): void
+  + presentInformation(): void
+  + modifyDetails(newTitle: String): void
+}
+
+class FormElement {
+  # name: String
+  # type: String
+  + display(): void
+  + getValue(): String
+  + setValue(value: String): void
+}
+
+class TextField {
+  - textValue: String
+  + display(): void
+  + getValue(): String
+  + setValue(value: String): void
+}
+
+class DataEntry {
+  - enteredData: String
+  + display(): void
+  + getValue(): String
+  + setValue(value: String): void
+}
+
+User "1" -- "0..*" Form : manages
+Form "1" *-- "1..*" FormElement
+FormElement <|-- TextField
+FormElement <|-- DataEntry
+@enduml

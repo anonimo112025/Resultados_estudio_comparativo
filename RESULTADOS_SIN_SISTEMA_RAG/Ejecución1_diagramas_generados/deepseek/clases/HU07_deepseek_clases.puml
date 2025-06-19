@@ -1,0 +1,31 @@
+@startuml
+class User {
+    - UserId: String
+    - Type: String
+    - Name: String
+    - Email: String
+    - Phone: String
+    
+    + initialize(): void
+    + checkIn(): boolean
+    + checkOut(): void
+}
+
+class Document {
+    - id: String
+    - name: String
+    - type: String
+    - age: Integer
+
+    + addUser(User)
+    + removeUser(User)
+
+    // Methods for user interaction (inferred from page content and metadata)
+    - checkIn(): boolean
+    - checkOut(): void
+}
+
+// Relationships:
+User --> Document
+Docu ment *-- User
+@enduml

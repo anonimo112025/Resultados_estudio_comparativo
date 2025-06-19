@@ -1,0 +1,19 @@
+@startuml
+class User {
+    - username: String
+    - password: String
+    + registerUser(): boolean
+    + loginUser(): void
+    - accessBookData(): void
+}
+
+class Book {
+    - title: String
+    - author: String
+    - yearOfPublication: Integer
+    - otherInformation: String*
+    + updateBook details: [String]
+}
+
+User <<*>> Book
+@enduml

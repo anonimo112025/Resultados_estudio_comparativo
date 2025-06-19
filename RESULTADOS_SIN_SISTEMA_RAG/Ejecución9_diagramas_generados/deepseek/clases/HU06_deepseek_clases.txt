@@ -1,0 +1,12 @@
+@startuml
+class User (public) {
+}
+
+User --> Questionnaire (public)
+
+Questionnaire --> ThematicSelector (public)
+
+ThematicSelector --> PersonalizationLogic (public)
+
+PersonalizationLogic --> Document (public)
+@enduml

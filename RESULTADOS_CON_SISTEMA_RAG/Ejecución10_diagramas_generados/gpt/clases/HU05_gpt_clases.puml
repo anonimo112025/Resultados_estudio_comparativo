@@ -1,0 +1,11 @@
+@startuml
+class Player {
+    - dice: Integer[2]
+    + rollDice(): Integer
+}
+
+class Game {
+    + determineAction(): void
+}
+Player --> Game : determines action > 
+@enduml

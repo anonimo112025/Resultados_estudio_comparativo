@@ -1,0 +1,41 @@
+@startuml
+class Player {
+    - UserId: String
+    - Name: String
+    - CurrentTurn: Integer
+
+    + rollDice(): RollDiceResult
+}
+
+class Die {
+    private int Sides = 6;
+
+    public int roll() returns int {
+        return (int) ((Math.random() * Sides) + 1);
+    }
+
+    public int getValue(): int {
+        return this.roll();
+    }
+}
+
+class RollDiceResult {
+    - die1: Integer
+    - die2: Integer
+    - sum: Integer
+
+    public Player player: Player;
+    
+    @Multiplicity(2)
+    class Die *: private final + die1 = this.die1;
+    @Multiplicity(2)
+    class Die *: private final + die2 = this.die2;
+
+    public int getSum(): int returns sum;
+}
+
+class Game {
+    - rules: String
+    + playTurn(): void
+}
+@enduml

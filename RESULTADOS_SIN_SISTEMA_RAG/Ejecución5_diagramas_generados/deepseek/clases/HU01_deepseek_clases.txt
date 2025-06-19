@@ -1,0 +1,25 @@
+@startuml
+class User {
+    - id: String
+    - username: String
+    - password: String
+    + login(): void
+}
+
+class System {
+    + registerUser(): void
+}
+
+class Profile {
+    # name: String
+    # email: String
+    
+    + createProfile(): void
+    + updateProfile(): void
+}
+
+User registration --> System
+User --> Profile
+Profile *-- UpdateProfile
+User --> UpdateProfile
+@enduml

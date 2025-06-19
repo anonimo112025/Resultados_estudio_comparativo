@@ -1,0 +1,29 @@
+@startuml
+
+class User {
+- username: String
+- password: String
++ login(): boolean
+}
+
+class Book {
+- title: String
+- author: User #1..*
+- publisher: User o-- Author
++ registerPublication()
+}
+
+class Publisher {
+- name: String
+- books: Book *-->
+- authors: User o-- Publishes
++ publishBook()
+}
+
+class System { #System
+
++ manageUser()
+
+}
+
+@enduml

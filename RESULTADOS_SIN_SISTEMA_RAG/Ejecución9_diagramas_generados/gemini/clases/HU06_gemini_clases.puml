@@ -1,0 +1,29 @@
+@startuml
+class SystemUser {
+  + generatePersonalizedPdf(selectedQuestions: Question[], selectedTopics: Topic[]): PersonalizedPdf
+  + viewPdf(pdf: PersonalizedPdf): void
+  + downloadPdf(pdf: PersonalizedPdf): void
+}
+
+class PersonalizedPdf {
+  - pdfId: String
+  - title: String
+  - fileName: String
+  - creationTimestamp: DateTime
+}
+
+class Question {
+  - questionId: String
+  - text: String
+}
+
+class Topic {
+  - topicId: String
+  - name: String
+}
+
+SystemUser "1" --> "0..*" PersonalizedPdf : generates
+PersonalizedPdf "1" o-- "1..*" Question : contains
+PersonalizedPdf "1" o-- "1..*" Topic : contains
+Question "*" -- "1" Topic : belongs to
+@enduml

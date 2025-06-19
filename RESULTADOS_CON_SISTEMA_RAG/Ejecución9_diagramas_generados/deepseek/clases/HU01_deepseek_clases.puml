@@ -1,0 +1,9 @@
+@startuml
+class User 
+    + username: String (public)
+    - password: String (public)
+    - name: String (public)
+    + email: EmailAddress (public)
+
+    + addUser(idCreated: Boolean, username: String, password: String, firstName: String, lastName: String, emailAddress: EmailAddress): Boolean
+@enduml

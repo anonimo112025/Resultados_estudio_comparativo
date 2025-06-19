@@ -1,0 +1,27 @@
+@startuml
+   class User {
+       - id: int
+       - username: String
+       - password: String
+       - email: String
+
+       + register(): void
+       + login(): boolean
+       + viewProfile(): void
+       + editProfile(): void
+   }
+   class Profile {
+       - user: User
+       - basicInfo: BasicInfo
+
+       + getBasicInfo(): BasicInfo
+   }
+   class BasicInfo {
+       - firstName: String
+       - lastName: String
+       - email: String
+
+       + setFirstName(firstName: String): void
+       + setLastName(lastName: String): void
+   }
+   @enduml

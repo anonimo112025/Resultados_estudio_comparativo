@@ -1,0 +1,35 @@
+@startuml
+class User {
+    - username: String
+    - password: String
+    + login(): boolean
+}
+
+class StudentEnrollment {
+    + id: Integer
+    + studentId: Integer
+    + courseId: Integer
+    + enrollmentStatus: String
+}
+
+class Course {
+    + id: Integer
+    + name: String
+    + description: String
+}
+
+class Student {
+    - id: Integer
+    + enrollIn(): void
+}
+
+class EnrollmentManager {
+    + manageEnrollments()
+}
+
+StudentEnrollment --> Student
+Student --> StudentEnrollment
+Course --> StudentEnrollment
+EnrollmentManager --> StudentEnrollment
+
+@enduml

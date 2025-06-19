@@ -1,0 +1,35 @@
+@startuml
+class User {
+    - username: String
+    - password: String
+}
+
+class Administrator {
+    + managePermissions(): void
+    - permissions: Map<String, Set<String>>
+}
+
+class Resource {
+    - name: String
+    + accessLevel: AccessLevel
+}
+
+enum AccessLevel {
+    Admin
+    User
+}
+
+class ApplicationResource {
+    - name: String
+    + accessLevel: AccessLevel
+}
+
+class PermissionsManager {
+    + assignPermissions(User user): void
+    - permissions: Map<String, Set<String>>
+}
+
+class System {
+    + validatePermissions(User user): boolean
+}
+@enduml

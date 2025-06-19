@@ -1,0 +1,34 @@
+@startuml
+class User {
+    + manageClientInfo(): void
+    + performOperations(): void
+    + consultTransactions(): Transactions[]
+}
+
+class Client {
+    - clientInfo: String
+    + updateInfo(newInfo: String): void
+}
+
+class BankingOperations {
+    + deposit(amount: Double): void
+    + withdrawal(amount: Double): void
+}
+
+class Transactions {
+    - transactionInfo: String
+    + consultTransactions(): String
+}
+
+class Reports {
+    - reportData: String
+    + generateReport(): String
+    + consultReport(): String
+}
+
+User --> Client : Manages >
+User --> BankingOperations : Performs >
+User --> Transactions : Consults >
+BankingOperations --> Transactions : Updates >
+Reports o-- Transactions : Contains >
+@enduml

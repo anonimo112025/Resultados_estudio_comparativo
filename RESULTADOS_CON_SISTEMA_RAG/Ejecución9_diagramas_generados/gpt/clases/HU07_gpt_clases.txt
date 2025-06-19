@@ -1,0 +1,14 @@
+@startuml
+class User {
+    + user_type: String
+    + name: String
+    + manageUserType(): String
+    + organizeData(): String
+}
+
+class Student --|> User {
+}
+
+class Professor --|> User  {
+}
+@enduml

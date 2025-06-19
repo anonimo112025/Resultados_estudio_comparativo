@@ -1,0 +1,11 @@
+@startuml
+class QuestionTopic {
+  - relatedQuestions: Set<String>
+  - themes: Set<String>
+}
+
+class PersonalizedPdfFile {
+  - content: String
+  + generate(questionsTopics: QuestionTopic): void
+}
+@enduml

@@ -1,0 +1,32 @@
+@startuml
+class Student {
+    - id: Integer
+    - name: String
+    - courseEnrollments: Set[Course]
+}
+
+class Course {
+    - id: Integer
+    - name: String
+    - enrolledStudents: Set[Student]
+    + addEnrolledStudent(Student)
+    + removeEnrolledStudent(Student)
+}
+
+class Enrollment {
+    - student: Student
+    - course: Course
+    - startDate: Date
+    + updateStartDate(Date)
+}
+
+class Document {
+    - metadata: Map[String, String]
+    - page_content: String
+}
+
+Student "1" --> * Course
+Course o--> Enrollment
+Enrollment ..> Student
+
+@enduml

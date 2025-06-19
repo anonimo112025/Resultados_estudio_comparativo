@@ -1,0 +1,34 @@
+@startuml
+class Document {
+  - metadata: Map<String, String>
+  - page_content: String
+}
+
+class Book {
+  - title: String
+  - author: Author
+  - publisher: Publisher
+}
+
+class Author {
+  - name: String
+}
+
+class Publisher {
+  - name: String
+}
+
+class User {
+  - username: String
+  + login(): boolean
+}
+
+Document -->* Book
+Book --|> Author
+Book --|> Publisher
+
+User "1" --> Book
+Author --|> Book
+Publisher --|> Book
+
+@enduml

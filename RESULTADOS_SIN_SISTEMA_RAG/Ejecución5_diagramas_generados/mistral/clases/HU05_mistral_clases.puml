@@ -1,0 +1,18 @@
+@startuml
+
+   class Player {
+       - dice1: Die
+       - dice2: Die
+       - currentRoll: Integer
+
+       + rollDice(): void
+   }
+
+   class Die {
+       - faces: List[Integer]
+       - value: Integer
+
+       + setFaces(faces: List[Integer]): void
+       + getValue(): Integer
+   }
+   @enduml

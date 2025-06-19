@@ -1,0 +1,26 @@
+@startuml
+class Document 
+    + id: String
+    - title: String
+    - author: String
+    - publisher: String
+    - language: String
+    - year: Integer
+    - pages: Integer
+
+    # Association with Users
+    * User
+    - users: [String] // List of associated user IDs
+
+class Information 
+    + title: String
+    - author: String
+    - publisher: String
+    - language: String
+    - year: Integer
+    - pages: Integer
+
+    # Association with Document
+    * Document
+    - document: String
+@enduml

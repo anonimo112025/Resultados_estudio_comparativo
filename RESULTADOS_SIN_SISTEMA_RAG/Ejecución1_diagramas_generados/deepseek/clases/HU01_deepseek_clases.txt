@@ -1,0 +1,19 @@
+@startuml
+class User {
+    - username: String
+    - password: String
+    + createUser(): void
+    + updateProfile(): void
+}
+
+class System {
+    # The system manages user registration and access to functionalities
+    *-- User
+}
+
+class ProfileInterface {
+    --|> User  # User has access to their profile interface
+}
+
+User --> ProfileInterface
+@enduml

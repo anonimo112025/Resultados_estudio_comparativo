@@ -1,0 +1,36 @@
+@startuml
+class User {
+    + manageBooks(): void
+    + manageAuthors(): void
+    + managePublishers(): void
+}
+
+class Book {
+    - title: String
+    - publicationInfo: String
+    + registerBook(): void
+    + updateBookInfo(): void
+    + linkAuthor(): void
+    + linkPublisher(): void
+}
+
+class Author {
+    - name: String
+    - bio: String
+    + registerAuthor(): void
+    + updateAuthorInfo(): void
+}
+
+class Publisher {
+    - name: String
+    - location: String
+    + registerPublisher(): void
+    + updatePublisherInfo(): void
+}
+
+User --> Book : manages >
+User --> Author : manages >
+User --> Publisher : manages >
+Book --> Author : is authored by >
+Book --> Publisher : is published by >
+@enduml

@@ -1,0 +1,14 @@
+@startuml
+class User {
+    + manageBasicInformation(info: String): void
+    + viewBasicInformation(): String
+}
+
+class Profile {
+    - basicInformation: String
+    + updateBasicInformation(newInfo: String): void
+    + getBasicInformation(): String
+}
+
+User "1" *-- "1" Profile
+@enduml

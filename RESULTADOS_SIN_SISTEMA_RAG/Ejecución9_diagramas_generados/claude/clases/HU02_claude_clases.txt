@@ -1,0 +1,23 @@
+@startuml
+class User {
+    - userId: String
+    - username: String
+    + registerBook(book: Book): boolean
+    + accessBookData(bookId: String): Book
+    + manageBooks(): void
+}
+
+class Book {
+    - bookId: String
+    - title: String
+    - author: String
+    - yearOfPublication: int
+    - additionalData: String
+    + getTitle(): String
+    + getAuthor(): String
+    + getYearOfPublication(): int
+    + updateInformation(): void
+}
+
+User --> Book : registers
+@enduml

@@ -1,0 +1,35 @@
+@startuml
+class Administrator {
+    - adminId: String
+    - name: String
+    + assignPermission(user: User, permission: Permission): void
+    + revokePermission(user: User, permission: Permission): void
+    + viewUserPermissions(user: User): Permission[]
+}
+
+class User {
+    - userId: String
+    - username: String
+    - email: String
+    + hasPermission(resource: Resource): boolean
+}
+
+class Permission {
+    - permissionId: String
+    - name: String
+    - description: String
+    + validate(): boolean
+}
+
+class Resource {
+    - resourceId: String
+    - name: String
+    - type: String
+    + isAccessible(): boolean
+}
+
+Administrator --> User
+Administrator --> Permission
+User "1" --> "*" Permission
+Permission --> Resource
+@enduml

@@ -1,0 +1,23 @@
+@startuml
+class User {
+    - username: String
+    - password: String
+    
+    + login(): boolean
+}
+
+class Document {
+    @ relationship("creator", User)
+    title: String
+    author: String
+    publicationYear: Integer
+    totalPages: Integer
+    format: String
+    
+    methods:
+        registerBook()
+        
+    attributes:
+        pageContent: String
+}
+@enduml

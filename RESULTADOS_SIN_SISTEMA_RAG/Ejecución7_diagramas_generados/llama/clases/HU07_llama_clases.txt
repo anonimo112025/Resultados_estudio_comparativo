@@ -1,0 +1,26 @@
+@startuml
+class User {
+    - username: String
+    - password: String
+    + login(): boolean
+}
+
+class Document {
+    - metadata: Map<String, String>
+    - page_content: String
+}
+
+class StudentDocument extends Document {
+    - student_id: String
+}
+
+class ProfessorDocument extends Document {
+    - professor_id: String
+}
+
+StudentDocument "1" --* User
+ProfessorDocument "1" --* User
+
+User *-- StudentDocument and ProfessorDocument
+
+@enduml

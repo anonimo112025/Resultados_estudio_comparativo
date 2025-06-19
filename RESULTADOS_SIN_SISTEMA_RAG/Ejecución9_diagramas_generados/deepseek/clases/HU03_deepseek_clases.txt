@@ -1,0 +1,42 @@
+@startuml
+class User {
+    - id: String
+    - username: String
+    - password: String
+    - email: String
+    
+    + login(): boolean
+    + logout(): void
+}
+
+class Permissions {
+    - permissionID: Integer
+    - grantPermission(String): void
+    - revokePermission(String): void
+    - checkAccess(String): boolean
+    
+    + getAllPermissions(): List<String>
+}
+
+class Document {
+    + id: String
+    - creator: String
+    - total_pages: Integer
+    - format: String
+    - title: String
+    - page: PDFPage
+    
+    + getUserName(): String
+    + setUserName(String): void
+    + getPassword(): String
+    + setPassword(String): void
+    
+    + managePermissions(Permissions): void
+}
+
+User hasRelation -> Document
+Permissions hasRelation -> Document
+
+Document *-- User
+Document *-- Permissions
+@enduml

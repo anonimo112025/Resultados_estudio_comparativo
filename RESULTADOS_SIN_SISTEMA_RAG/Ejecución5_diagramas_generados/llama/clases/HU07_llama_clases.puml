@@ -1,0 +1,41 @@
+@startuml
+class Document {
+    - metadata: Map
+    + getMetadata(): Map
+}
+
+class Student {
+    - id: Integer
+    - name: String
+    # user_type: UserType
+    + getName(): String
+    + getUserType(): UserType
+}
+
+class Teacher {
+    - id: Integer
+    - name: String
+    # user_type: UserType
+    + getName(): String
+    + getUserType(): UserType
+}
+
+class User {
+    - username: String
+    - password: String
+    + login(): boolean
+}
+
+class UserType {
+    - Student
+    - Teacher
+}
+
+class UserManagementSystem {
+    + addStudent(Student)
+    + addTeacher(Teacher)
+    + getStudents()
+    + getTeachers()
+}
+
+@enduml

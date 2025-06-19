@@ -1,0 +1,31 @@
+@startuml
+class Book {
+    - title: String
+    - author: Author
+    - publisher: Publisher
+}
+
+class Author {
+    - name: String
+}
+
+class Publisher {
+    - name: String
+}
+
+class Publication {
+    - book: Book
+    - authors: Author[]
+}
+
+class User {
+    - username: String
+    - password: String
+    + login(): boolean
+}
+
+class SystemUser {
+    - books: Publication[]
+}
+
+@enduml

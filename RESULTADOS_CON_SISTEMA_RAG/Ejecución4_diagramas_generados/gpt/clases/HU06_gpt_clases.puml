@@ -1,0 +1,17 @@
+@startuml
+class User {
+    + generatePersonalizedPdfFile(): PdfDocument
+}
+
+class PdfDocument {
+    - questions: List<String>
+    - topics: List<String>
+    + selectQuestions(): List<String>
+    + selectTopics(): List<String>
+    + structureContent(): String
+    + view(): void
+    + download(): File
+}
+
+User --> PdfDocument
+@enduml

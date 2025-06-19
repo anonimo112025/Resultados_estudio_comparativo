@@ -1,0 +1,23 @@
+@startuml
+class User {
+    - username: String
+    - password: String
+}
+class Book {
+    - title: String
+    - author: User # 1..* "n" authors
+    + getBookDetails(): Dictionary
+}
+
+class Author {
+    - name: String
+    - publicationCount: Integer # 1
+    + addPublication(Book)
+}
+
+class Publisher {
+    - name: String
+    - books: Book *-- "n" publications
+    + addNewBook(Book)
+}
+@enduml

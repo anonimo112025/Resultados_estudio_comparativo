@@ -1,0 +1,37 @@
+@startuml
+class User {
+    - username: String
+    - password: String
+}
+
+class Account {
+    + id: String
+    - user: User
+    - type: String  // 'student' or 'teacher'
+    - balance: Integer
+}
+
+class Student extends User {
+    + name: String
+    - dob: Date
+}
+
+class Teacher extends User {
+    - gradeLevel: String
+}
+
+class UserService {
+    + createUser(username: String, password: String)
+    + createUserAccount(user: User, accountType: String, accountId: String)
+    + updateStudent(student: Student, newDetails: Partial<Student>)
+    + updateTeacher(teacher: Teacher, newDetails: Partial<Teacher>)
+    + getUser Information(user: User)  // Returns Account or null
+}
+
+class UserSystem {
+    * accounts: Set<Account>
+    - user: User
+    + addAccount(account: Account)
+    + updateAccount(account: Account)
+}
+@enduml

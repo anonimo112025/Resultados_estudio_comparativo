@@ -1,0 +1,43 @@
+@startuml
+
+class User {
+  + createForm(title: String): Form
+}
+
+class Form {
+  - title: String
+  + addElement(element: FormElement)
+  + removeElement(element: FormElement)
+  + moveElement(element: FormElement, newPosition: int)
+  + getElements(): List<FormElement>
+  + presentInformation(): String
+}
+
+class FormElement {
+  # label: String
+  + display(): String
+}
+
+class TextField {
+  - placeholderText: String
+  - value: String
+  + display(): String
+  + setValue(text: String)
+  + getValue(): String
+}
+
+class DataEntry {
+  - entryType: String
+  - currentValue: Object
+  + display(): String
+  + setValue(data: Object)
+  + getValue(): Object
+}
+
+User "1" --> "0..*" Form
+Form "1" *-- "0..*" FormElement
+
+TextField --|> FormElement
+DataEntry --|> FormElement
+
+@enduml

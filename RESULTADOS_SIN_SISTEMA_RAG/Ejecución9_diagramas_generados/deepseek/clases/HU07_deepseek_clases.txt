@@ -1,0 +1,31 @@
+@startuml
+class User {
+    + createUser(): void
+    - verifyAuth(): boolean
+}
+
+class StudentDocument {
+    + createNew(): void
+    - editData(user: User, field: String, value: String): void
+    - deleteData(recordId: String): void
+}
+
+class TeacherDocument {
+    + createNew(): void
+    - editData(user: User, field: String, value: String): void
+    - deleteData(recordId: String): void
+}
+
+class System {
+    # Document management interface
+    :User
+    
+    - login(): boolean
+    + createUser(user: User): void
+    
+    :StudentDocument
+    :TeacherDocument
+    
+    - manageRecords(): void
+}
+@enduml

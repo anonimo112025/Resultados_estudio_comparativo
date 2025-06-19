@@ -1,0 +1,31 @@
+@startuml
+class Document {
+  - metadata: Dictionary
+}
+
+class PageContent {
+  - text: String
+}
+
+class User {
+  - username: String
+  - password: String
+  + login(): boolean
+  - permissions: List<Permission>
+}
+
+class Permission {
+  - name: String
+  - status: Boolean
+}
+
+class SystemAdministrator {
+  + manageUserPermissions(Permission): void
+}
+
+Document "1" -->+ User
+PageContent "1" -->+ User
+
+SystemAdministrator o---> User
+
+@enduml

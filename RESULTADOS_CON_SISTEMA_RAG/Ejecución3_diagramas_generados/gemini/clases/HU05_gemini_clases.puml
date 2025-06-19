@@ -1,0 +1,18 @@
+@startuml
+class Player {
+  + takeTurn(game: Game)
+}
+
+class Game {
+  + rollDice(): int
+  + determineGameAction(rollResult: int)
+}
+
+class Die {
+  - value: int
+  + roll(): int
+}
+
+Player --> Game
+Game "1" *-- "2" Die
+@enduml

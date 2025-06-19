@@ -1,0 +1,17 @@
+@startuml
+class Person 
+    + name: String
+    - userType: String # student or teacher
+endclass
+
+class Order 
+    + date: Date
+    + description: String
+    * items: List[OrderItem]
+    
+    - customer: Person
+    + addOrder(): void
+    + viewOrders(): void
+    + updateProfile(): void
+endclass
+@enduml

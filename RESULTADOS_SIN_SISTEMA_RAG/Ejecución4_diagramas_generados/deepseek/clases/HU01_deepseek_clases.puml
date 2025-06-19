@@ -1,0 +1,10 @@
+@startuml
+class User {
+    - name: String
+    - email: String
+    - password: String
+    
+    + register(name: String, email: String, password: String)
+    + activeProfiles(): collection of User?
+}
+@enduml

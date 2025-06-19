@@ -1,0 +1,19 @@
+@startuml
+   class UserProfile {
+       - id: int
+       - username: String
+       - password: String
+       - email: String
+       - firstName: String
+       - lastName: String
+       - profilePictureUrl: String
+       - basicInformation: void
+       - viewProfile: void
+   }
+
+   class User {
+       - userProfile: UserProfile
+       - isAuthenticated: boolean
+       - login: (username: String, password: String) -> boolean
+   }
+   @enduml

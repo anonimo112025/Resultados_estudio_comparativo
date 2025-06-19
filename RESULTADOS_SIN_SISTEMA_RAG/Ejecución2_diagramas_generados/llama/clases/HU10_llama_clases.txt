@@ -1,0 +1,37 @@
+@startuml
+class Document {
+    - id: Integer
+    - title: String
+    - author: String
+    - pageContent: String
+}
+
+class PageContent {
+    - content: String
+}
+
+class FormElement {
+    + name: String
+    + type: String
+}
+
+class DynamicForm {
+    - elements: FormElement[]
+
+    + addElement(): void
+    + removeElement(): void
+}
+
+class CustomizedForm {
+    - title: String
+    - author: String
+    - formElements: FormElement[]
+    + createFormElements(): void
+}
+
+Document ..> PageContent
+PageContent --*> Document
+FormElement --*> DynamicForm
+CustomizedForm ..> DynamicForm
+
+@enduml

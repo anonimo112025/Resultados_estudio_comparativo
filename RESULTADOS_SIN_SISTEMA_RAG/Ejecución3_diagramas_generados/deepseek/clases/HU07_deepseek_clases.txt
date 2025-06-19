@@ -1,0 +1,27 @@
+@startuml
+class Document {
+    + title: String
+    - creator: String
+    - source: String
+    + pageContent: String
+}
+
+class Person {
+    # userType: String
+}
+
+class User {
+    - userName: String
+    - userType: String
+}
+
+class ProcessDocument {
+    + readDocument(Document d) -> void
+    + writeDocument(Document d) -> void
+}
+
+Person#>User
+Document --|>ProcessDocument
+ProcessDocument ..> Document
+ProcessDocument ..> User
+@enduml

@@ -1,0 +1,23 @@
+@startuml
+    class Form {
+      - elements: List<Element>
+      - isCustomizable: boolean
+      - isAccessible: boolean
+    }
+
+    class Element {
+      - type: String
+      - isViewable: boolean
+    }
+
+    class TextField : Element {
+      - text: String
+    }
+
+    class DataEntry : Element {
+      - data: String
+    }
+
+    Form "1" -- "*" TextField
+    Form "1" -- "*" DataEntry
+    @enduml

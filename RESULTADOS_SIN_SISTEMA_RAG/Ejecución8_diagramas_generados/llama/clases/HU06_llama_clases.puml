@@ -1,0 +1,42 @@
+@startuml
+class Document {
+    - metadata: Map<String, Object>
+    - page_content: String
+}
+
+class Metadata {
+    - producer: String
+    - creator: String
+    - creationdate: String
+    - source: String
+    - file_path: String
+    - total_pages: Integer
+    - format: String
+    - title: String
+    - author: String
+    - subject: String
+    - keywords: String
+    - moddate: String
+    - trapped: String
+    - modDate: String
+    - creationDate: String
+    - page: Integer
+}
+
+class Question {
+    + id: Integer
+    + text: String
+}
+
+class Topic {
+    + id: Integer
+    + title: String
+}
+
+class UserDocumentRequest {
+    - questions: List<Question>
+    - topics: List<Topic>
+    + generate(): Document
+}
+
+@enduml

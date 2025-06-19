@@ -1,0 +1,31 @@
+@startuml
+class Persona {
+    - id: Integer
+    - nombre: String
+    - direccion: String
+    + trabajarPara(): void
+}
+
+class Compania {
+    # id: Integer
+    - nombre: String
+    - empleadoPersona (1..*): Persona
+    + agregarEmpleado(): void
+}
+
+class Cliente {
+    - id: Integer
+    - nombre: String
+    - direccion: String
+    + consultarHistorial(): void
+}
+
+class Historial {
+    # id: Integer
+    - fecha: Date
+    - tipo: Enum
+    - descripcion: String
+    + agregarEntry(): void
+}
+
+@enduml

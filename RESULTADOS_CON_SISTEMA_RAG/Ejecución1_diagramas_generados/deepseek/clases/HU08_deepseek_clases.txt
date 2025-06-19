@@ -1,0 +1,25 @@
+@startuml
+class Student {
+    - id: String
+    - name: String
+    - birthDate: Date
+    
+    + enrollIn(Course)
+}
+
+class Course {
+    - id: String
+    - name: String
+    - instructor: String
+    
+    + joinEnrollment(Student)
+}
+
+class Enrollment {
+    - recordType: "Enrollment"
+    - student: Student
+    - course: Course
+    
+    + createEnrollment()
+}
+@enduml

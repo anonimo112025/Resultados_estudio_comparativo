@@ -1,0 +1,38 @@
+@startuml
+class Document {
+    - metadata: Map<String, String>
+    + page_content: String
+}
+
+class PageContent {
+    - text: String
+}
+
+class User {
+    - username: String
+    - password: String
+}
+
+class Student {
+    # role: String
+    - name: String
+}
+
+class Teacher {
+    # role: String
+    - name: String
+}
+
+class DocumentAssociation {
+    + associatedDocument: Document
+}
+
+class PageContentAssociation {
+    + associatedPage: PageContent
+}
+
+class UserAssociation {
+    + studentOrTeacher: Student or Teacher
+}
+
+@enduml

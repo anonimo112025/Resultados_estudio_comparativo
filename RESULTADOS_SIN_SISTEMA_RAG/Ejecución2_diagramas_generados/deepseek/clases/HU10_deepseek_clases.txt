@@ -1,0 +1,45 @@
+@startuml
+class Document
+    - totalPages: Integer
+    - format: String
+    - title: String
+    - creator: String
+    - source: String
+    - metadata: Map<String, String>
+    + toString(): String
+endclass
+
+class Form
+    - document: Document
+    - elements: List<Element>
+    + addElement(): void
+    - removeElement(String id): void
+    + getElements(): List<Element>
+    + isModified(): boolean
+endclass
+
+class Element
+    - form: Form
+    - label: String
+    - content: String
+    - value: Object
+    + isHighlighted: boolean
+endclass
+
+class User
+    - username: String
+    - password: String
+    + login(): void
+endclass
+
+Document + getDocumentation(): Document
+Document + hasForms(List<Form>)
+Document + hasElements(List<Element>)
+
+Form *-- Document
+Element -->> Form
+User --> Document  # Assuming user can manage documents
+User --> Form      # Assuming user can interact with forms
+User --> Elements  # Assuming user can interact with elements
+
+@enduml

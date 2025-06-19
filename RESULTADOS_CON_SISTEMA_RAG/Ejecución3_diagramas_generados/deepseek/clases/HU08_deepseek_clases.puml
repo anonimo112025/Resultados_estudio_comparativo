@@ -1,0 +1,23 @@
+@startuml
+class Student 
+    + id: String
+    + name: String
+    + email: String
+    - courses: Collection<Course>
+
+class Course 
+    + id: String
+    + name: String
+    * enrolledStudents: Collection<Student>
+
+class Enrollment 
+    + id: String
+    + studentId: Integer
+    + courseId: Integer
+    + dateEnrolled: Date
+
+Student --> Enrollment
+Course --> Enrollment
+
+Course -->|> Enrollment
+@enduml

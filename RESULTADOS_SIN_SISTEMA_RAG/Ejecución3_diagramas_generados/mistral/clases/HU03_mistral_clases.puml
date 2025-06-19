@@ -1,0 +1,17 @@
+@startuml
+   class Administrator {
+       - userId: String
+       - permissions: Map<String, Boolean>
+
+       + assignPermission(resource: String, canAccess: Boolean)
+       + revokePermission(resource: String)
+       + viewCurrentPermissions()
+   }
+
+   class ApplicationResource {
+       - resourceId: String
+       - requiredPermissions: Map<String, Boolean>
+
+       + validatePermissions(administrator: Administrator): boolean
+   }
+   @enduml

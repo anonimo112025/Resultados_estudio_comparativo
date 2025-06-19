@@ -1,0 +1,18 @@
+@startuml
+   class User
+   - questions: List<Question>
+   - topics: List<Topic>
+   - pdfDocument: PdfDocument
+   + generatePDF(): void
+
+   class Question
+   - questionText: String
+
+   class Topic
+   - topicTitle: String
+
+   class PdfDocument
+   - pages: List<Page>
+   - isStored: boolean
+   - store(): void
+   @enduml

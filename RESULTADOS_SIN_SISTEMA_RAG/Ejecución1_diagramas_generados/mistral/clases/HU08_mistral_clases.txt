@@ -1,0 +1,25 @@
+@startuml
+   class Student {
+       - name: String
+       - enrollments: List[CourseEnrollment]
+
+       + addCourseEnrollment(courseEnrollment: CourseEnrollment): void
+       + removeCourseEnrollment(courseEnrollment: CourseEnrollment): void
+   }
+
+   class Course {
+       - name: String
+       - enrollments: List[Student]
+
+       + addStudent(student: Student): void
+       + removeStudent(student: Student): void
+   }
+
+   class CourseEnrollment {
+       - student: Student
+       - course: Course
+
+       + register(): void
+       + unregister(): void
+   }
+   @enduml

@@ -1,0 +1,28 @@
+@startuml
+   class Administrator {
+       - username: String
+       - password: String
+       - users: Set<User>
+       - applicationResources: Set<ApplicationResource>
+
+       + assignPermission(user: User, resource: ApplicationResource): void
+       + revokePermission(user: User, resource: ApplicationResource): void
+       + viewCurrentPermissions(): void
+   }
+
+   class User {
+       - username: String
+       - password: String
+       - permissions: Set<ApplicationResource>
+
+       + grantPermission(resource: ApplicationResource): void
+       + revokePermission(resource: ApplicationResource): void
+       + viewCurrentPermissions(): void
+   }
+
+   class ApplicationResource {
+       - name: String
+
+       + validatePermission(user: User): boolean
+   }
+   @enduml

@@ -1,0 +1,39 @@
+@startuml
+class Document {
+    - metadata: dictionary
+    - page_content: string
+}
+
+class Page {
+    - document: Document
+    - number: int
+}
+
+class FormElement {
+    - text: string
+    - dataEntry: DataEntry
+}
+
+class DataEntry {
+    - type: string
+    - value: string
+}
+
+class UserFormManager {
+    + createForm(): FormElement
+    + addElement(form: FormElement): void
+    + removeElement(form: FormElement): void
+}
+
+class SystemUser {
+    + viewDocument(document: Document)
+    + addForm(element: FormElement)
+}
+
+Document --> Page
+Page --|> DataEntry
+DataEntry --> FormElement
+SystemUser ->* UserFormManager
+UserFormManager *---> FormElement
+
+@enduml

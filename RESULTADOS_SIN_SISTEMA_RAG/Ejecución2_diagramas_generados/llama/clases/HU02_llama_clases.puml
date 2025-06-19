@@ -1,0 +1,24 @@
+@startuml
+
+class Document {
+- metadata: Map<String, Any>
+- page_content: String
++ save(): void
+}
+
+class User {
+- username: String
+- password: String
++ login(): boolean
++ registerDocument(Document): void
+}
+
+class Book {
+- title: String
+- author: String
+- publicationYear: Integer
+- document: Document
++ register(): void
+}
+
+@enduml

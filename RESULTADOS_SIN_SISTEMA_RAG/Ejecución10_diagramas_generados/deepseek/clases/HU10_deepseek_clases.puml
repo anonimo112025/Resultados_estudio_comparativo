@@ -1,0 +1,35 @@
+@startuml
+class User {
+    - username: String
+    - password: String
+    
+    + login(): boolean
+}
+
+class Element {
+    + type: String
+    + label: String
+    + value: String
+    + placeholder: String
+    + options: Object
+    
+    - getType(): String
+    - getLabel(): String
+    - getValue(): String
+    - getPlaceholder(): String
+    - validate(): Boolean
+}
+
+class Form {
+    bag of Element
+    + currentStep: Integer
+    
+    - showElement(Element): void
+    - hideElement(Element): void
+    - moveToNextStep(): void
+    - save(): void
+    - retrieveResults(): List<String>
+    
+    + elements: [Element]
+}
+@enduml

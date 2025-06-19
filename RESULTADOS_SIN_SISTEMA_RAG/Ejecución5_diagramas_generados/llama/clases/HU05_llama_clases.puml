@@ -1,0 +1,30 @@
+@startuml
+class Document {
+    - metadata: Map<String, String>
+    - page_content: String
+}
+
+class PageContent {
+    - content: String
+}
+
+class DiceGame {
+    - diceRollResult: Integer
+    + rollDice(): Integer
+}
+
+class Player {
+    - username: String
+    - score: Integer
+    - gameProgress: String
+    - diceGame: DiceGame
+    + interactWithDiceGame()
+}
+
+class GameContext {
+    - pageContent: PageContent
+    - currentStep: String
+    + proceedToNextStep()
+}
+
+@enduml

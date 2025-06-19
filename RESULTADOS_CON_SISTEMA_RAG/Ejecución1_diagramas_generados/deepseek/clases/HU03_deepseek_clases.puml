@@ -1,0 +1,33 @@
+@startuml
+class Persona {
+    -nombre: String
+    -apellido: String
+}
+
+class Empresa {
+    +Nombre: String
+    +ubicacion: String
+}
+
+class Permiso {
+    +asignar Perucho: Permiso
+    -revarir Perucho: Permiso
+    -ver Perucho: Permiso
+    +asignar a Usuario! Perucho
+}
+
+class Usuario {
+    -username: String
+    -password: String
+    +iniciar Sesión(): boolean
+}
+
+class Acceso {
+    +asignar Rol a Usuario()
+}
+
+class Rol {
+    +asignar a Usuario()
+    -revarir a Usuario()
+}
+@enduml

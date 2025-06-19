@@ -1,0 +1,31 @@
+@startuml
+
+class Sistema
+- manager: Persona # "1" --> *
+
+class Administrador {
+    - id_administrador: int
+    + get_id_administrador(): int
+}
+
+class User {
+    + login(): boolean
+}
+
+class Compañía {
+    - id_compañia: int
+}
+
+class Permisos {
+    - id_permiso: int
+}
+
+class Permiso {
+    - nombre_permiso: String
+
+    class TipoPermiso {
+        - tipo: String
+    }
+}
+
+@enduml

@@ -1,0 +1,39 @@
+@startuml
+class User {
+    + selectQuestions(): Questions
+    + selectTopics(): Topics
+}
+
+class Questions {
+    - questionList: List
+    + addToQuestionList(Question): void
+}
+
+class Topics {
+    - topicList: List
+    + addToTopicList(Topic): void
+}
+
+class Question {
+    - text: String
+}
+
+class Topic {
+    - name: String
+}
+
+class PDFGenerator {
+    - pdfDocument: Document
+    + generatePDF(Questions, Topics): Document
+    + storePDF(Document): void
+    + downloadPDF(): Document
+}
+
+User --> Questions
+User --> Topics
+User --> PDFGenerator
+Questions --> Question
+Topics --> Topic
+PDFGenerator --> Questions
+PDFGenerator --> Topics
+@enduml

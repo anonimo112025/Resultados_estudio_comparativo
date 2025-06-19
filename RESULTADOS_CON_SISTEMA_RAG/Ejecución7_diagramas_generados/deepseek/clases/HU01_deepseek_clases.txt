@@ -1,0 +1,27 @@
+@startuml
+class User (
+    - id: String,
+    + username: String,
+    + password: String,
+    + email: String
+)
+
+class Profile (
+    - user: User,
+    + name: String,
+    + email: String,
+    + password: String,
+    + telephone: String
+)
+
+class OrganizedEntity (
+    + produtor: String,
+    + diseñador: String
+)
+
+User *-- Profile
+
+Event --> User
+Event --> Profile
+Event *-- OrganizedEntity
+@enduml

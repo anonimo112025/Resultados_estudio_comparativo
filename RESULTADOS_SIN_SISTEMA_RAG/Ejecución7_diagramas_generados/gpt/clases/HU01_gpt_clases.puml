@@ -1,0 +1,14 @@
+@startuml
+class User {
+    + register(): void
+    + updateInfo(): void
+    + viewProfile(): Profile
+}
+
+class Profile {
+    - name: String
+    - email: String
+    - password: String
+}
+User "1" --> "1" Profile
+@enduml

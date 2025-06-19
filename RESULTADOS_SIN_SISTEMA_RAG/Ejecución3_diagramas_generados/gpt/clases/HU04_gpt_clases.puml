@@ -1,0 +1,28 @@
+@startuml
+class User {
+    + manageClientInformation(): void
+    + performAccountOperation(): void
+    + consultTransactions(): Transaction[]
+}
+
+class Client {
+    - clientInformation: String
+    - accountBalance: double
+}
+
+class Transaction {
+    - transactionDate: Date
+    - transactionType: String
+    - transactionAmount: double
+}
+
+class Report {
+    + generateReport(): void
+    + consultReport(): String
+}
+
+User --> Client: manage / perform operation
+User --> Transaction: consult
+User --> Report: generate / consult
+Client --* Transaction: creates / affects
+@enduml

@@ -1,0 +1,18 @@
+@startuml
+class User {
+    + name: String
+    + userType: String
+}
+
+class Student --|> User {
+}
+
+class Professor --|> User {
+}
+
+class SystemUser {
+    + manageUsers(): User
+}
+
+SystemUser --> User
+@enduml

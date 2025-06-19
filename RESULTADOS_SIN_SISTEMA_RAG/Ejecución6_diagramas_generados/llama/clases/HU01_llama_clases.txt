@@ -1,0 +1,28 @@
+@startuml
+class Document {
+    - metadata: Map<String, String>
+    - page_content: String
+}
+
+class UserDocument extends Document {
+    # profileId: Integer
+}
+
+class Profile {
+    - user_id: Integer
+    + get_user_id(): Integer
+    + set_user_id(Integer)
+}
+
+class RegisterForm {
+    - username: String
+    - password: String
+    + register()
+}
+
+class SystemUserAccount {
+    # registered_users: Set<User>
+    + add_user(User)
+}
+
+@enduml

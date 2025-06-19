@@ -1,0 +1,21 @@
+@startuml
+class Player {
+    - username: String
+    - password: String
+}
+class DiceGame {
+    o-- Game
+    + rollDice(): RandomValue
+}
+class RandomValue {
+    - value: Integer
+}
+class Turn {
+    --> Game
+    + performAction()
+}
+class Action {
+    + description: String
+}
+
+@enduml

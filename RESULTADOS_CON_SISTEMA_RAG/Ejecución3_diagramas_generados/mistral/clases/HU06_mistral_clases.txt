@@ -1,0 +1,17 @@
+@startuml
+class Question {
+  - text: String
+}
+
+class Topic {
+  - name: String
+  - questions: Set[Question]
+}
+
+class PDFGenerator {
+  - selectedQuestions: Set[Question]
+  - selectedTopics: Set[Topic]
+
+  + generatePDF(): void
+}
+@enduml

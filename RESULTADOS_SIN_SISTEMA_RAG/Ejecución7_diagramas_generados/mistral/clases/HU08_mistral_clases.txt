@@ -1,0 +1,24 @@
+@startuml
+   class Student {
+       - id: int
+       - name: String
+       - enrollments: List[CourseEnrollment]
+       - addEnrollment(courseEnrollment: CourseEnrollment)
+       - removeEnrollment(courseEnrollment: CourseEnrollment)
+   }
+
+   class Course {
+       - id: int
+       - name: String
+       - enrollments: List[Student]
+       - addStudent(student: Student)
+       - removeStudent(student: Student)
+   }
+
+   class CourseEnrollment {
+       - id: int
+       - student: Student
+       - course: Course
+       - created_at: DateTime
+   }
+   @enduml

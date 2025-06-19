@@ -1,0 +1,25 @@
+@startuml
+class Client {
+- id: Integer
+- name: String
+- balance: Float
+}
+class Transaction {
+- id: Integer
+- amount: Float
+- date: Date
+- client: Client #*
+}
+class User {
++ login(): boolean
+- username: String
+- password: String
+}
+
+class AccountManager {
++ openAccount()
++ deposit(amount: Float)
++ withdraw(amount: Float)
+}
+
+@enduml

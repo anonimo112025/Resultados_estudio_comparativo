@@ -1,0 +1,21 @@
+@startuml
+class User 
+    - username: String
+    - password: String
+    + login(): boolean
+    + register(): void
+    - viewProfile(): void
+endclass
+
+class Profile (User)
+    - name: String
+    - email: String
+    + updateProfile(username: String, email: String): void
+    + viewProfile(): void
+endclass
+
+class System 
+    - action: "Register User"
+    + registerUser(User): void
+endclass
+@enduml

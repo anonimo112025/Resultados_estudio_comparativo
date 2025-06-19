@@ -1,0 +1,38 @@
+@startuml
+class Document 
+    + content: String
+    - relatedDocuments: collection of Document
+    - creator: String
+    - productionDate: Date
+    - format: String
+    - title: String
+    - subject: String
+    - keywords: Set of String
+    - moddate: String
+    - trapped: Boolean
+
+    method viewDocument()
+        : void
+        @return Boolean
+    public
+
+    method addElement(
+        : formSystem *-- FormElements
+    ) 
+        : void
+        @param formSystem the system that manages forms
+    public
+
+    method viewElement(
+        : element in formSystemElements
+    )
+        : element
+        @return element
+    public
+
+    method clearForm()
+        : void
+        @param formSystem the system managing forms
+        @return void
+    public
+@enduml

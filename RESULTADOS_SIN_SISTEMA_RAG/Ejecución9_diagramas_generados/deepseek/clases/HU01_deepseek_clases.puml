@@ -1,0 +1,37 @@
+@startuml
+class User {
+    - username: String
+    - password: String
+    
+    + register(): void
+    + manageProfile(): void
+    + viewProfile(): void
+}
+
+class Account {
+    + id: String
+    + username: String
+    - password: String
+    
+    + createAccount(): void
+    + manageProfile(): void
+    + viewProfile(): void
+}
+
+interface ProfileInterface {
+    + retrieveProfileInfo(): void
+}
+
+class Profile implements ProfileInterface {
+    
+    + profileInfo: object
+    
+    + viewProfile(): void
+}
+
+# Association between User and Account
+User --> Account
+
+# Association between User and Profile
+User --> Profile
+@enduml

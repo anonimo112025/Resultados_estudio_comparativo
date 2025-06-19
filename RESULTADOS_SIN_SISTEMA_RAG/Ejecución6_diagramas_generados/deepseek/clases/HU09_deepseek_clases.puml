@@ -1,0 +1,57 @@
+@startuml
+class SystemUser {
+    - username: String
+    - password: String
+    - email: String
+    
+    + registerUser(): void
+    + updateProfile(): void
+    + deleteUser(): void
+}
+
+class Book {
+    # published by a Publisher
+    *-- Publisher
+
+    - title: String
+    - author: Author
+    - description: String
+    - totalPages: Integer
+    - publishedDate: Date
+    
+    + createBook(): void
+    + readBook(): void
+    + updateBook(): void
+    + deleteBook(): void
+}
+
+class Author {
+    *-- SystemUser  # User owns the Author
+
+    - name: String
+    - genre: String?
+    - books: collection of Book
+    
+    + registerAuthor(): void
+    + updateAuthor(): void
+    + deleteAuthor(): void
+}
+
+class Publisher {
+    *-- SystemUser
+
+    - name: String
+    - imprint: String
+    - isbn: String
+    - publishedBooks: collection of Book
+    
+    + publishBook(String title): void
+    + listBooks(): void
+}
+
+# Relationships between Book and Author are represented by the AuthorMultiplicity symbol (one book can have many authors)
+Book --> Author
+
+# Relationships between Book and Publisher are represented by the PublisherMultiplicity symbol (a book is published by one publisher)
+Book --> Publisher
+@enduml

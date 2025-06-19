@@ -1,0 +1,15 @@
+@startuml
+class User {
+    + username: String
+    - bankAccount: String
+    
+    + login(): boolean
+    + logout()
+    
+    + createClientInfo(name: String, email: String)
+    + deposit(amount: String)
+    + withdraw(amount: String)
+    + consultTransaction(transactionId: Integer)
+    + generateReport()
+}
+@enduml

@@ -1,0 +1,11 @@
+@startuml
+class Player {
+    + rollDice(): int
+}
+
+class Dice {
+    - sideCount: int
+    + roll(): int
+}
+Player "1" --> "2" Dice
+@enduml

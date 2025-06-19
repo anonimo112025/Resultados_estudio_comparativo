@@ -1,0 +1,32 @@
+@startuml
+class Document {
+    - id: Integer
+    - metadata: Map
+    - page_content: String
+    + getMetadata(): Map
+}
+
+class PageContent {
+    - text: String
+    + setText(text: String): void
+}
+
+class Question {
+    - id: Integer
+    - text: String
+    + getId(): Integer
+    + getText(): String
+}
+
+class Topic {
+    - id: Integer
+    - name: String
+    + getId(): Integer
+    + getName(): String
+}
+
+Document --> PageContent
+PageContent --> Question
+PageContent --> Topic
+
+@enduml

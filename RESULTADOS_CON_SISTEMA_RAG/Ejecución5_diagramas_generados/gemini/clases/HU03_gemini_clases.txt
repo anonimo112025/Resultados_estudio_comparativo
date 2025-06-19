@@ -1,0 +1,42 @@
+@startuml
+class SystemAdministrator Ellipsis {
+  + grantUserPermission(user: User, permission: Permission, resource: ApplicationResource): UserPermissionGrant
+  + revokeUserPermission(grant: UserPermissionGrant): void
+  + listUserPermissionGrants(user: User): List<UserPermissionGrant>
+}
+
+class User Ellipsis {
+  - userId: String
+  - username: String
+}
+
+class Permission Ellipsis {
+  - permissionId: String
+  - name: String
+  - description: String
+}
+
+class ApplicationResource Ellipsis {
+  - resourceId: String
+  - name: String
+}
+
+class UserPermissionGrant Ellipsis {
+  - grantId: String
+  - grantDate: Date
+  - isActive: boolean
+}
+
+SystemAdministrator ..> UserPermissionGrant
+SystemAdministrator --> User
+SystemAdministrator --> Permission
+SystemAdministrator --> ApplicationResource
+
+User "1" -- "*" UserPermissionGrant
+Permission "1" -- "*" UserPermissionGrant
+ApplicationResource "1" -- "*" UserPermissionGrant
+
+UserPermissionGrant --> "1" User
+UserPermissionGrant --> "1" Permission
+UserPermissionGrant --> "1" ApplicationResource
+@enduml

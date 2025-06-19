@@ -1,0 +1,16 @@
+@startuml
+   class Client {
+       - id: int
+       - name: String
+       - balance: decimal
+       - transactions: List[Transaction]
+   }
+
+   class Transaction {
+       - id: int
+       - type: String
+       - amount: decimal
+       - date: Date
+   }
+   Client "1" -- "*" Transaction
+   @enduml

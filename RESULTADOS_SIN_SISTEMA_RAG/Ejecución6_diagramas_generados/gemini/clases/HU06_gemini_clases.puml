@@ -1,0 +1,30 @@
+@startuml
+
+class User Ellipsis {
+  + generatePersonalizedPdf(selectedQuestions: Question[], selectedTopics: Topic[]): PersonalizedPdfFile
+}
+
+class PersonalizedPdfFile Ellipsis {
+  - fileName: String
+  - title: String
+  - creationDate: Date
+  + view(): void
+  + download(): void
+}
+
+class Question Ellipsis {
+  - id: String
+  - text: String
+}
+
+class Topic Ellipsis {
+  - id: String
+  - name: String
+}
+
+User "1" --> "0..*" PersonalizedPdfFile
+PersonalizedPdfFile "1" o-- "0..*" Question
+PersonalizedPdfFile "1" o-- "0..*" Topic
+Topic "*" -- "*" Question
+
+@enduml

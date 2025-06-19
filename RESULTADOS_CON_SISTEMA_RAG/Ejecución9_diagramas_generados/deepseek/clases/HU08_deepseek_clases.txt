@@ -1,0 +1,16 @@
+@startuml
+class Student(id: int, name: String) {
+    + enrollsIn(Course) * multiplicity
+}
+class Course(id: int, title: String) {
+    + enrolledBy(Students) * multiplicity
+}
+
+Enrollment (studentRef, courseId)
+Student -->|-> Enrollment ->|-> Course
+Course -->|-> Enrollment ->|-> Student
+
+Student: id(int), name(String)
+Course: id(int), title(String)
+Enrollment: studentRef, courseId
+@enduml

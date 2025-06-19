@@ -1,0 +1,15 @@
+@startuml
+class Player {
+    - name: String
+    - dice1: Dice
+    - dice2: Dice
+    - currentRoll: Integer
+    + rollDice(): void
+}
+
+class Dice {
+    - sides: Integer
+    - value: Integer
+    + setValue(value: Integer): void
+}
+@enduml

@@ -1,0 +1,36 @@
+@startuml
+class SystemUser {
+    + manageClientInformation(): void
+    + performOperations(): void
+    + consultTransactions(): Transaction[]
+}
+
+class Client {
+    - id: int
+    - info: String
+    - balance: double
+    + getInformation(): String
+    + updateInformation(info: String): void
+    + updateBalance(amount: double, operation: String): boolean
+}
+
+class Transaction {
+    - id: int
+    - type: String
+    - amount: double
+    + createTransaction(type: String, amount: double): boolean
+}
+
+class Report {
+    - id: int
+    - type: String
+    # transactions: Transaction[]
+    # balances: double
+    + generateReport(type: String): void
+    + consultReport(): String
+}
+
+SystemUser --> Client
+SystemUser --> Transaction
+SystemUser --> Report
+@enduml

@@ -1,0 +1,36 @@
+@startuml
+class User {
+    - username: String
+    - email: String
+    - password: String
+    - firstName: String
+    - lastName: String
+    - registrationDate: Date
+    + register(): boolean
+    + createProfile(): void
+    + updateBasicInformation(): void
+}
+
+class Profile {
+    - profileId: String
+    - creationDate: Date
+    - isActive: boolean
+    + viewProfile(): void
+    + manageInformation(): void
+}
+
+class RegistrationInterface {
+    + displayRegistrationForm(): void
+    + validateInput(): boolean
+    + submitRegistration(): void
+}
+
+class ProfileInterface {
+    + displayProfile(): void
+    + showBasicInformation(): void
+}
+
+User "1" --> "1" Profile : creates
+RegistrationInterface --> User : registers
+ProfileInterface --> Profile : displays
+@enduml

@@ -1,0 +1,27 @@
+@startuml
+class User Ellipsis {
+  + generatePersonalizedDocument(selectedQuestions: Question, selectedTopics: Topic): PDFFile
+  + viewDocument(document: PDFFile)
+  + downloadDocument(document: PDFFile)
+}
+
+class PDFFile Ellipsis {
+  - fileName: String
+  - /contentStructure: String
+}
+
+class Question Ellipsis {
+  - text: String
+  - identifier: String
+}
+
+class Topic Ellipsis {
+  - name: String
+  - identifier: String
+}
+
+User "1" --> "*" PDFFile : generates >
+PDFFile "1" o-- "*" Question : contains >
+PDFFile "1" o-- "*" Topic : contains >
+Topic "1" o-- "*" Question : groups >
+@enduml

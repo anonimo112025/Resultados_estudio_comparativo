@@ -1,0 +1,20 @@
+@startuml
+class Document {
+    - metadata: Map<String, Object>
+    + getMetadata(): Map<String, Object>
+}
+
+class User {
+    - username: String
+    - password: String
+    + login(): boolean
+    + registerDocument(Document): void
+    + viewProfile(): void
+}
+
+class Document {
+    - metadata: Map<String, Object>
+    + getMetadata(): Map<String, Object>
+}
+
+@enduml

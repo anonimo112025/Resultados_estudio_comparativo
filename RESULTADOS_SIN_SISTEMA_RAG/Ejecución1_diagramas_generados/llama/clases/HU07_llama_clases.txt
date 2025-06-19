@@ -1,0 +1,41 @@
+@startuml
+class Document {
+    - id: Integer
+    - title: String
+    - author: String
+    - source: String
+    - total_pages: Integer
+    - format: String
+    - metadata: Map<String, String>
+    + createMetadata(): void
+}
+
+class Student {
+    - id: Integer
+    - name: String
+    - type: String
+    + updateType(): void
+    + saveToDatabase(): void
+}
+
+class Teacher {
+    - id: Integer
+    - name: String
+    - type: String
+    + updateType(): void
+    + saveToDatabase(): void
+}
+
+class InformationManagementSystem {
+    + manageStudentInfo()
+    + manageTeacherInfo()
+    - updateCommonCharacteristics()
+    + printReport()
+}
+
+Document --> Student
+Document --> Teacher
+Student o---> InformationManagementSystem
+Teacher o---> InformationManagementSystem
+
+@enduml

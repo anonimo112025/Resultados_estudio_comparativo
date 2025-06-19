@@ -1,0 +1,22 @@
+@startuml
+class User {
+    - username: String
+    - password: String
+    + login(): boolean
+}
+class Permission {
+    - permissionType: String
+    - accessLevel: String
+    + assignPermissions(): void
+}
+class Resource {
+    - resourceId: Integer
+    - resourceName: String
+    - permissions: List<Permission>
+    + addPermission(Permission): void
+}
+
+User -->| has |> Permission
+Permission -->| applies to |> Resource
+
+@enduml

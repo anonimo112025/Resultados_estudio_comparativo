@@ -1,0 +1,42 @@
+@startuml
+class Administrator Ellipsis {
+  + createPermissionAssignment(user: User, permission: Permission, resource: Resource): UserPermissionAssignment
+  + deletePermissionAssignment(assignment: UserPermissionAssignment): void
+  + findUserPermissionAssignmentsForUser(user: User): List<UserPermissionAssignment>
+  + checkPermission(user: User, permissionToCheck: Permission, resource: Resource): boolean
+}
+
+class User Ellipsis {
+  - userId: String
+  - username: String
+}
+
+class Permission Ellipsis {
+  - permissionId: String
+  - permissionName: String
+  - description: String
+}
+
+class Resource Ellipsis {
+  - resourceId: String
+  - resourceName: String
+  - description: String
+}
+
+class UserPermissionAssignment Ellipsis {
+}
+
+Administrator "1" -- "*" UserPermissionAssignment
+Administrator ..> User
+Administrator ..> Permission
+Administrator ..> Resource
+
+User "1" -- "*" UserPermissionAssignment
+Permission "1" -- "*" UserPermissionAssignment
+Resource "1" -- "*" UserPermissionAssignment
+
+UserPermissionAssignment -- "1" User
+UserPermissionAssignment -- "1" Permission
+UserPermissionAssignment -- "1" Resource
+
+@enduml

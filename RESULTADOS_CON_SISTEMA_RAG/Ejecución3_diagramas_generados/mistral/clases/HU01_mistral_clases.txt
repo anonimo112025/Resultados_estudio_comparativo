@@ -1,0 +1,22 @@
+@startuml
+class RegisterUser {
+  - id: int
+  - username: String
+  - password: String
+  - email: String
+  - created_at: datetime
+  - updated_at: datetime
+}
+
+class Profile {
+  - id: int
+  - user: RegisterUser
+  - first_name: String
+  - last_name: String
+  - phone_number: String
+  - address: String
+  - bio: String
+  - created_at: datetime
+  - updated_at: datetime
+}
+@enduml

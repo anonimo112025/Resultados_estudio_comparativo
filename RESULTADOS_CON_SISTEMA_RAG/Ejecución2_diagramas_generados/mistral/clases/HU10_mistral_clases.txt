@@ -1,0 +1,15 @@
+@startuml
+    class Form {
+        - elements: List<Element>
+    }
+
+    abstract class Element {
+        - content: String
+    }
+
+    class TextField extends Element {
+    }
+
+    class DataEntry extends Element {
+    }
+    @enduml

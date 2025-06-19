@@ -1,0 +1,18 @@
+@startuml
+class Player {
+    + rollDice(): int
+}
+
+class Game {
+    + determineAction(int): void
+    + progressGame(): void
+}
+
+class Dice {
+    - value: int
+    + generateRandomValue(): int
+}
+
+Player --> Game
+Player --> Dice
+@enduml

@@ -1,0 +1,29 @@
+@startuml
+class Student {
+    - id: String
+    + name: String
+    + email: String
+    
+    # Relationships
+    * enrolledCourses: (courseCode: String) -> Course
+}
+
+class Course {
+    - courseCode: String
+    + title: String
+    + description: String
+    
+    # Relationships
+    * enrolledStudents: (studentID: String) -> Student
+}
+
+class Enrollment {
+    - studentID: String
+    - courseCode: String
+    + date: String
+    
+    # References to related classes
+    @ref Student(studentID)
+    @ref Course(courseCode)
+}
+@enduml

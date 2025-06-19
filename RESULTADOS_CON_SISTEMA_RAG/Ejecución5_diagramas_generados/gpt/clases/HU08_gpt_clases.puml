@@ -1,0 +1,21 @@
+@startuml
+class User {
+    + manageEnrollment(): void
+}
+
+class Course {
+    - courseName: String
+    + listEnrollment(): List
+}
+
+class Enrollment {
+    - studentId: Int
+    - courseId: Int
+    + recordEnrollment(): void
+    + modifyEnrollment(): void
+    + cancelEnrollment(): void
+}
+
+User --> Enrollment: manage
+Enrollment --> Course: enroll
+@enduml

@@ -1,0 +1,14 @@
+@startuml
+class Form {
+  - components: List<Component>
+  - isCustomizable: boolean
+}
+
+class Component {
+  - type: String
+  - value: String
+  - visibility: boolean
+}
+
+Form "1" --> "*" Component
+@enduml

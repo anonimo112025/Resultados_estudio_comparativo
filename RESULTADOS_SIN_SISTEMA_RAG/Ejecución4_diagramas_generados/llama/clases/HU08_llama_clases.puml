@@ -1,0 +1,35 @@
+@startuml
+class User {
+  - username: String
+  - password: String
+}
+
+class Course {
+  - id: Integer
+  - name: String
+  - enrollments:
+    - EnrolledStudent
+}
+
+class Student {
+  - id: Integer
+  - name: String
+}
+
+class EnrolledStudent {
+  - student: Student
+  - course: Course
+}
+
+class Enrollment {
+  - student: Student
+  - course: Course
+}
+
+User -->| many -> Course
+Course -->| many -> EnrolledStudent
+EnrolledStudent -->| one -> Student
+Student -->| many -> Enrollment
+Enrollment -->| one -> Course
+
+@enduml

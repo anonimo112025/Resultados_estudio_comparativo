@@ -1,0 +1,21 @@
+@startuml
+   class Client {
+       - id: int
+       - name: String
+       - balance: float
+       - transactions: List[Transaction]
+
+       + deposit(amount: float)
+       + withdraw(amount: float)
+       + getTransactions()
+   }
+
+   class Transaction {
+       - id: int
+       - type: String
+       - amount: float
+       - client: Client
+
+       + getType()
+   }
+   @enduml

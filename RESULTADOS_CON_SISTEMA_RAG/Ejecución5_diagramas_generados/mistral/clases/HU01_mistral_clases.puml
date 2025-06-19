@@ -1,0 +1,21 @@
+@startuml
+class User {
+    - id: Integer
+    - name: String
+    - email: String
+    - password: String
+    + register(): void
+    + login(email: String, password: String): boolean
+}
+
+class Profile {
+    - firstName: String
+    - lastName: String
+    - dateOfBirth: Date
+    - address: Address
+    + viewProfile(): void
+    + editProfile(): void
+}
+
+User "1" --> "*" Profile
+@enduml

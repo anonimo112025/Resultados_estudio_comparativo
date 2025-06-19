@@ -1,0 +1,13 @@
+@startuml
+class SystemUser {
+  + registerBook(title: String, author: String, publicationYear: int): Book
+}
+
+class Book {
+  - title: String
+  - author: String
+  - publicationYear: int
+}
+
+SystemUser "1" --> "0..*" Book : manages
+@enduml

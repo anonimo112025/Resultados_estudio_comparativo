@@ -1,0 +1,45 @@
+@startuml
+class Student {
+    - id: String
+    - name: String
+    - email: String
+    
+    + enroll(Course enrollment) : void
+    - hasEnrollments: Set of Enrollment
+    
+}
+
+class Course {
+    - id: String
+    - title: String
+    - department: String
+    - enrolledStudents: Set of Student
+    
+    + enrollStudent(Student student): boolean
+    - hasEnrolledStudents: Set of Student
+    
+}
+
+class Enrollment {
+    - studentId: Integer
+    - courseId: Integer
+    - date: Date
+    - status: Boolean  # true for enrolled, false for not enrolled
+    
+    + getStudent(): String
+    + getCourse(): String
+}
+
+interface StudentEnrollment {
+    - studentId: Integer
+    - courseId: Integer
+    - enrollmentDate: Date
+    - isEnrolled: Boolean
+}
+
+# Relationships:
+Course o-- StudentEnrollment via enrolledStudents
+Student hasEnrollments *-> Enrollment
+Enrollment <- Course enrolledStudents
+Enrollment <- Student studentId
+@enduml

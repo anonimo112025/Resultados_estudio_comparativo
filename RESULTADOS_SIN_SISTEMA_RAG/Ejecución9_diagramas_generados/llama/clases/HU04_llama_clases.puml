@@ -1,0 +1,46 @@
+@startuml
+class Client {
+    - id: Integer
+    - name: String
+    - balance: Float
+}
+
+class Transaction {
+    - id: Integer
+    - type: String
+    - amount: Float
+}
+
+class Report {
+    - id: Integer
+    - type: String
+    - transactions: List<Transaction>
+}
+
+class ClientManager {
+    + addClient(): Client
+    - removeClient(Client)
+    # getBalance(Client): Float
+}
+
+class TransactionManager {
+    + createTransaction(): Transaction
+    - updateTransaction(Transaction)
+    # getTransactions(): List<Transaction>
+}
+
+class ReportGenerator {
+    + generateReport(Report): void
+    - updateReport(Report)
+}
+
+class ClientService {
+    + manageClient(Client): ClientManager
+    - updateBalance(Client, Float)
+}
+
+clientManager o-- ClientService
+transactionManager --|> TransactionService
+reportGenerator *-- Report
+
+@enduml

@@ -1,0 +1,14 @@
+@startuml
+   class Player {
+       - dice1: Die
+       - dice2: Die
+       - currentRoll: Integer
+
+       + roll(): void
+   }
+
+   class Die {
+       - value: Integer
+
+   }
+   @enduml

@@ -1,0 +1,22 @@
+@startuml
+class Book Ellipsis {
+  + registerData(): void
+  + consultData(): String
+  + updateData(): void
+}
+
+class Author Ellipsis {
+  + registerData(): void
+  + consultData(): String
+  + updateData(): void
+}
+
+class Publisher Ellipsis {
+  + registerData(): void
+  + consultData(): String
+  + updateData(): void
+}
+
+Book "0..*" -- "1..*" Author
+Book "0..*" -- "1" Publisher
+@enduml

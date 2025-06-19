@@ -1,0 +1,17 @@
+@startuml
+class Student {
+    - name: String
+    - email: String
+    - id: ID
+}
+
+class Course {
+    + name: String
+    + description: String
+    - enrolledStudents: [Student]
+}
+
+Student -->|> Course @enrolls
+
+Course -->|> Student @hasEnrolledStudents
+@enduml

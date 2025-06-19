@@ -1,0 +1,42 @@
+@startuml
+class Book {
+    - title: String
+    - author: Author
+    - publisher: Publisher
+}
+
+class Author {
+    - name: String
+    - books: Book*
+}
+
+class Publisher {
+    - name: String
+}
+
+class Document {
+    + content: String
+    + metadata: Metadata
+}
+
+class Metadata {
+    - producer: String
+    - title: String
+    - author: String
+    - creationdate: String
+    - source: String
+    - file_path: String
+    - total_pages: Integer
+    - format: String
+}
+
+class SystemUser {
+    + register(): boolean
+    + consult(): Document?
+}
+
+Document -->| "1" --> * Author
+Book -->| "1" --> Publisher
+Author -->| "*" --> Book
+
+@enduml

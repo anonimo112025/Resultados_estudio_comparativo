@@ -1,0 +1,34 @@
+@startuml
+class Player {
+    - id: String
+    
+    + rollDice(): Action
+}
+
+class Turn {
+    - player: Player
+    - diceRoll1: Int
+    - diceRoll2: Int
+    
+    + execute(): void
+}
+
+class DiceGame {
+    + initialize(): void
+    
+    - getAction(int, int): Action
+}
+
+class Action {
+    # Possible outcomes:
+    # Move, Attack, Heal, etc.
+    
+    // Determined by the game logic based on rolls
+}
+
+Player --> Turn: During their turn, a player performs an action involving rolling dice.
+
+Turn --> DiceGame: The dice rolled in each turn are used to determine the action taken in the game.
+
+DiceGame <|-- Roll: The game determines actions based on the dice rolls.
+@enduml

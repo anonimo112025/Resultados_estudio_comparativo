@@ -1,0 +1,26 @@
+@startuml
+class Player {
+}
+
+class Game {
+  + rollDice(): RollOutcome
+  + determineAction(outcome: RollOutcome): GameAction
+}
+
+class Die {
+  - faceValue: int
+  + roll(): int
+}
+
+class RollOutcome {
+  - totalValue: int
+}
+
+class GameAction {
+}
+
+Player "1" --> "1" Game
+Game "1" *-- "2" Die
+Game ..> RollOutcome
+Game ..> GameAction
+@enduml

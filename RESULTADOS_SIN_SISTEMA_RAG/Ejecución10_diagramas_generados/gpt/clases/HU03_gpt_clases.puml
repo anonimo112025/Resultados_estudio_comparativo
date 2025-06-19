@@ -1,0 +1,23 @@
+@startuml
+class Administrator {
+    + assignPermissions(user: User, resource: Resource): void
+    + revokePermissions(user: User, resource: Resource): void
+    + viewPermissions(user: User): Permission[]
+}
+
+class User {
+    - permissions: Permission[]
+}
+
+class Permission {
+    - resource: Resource
+}
+
+class Resource {
+    - validate(permissions: Permission[]): boolean
+}
+Administrator --> User
+Administrator --> Permission
+Permission --> Resource
+User --> Permission
+@enduml

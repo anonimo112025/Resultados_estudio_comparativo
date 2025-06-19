@@ -1,0 +1,43 @@
+@startuml
+class User {
+    - id: String
+    - name: String
+    - userType: String
+    + attributes: Entity?[String]
+}
+
+class Entity {
+    - id: String
+    - name: String
+    - userType: String
+    - description: String
+}
+
+class Document {
+    - id: String
+    - title: String
+    - content: String
+    - author: Entity?[String]
+    - version: String
+    - createdBy: Entity?[String]
+}
+
+class Student extends Entity {
+    + enrolled: Boolean
+}
+
+class Teacher extends Entity {
+    + teaching-load: Integer
+}
+
+User *-- Document
+
+User -< document: Document
+  id: String
+  pageContent: String
+]
+
+Entity |.> User
+}
+
+@enduml

@@ -1,0 +1,23 @@
+@startuml
+class Book {
+    - title: String
+    - author: String
+    - publicationYear: Integer
+}
+
+class User {
+    - username: String
+    - password: String
+    + login(): boolean
+}
+
+class Document {
+    + registerBook(book: Book): void
+    - metadata: Dictionary
+    - page_content: String
+}
+
+Book -->+ Document
+Document o---> User
+
+@enduml

@@ -1,0 +1,22 @@
+@startuml
+class User {
+    + enrollCourse(): void
+    + modifyEnrollment(): void
+    + cancelEnrollment(): void
+}
+
+class Course {
+    - courseName: String
+    + getCourseName(): String
+    + setCourseName(courseName: String): void
+}
+
+class Enrollment {
+    - enrollmentDate: Date
+    + getEnrollmentDate(): Date
+    + setEnrollmentDate(enrollmentDate: Date): void
+}
+
+User "1" --> "*" Enrollment
+Enrollment --> "1" Course
+@enduml

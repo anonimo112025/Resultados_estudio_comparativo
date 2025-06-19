@@ -1,0 +1,21 @@
+@startuml
+class Student {
+    + enrollInCourse(course: Course): void
+    + unenrollFromCourse(course: Course): void
+}
+
+class Course {
+    + addStudent(student: Student): void
+    + removeStudent(student: Student): void
+}
+
+class Enrollment {
+    - student: Student
+    - course: Course
+    - date: Date
+    + setDate(date: Date): void
+}
+
+Student "1" --> "*" Enrollment
+Course "1" --> "*" Enrollment
+@enduml

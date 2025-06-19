@@ -1,0 +1,16 @@
+@startuml
+class Student {
+  - id: int
+  - name: String
+  - courses: List<Course>
+}
+
+class Course {
+  - id: int
+  - name: String
+  - students: List<Student>
+}
+
+Student "1" --> "*" Course
+Course "1" --> "*" Student
+@enduml

@@ -1,0 +1,26 @@
+@startuml
+
+   class Client {
+       - id: Integer
+       - name: String
+       - balance: Decimal
+       - transactions: List[Transaction]
+
+       + deposit(amount: Decimal)
+       + withdraw(amount: Decimal)
+       + getTransactions(): List[Transaction]
+   }
+
+   class Transaction {
+       - id: Integer
+       - clientId: Integer
+       - type: String
+       - amount: Decimal
+       - timestamp: DateTime
+
+       + createTransaction(clientId: Integer, type: String, amount: Decimal)
+   }
+
+   Client "1" -- "*" Transaction
+
+   @enduml

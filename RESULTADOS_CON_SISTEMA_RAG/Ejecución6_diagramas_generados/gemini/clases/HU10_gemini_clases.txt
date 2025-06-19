@@ -1,0 +1,45 @@
+@startuml
+
+class User {
+  + createNewForm(title: String): Form
+  + addElementToExistingForm(targetForm: Form, newElement: FormElement)
+  + viewFormContent(targetForm: Form)
+}
+
+class Form {
+  - title: String
+  / elementCount: int
+  + addElement(element: FormElement)
+  + getFormElements(): FormElement[]
+  + presentInformation()
+  + modifyDetails()
+}
+
+class FormElement {
+  # elementName: String
+  + {abstract} display()
+  + {abstract} getValue(): Object
+  + {abstract} setValue(value: Object)
+}
+
+class TextField {
+  - textValue: String
+  + display()
+  + getValue(): String
+  + setValue(value: String)
+}
+
+class DataEntryField {
+  - dataValue: Object
+  + display()
+  + getValue(): Object
+  + setValue(value: Object)
+}
+
+User "1" --> "*" Form
+Form "1" *-- "0..*" FormElement : contains
+
+TextField --|> FormElement
+DataEntryField --|> FormElement
+
+@enduml

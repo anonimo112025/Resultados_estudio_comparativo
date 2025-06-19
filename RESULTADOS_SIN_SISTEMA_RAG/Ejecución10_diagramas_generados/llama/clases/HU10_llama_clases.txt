@@ -1,0 +1,24 @@
+@startuml
+class Document {
+    - metadata: Map<String, String>
+    - page_content: String
+}
+
+class Form {
+    + elements: List<Document>
+    + addElement(): void
+    + viewElements(): void
+}
+
+class TextField {
+    + text: String
+    + updateText(): void
+}
+
+class UserForm {
+    # user: User
+    + createForm(): Document
+    + viewForm(): void
+}
+
+@enduml

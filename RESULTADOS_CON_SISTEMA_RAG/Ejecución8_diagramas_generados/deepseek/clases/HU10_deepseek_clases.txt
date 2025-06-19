@@ -1,0 +1,17 @@
+@startuml
+class User {
+    - viewedDynamicForm(title: String)
+    + viewDynamicForm(id: String)
+    + addElement(element: Element)
+}
+
+class DynamicForm {
+    + title: String
+    + description: String
+    * elements: Element
+}
+
+class Element {
+    /element: (otherParts: ...) 
+}
+@enduml

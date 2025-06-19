@@ -1,0 +1,17 @@
+@startuml
+class User {
+    - id: String
+    - name: String
+    - email: String
+    - password: String
+    - dateOfBirth: String
+    + login(): boolean
+}
+
+class Company {
+    + id: String
+    + name: String
+}
+
+User -|> Company
+@enduml

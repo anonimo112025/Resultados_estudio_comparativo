@@ -1,0 +1,21 @@
+@startuml
+class Document {
+    - metadata: Map
+    - page_content: String
+}
+
+class Admin {
+    + manageUserPermissions(): void
+    # viewCurrentPermissions(): Map
+}
+
+class User {
+    - username: String
+    - password: String
+}
+
+Admin -->> Document
+Document -->> Admin
+Admin #---> User
+User -->> Admin
+@enduml

@@ -1,0 +1,34 @@
+@startuml
+class Form {
+    - title: String
+    - elements: List<FormElement>
+    + addElement(element: FormElement): void
+    + display(): void
+}
+
+abstract class FormElement {
+    # label: String
+    + {abstract} display(): void
+    + {abstract} getValue(): Object
+    + {abstract} setValue(value: Object): void
+}
+
+class TextFieldElement {
+    - text: String
+    - placeholderText: String
+    + display(): void
+    + getValue(): String
+    + setValue(value: Object): void
+}
+
+class DataEntryElement {
+    - data: Object
+    + display(): void
+    + getValue(): Object
+    + setValue(value: Object): void
+}
+
+Form "1" *-- "*" FormElement
+TextFieldElement --|> FormElement
+DataEntryElement --|> FormElement
+@enduml

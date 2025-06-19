@@ -1,0 +1,15 @@
+@startuml
+class User {
+    + register(): void
+    + createProfile(): void
+    + accessSystem(): void
+}
+
+class UserProfile {
+    - personalInformation: String
+    + manageInformation(): void
+    + viewProfile(): void
+}
+
+User --> UserProfile
+@enduml

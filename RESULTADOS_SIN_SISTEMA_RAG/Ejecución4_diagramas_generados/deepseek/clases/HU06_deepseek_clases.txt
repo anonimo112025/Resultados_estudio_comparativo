@@ -1,0 +1,39 @@
+@startuml
+class User {
+    - id: String
+    + username: String
+    + password: String
+    
+    + viewDocuments(): void
+    + searchDocuments(title: String): Boolean
+    + selectQuestionsAndTopics(): Boolean
+    + createNewSelections(): void
+    + saveSelections(): void
+    - deleteSavedSelection(id: String): void
+    + getSavedSelection(id: String): Selection
+}
+
+class Document extends Document_base {
+    + id: String
+    - creator: String
+    + title: String
+    + author: String
+    + metadata: Map<String, Object>
+    
+    + generatePDF(metadata: Map<String, Object>): void
+}
+
+class QuestionsAndTopics {
+    + id: String
+    - searchTopic(title: String): Boolean
+    
+    - getRelatedQuestions(id: String): List<Question>
+}
+
+class PersonalizedPDFGenerator {
+    + generatePDF(document: Document, questionsAndTopics: QuestionsAndTopics): void
+}
+
+User <-> Document via PersonalizedPDFGenerator
+User <-> QuestionsAndTopics via PersonalizedPDFGenerator
+@enduml

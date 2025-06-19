@@ -1,0 +1,37 @@
+@startuml
+
+class SystemUser {
+  + enrollStudentInCourse(studentId: String, courseId: String): Enrollment
+  + modifyEnrollmentStatus(enrollmentId: String, newStatus: String): void
+  + cancelEnrollment(enrollmentId: String): void
+  + getStudentEnrollments(studentId: String): Enrollment[]
+  + getCourseEnrollments(courseId: String): Enrollment[]
+}
+
+class Student {
+  - studentId: String
+  - studentName: String
+}
+
+class Course {
+  - courseId: String
+  - courseTitle: String
+}
+
+class Enrollment {
+  - enrollmentId: String
+  - enrollmentDate: Date
+  - status: String
+  + updateStatus(newStatus: String): void
+}
+
+SystemUser ..> Student
+SystemUser ..> Course
+SystemUser ..> Enrollment
+
+Student "1" --> "*" Enrollment
+Course "1" --> "*" Enrollment
+Enrollment --> "1" Student
+Enrollment --> "1" Course
+
+@enduml

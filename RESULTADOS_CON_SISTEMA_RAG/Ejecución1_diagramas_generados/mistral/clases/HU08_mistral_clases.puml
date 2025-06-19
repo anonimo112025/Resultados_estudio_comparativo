@@ -1,0 +1,14 @@
+@startuml
+class Student {
+  - name: String
+  - enrollments: Set[Course]
+}
+
+class Course {
+  - title: String
+  - students: Set[Student]
+}
+
+Student "1" --> "*" Course
+Course "*" -- "1" Student
+@enduml

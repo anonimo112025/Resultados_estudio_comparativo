@@ -1,0 +1,24 @@
+@startuml
+class User {
+    - username: String
+    - password: String
+    
+    + login(): boolean
+    + deposit(amount: Number): void
+    + withdraw(amount: Number): void
+    + view_transactions(): List<Document>
+    + generate_report(): String
+}
+
+class Document {
+    - title: String
+    - source: String
+    - page_content: String
+    - file_path: String
+    
+    + constructor(metadata, content) 
+    + getContent(): String
+    + viewDocument(document: Document): void
+}
+
+@enduml

@@ -1,0 +1,29 @@
+@startuml
+
+class Document {
+- metadata: Dictionary
+- page_content: String
+}
+
+class User {
+- username: String
+- password: String
++ login(): boolean
+}
+
+class Profile {
+- username: String
+- email: String
+- bio: String
++ updateBio(): void
+}
+
+class Context {
+- document: Document
++ displayContext(): void
+}
+
+Document --> Context
+User --|> Profile
+
+@enduml

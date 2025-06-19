@@ -1,0 +1,14 @@
+@startuml
+class User {
+    username: String
+    password: String
+}
+
+User --> Profile
+
+class Profile {
+    // Implicitly associated with System through functionalities
+}
+
+Profile --> System
+@enduml

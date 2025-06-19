@@ -1,0 +1,55 @@
+@startuml
+class User {
+    - id: String
+    - username: String
+    - password: String
+    + lastGeneratedPdfId: Integer
+    
+    + createUser()
+    + login(): boolean
+    + createPDF(Integer selectedQuestions, Integer selectedTopics)
+    + getLastGeneratedFile(): String
+}
+
+class System {
+    - id: String
+    - title: String
+    - creator: String
+    + generatePDF(Integer selectedQuestions, Integer selectedTopics)
+}
+
+class Question {
+    - id: Integer
+    - text: String
+}
+
+class Topic {
+    - id: Integer
+    - text: String
+}
+
+class LastGeneratedPDF {
+    - id: String
+    - title: String
+    - creator: String
+    - creationDate: String
+    - source: String
+}
+
+User -> System
+User -> LastGeneratedPDF
+
+Question *-- User
+Topic *-- User
+
+System --|> Question
+System --|> Topic
+
+Question --> User (selectedQuestions)
+Topic --> User (selectedTopics)
+
+LastGeneratedPDF +-- User (-id: Integer)
+LastGeneratedPDF :pdf: String
+System > LastGeneratedPDF (createPDF)
+User > LastGeneratedPDF (getLastGeneratedFile())
+@enduml

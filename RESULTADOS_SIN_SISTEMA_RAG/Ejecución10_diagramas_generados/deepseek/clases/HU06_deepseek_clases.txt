@@ -1,0 +1,30 @@
+@startuml
+class Document(
+  +producer: String,
+  -creator: String,
+  -creationdate: String,
+  +source: String,
+  +file_path: String,
+  +total_pages: Integer,
+  +format: String,
+  +title: String,
+  -author: String,
+  -subject: String,
+  -keywords: String,
+  -moddate: String,
+  -modDate: String,
+  -creationDate: String,
+  +page: Integer
+)
++generatePDF(): void
+
+class Questions
+  +id: Integer
+  +question: String
+end Questions
+
+class Topics
+  +id: Integer
+  +topic: String
+end Topics
+@enduml

@@ -1,0 +1,37 @@
+@startuml
+class Document {
+    - metadata: Map<String, String>
+    - page_content: String
+}
+
+class PageContent {
+    + content: String
+    + title: String
+    + author: String
+}
+
+class FormElement {
+    - type: String
+    - value: String
+}
+
+class DynamicForm {
+    # elements: List<FormElement>
+    - title: String
+    + addElement(): void
+    + viewElements(): List<FormElement>
+}
+
+class CustomizableForm {
+    - elements: List<FormElement>
+    - title: String
+    + configure(): void
+    + render(): Document
+}
+
+Document --> PageContent
+PageContent --> FormElement
+DynamicForm *--> FormElement
+CustomizableForm --|> DynamicForm
+
+@enduml

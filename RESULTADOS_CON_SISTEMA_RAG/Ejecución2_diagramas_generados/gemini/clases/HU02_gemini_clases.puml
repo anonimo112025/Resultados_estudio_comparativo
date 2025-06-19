@@ -1,0 +1,17 @@
+@startuml
+class User {
+  + registerBook(title: String, author: String, yearOfPublication: int): Book
+}
+
+class Book {
+  - title: String
+  - author: String
+  - yearOfPublication: int
+  + getTitle(): String
+  + getAuthor(): String
+  + getYearOfPublication(): int
+  + updateBasicInfo(newTitle: String, newAuthor: String, newYear: int): void
+}
+
+User "1" --> "0..*" Book
+@enduml

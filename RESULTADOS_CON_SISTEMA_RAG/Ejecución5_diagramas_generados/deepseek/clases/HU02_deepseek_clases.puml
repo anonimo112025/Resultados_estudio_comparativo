@@ -1,0 +1,28 @@
+@startuml
+class User {
+    - name: String
+    - email: String
+    - username: String
+}
+
+class Book {
+    + title: String
+    + author: String
+    + yearPublished: Int
+    + edition: String
+    + isbn: String
+}
+
+class Order {
+    - customerId: Integer
+    - orderDate: Date
+    - products: Collection[ProductCode, Quantity, Price]
+    - totalPrice: Double
+    - status: String
+}
+
+OrderLine *-- Book
+
+User ++> Order
+Book ..> Order
+@enduml

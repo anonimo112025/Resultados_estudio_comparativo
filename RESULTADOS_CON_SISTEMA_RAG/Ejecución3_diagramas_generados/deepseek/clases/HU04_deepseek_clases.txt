@@ -1,0 +1,44 @@
+@startuml
+class User {
+    - balance: double
+    
+    + withdraw(amount: Double) -> Boolean
+    + deposit(amount: Double) -> Boolean
+    + getBalance() -> Double
+    + transfer(account: Account, amount: Double) -> Boolean
+    + getTransactionHistory() -> List<Transaction>
+}
+
+class Account {
+    public balance: double
+    + open() -> Boolean
+    - close() -> Boolean
+    
+    + deposit(amount: Double) -> Boolean
+    + withdraw(amount: Double) -> Boolean
+    
+    + getBalances() -> List<Account>
+    + getTransactionHistory() -> List<Transaction>
+}
+
+class Transaction {
+    public date: String
+    public description: String
+    public type: String
+    public amount: Double
+    public affectingAccount: Account
+    
+    - createTransaction(account: Account, amount: Double, type: String) -> Boolean
+    + getDetails() -> Dictionary<String, Object>
+}
+
+class Report {
+    displays balances and transaction history
+    public showBalances() -> void
+    public showTransactionHistory() -> void
+}
+
+User -| Account
+Account *-- Transactions
+Transaction --> Account
+@enduml

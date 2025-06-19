@@ -1,0 +1,30 @@
+@startuml
+class User {
+    +generatePDF(): PDFFile
+}
+
+class Question {
+    +selectedQuestion: String
+}
+
+class Topic {
+    +selectedTopic: String
+}
+
+class PDFFile {
+    -content: String
+    +storePDF(): boolean
+    +viewPDF(): String
+    +downloadPDF(): boolean
+}
+
+class PersonalizedContent {
+    +aggregateQuestions(): String 
+    +aggregateTopics(): String
+}
+
+User --> Question
+User --> Topic
+User --> PersonalizedContent
+PersonalizedContent --> PDFFile
+@enduml

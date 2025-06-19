@@ -1,0 +1,22 @@
+@startuml
+class Document {
+    - total_pages: Integer
+    - format: String
+    - title: String
+    - keywords: String[]
+}
+
+class User {
+    + id: String
+    # createDocument(): void
+    # selectTopics(String[] topics): void
+    - getDocument(String name): Document?
+    - downloadDocument(String name): void
+}
+
+class PDFGenerator {
+    + generatePDF(User user, Document doc)
+    - dependsOn: (user: User) @Multiplicity(1)
+               (doc: Document) @Multiplicity(1)
+}
+@enduml

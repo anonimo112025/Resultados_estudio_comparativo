@@ -1,0 +1,6 @@
+@startuml
+Form {
+    - page_content: String
+    + addElement(): void
+}
+@enduml

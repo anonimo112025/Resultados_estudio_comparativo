@@ -1,0 +1,24 @@
+@startuml
+class Player 
+    - username: String
+    - password: String
++ login(): boolean
++ rollDice(): int
+
+class DiceGame 
+    o-- Player
+    + dealCards(): string[]
+
+class GameProgress 
+    - score: int
+    - turn: int
++ incrementScore()
++ endTurn()
+
+class PlayerActions 
+    + determineAction(): string
++ performAction(action: string)
+
+class System 
+    # interactWithPlayer(player: Player)
+@enduml

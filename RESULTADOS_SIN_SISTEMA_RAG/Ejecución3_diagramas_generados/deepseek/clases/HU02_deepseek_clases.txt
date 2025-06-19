@@ -1,0 +1,33 @@
+@startuml
+class Document 
+    - total_pages: Integer
+    + registerBook(): void
+    - getDocumentInfo(): String
+    - isRegistered: Boolean
+]
+
+class Book 
+    + title: String
+    + author: String
+    + year_of_publication: Integer
+    + number_of_pages: Integer
+    - format: String
+    - keywords: String[]
+
+class User 
+    + username: String
+    + password: String
+    + email: String
+    - id: String
+
+class System 
+    + registerBook(String book)
+    + updateBook(Book book, String oldVersion, String newVersion)
+
+class History 
+    - user: User
+    - date_of_change: Date
+    # version: String
+    # content: String
+]
+@enduml

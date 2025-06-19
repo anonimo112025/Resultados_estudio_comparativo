@@ -1,0 +1,19 @@
+@startuml
+class Player {
+    - username: String
+    
+    + login(): boolean
+    + playGame(): void
+}
+
+class DiceGame {
+    - action: GameAction
+    
+    + getAction(): void -> game_action
+}
+
+class GameAction {
+    # determineAction takes two integers and returns the determined action
+    + determineAction(int roll1, int roll2): String
+}
+@enduml

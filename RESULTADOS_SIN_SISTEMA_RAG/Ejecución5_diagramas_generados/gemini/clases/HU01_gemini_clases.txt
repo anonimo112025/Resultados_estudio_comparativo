@@ -1,0 +1,14 @@
+@startuml
+class SystemUser Ellipsis {
+    + manageBasicInformation(newInfo: String)
+    + viewProfile(): String
+}
+
+class UserProfile Ellipsis {
+    - basicInformation: String
+    + updateBasicInformation(newInfo: String)
+    + getBasicInformation(): String
+}
+
+SystemUser "1" *-- "1" UserProfile
+@enduml

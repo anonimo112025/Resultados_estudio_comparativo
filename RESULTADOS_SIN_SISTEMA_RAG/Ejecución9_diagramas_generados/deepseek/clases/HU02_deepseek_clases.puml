@@ -1,0 +1,40 @@
+@startuml
+class User {
+    - username: String
+    - password: String
+    - email: String
+    - firstName: String
+    - lastName: String
+    + login(): boolean
+    + registerBook(): void
+}
+
+class Document {
+    - file_path: String
+    - total_pages: Int
+    - format: String
+    - title: String
+    - author: String
+    - keywords: String[] 
+    + getMetadata(): Map<String, String>
+}
+
+class Book {
+    - title: String
+    - author: String
+    - yearOfPublication: Int
+    - pages: Int
+    - publicationDate: String
+    + getStatus(): String  # Possible status like 'pending', 'approved'
+
+    // Association to User
+    *- user: User
+
+    // Association to Document (one-to-many)
+    o-- document: Document
+}
+
+// Example association between Book and its related metadata through Document
+Document --> Book
+User --> Book
+@enduml

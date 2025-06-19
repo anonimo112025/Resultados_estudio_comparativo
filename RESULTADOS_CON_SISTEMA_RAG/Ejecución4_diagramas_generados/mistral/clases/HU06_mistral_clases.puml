@@ -1,0 +1,12 @@
+@startuml
+class QuestionSelection {
+  - selectedQuestions: List<String>
+  - selectedTopics: List<String>
+}
+
+class DocumentGeneration {
+  - generatedDocument: Document
+
+  # generateDocument(questions: List<String>, topics: List<String>)
+}
+@enduml

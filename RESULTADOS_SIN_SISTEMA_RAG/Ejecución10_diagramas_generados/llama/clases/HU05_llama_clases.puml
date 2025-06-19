@@ -1,0 +1,38 @@
+@startuml
+class Document {
+    - metadata: Map<String, String>
+    - page_content: String
+}
+
+class Page {
+    # totalPages: Integer
+    - page_number: Integer
+}
+
+class DiceGame {
+    + rollTwoDice(): RandomValue
+    - current_state: State
+    - player_input: PlayerInput
+}
+
+class GameState {
+    + updateGameState(): void
+    - currentState: State
+}
+
+class Player {
+    + interactWithDiceGame(): void
+    # username: String
+}
+
+class DiceRollResult {
+    + rollResult: RandomValue
+    - action_taken: Action
+}
+
+class Game {
+    + startNewGame(): void
+    - game_state: GameState
+}
+
+@enduml

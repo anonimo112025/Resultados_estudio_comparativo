@@ -1,0 +1,44 @@
+@startuml
+class User {
+    - id: String
+    - email: String
+    + canAddElements: boolean
+    + canManageForms: boolean
+}
+
+class Document {
+    - id: String
+    - title: String
+    - description: String
+    + canOpenDocument: boolean
+    + canSaveDocument: boolean
+}
+
+class Form {
+    - id: String
+    - title: String
+    - elements: Collection of Element
+    - allowsAdd: boolean
+    - allowsModify: boolean
+    
+    # Relationships
+    @aggregation association AddElement to Element
+    @aggregation association RemoveElement from Element
+    + canEditForm: boolean
+}
+
+class ExternalParty {
+    - id: String
+    - name: String
+
+    # Relationships
+    ..> Document manageDocument()
+}
+
+# Associations between User and Document/Form
+User canAddElements to Document
+User canManageForms to Form
+Form allowsModify to Element
+ExternalParty manages documents via Document manageDocument()
+@composition composition manageDocument in ExternalParty
+@enduml

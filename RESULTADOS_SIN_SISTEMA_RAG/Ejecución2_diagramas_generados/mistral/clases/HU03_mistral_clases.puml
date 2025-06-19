@@ -1,0 +1,21 @@
+@startuml
+   class Administrator {
+       - userID: String
+       - permissions: Map<String, Permission>
+
+       + assignPermission(resource: String, permission: Permission)
+       + revokePermission(resource: String, permission: Permission)
+       + viewCurrentPermissions()
+   }
+
+   class Resource {
+       - resourceID: String
+       - permissionRequired: Permission
+
+   }
+
+   class Permission {
+       - id: String
+       - description: String
+   }
+   @enduml

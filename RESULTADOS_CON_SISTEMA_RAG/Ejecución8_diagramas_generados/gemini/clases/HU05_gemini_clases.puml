@@ -1,0 +1,23 @@
+@startuml
+
+class Player {
+    + takeTurn(game: DiceGame): void
+}
+
+class Die {
+    - value: int
+    + roll(): void
+    + getValue(): int
+}
+
+class DiceGame {
+    - die1: Die
+    - die2: Die
+    + executePlayerRoll(): int
+    + determineGameAction(rollOutcome: int): void
+}
+
+Player "1" --> "1" DiceGame : interacts with
+DiceGame "1" *-- "2" Die : has
+
+@enduml

@@ -1,0 +1,31 @@
+@startuml
+class Course {
+    - title: String
+    - description: String
+    - students: Set<Student>
+}
+
+class Student {
+    - id: Integer
+    - username: String
+    - enrollments: Set<Enrollment>
+}
+
+class Enrollment {
+    - enrollmentId: Integer
+    - student: Student
+    - course: Course
+    + save()
+}
+
+class Document {
+    + createDocument(metadata, pageContent)
+    - metadata: Map<String, String>
+    - pageContent: String
+}
+
+Course --* Student
+Student *-- Enrollment
+Enrollment --> Course
+
+@enduml

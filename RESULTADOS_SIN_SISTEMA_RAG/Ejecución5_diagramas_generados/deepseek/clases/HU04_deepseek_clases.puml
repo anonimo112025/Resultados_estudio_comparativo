@@ -1,0 +1,40 @@
+@startuml
+class User {
+    - id: String
+    - username: String
+    - email: String
+    
+    + login(): boolean
+    + logout(): void
+    + deposit(amount: Double): void
+    + withdraw(amount: Double): void
+    + checkBalance(): Double
+    + generateReport(): string
+}
+
+class Account {
+    - user: User
+    - balance: Double
+
+    + deposit(amount: Double): void
+    + withdraw(amount: Double): void
+    - transfer(amount: Double, toAccount: Account): void
+}
+
+class Transaction {
+    *- account: Account
+    - date: String
+    - description: String
+    - amount: Double
+    - source: String
+    - destination: String
+    - status: String
+
+    + createTransaction(source: String, destination: String, amount: Double): void
+    + updateTransaction(description: String, amount: Double): void
+    + getTransactions(): List<Transaction>
+}
+
+User("user1") --> Account("account1")
+Account--> Transaction
+@enduml

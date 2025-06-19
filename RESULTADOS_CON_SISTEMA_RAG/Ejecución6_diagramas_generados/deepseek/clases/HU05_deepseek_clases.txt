@@ -1,0 +1,48 @@
+@startuml
+class Player {
+    - name: String
+    
+    + playGame(): void
+}
+
+class Turn {
+    - player: Player
+    - diceRolls: List of Integer
+    - gameResults: List of Result
+    - actionTaken: String
+    
+    + rollDice(): void
+    + processResult(gameResult: Result): void
+}
+
+class Action {
+    - type: String
+    - reason: String
+    
+    + execute(): void
+}
+
+class GameResult {
+    - outcome: Integer
+    - description: String
+    
+    + isCritical(String consequence): void
+}
+
+class DiceGame {
+    - rules: List of PossibleOutcomes
+    - currentTurns: List of Turn
+    - possibleActions: Dictionary of Result to Action
+    
+    + manageGame(): void
+}
+
+// Relationships:
+Player --> Turn
+Action <--> GameResult
+Turn --> Player
+Turn --> gameResults
+Turn --> actionTaken
+DiceGame --|> Turn
+GameResult ..> Action
+@enduml

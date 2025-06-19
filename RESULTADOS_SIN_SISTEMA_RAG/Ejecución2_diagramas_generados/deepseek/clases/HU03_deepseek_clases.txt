@@ -1,0 +1,68 @@
+@startuml
+class User {
+    - username: String
+    - password: String
+    + login(): boolean
+}
+
+class Document {
+    - title: String
+    - creator: String
+    - source: String
+    - file_path: String
+    - total_pages: Integer
+    - format: String
+    - subject: String
+    - keywords: String[]
+    - moddate: String
+    - trapped: Boolean
+
+    constructor(metadata: metadata) {
+        this.title = metadata.title;
+        this.creator = metadata.creator;
+        this.source = metadata.source;
+        this.file_path = metadata.file_path;
+        this.total_pages = metadata.total_pages;
+        this.format = metadata.format;
+        this.subject = metadata.subject;
+        this.keywords = metadata.keywords;
+        this.moddate = metadata.moddate;
+        this.trapped = metadata.trapped;
+    }
+}
+
+class Permission {
+    - id: Integer
+    - role: String
+    
+    + getAllows(user: User, document: Document): Boolean {
+        return user.roles.filter(p => p.role == this.role).exists();
+    }
+}
+
+interface PermissionType {
+    static permissions: Set<String>
+}
+
+class UserPermissionAssigner {
+    - users: User[]
+    - permissions: PermissionType[]
+
+    + canAccess(document: Document, user: User): Boolean {
+        if (document.moddate >= user.moddate) {
+            return document.subject.contains(Permission.allows(user, document));
+        }
+        return false;
+    }
+
+    void assignPermission(document: Document, role: String, user: User) {
+        Permission permission = Permission.findFirst(Permission.role == role);
+        if (canAccess(document, user)) {
+            if (document.moddate >= user.moddate) {
+                users.remove(user);
+                permissions.add(permission);
+            }
+        }
+    }
+}
+@enduml

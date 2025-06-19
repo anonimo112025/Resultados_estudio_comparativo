@@ -1,0 +1,15 @@
+@startuml
+class Book {
+  - title: String
+  - author: String
+  - yearOfPublication: int
+}
+
+class User {
+  - username: String
+  - books: set[Book]
+  + addBook(book: Book)
+  + getBookByTitle(title: String): Book
+  + getAllBooks()
+}
+@enduml

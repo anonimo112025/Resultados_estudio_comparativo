@@ -1,0 +1,62 @@
+@startuml
+class Document (-private) {
+    String producer
+    String creator
+    String source
+    String file_path
+    Integer total_pages
+    String format
+    String title
+    String author
+    String subject
+    String keywords
+    String moddate
+    String trapped
+    String modDate
+    String creationDate
+    Integer page
+
+    String page_content
+
+    +storeDocument(String metadata, String page_content)
+    +getDocuments()
+}
+
+class Transaction (-private) {
+    String description
+    String amount
+    String date
+    String status
+    Reference<Document> document
+    Reference<Client> client
+
+    +createTransaction()
+    +getTransactions()
+    # associateWith<Document>(Document document)
+}
+
+class Client (-private) {
+    String client_id
+    String name
+    String type
+    String age
+    String address
+    Double balance
+    +listOfTransactions ()
+    +manageBalances()
+    +generateReports()
+    +accessTransactionHistory()
+    +transferFunds(String source, String destination, Double amount)
+}
+
+Document <-*+ Transaction
+
+Client -->*+ Transaction
+
+class Page (-private) {
+    String page_number
+    String content
+
+    +getContent(String url)
+}
+@enduml

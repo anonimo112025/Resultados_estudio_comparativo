@@ -1,0 +1,21 @@
+@startuml
+class User {
+- username: String
+- password: String
++ login(): boolean
++ enrollCourse(Course): void
+}
+
+class Course {
+- title: String
+- enrolledStudents(User[]): List<User>
++ enrollStudent(User user): void
+}
+
+class Enrollments {
+- course: Course
+- student: User
++ addEnrollment(User user, Course course)
+}
+
+@enduml

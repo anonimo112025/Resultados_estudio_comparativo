@@ -1,0 +1,15 @@
+@startuml
+class User {
+    +generatePersonalizedPDF(): File
+}
+
+class PDFDocument {
+    -selectedQuestions: String[]
+    -selectedTopics: String[]
+    +generate(): File
+    +view(): void
+    +download(): void
+}
+
+User --> PDFDocument
+@enduml

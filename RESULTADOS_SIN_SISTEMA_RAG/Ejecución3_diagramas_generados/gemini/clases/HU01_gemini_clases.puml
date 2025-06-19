@@ -1,0 +1,17 @@
+@startuml
+class User {
+    - username: String
+    - email: String
+    - passwordHash: String
+    + viewProfile(): String
+    + manageProfile(newInformation: String): void
+}
+
+class Profile {
+    - basicInformation: String
+    + getBasicInformation(): String
+    + setBasicInformation(information: String): void
+}
+
+User "1" *-- "1" Profile
+@enduml

@@ -1,0 +1,37 @@
+@startuml
+class Client {
+    - id: Integer
+    - name: String
+    - balance: Float
+}
+
+class Transaction {
+    - id: Integer
+    - date: Date
+    - amount: Float
+    - type: String  // deposit, withdrawal
+}
+
+class Document {
+    + getId(): Integer
+    - metadata: Map<String, Object>
+    + getPageContent(): String
+    - source: String
+}
+
+class ClientTransactionManager {
+    + getBalance(): Float
+    - client: Client
+    + getTransactions(): List<Transaction>
+}
+
+class User {
+    + login(username: String, password: String): boolean
+    - username: String
+    - password: String
+}
+
+Client --*> Document  // containing the document's source
+User --> ClientTransactionManager  // performing operations on client information
+
+@enduml

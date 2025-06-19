@@ -1,0 +1,17 @@
+@startuml
+   class FormElement {
+       - elementType: String
+       - value: String
+   }
+
+   class DynamicForm {
+       - elements: List<FormElement>
+       + addElement(element: FormElement)
+       + viewElement(index: int): FormElement
+   }
+
+   class User {
+       - forms: List<DynamicForm>
+       + createCustomizedForm()
+   }
+   @enduml

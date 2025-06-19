@@ -1,0 +1,34 @@
+@startuml
+class Document {
+    - creator: String
+    - title: String
+}
+
+class Form {
+    + elements: [*Element]
+    - id: String
+    - description: String
+}
+
+class Element {
+    - id: String
+    - type: String
+    - value: String
+    - title: String
+    - properties: String[]
+}
+
+class User {
+    + createDocument( creator: String, document: Document )
+    + viewForm( form: Form )
+}
+
+Document#creator = "username"
+Document"title" = "HU10-E"
+
+Form#id = "form_id"
+Form"description" = "Structure and present information clearly and orderly."
+User>+ managesForms()
+User>+ createsForms()
+User>+ modifiesForms()
+@enduml

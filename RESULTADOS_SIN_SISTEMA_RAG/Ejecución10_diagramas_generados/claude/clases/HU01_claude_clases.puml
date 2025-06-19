@@ -1,0 +1,21 @@
+@startuml
+class User {
+    - username: String
+    - email: String
+    - password: String
+    - personalInfo: String
+    + register(): boolean
+    + createProfile(): Profile
+    + updatePersonalInfo(): void
+}
+
+class Profile {
+    - userId: String
+    - basicInformation: String
+    - creationDate: Date
+    + displayProfile(): void
+    + manageInformation(): void
+}
+
+User --> Profile : creates
+@enduml

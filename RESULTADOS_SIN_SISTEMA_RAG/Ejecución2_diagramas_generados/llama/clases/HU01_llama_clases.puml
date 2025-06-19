@@ -1,0 +1,21 @@
+@startuml
+class UserProfile {
+    - username: String
+    - password: String
+    - profileInformation: Map<String, String>
+}
+
+class Profile {
+    # id: Integer
+    # title: String
+    # author: String
+    - page_content: String
+}
+
+class SystemUser {
+    + login(): boolean
+}
+
+UserProfile --> SystemUser "1" o--> Profile
+
+@enduml

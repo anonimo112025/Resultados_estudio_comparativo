@@ -1,0 +1,69 @@
+@startuml
+class SystemUser Ellipsis {
+  + addClient(name: String, contactInfo: String): Client
+  + updateClient(clientId: String, name: String, contactInfo: String): Client
+  + findClient(clientId: String): Client
+  + createAccountForClient(clientId: String): Account
+  + performDeposit(accountId: String, amount: double): void
+  + performWithdrawal(accountId: String, amount: double): void
+  + checkAccountBalance(accountId: String): double
+  + listTransactionsForAccount(accountId: String): List<Transaction>
+  + generateTransactionsReport(accountId: String): Report
+  + generateAccountBalancesReport(clientId: String): Report
+  + viewReportContent(reportId: String): String
+}
+
+class Client Ellipsis {
+  - clientId: String
+  - name: String
+  - contactInformation: String
+  + getClientId(): String
+  + getName(): String
+  + getContactInformation(): String
+  + updateName(name: String): void
+  + updateContactInformation(contactInfo: String): void
+  + addAccount(account: Account): void
+  + getAccounts(): List<Account>
+}
+
+class Account Ellipsis {
+  - accountId: String
+  - balance: double
+  + getAccountId(): String
+  + getBalance(): double
+  + deposit(amount: double): void
+  + withdraw(amount: double): void
+  + addTransaction(transaction: Transaction): void
+  + getTransactions(): List<Transaction>
+}
+
+class Transaction Ellipsis {
+  - transactionId: String
+  - date: Date
+  - type: String
+  - amount: double
+  + getTransactionId(): String
+  + getDate(): Date
+  + getType(): String
+  + getAmount(): double
+}
+
+class Report Ellipsis {
+  - reportId: String
+  - title: String
+  - generatedDate: Date
+  - content: String
+  + getReportId(): String
+  + getTitle(): String
+  + getGeneratedDate(): Date
+  + getContent(): String
+}
+
+SystemUser --> Client
+SystemUser --> Account
+SystemUser --> Report
+SystemUser ..> Transaction : uses
+
+Client "1" *-- "0..*" Account
+Account "1" *-- "0..*" Transaction
+@enduml

@@ -1,0 +1,33 @@
+@startuml
+class Document {
+    - clientName: String
+    - balance: Integer
+    
+    + deposit(amount: Integer) -> void
+    + withdraw(amount: Integer) -> void
+}
+
+class Transaction {
+    - transactionDate: String
+    - description: Text
+    - amount: Integer
+    - clientId: String
+    
+    + createTransaction() -> void
+}
+
+class Report {
+    - accountNames: List<String>
+    
+    + generateReport() -> void
+}
+
+Document --> Transactions
+Document <- Transactions
+
+Transactoins o-- Document
+Transactions *-- Document
+
+Report ..> Document
+Report ..> Transaction
+@enduml

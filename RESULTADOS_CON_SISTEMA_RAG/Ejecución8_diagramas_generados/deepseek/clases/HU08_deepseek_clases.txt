@@ -1,0 +1,17 @@
+@startuml
+class Student
+    + id: IdString
+endclass
+
+class Course
+    + id: IdString
+endclass
+
+class Enrollment
+    - student: Student
+    - course: Course
+endclass
+
+Student *-- Enrollment
+Course *-- Enrollment
+@enduml

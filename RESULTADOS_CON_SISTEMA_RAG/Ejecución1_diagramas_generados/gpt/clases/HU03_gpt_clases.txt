@@ -1,0 +1,14 @@
+@startuml
+class User {
+    - permissions: String[]
+    + assignPermission(permission: String)
+    + revokePermission(permission: String)
+    + getPermissions(): String[]
+}
+
+class Resource {
+    - accessPermissions: String[]
+    + validatePermission(user: User): boolean
+}
+User "1" --> "*" Resource
+@enduml

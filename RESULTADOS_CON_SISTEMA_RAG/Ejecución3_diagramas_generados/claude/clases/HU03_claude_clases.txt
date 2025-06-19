@@ -1,0 +1,35 @@
+@startuml
+class Administrator {
+    - adminId: String
+    - name: String
+    + assignPermissions(): void
+    + revokePermissions(): void
+    + viewUserPermissions(): void
+}
+
+class User {
+    - userId: String
+    - username: String
+    - email: String
+    + getPermissions(): Permission[]
+}
+
+class Permission {
+    - permissionId: String
+    - name: String
+    - description: String
+    + isValid(): boolean
+}
+
+class Resource {
+    - resourceId: String
+    - name: String
+    - type: String
+    + validateAccess(): boolean
+}
+
+Administrator --> User : manages
+Administrator --> Permission : assigns/revokes
+User --> Permission : has
+Permission --> Resource : grants access to
+@enduml

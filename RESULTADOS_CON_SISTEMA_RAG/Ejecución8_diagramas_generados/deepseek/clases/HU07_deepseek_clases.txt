@@ -1,0 +1,8 @@
+@startuml
+class Student (name: String)
+class Teacher (name: String)
+class Data (name: String, userType: String)
+
+Student -> Data
+Teacher -> Data
+@enduml

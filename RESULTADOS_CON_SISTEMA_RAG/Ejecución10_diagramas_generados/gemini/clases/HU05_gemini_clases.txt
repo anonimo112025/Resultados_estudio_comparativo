@@ -1,0 +1,33 @@
+@startuml
+
+class Player {
+  + requestDiceRoll()
+}
+
+class Game {
+  - die1: Die
+  - die2: Die
+  + executePlayerRoll(): Action
+}
+
+class Die {
+  - faceValue: int
+  + roll(): int
+}
+
+class DiceRoll {
+  - valueDie1: int
+  - valueDie2: int
+  + /totalValue: int
+}
+
+class Action {
+  - description: String
+}
+
+Player "1" --> "1" Game : requests roll
+Game "1" *-- "2" Die
+Game ..> DiceRoll : creates
+Game ..> Action : creates
+
+@enduml

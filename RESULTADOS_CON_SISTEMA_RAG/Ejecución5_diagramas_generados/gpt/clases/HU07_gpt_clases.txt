@@ -1,0 +1,17 @@
+@startuml
+class User {
+    - name: String
+    - userType: String
+    + manageUserType(): void
+}
+class Student {
+    - studentData: String
+    + manageStudentData(): void
+}
+class Professor {
+    - professorData: String
+    + manageProfessorData(): void
+}
+User <|-- Student
+User <|-- Professor
+@enduml

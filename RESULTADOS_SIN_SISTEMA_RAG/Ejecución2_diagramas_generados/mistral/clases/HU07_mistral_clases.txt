@@ -1,0 +1,10 @@
+@startuml
+   class User {
+       - name: String
+       - userType: String
+       - data: Map<String, Object>
+
+       + getData(): Map<String, Object>
+       + setData(key: String, value: Object): void
+   }
+   @enduml

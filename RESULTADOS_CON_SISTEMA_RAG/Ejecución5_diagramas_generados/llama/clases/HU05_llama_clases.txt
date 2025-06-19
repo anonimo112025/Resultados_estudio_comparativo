@@ -1,0 +1,16 @@
+@startuml
+
+class Player 
+    - name: String
+    - score: Integer
+    + rollDice(): Integer
+
+class DiceGame 
+    o---> Player
+    + startGame(): void
+
+class ContextHU5 
+    o---> Player
+    + displayGameState(): void
+
+@enduml

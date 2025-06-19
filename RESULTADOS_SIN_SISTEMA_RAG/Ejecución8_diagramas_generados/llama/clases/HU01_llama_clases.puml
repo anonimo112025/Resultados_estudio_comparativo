@@ -1,0 +1,22 @@
+@startuml
+class Document {
+  - metadata: Map<String, String>
+  - page_content: String
+}
+
+class UserProfile {
+  - documentRef: Document
+  - username: String
+  - password: String
+  + register(): boolean
+}
+
+class SystemFunctions {
+  - documentRef: Document
+  + accessSystem(): void
+}
+
+Document --> UserProfile
+UserProfile --> SystemFunctions
+
+@enduml

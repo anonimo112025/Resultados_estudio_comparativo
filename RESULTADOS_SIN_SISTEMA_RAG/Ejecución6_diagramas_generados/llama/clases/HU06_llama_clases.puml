@@ -1,0 +1,25 @@
+@startuml
+class Document {
+    - metadata: Map<String, String>
+    - page_content: String
+}
+
+class User {
+    - username: String
+    - password: String
+}
+
+Document --> User
+User "1" -->* Document
+
+class PDFGenerator {
+    + generatePDF(Document)
+}
+
+class Storage {
+    + storeFile(File)
+}
+
+Document *-- PDFGenerator
+PDFGenerator o-- Storage
+@enduml

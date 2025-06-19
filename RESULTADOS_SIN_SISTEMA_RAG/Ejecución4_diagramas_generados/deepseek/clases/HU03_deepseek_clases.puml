@@ -1,0 +1,50 @@
+@startuml
+class AdminUser {
+    - email: String
+    + role: String
+    
+    + getRole(): String
+}
+
+class Permissions {
+    + read: boolean
+    + write: boolean
+    + executeAction(String action): boolean
+    
+    method: checkPermission(String resource) returns boolean {
+        return this.read && (resource == "user" || this.write)
+    }
+}
+
+class UIManager {
+    *-- AdminUser
+    - session: Session
+}
++ AdminUser assignUser(String username) returns UserInterface
+   --> checkPermission(username): Permissions.checkPermission(username)
+
+@startuml
+class Role {
+    + name: String
+}["Roles"]
+
+    class UserRole {
+        + allowedActions: set of Action
+    }
+    
+    class UserRole {
+        - name: String
+    }
+}
+
+@startuml
+    AdminUser adminUser = AdminUser(email="admin@example.com")
+    AdminUser@adminUser roles.add(UserRole("Administrator"))
+    
+    Role userRole = UserRole.name("User")
+    Role userAdminRole = UserRole.name("User Administrator")["Users can have multiple roles"]
+    
+    checkPermission(perm) where perm is Permissions {
+        if (perm.read && !perm.write): throw "Permission denied: read required"
+    }
+@enduml

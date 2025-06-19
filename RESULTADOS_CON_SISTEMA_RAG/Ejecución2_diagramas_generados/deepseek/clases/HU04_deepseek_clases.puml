@@ -1,0 +1,55 @@
+@startuml
+class Document 
+    + producer: String ("Skia/PDF m138 Google Docs Renderer")
+    - creator: String
+    - creationDate: String
+    - source: String ("data/historias_usuario/ingles/HU4.pdf")
+    - file_path: String ("data/historias_usuario/ingles/HU4.pdf")
+    + total_pages: Int (1)
+    + format: String ("PDF 1.4")
+    + title: String ("HU4-E")
+    - author: String
+    - subject: String
+    - keywords: String []
+    - moddate: String
+    - trapped: Boolean
+    - modDate: String
+    - creationDate: String
+    + page_content: String ("HU4-E")
+endclass
+
+class Client 
+    - name: String ("John Doe")
+    - age: Int (30)
+    - address: String ("123 Main St, City")
+    - phone_number: String ("555-1234")
+    - email: String ("john@example.com")
+    + client_id: String
+    + balance: Double (1000.0)
+    * transactions: List of Transaction
+endclass
+
+class Transaction 
+    + date: String ("YYYY-MM-DD")
+    - description: String ("Deposit/Withdrawal")
+    - amount: Double (100.0)
+    - type: String ("deposit" | "withdrawal")
+    - status: String ("pending" | "completed")
+    * client_id: Int
+endclass
+
+class User 
+    + username: String ("john_doe")
+    + password: String ("securepassword")
+    - email: String ("john@example.com")
+    - phone_number: String ("555-1234")
+endclass
+
+User - canManageClient() -> Client
+User - canPerformOperation() -> Transaction
+Client * hasDocument() <-> Document
+Client * hasTransaction() <-+ Transaction
+Transaction - belongsTo() -> Client
+Document - contains() <-+ Transaction
+Document + hasPageContent() -> String
+@enduml

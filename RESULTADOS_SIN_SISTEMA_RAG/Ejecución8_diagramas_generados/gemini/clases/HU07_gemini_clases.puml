@@ -1,0 +1,15 @@
+@startuml
+class User {
+  - name: String
+  - userType: String
+  + viewInformation(): String
+  + updateInformation(data: String): void
+}
+
+class Student ...
+
+class Teacher ...
+
+Student --|> User
+Teacher --|> User
+@enduml

@@ -1,0 +1,34 @@
+@startuml
+class User {
+    + manageClientInformation()
+    + performOperations()
+    + consultTransactions()
+}
+
+class Client {
+    - name: String
+    - balance: float
+    + updateInformation()
+    + consultBalance()
+    + consultTransactions()
+}
+
+class Transaction {
+    - date: Date
+    - type: String
+    - amount: float
+    + makeDeposit(amount: float)
+    + makeWithdrawal(amount: float)
+}
+
+class Report {
+    - dateGenerated: Date
+    + generateReport()
+    + consultReport()
+}
+
+User --> Client : manages >
+User --> Transaction : performs >
+Client --> Transaction : has >
+User --> Report : generates >
+@enduml

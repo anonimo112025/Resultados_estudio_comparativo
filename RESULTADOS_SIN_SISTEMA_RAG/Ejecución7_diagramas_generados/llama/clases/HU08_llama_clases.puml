@@ -1,0 +1,33 @@
+@startuml
+class Document {
+    - metadata: Map
+    - page_content: String
+}
+
+class StudentEnrollment {
+    - document: Document
+    # enrollmentId: Integer
+    # studentId: Integer
+    # courseId: Integer
+    + enrollStudent()
+    + cancelEnrollment()
+}
+
+class Course {
+    - name: String
+    - enrollments: List<StudentEnrollment>
+}
+
+class User {
+    - username: String
+    - password: String
+    + login(): boolean
+    + manageEnrollments(): void
+}
+
+Document --> Course
+Course --> StudentEnrollment
+StudentEnrollment --> Document
+User --> StudentEnrollment
+
+@enduml

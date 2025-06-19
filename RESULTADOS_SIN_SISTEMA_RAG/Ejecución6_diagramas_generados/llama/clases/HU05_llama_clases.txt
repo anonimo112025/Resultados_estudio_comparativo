@@ -1,0 +1,24 @@
+@startuml
+class Document {
+    - id: Integer
+    - page_content: String
+}
+class PageContent {
+    - content: String
+}
+
+Document "1" --> PageContent
+PageContent + attribute content
+
+class Game {
+    - title: String
+    - author: String
+}
+
+Game + attribute title
+Game + attribute author
+
+Document --|> Game
+Game o-- PageContent
+
+@enduml

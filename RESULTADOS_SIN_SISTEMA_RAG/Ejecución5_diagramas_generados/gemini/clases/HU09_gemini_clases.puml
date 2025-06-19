@@ -1,0 +1,15 @@
+@startuml
+class Book {
+  - title: String
+  - isbn: String
+}
+class Author {
+  - name: String
+}
+class Publisher {
+  - name: String
+}
+
+Book "0..*" -- "1..*" Author
+Book "0..*" -- "1" Publisher
+@enduml

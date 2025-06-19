@@ -1,0 +1,38 @@
+@startuml
+class Book {
+    - titles: String[] 
+    - authors: Set<Author>
+    - pages: Integer
+    - publisher: Reference<Publisher>
+    - publishedYear: Integer
+}
+
+class Author {
+    + name: String
+    - nationality: String?
+}
+
+class Publisher {
+    + name: String
+    - country: String?
+}
+
+User class {
+    - username: String
+    - password: String
+
+    + createUser(): boolean
+    - registerBook(String title, Set<Author> authors, Publisher publisher, Integer year)
+    - addAuthor(Author author)
+    - updatePublisher(Publisher publisher) 
+    - deleteBook(String bookTitle)
+}
+
+Author --> Book
+Publisher --> Book
+# User interacts with Book, Author, and Publisher through registration methods
+
+User *-- Book
+User *-- Author
+User *-- Publisher
+@enduml

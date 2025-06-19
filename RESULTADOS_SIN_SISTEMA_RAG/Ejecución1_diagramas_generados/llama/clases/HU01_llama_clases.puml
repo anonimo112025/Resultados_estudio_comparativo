@@ -1,0 +1,27 @@
+@startuml
+
+class User {
+  - username: String
+  - password: String
+  + login(): boolean
+}
+
+class Profile {
+  - userId: Integer
+  + getProfile(): string
+}
+
+class SystemUser {
+  - id: Integer
+  + register(): Profile
+}
+
+class SystemContent {
+  - title: String
+  + getContent(): string
+}
+
+SystemUser --*-> Profile
+SystemUser o---> SystemContent
+
+@enduml

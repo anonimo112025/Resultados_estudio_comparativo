@@ -1,0 +1,19 @@
+@startuml
+class Player {
+    - name: String
+    + rollDice(): int
+}
+
+class Dice {
+    + roll(): int
+}
+
+class Game {
+    + determineAction(int): String
+    + progressGame(String): void
+    + decidePlayerMove(String): void
+}
+
+Player --> Dice
+Player --> Game
+@enduml

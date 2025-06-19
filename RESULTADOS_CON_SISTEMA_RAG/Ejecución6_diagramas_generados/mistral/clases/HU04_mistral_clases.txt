@@ -1,0 +1,15 @@
+@startuml
+class Client {
+  - id: String
+  - name: String
+  - balance: float
+  - transactions: Transaction[]
+}
+
+class Transaction {
+  - transactionId: String
+  - type: string
+  - amount: float
+  - date: datetime
+}
+@enduml

@@ -1,0 +1,16 @@
+@startuml
+   class Player {
+       - dice1: Die
+       - dice2: Die
+
+       + rollDice(): Pair[Integer, Integer]
+   }
+
+   class Die {
+       - value: Integer
+
+       + roll(): Integer
+   }
+
+   Player "1" --> Die: has
+   @enduml

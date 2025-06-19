@@ -1,0 +1,17 @@
+@startuml
+class Document {
+  - title: String
+  - questions: Set<Question>
+  - topics: Set<Topic>
+  - generated: boolean
+}
+
+class Question {
+  - questionText: String
+  - relatedTopics: Set<Topic>
+}
+
+class Topic {
+  - topicName: String
+}
+@enduml

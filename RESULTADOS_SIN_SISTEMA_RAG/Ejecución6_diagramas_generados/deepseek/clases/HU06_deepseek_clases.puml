@@ -1,0 +1,22 @@
+@startuml
+class User 
+    +username: String
+    +password: String
+    
+    - generatePDF(): Document
+endclass
+
+class Document 
+    +metadata: Map<String, Object>
+    pageContent: String
+    # protected methods like generatePersonalizedVersion()
+    
+    - public generatePersonalizedVersion() : Document
+endclass
+
+class GeneratePDF 
+    +questions: List<Object>
+    +topics: List<Object>
+    - generate(): Document
+endclass
+@enduml

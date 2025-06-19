@@ -1,0 +1,29 @@
+@startuml
+class Document {
+    - metadata: Map<String, String>
+    - page_content: String
+}
+
+class UserDocument extends Document {
+    # userId: Int
+    # totalPages: Int
+    + assignPermissions()
+    + revokePermissions()
+    + viewPermissions()
+}
+
+class Permission {
+    - permissionId: Int
+    - resourceType: String
+    - accessLevel: String
+}
+
+class Administrator extends User {
+    # id: Int
+    + manageUserPermissions()
+}
+
+Document -->| association | UserDocument
+Administrator -->| aggregation | UserDocument
+Permission -->| dependency | UserDocument
+@enduml

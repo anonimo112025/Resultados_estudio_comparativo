@@ -1,0 +1,17 @@
+@startuml
+class Question {
+  - questionText: String
+  - topic: Topic
+}
+
+class Topic {
+  - topicName: String
+  - questions: set[Question]
+}
+
+class PDFDocument {
+  - title: String
+  - topics: set[Topic]
+  - generated: boolean
+}
+@enduml

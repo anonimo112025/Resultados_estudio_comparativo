@@ -1,0 +1,39 @@
+@startuml
+class User {
+    - username: String
+    - password: String
+    
+    + createUser()
+    + addElement(String)
+}
+
+class FormManager {
+    - id: Integer
+    
+    + createForm()
+}
+
+class Document {
+    - id: String
+    - name: String
+    
+    + getTitle(): String
+}
+
+class PDFDocument extends Document {
+    - creator: String
+    - source: String
+    - total_pages: Integer
+    - format: String
+    
+    + getModDate(): String
+    + getCreationDate(): String
+
+    association User
+        - elements: List of String
+        
+    association FormManager
+        - forms: List of String
+}
+
+@enduml

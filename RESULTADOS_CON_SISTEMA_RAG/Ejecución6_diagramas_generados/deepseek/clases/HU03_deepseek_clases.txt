@@ -1,0 +1,57 @@
+@startuml
+class Document {
+    + title: String
+    - creator: String
+    @ associates with: User * [notifyUser]
+    + pages: Integer
+    - format: String
+    @ associates with: Permissions * [updatePermission]
+}
+
+class User {
+    + username: String
+    - password: String
+    + login(): boolean
+    - logout(): void
+}
+
+class Permissions {
+    + resource: String
+    # level: String ("Basic", "Full")
+    + assignPermission(Ref<Resource>, Ref<User>)
+    + revokePermission(Ref<Resource>, Ref<User>)
+    @ associates with: User * [updateUser]
+}
+
+class Resource {
+    + type: String
+    - permissions: Set<Permissions>
+}
+
+// Example associations:
+@ start of method notifyUser
+  for each User u in Document.document;
+     if u.username matches some criterion based on document's metadata
+        send notification to u
+@end of method
+
+// Example associations:
+@ start of method updatePermission
+  add Permissions.permission to Resource.resource's permissions set
+@ end of method
+
+// Example associations:
+@ start of method updateUser
+  remove Permissions.permission from User.user's permissions
+@ end of method
+
+// Example associations:
+@ start of method assignPermission
+  Resource.resource.add(Permissions.permission)
+@ end of method
+
+// Example associations:
+@ start of method revokePermission
+  Resource.resource.remove(Permissions.permission)
+@ end of method
+@enduml

@@ -1,0 +1,14 @@
+@startuml
+   class Person {
+       - name: String
+   }
+
+   class User {
+       extends Person
+       - userType: String
+       + manageData(): void
+   }
+
+   class Student extends User {}
+   class Teacher extends User {}
+   @enduml

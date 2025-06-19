@@ -1,0 +1,41 @@
+@startuml
+
+class Document {
+  - metadata: Map<String, String>
+  - page_content: String
+}
+
+class StudentEnrollment {
+  - document: Document
+  - student: Student
+  - course: Course
+  + enroll(): void
+}
+
+class Course {
+  - name: String
+  - enrolledStudents: Set<Student>
+  - enrollment: StudentEnrollment
+  + addStudent(Student): void
+}
+
+class User {
+  - username: String
+  - password: String
+  + login(): boolean
+  + enrollInCourse(Course): void
+}
+
+class Student {
+  - id: Integer
+  - name: String
+  + getFullname(): String
+}
+
+class CourseManager {
+  + manageEnrollments(): void
+  + addNewStudent(Student): void
+  + addNewCourse(Course): void
+}
+
+@enduml

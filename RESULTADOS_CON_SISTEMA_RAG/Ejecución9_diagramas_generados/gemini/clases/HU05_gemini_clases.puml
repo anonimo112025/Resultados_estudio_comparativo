@@ -1,0 +1,29 @@
+@startuml
+
+class Player {
+  + rollInGame(game: DiceGame): GameAction
+}
+
+class DiceGame {
+  - die1: Die
+  - die2: Die
+  + performDiceRoll(): int
+  + getActionForRoll(rollSum: int): GameAction
+}
+
+class Die {
+  - faceValue: int
+  + roll(): void
+  + getValue(): int
+}
+
+class GameAction {
+  - description: String
+}
+
+Player "1" --> "1" DiceGame : interacts with
+DiceGame "1" *-- "2" Die : contains
+DiceGame ..> GameAction : determines
+Player ..> GameAction : receives
+
+@enduml

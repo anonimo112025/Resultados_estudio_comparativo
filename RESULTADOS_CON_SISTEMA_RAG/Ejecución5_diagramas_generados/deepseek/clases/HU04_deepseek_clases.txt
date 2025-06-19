@@ -1,0 +1,45 @@
+@startuml
+class User {
+    - username: String
+    - email: String
+    
+    + login(): boolean
+    + logout(): void
+    + checkBalance(): integer
+    + deposit(amount: integer): void
+    + withdraw(amount: integer): void
+    + consultTransaction(*transact): void
+}
+
+class Transaction {
+    - transactionId: string
+    - type: String  # 'deposit' or 'withdrawal'
+    - clientId: reference of User
+    - amount: integer
+    - date: Date
+    
+    + createTransaction(source: string, description: string)
+    + fetchTransactions(limit: integer, offset: integer): Collection of Transaction
+    + checkAvailableBalance(minAmount: integer): boolean
+    + processTransaction(operation: String, amount: integer)
+    + generateReport(): string
+}
+
+class Client {
+    - clientId: string
+    - name: String
+    - address: String
+    
+    + registerClient(): void
+    + updateDetails(*details): void
+    + deleteClient(): void
+    + getBalances(): Collection of Transaction
+    + showAllBalances(): void
+}
+
+User --> Transaction
+Transaction --> Client
+
+Client *-- Account
+# Account is not explicitly defined here but inferred through transaction capabilities
+@enduml

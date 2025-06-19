@@ -1,0 +1,17 @@
+@startuml
+class Student {
+    - name: String
+}
+
+class Course {
+    - title: String
+}
+
+class Enrollment {
+    + count: Integer
+    - private addEnrollment(Students a, Courses c)
+    - private removeEnrollment(Students a, Courses c)
+}
+
+Student --> Enrollment --> Course
+@enduml

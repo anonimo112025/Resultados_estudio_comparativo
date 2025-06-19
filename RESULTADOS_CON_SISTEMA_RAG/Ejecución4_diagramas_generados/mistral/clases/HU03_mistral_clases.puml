@@ -1,0 +1,34 @@
+@startuml
+
+    class Administrator {
+        - id: int
+        - permissions: List<Permission>
+        - applicationResources: List<Resource>
+        - grantPermission(resource: Resource, permission: Permission): void
+        - revokePermission(resource: Resource, permission: Permission): void
+        - viewPermissions(): void
+    }
+
+    class Permission {
+        - id: int
+        - resource: Resource
+        - accessLevel: AccessLevel
+        - validate(): void
+    }
+
+    class Resource {
+        - id: int
+        - name: String
+        - permissions: List<Permission>
+        - checkPermissions(permission: Permission): boolean
+    }
+
+    class AccessLevel {
+        - id: int
+        - name: String
+    }
+
+    Administrator "1" --> "*" Resource
+    Administrator "1" --> "*" Permission
+    Resource "1" --> "*" Permission
+    @enduml

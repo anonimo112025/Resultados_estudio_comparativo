@@ -1,0 +1,35 @@
+@startuml
+class User {
+  - id: Integer
+  - username: String
+  - password: String
+  - email: String
+  - birthdate: Date
+  - registered_at: DateTime
+  + register(): void
+  + login(username: String, password: String): boolean
+  + changePassword(oldPassword: String, newPassword: String): boolean
+}
+
+class Profile {
+  - user: User
+  - firstName: String
+  - lastName: String
+  - country: Country
+  + updateProfile(): void
+}
+
+class Country {
+  - name: String
+  - capital: City
+  - currency: Currency
+}
+
+class City {
+  - name: String
+}
+
+class Currency {
+  - symbol: String
+}
+@enduml

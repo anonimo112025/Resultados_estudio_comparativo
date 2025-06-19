@@ -1,0 +1,32 @@
+@startuml
+class User {
+    + manageClientInformation(): void
+    + performOperations(): void
+    + consultTransactions(): Transaction[]
+}
+
+class Client {
+    + name: String
+    + balance: float
+    + transactions: Transaction[]
+    + manageInformation(): void
+    + performOperation(operationType: String, amount: float): void
+    + consultTransactions(): Transaction[]
+}
+
+class Transaction {
+    - date: Date
+    - amount: float
+    - type: String
+}
+
+class Report {
+    + generateReport(): void
+    + consultReport(): Report
+}
+
+User --> Client
+Client --> Transaction
+User --> Report
+Client --> Report
+@enduml

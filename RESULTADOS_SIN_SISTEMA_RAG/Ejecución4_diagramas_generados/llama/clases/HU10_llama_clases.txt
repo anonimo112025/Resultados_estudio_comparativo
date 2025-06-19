@@ -1,0 +1,41 @@
+@startuml
+class Document {
+    - id: Integer
+    - metadata: Dictionary
+    - page_content: String
+}
+
+class Page {
+    - document: Document*
+    - content: String
+}
+
+class FormElement {
+    - document: Document*
+    - type: String
+}
+
+class TextFormElement extends FormElement {
+    + displayText(): String
+}
+
+class DataEntryFormElement extends FormElement {
+    + displayData(): String
+}
+
+class User {
+    - id: Integer
+    - preferences: Page*
+}
+
+class System {
+    # createDocument(): Document
+}
+
+Document -->* Page
+Page -->* TextFormElement
+Page -->* DataEntryFormElement
+User --> Page
+System o---> User
+
+@enduml

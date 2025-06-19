@@ -1,0 +1,35 @@
+@startuml
+class Player {
+    + playTurn(game: DiceGame): GameAction
+}
+
+class Die {
+    - currentValue: int
+    + roll(): void
+    + getCurrentValue(): int
+}
+
+class DiceGame {
+    - die1: Die
+    - die2: Die
+    - performRoll(): DiceRoll
+    - determineGameAction(roll: DiceRoll): GameAction
+    + resolvePlayerRoll(): GameAction
+}
+
+class DiceRoll {
+    - die1Result: int
+    - die2Result: int
+    / totalRollValue: int
+    + getTotalRollValue(): int
+}
+
+class GameAction {
+    - actionDescription: String
+}
+
+Player "1" --> "1" DiceGame
+DiceGame "1" *-- "2" Die
+DiceGame ..> DiceRoll
+DiceGame ..> GameAction
+@enduml

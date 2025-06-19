@@ -1,0 +1,24 @@
+@startuml
+class Document {
+- metadata: Dictionary
+- page_content: String
++ generatePDF(): void
+}
+
+class QuestionTopic {
+- text: String
++ isRelated(): boolean
+}
+
+class User {
+- username: String
+- password: String
++ login(): boolean
++ selectQuestionTopic(): QuestionTopic
+}
+
+Document --> User
+User o--> QuestionTopic
+User +--> Document
+
+@enduml

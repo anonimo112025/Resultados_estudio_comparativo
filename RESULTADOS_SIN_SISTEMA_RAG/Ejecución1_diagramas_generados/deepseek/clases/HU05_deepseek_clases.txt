@@ -1,0 +1,18 @@
+@startuml
+class Player {
+    - name: String
+    - username: String
+    
+    + rollDice(): Integer
+}
+
+class DiceSystem {
+    + type: Number=2
+    + sides: Number=6
+    - balance: Integer
+    
+    method getResult(min: Integer, max: Integer) : Integer
+    method modifyBalance(multiplier: Integer): void
+}
+Player -->DiceSystem
+@enduml

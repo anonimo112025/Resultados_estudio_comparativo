@@ -1,0 +1,16 @@
+@startuml
+class SystemUser {
+    - username: String
+    + addElement()
+    + viewElement()
+}
+class Form {
+    - formName: String
+}
+class Element {
+    - elementType: String
+}
+
+SystemUser --> Form: Manages
+Form --> Element: Contains
+@enduml

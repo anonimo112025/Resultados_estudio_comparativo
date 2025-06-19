@@ -1,0 +1,28 @@
+@startuml
+class User {
+    + createUser(): void
+    - login(): void
+    # logout(): void
+}
+
+class System {
+    - handleTransaction(String, String, String, String): void
+    - updateClientBalance(ClientID, amount: Integer): void
+}
+
+class Client {
+    - getClientID(): String
+    - getClientName(): String
+    - getClientEmail(): String
+    + createClient(): void
+}
+
+interface ServiceInterface {
+    # processTransaction(String, String, String, String)
+    # updateUserBalance(UserID, amount: Integer)
+}
+
+User has association with System via ServiceInterface
+User has association with Client via association with ServiceInterface
+System has association with Client via association with ServiceInterface
+@enduml

@@ -1,0 +1,39 @@
+@startuml
+
+class SystemUser Ellipsis {
+}
+
+class Form Ellipsis {
+  - title: String
+  - elements: List<FormElement>
+  + addElement(element: FormElement): void
+  + getElements(): List<FormElement>
+  + configureForm(): void
+}
+
+class FormElement Ellipsis {
+  # name: String
+  # label: String
+  # orderIndex: Integer
+  + render(): void
+}
+
+class TextFieldElement Ellipsis {
+  - textValue: String
+  - placeholderText: String
+  + render(): void
+}
+
+class DataEntryElement Ellipsis {
+  - dataValue: String
+  - entryType: String
+  + render(): void
+}
+
+SystemUser "1" -- "0..*" Form
+Form "1" *-- "0..*" FormElement
+
+TextFieldElement --|> FormElement
+DataEntryElement --|> FormElement
+
+@enduml

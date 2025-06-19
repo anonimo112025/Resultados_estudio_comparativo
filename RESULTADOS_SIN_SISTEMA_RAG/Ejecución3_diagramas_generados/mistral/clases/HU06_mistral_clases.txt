@@ -1,0 +1,17 @@
+@startuml
+   class User
+   - userID: String
+   - name: String
+   - questions: Set<String>
+   - topics: Set<String>
+   - generatePDF: PDFDocument generate_pdf()
+
+   class PDFDocument
+   - pdfFile: File
+   - questions: Set<String>
+   - topics: Set<String>
+   - structureContent: void
+   - save: void
+
+   User "1" --> "*" PDFDocument
+   @enduml

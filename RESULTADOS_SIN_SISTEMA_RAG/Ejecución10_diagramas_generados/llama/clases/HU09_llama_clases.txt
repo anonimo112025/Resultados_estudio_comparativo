@@ -1,0 +1,37 @@
+@startuml
+class Book 
+    - title: String
+    - authors: List<String>
+    - publisher: Publisher
+    + publish(): void
+    + addAuthor(author: String): void
+    - totalPages: Integer
+
+class Author 
+    - name: String
+    + writeBook(book: Book): void
+    + deletePublication(publicationId: Integer): void
+
+class Publisher 
+    - name: String
+    + manageBook(book: Book): void
+    + registerAuthor(author: Author): void
+
+class Publication 
+    - id: Integer
+    - title: String
+    - book: Book
+    + linkToAuthor(author: Author): void
+
+class User 
+    - username: String
+    - password: String
+    + registerPublication(publicationId: Integer): void
+    + consultPublications(): List<Publication>
+
+class Interaction {
+    + publishBook(book: Book, publisher: Publisher): void
+    + linkAuthorsToBooks(book: Book, authors: List<String>): void
+}
+
+@enduml

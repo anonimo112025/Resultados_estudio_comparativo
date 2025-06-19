@@ -1,0 +1,27 @@
+@startuml
+class Player {
+  - die1: Die
+  - die2: Die
+  + rollTwoDice(): int
+}
+
+class Die {
+  - faceValue: int
+  + roll(): void
+  + getFaceValue(): int
+}
+
+class Game {
+  + processPlayerRoll(player: Player): GameAction
+}
+
+class GameAction {
+  - description: String
+  + getDescription(): String
+}
+
+Game "1" o-- "1..*" Player
+Player "1" *-- "2" Die
+Game ..> Player
+Game ..> GameAction
+@enduml

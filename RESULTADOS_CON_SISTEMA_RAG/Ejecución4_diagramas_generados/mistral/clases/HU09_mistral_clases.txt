@@ -1,0 +1,20 @@
+@startuml
+   class Book {
+       - title: String
+       - authors: List[Author]
+       - publisher: Publisher
+       - publicationDate: Date
+   }
+
+   class Author {
+       - name: String
+       - books: List[Book]
+   }
+
+   class Publisher {
+       - name: String
+       - books: List[Book]
+   }
+   Book "--" Author
+   Book -- Publisher
+   @enduml

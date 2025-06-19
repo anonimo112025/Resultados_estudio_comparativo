@@ -1,0 +1,17 @@
+@startuml
+class Book {
+  - title: String
+  - authors: Set<Author>
+  - publisher: Publisher
+}
+
+class Author {
+  - name: String
+  - books: Set<Book>
+}
+
+class Publisher {
+  - name: String
+  - books: Set<Book>
+}
+@enduml

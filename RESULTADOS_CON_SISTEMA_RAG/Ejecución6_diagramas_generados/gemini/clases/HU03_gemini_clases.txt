@@ -1,0 +1,53 @@
+@startuml
+
+class User {
+  -userId: String
+  -username: String
+}
+
+class SystemAdministrator {
+  +assignPermission(targetUser: User, permission: Permission, resource: Resource): void
+  +revokePermission(targetUser: User, permission: Permission, resource: Resource): void
+  +listUserPermissions(targetUser: User): List<AccessControlEntry>
+}
+
+class Permission {
+  -permissionId: String
+  -name: String
+  -description: String
+}
+
+class Resource {
+  -resourceId: String
+  -name: String
+  -description: String
+}
+
+class AccessControlEntry {
+}
+
+class AccessValidator {
+  +checkPermission(user: User, permission: Permission, resource: Resource): boolean
+}
+
+SystemAdministrator --|> User
+
+User "1" -- "*" AccessControlEntry
+Permission "1" -- "*" AccessControlEntry
+Resource "1" -- "*" AccessControlEntry
+
+AccessControlEntry --> "1" User
+AccessControlEntry --> "1" Permission
+AccessControlEntry --> "1" Resource
+
+SystemAdministrator ..> User : uses
+SystemAdministrator ..> Permission : uses
+SystemAdministrator ..> Resource : uses
+SystemAdministrator ..> AccessControlEntry : manages
+
+AccessValidator ..> User : uses
+AccessValidator ..> Permission : uses
+AccessValidator ..> Resource : uses
+AccessValidator ..> AccessControlEntry : validates using
+
+@enduml

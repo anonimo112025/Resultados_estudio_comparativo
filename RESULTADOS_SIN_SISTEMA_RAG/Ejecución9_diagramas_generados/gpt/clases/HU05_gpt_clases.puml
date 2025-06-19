@@ -1,0 +1,13 @@
+@startuml
+class Player {
+    + rollDice(): Int
+}
+
+class Dice {
+    - value: Int
+    + getValue(): Int
+    + roll(): Int
+}
+
+Player "1" --> "2" Dice
+@enduml

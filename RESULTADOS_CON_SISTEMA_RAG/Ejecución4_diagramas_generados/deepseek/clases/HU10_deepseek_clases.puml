@@ -1,0 +1,11 @@
+@startuml
+class Form(+)
+    name: String
+    createdBy: String
+    createdAt: String
+    modifiedDate: String
+    components <- Collection[Component]
+    relationships <- RelationshipSet[Relationship]
+    editionState: String
+endclass
+@enduml

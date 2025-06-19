@@ -1,0 +1,25 @@
+@startuml
+class Document {
+    - metadata: Map<String, String>
+    - page_content: String
+}
+
+class Question {
+    # id: Integer
+    # text: String
+}
+
+class Topic {
+    # id: Integer
+    # name: String
+}
+
+class UserDocument {
+    + id: Integer
+    # user_id: Integer
+    - document: Document
+    # question_ids: Set<Integer>
+    # topic_ids: Set<Integer>
+}
+
+@enduml

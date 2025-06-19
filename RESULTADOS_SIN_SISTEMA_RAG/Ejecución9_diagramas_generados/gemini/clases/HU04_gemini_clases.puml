@@ -1,0 +1,61 @@
+@startuml
+
+class SystemUser {
+  + registerClient(name: String, contactInfo: String): Client
+  + updateClientDetails(client: Client, newName: String, newContactInfo: String): void
+  + openClientAccount(client: Client, initialBalance: double): Account
+  + makeDeposit(account: Account, amount: double): void
+  + makeWithdrawal(account: Account, amount: double): void
+  + getAccountTransactions(account: Account): List<Transaction>
+  + generateAccountReport(account: Account, reportType: String): Report
+  + viewReport(report: Report): String
+}
+
+class Client {
+  - clientId: String
+  - name: String
+  - contactInformation: String
+  + getClientId(): String
+  + getName(): String
+  + setName(name: String): void
+  + getContactInformation(): String
+  + setContactInformation(contactInfo: String): void
+  + addAccount(account: Account): void
+  + getAccounts(): List<Account>
+}
+
+class Account {
+  - accountNumber: String
+  - balance: double
+  + deposit(amount: double): void
+  + withdraw(amount: double): void
+  + getBalance(): double
+  + getTransactions(): List<Transaction>
+}
+
+class Transaction {
+  - transactionId: String
+  - type: String
+  - amount: double
+  - date: Date
+  - description: String
+}
+
+class Report {
+  - reportId: String
+  - type: String
+  - generationDate: Date
+  - content: String
+}
+
+SystemUser ..> Client : manages
+SystemUser ..> Account : interacts with
+SystemUser ..> Report : generates & consults
+
+Client "1" *-- "0..*" Account : has
+Account "1" o-- "0..*" Transaction : records
+
+Report ..> Account : based on
+Report ..> Transaction : based on
+
+@enduml

@@ -1,0 +1,25 @@
+@startuml
+class Document {
+  - metadata: Map<String, String>
+  + page_content: String
+}
+
+class ClientInformation {
+  - clientId: Integer
+  - name: String
+  + updateBalance(): void
+  + getTransactions(): List<Transaction>
+}
+
+class Transaction {
+  - transactionId: Integer
+  - amount: Decimal
+  + getDetails(): String
+}
+
+class UserManagementSystem {
+  + manageClientInfo(): void
+  + performOperations(): void
+}
+
+@enduml

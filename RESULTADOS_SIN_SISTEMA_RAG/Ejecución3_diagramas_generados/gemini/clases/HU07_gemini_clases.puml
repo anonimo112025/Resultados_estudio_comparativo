@@ -1,0 +1,26 @@
+@startuml
+class EducationalUser {
+  - name: String
+  - userType: String
+  - information: String
+  + getInformation(): String
+  + updateInformation(information: String): void
+}
+
+class Student {
+}
+
+class Teacher {
+}
+
+class AcademicRegistry {
+  + registerUser(user: EducationalUser): void
+  + unregisterUser(user: EducationalUser): void
+  + findUserByName(name: String): EducationalUser
+  + findUsersByType(userType: String): List<EducationalUser>
+}
+
+Student --|> EducationalUser
+Teacher --|> EducationalUser
+AcademicRegistry "1" *-- "*" EducationalUser
+@enduml

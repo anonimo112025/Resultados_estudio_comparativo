@@ -1,0 +1,29 @@
+@startuml
+class User {
+    - username: String
+    - password: String
+    + login(): boolean
+}
+
+class Permission {
+    - id: Integer
+    - resource: String
+    - user: User #* (one-to-many)
+}
+
+class Resource {
+    - id: Integer
+    - name: String
+    - permission: Permission *-- (many-to-one)
+}
+
+class Administrator {
+    + managePermissions(): void
+    - permissions: List<Permission>
+}
+
+class System {
+    + assignPermissions(Administrator, Permission): void
+    + revokePermissions(Administrator, Permission): void
+}
+@enduml

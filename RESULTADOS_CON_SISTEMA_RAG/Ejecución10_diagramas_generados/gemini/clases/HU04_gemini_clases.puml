@@ -1,0 +1,54 @@
+@startuml
+
+class Client {
+  - clientId: String
+  - name: String
+  - contactInfo: String
+  + getClientId(): String
+  + getName(): String
+  + getContactInfo(): String
+  + updateInfo(name: String, contactInfo: String): void
+  + getAccounts(): List<Account>
+}
+
+class Account {
+  - accountId: String
+  - balance: double
+  + getAccountId(): String
+  + deposit(amount: double): void
+  + withdraw(amount: double): boolean
+  + getBalance(): double
+  + getTransactions(): List<Transaction>
+  + generateActivityReport(): Report
+  + generateBalanceStatement(): Report
+}
+
+class Transaction {
+  - transactionId: String
+  - type: String
+  - amount: double
+  - transactionDate: Date
+  - description: String
+  + getTransactionId(): String
+  + getType(): String
+  + getAmount(): double
+  + getTransactionDate(): Date
+  + getDescription(): String
+}
+
+class Report {
+  - reportId: String
+  - title: String
+  - generatedDate: Date
+  - content: String
+  + getReportId(): String
+  + getTitle(): String
+  + getGeneratedDate(): Date
+  + getContent(): String
+}
+
+Client "1" *-- "1..*" Account
+Account "1" *-- "0..*" Transaction
+Account "1" -- "0..*" Report
+
+@enduml
